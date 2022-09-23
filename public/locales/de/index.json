@@ -1,0 +1,13 @@
+{
+    "heroGreeting": "Hi, mein Name ist",
+    "heroPreTypewriter": "Ich bin ",
+    "heroSubtext": "und meine Leidenschaft ist es, großartige und menschenzentrierte Produkte zu schaffen, sei es durch Entwicklung, UX Design oder Online Marketing.",
+    "heroTypewriterArray": [
+        "Full-Stack Entwickler",
+        "Online Marketing Manager",
+        "Android Developer",
+        "UX Designer"
+    ],
+    "heroLearnMoreButton": "Mehr erfahren"
+    
+}

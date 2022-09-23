@@ -1,0 +1,16 @@
+{
+  "heroGreeting": "Hi, my name is",
+  "heroPreTypewriter": "I'm a ",
+  "heroSubtext": "and very passionate about bringing forward great and human-centered products; whether that's through development, UX Design, or Online Marketing.",
+  "heroTypewriterArray": [
+    "Full-Stack Developer",
+    "Digital Marketing Specialist",
+    "Native Android Developer",
+    "UX Designer"
+  ],
+  "heroLearnMoreButton": "Learn More",
+
+  "aboutParagraph1": "Hi there! My name is Sebastian and I enjoy creating applications as well as digital projects. My interest in development started back in 2012 when I signed up for my schools computer science class. As I found it very interesting, I decided to change to a more development focused school.",
+  "aboutParagraph2": "Since I've always been passionate about many different types of digital media, the Digital Media Marketing program was my first choice. Despite the name, the focus was on the three main categories: Computer Science, Marketing, and UX Design.",
+  "aboutParagraph3": "More details about me can be found in the next section Experience. You could also have a look at my Work straight away."
+}
