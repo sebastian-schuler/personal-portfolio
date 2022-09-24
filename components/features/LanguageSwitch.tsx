@@ -8,8 +8,8 @@ import Link from 'next/link';
 const LanguageSwitch = () => {
 
     const router = useRouter();
-    const { t } = useTranslation('common');
-
+    const { t, i18n } = useTranslation('common');
+    
     const onToggleLanguageClick = (newLocale: string) => {
         const { pathname, asPath, query } = router
         router.push({ pathname, query }, asPath, { locale: newLocale })
@@ -28,7 +28,7 @@ const LanguageSwitch = () => {
                     variant="outline"
                     color={'red'}
                     onClick={() => onToggleLanguageClick(changeTo)}
-                    title={t('mniLanguageSwitch')}
+                    title={t('menu.languageSwitch')}
                 >
                     {<IconLanguage size={18} />}
                 </ActionIcon>

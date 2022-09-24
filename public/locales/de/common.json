@@ -1,9 +1,11 @@
 {
-    "mniAbout":"Über mich",
-    "mniExperience":"Erfahrung",
-    "mniWork":"Projekte",
-    "mniContact":"Kontakt",
+    "menu": {
+        "about": "Über mich",
+        "experience": "Erfahrung",
+        "work": "Projekte",
+        "contact": "Kontakt",
 
-    "mniColorScheme":"Tag/Nachtmodus wechseln",
-    "mniLanguageSwitch": "Sprache ändern"
+        "colorScheme": "Tag/Nachtmodus wechseln",
+        "languageSwitch": "Sprache ändern"
+      }
 }

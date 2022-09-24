@@ -72,10 +72,10 @@ const PageHeader = () => {
   const dark = colorScheme === 'dark';
 
   const links: HeaderLink[] = [
-    { link: '#about', label: t('mniAbout') },
-    { link: '#experience', label: t('mniExperience') },
-    { link: '#work', label: t('mniWork') },
-    { link: '#contact', label: t('mniContact') },
+    { link: '#about', label: t('menu.about') },
+    { link: '#experience', label: t('menu.experience') },
+    { link: '#work', label: t('menu.work') },
+    { link: '#contact', label: t('menu.contact') },
   ]
 
   const items = links.map((link, i) => {
@@ -115,7 +115,7 @@ const PageHeader = () => {
                   variant="outline"
                   color={dark ? 'yellow' : 'blue'}
                   onClick={() => toggleColorScheme()}
-                  title={t('mniColorScheme')}
+                  title={t('menu.colorScheme')}
                 >
                   {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
                 </ActionIcon>

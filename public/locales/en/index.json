@@ -1,16 +1,107 @@
 {
-  "heroGreeting": "Hi, my name is",
-  "heroPreTypewriter": "I'm a ",
-  "heroSubtext": "and very passionate about bringing forward great and human-centered products; whether that's through development, UX Design, or Online Marketing.",
-  "heroTypewriterArray": [
-    "Full-Stack Developer",
-    "Digital Marketing Specialist",
-    "Native Android Developer",
-    "UX Designer"
-  ],
-  "heroLearnMoreButton": "Learn More",
+  "hero": {
+    "greeting": "Hi, my name is",
+    "preTypewriter": "I'm a ",
+    "subtext": "and very passionate about bringing forward great and human-centered products; whether that's through development, UX Design, or Online Marketing.",
+    "typewriterArray": [
+      "Full-Stack Developer",
+      "Digital Marketing Specialist",
+      "Native Android Developer",
+      "UX Designer"
+    ],
+    "learnMoreButton": "Learn More"
+  },
 
-  "aboutParagraph1": "Hi there! My name is Sebastian and I enjoy creating applications as well as digital projects. My interest in development started back in 2012 when I signed up for my schools computer science class. As I found it very interesting, I decided to change to a more development focused school.",
-  "aboutParagraph2": "Since I've always been passionate about many different types of digital media, the Digital Media Marketing program was my first choice. Despite the name, the focus was on the three main categories: Computer Science, Marketing, and UX Design.",
-  "aboutParagraph3": "More details about me can be found in the next section Experience. You could also have a look at my Work straight away."
+  "about": {
+    "p1": "Hi there! My name is Sebastian and I enjoy creating applications as well as digital projects. My interest in development started back in 2012 when I signed up for my schools computer science class. As I found it very interesting, I decided to change to a more development focused school.",
+    "p2": "Since I've always been passionate about many different types of digital media, the Digital Media Marketing program was my first choice. Despite the name, the focus was on the three main categories: Computer Science, Marketing, and UX Design.",
+    "p3": {
+      "1": "More details about me can be found in the next section",
+      "2": ". You could also have a look at my",
+      "3": "straight away."
+    },
+    "tech": {
+      "title": "Technologies",
+      "text": "I have worked with:"
+    },
+    "tools": {
+      "title": "Tools",
+      "text": "I have experience with:"
+    }
+  },
+
+  "experience": {
+    "hskl": {
+      "tabTitle": "HSKL",
+      "institution": "Hochschule Karlsruhe",
+      "title": "Digital Media Marketing",
+      "years": "2017 - 2022",
+      "list": [
+        "The objective of the course is the career-oriented education of computer scientists with basic skills in marketing and digital content creation.",
+        "Acquired Skills include, but are not limited to, web development, Java desktop programming, SEO, CMS, online marketing, UX design, databases, and app development.",
+        "I completed numerous projects as part of my studies, many of which can be found in the next section."
+      ]
+    },
+
+    "ux": {
+      "tabTitle": "UXQB",
+      "institution": "International Software Quality Institute",
+      "title": "Certified Professional for Usability and UX - Foundation Level",
+      "years": "Completed in 2017",
+
+      "paragraph": "The UXQB - CPUX-F certificate attests that I am familiar with the basic terms and concepts of usability and user experience, and that I'm able to apply them in the following areas of competence:",
+      "list": [
+        "The objective of the course is the career-oriented education of computer scientists with basic skills in marketing and digital content creation.",
+        "Acquired Skills include, but are not limited to, web development, Java desktop programming, SEO, CMS, online marketing, UX design, databases, and app development.",
+        "I completed numerous projects as part of my studies, many of which can be found in the next section."
+      ],
+      "footer": {
+        "text": "Source:",
+        "linkLabel": "UXQB"
+      }
+    },
+
+    "edv": {
+      "tabTitle": "EDV Höhne",
+      "institution": "EDV Höhne",
+      "title": "Software Developer / Internship",
+      "years": "2015 - 2016",
+      "paragraph": "",
+      "list": [
+        "I had to complete at least half a year of internship in order to get the apprenticeship recognized as part of my high school diploma (A-Level). I was able to learn a lot during my time here, as the company gave me the opportunity to work full time as a software developer.",
+        "Used technologies included Visual Basic, Java, Android, and SQL. My biggest project was the creation of an interface for the internal phone system that automatically displayed the status of employees and allows routing between departments."
+      ]
+    },
+
+    "bbs": {
+      "tabTitle": "BBS SÜW",
+      "institution": "BBS SÜW",
+      "title": "A-Level / Assistant for Application Development",
+      "years": "2014-2015",
+      "list": [
+        "Here was my first 'professional' touch point with computer science and programming. The degree consists of two parts: A-Levels to study at universities, and an apprenticeship as an assistant for application development.",
+        "The topics were mainly Java programming, hardware and electrical engineering.",
+        "My final project was an Android app including a backend that could scan food barcodes and warn users, if any of their allergies were affected."
+      ]
+    }
+  },
+
+  "featuredWork": {
+    "items": [
+      {
+        "topline": "Featured Project",
+        "title": "Marketing Academy",
+        "url": "marketing-academy",
+        "paragraph": "Development of a CMS based website for the Marketing Academy of the University of Kaiserslautern using the given corporate identity design and drafts of a visual marketing campaign.",
+        "tags": ["WordPress", "Elementor", "Adobe XD"]
+      },
+      {
+        "topline": "Featured Project",
+        "title": "Marketing Academy",
+        "url": "marketing-academy",
+        "paragraph": "Development of a CMS based website for the Marketing Academy of the University of Kaiserslautern using the given corporate identity design and drafts of a visual marketing campaign.",
+        "tags": ["WordPress", "Elementor", "Adobe XD"]
+      }
+    ]
+  }
 }

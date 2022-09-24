@@ -1,9 +1,12 @@
 {
-  "mniAbout": "About",
-  "mniExperience": "Experience",
-  "mniWork": "Work",
-  "mniContact": "Contact",
+  "menu": {
+    "about": "About",
+    "experience": "Experience",
+    "work": "Work",
+    "contact": "Contact",
 
-  "mniColorScheme": "Toggle day/night mode",
-  "mniLanguageSwitch": "Change language"
+    "colorScheme": "Toggle day/night mode",
+    "languageSwitch": "Change language"
+  }
+
 }

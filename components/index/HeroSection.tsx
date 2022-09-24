@@ -47,17 +47,17 @@ const HeroSection = () => {
 
     const { classes, theme } = useStyles();
     const { t } = useTranslation('index');
-    const typingContent = t('heroTypewriterArray', { returnObjects: true });
+    const typingContent = t('hero.typewriterArray', { returnObjects: true });
 
     return (
         <Box className={classes.outer}>
 
             <Center sx={{ height: "100%" }}>
                 <Stack spacing={0} sx={{ width: "100%" }}>
-                    <Text size={20} color={'primary'}>{t('heroGreeting')}</Text>
+                    <Text size={20} color={'primary'}>{t('hero.greeting')}</Text>
                     <Title order={1} className={classes.title}>Sebastian Schuler</Title>
                     <Text className={classes.typewriterOuterText}>
-                        {t('heroPreTypewriter')}
+                        {t('hero.preTypewriter')}
                         <ReactTypingEffect
                             className={classes.typewriterText}
                             text={typingContent}
@@ -67,9 +67,9 @@ const HeroSection = () => {
                             speed={250}
                         />
                     </Text>
-                    <Text className={classes.subText}>{t('heroSubtext')}</Text>
+                    <Text className={classes.subText}>{t('hero.subtext')}</Text>
                     <Box pb={100}>
-                        <Button variant='outline' size='md'>{t('heroLearnMoreButton')}</Button>
+                        <Button component='a' href='#about' variant='outline' size='md'>{t('hero.learnMoreButton')}</Button>
                     </Box>
                 </Stack>
             </Center>

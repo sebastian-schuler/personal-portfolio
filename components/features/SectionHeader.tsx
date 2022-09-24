@@ -4,8 +4,9 @@ import React from 'react'
 const useStyles = createStyles((theme) => ({
 
     outer: {
-        paddingTop: theme.spacing.lg,
+        paddingTop: 100,
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+        marginBottom: theme.spacing.lg,
     },
 
     title: {
