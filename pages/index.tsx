@@ -1,12 +1,11 @@
-import { useMantineColorScheme } from '@mantine/core'
+import { Container, useMantineColorScheme } from '@mantine/core'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import AboutSection from '../components/index/AboutSection'
-import ContactSection from '../components/index/ContactSection'
-import ExperienceSection from '../components/index/ExperienceSection'
-import HeroSection from '../components/index/HeroSection'
-import WorkSection from '../components/index/WorkSection'
-import PaddedContainer from '../components/layout/PaddedContainer'
+import AboutSection from '../ui/index/AboutSection'
+import ContactSection from '../ui/index/ContactSection'
+import ExperienceSection from '../ui/index/ExperienceSection'
+import HeroSection from '../ui/index/HeroSection'
+import WorkSection from '../ui/index/WorkSection'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 interface Props {
@@ -23,7 +22,7 @@ const Home: NextPage<Props> = ({ }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <PaddedContainer>
+      <Container>
 
         <HeroSection />
         <AboutSection />
@@ -31,7 +30,7 @@ const Home: NextPage<Props> = ({ }: Props) => {
         <WorkSection />
         <ContactSection />
 
-      </PaddedContainer>
+      </Container>
 
     </>
   )

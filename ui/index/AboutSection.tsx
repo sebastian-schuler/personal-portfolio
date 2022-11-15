@@ -1,9 +1,9 @@
-import { Box, createStyles, Grid, Image, List, SimpleGrid, Stack, Text } from '@mantine/core'
+import { Box, createStyles, Grid, Image, List, SimpleGrid, Space, Stack, Text } from '@mantine/core'
 import { IconAbacus, IconChevronRight } from '@tabler/icons';
 import { useTranslation } from 'next-i18next';
 import React from 'react'
-import MantineLink from '../features/MantineLink';
-import SectionHeader from '../features/SectionHeader'
+import MantineLink from '../MantineLink';
+import SectionHeader from '../SectionHeader'
 
 const useStyles = createStyles((theme) => ({
 
@@ -40,7 +40,7 @@ const AboutSection = () => {
     const { t } = useTranslation(['common', 'index']);
 
     return (
-        <>
+        <Box mb={"xl"}>
             <SectionHeader anchor='about' title={t('menu.about')} order={0} />
 
             <Grid gutter={theme.spacing.lg}>
@@ -119,7 +119,7 @@ const AboutSection = () => {
                 </Grid.Col>
 
             </Grid>
-        </>
+        </Box>
     )
 }
 

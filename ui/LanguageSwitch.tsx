@@ -24,7 +24,6 @@ const LanguageSwitch = () => {
                 passHref
             >
                 <ActionIcon
-                    component='a'
                     variant="outline"
                     color={'red'}
                     onClick={() => onToggleLanguageClick(changeTo)}

@@ -53,6 +53,14 @@ const appTheme: MantineThemeOverride = {
     md: 992,
     lg: 1200,
     xl: 1400,
+  },
+  components: {
+    Container: {
+      defaultProps: {
+        size: 'md',
+        px: 'lg',
+      },
+    }
   }
 };
 

@@ -1,12 +1,12 @@
 import { AppShell, useMantineTheme } from '@mantine/core';
-import React, { useState } from 'react'
-import PageHeader from './PageHeader';
+import React from 'react';
+import PageHeader from './Nav';
 
 interface Props {
     children: React.ReactNode;
 }
 
-const PageShell:React.FC<Props> = ({children}:Props) => {
+const Shell:React.FC<Props> = ({children}:Props) => {
     const theme = useMantineTheme();
 
     return (
@@ -22,4 +22,4 @@ const PageShell:React.FC<Props> = ({children}:Props) => {
     )
 }
 
-export default PageShell
+export default Shell

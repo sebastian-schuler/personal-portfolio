@@ -1,9 +1,11 @@
-import { ActionIcon, Anchor, Box, Burger, Button, createStyles, Divider, Drawer, Group, Header, ScrollArea, Stack, Text, useMantineColorScheme } from '@mantine/core';
+import { ActionIcon, Anchor, Box, Burger, Button, Container, createStyles, Divider, Drawer, Group, Header, ScrollArea, Stack, Text, UnstyledButton, useMantineColorScheme } from '@mantine/core';
 import { useDisclosure, useMediaQuery, useWindowScroll } from '@mantine/hooks';
 import { IconLanguage, IconMoonStars, IconSun } from '@tabler/icons';
 import { useTranslation } from 'next-i18next';
-import LanguageSwitch from '../../features/LanguageSwitch';
-import PaddedContainer from '../PaddedContainer';
+import Link from 'next/link';
+import { useGlobalContext } from '../lib/AppContext';
+import ContactDrawer from './ContactDrawer';
+import LanguageSwitch from './LanguageSwitch';
 
 export const HEADER_HEIGHT = 80;
 export const HEADER_MOBILE_HEIGHT = 60;
@@ -60,8 +62,9 @@ interface HeaderLink {
   link: string; label: string; links?: { link: string; label: string }[];
 }
 
-const PageHeader = () => {
+const Nav = () => {
 
+  const { contactDrawerVisible, setContactDrawerVisible } = useGlobalContext();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const { classes, theme } = useStyles();
   const [scroll] = useWindowScroll();
@@ -72,22 +75,23 @@ const PageHeader = () => {
   const dark = colorScheme === 'dark';
 
   const links: HeaderLink[] = [
-    { link: '#about', label: t('menu.about') },
-    { link: '#experience', label: t('menu.experience') },
-    { link: '#work', label: t('menu.work') },
-    { link: '#contact', label: t('menu.contact') },
+    { link: '/', label: "Home" },
+    { link: '/projects', label: "Projects" },
+    { link: '/blog', label: "Blog" },
+    // { link: '#contact', label: t('menu.contact') },
   ]
 
   const items = links.map((link, i) => {
     return (
-      <Anchor
-        key={link.label}
-        href={link.link}
-        className={classes.link}
-      >
-        <span className={classes.linkNumber}>0{i + 1}.</span>
-        {link.label}
-      </Anchor>
+      <Link key={i} href={link.link}>
+        <Text
+          key={link.label}
+          className={classes.link}
+        >
+          {/* <span className={classes.linkNumber}>0{i + 1}.</span> */}
+          {link.label}
+        </Text>
+      </Link>
     );
   });
 
@@ -103,12 +107,20 @@ const PageHeader = () => {
           }
         })}
       >
-        <PaddedContainer sx={{ height: '100%' }}>
+        <Container sx={{ height: '100%' }}>
           <Box className={classes.inner} >
             <Text>Home</Text>
 
             <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
               {items}
+
+              <UnstyledButton
+                className={classes.link}
+                onClick={() => setContactDrawerVisible(true)}
+              // TODO contact form in modal sidebar
+              >
+                Contact
+              </UnstyledButton>
 
               <Group ml={"md"}>
                 <ActionIcon
@@ -125,7 +137,7 @@ const PageHeader = () => {
 
             <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
           </Box>
-        </PaddedContainer>
+        </Container>
       </Header>
 
       <Drawer
@@ -158,9 +170,14 @@ const PageHeader = () => {
           </Group>
         </ScrollArea>
       </Drawer>
+
+      <ContactDrawer
+        contactDrawerVisible={contactDrawerVisible}
+        setContactDrawerVisible={setContactDrawerVisible}
+      />
     </>
   );
 
 }
 
-export default PageHeader
+export default Nav;

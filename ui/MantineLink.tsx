@@ -26,23 +26,27 @@ const MantineLink = ({ url, label, color, type, sx, className }: Props) => {
     return (
         <>
             {
-                type === "internal" ? (
+                type === "internal" && (
                     <Link href={url} passHref>
                         <Anchor component="a" color={color ? color : "primary.5"} classNames={[classes.link, className]} sx={{ ...sx }}>
                             {label}
                         </Anchor >
                     </Link >
-                ) :
-                    type === "external" ? (
-                        <Anchor component="a" href={url} color={color ? color : "primary.4"} target={"_blank"} classNames={[classes.link, className]} sx={{ ...sx }}>
-                            {label}
-                        </Anchor>
-                    ) :
-                        type === "scroll" ? (
-                            <Anchor component="a" href={url} color={color ? color : "primary.5"} classNames={[classes.link, className]} sx={{ ...sx }}>
-                                {label}
-                            </Anchor >
-                        ) : null
+                )
+            }
+            {
+                type === "external" && (
+                    <Anchor component="a" href={url} color={color ? color : "primary.4"} target={"_blank"} classNames={[classes.link, className]} sx={{ ...sx }}>
+                        {label}
+                    </Anchor>
+                )
+            }
+            {
+                type === "scroll" && (
+                    <Anchor component="a" href={url} color={color ? color : "primary.5"} classNames={[classes.link, className]} sx={{ ...sx }}>
+                        {label}
+                    </Anchor >
+                )
             }
         </>
     )

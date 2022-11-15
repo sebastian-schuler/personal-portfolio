@@ -1,9 +1,9 @@
-import { createStyles, List, Stack, Tabs, Text, Title } from '@mantine/core';
+import { Box, createStyles, List, Stack, Tabs, Text, Title } from '@mantine/core';
 import { IconAward, IconBook, IconBuilding, IconPoint, IconSchool } from '@tabler/icons';
 import { useTranslation } from 'next-i18next';
 import { ReactNode } from 'react';
-import MantineLink from '../features/MantineLink';
-import SectionHeader from '../features/SectionHeader';
+import MantineLink from '../MantineLink';
+import SectionHeader from '../SectionHeader';
 
 interface ExperienceItem {
     value: string
@@ -113,7 +113,7 @@ const ExperienceSection = () => {
     }
 
     return (
-        <>
+        <Box mb={"xl"}>
             <SectionHeader anchor='experience' title={t("menu.experience", { ns: "common" })} order={1} />
 
             <Tabs orientation="vertical" defaultValue="hskl">
@@ -128,7 +128,7 @@ const ExperienceSection = () => {
                 {tabContent.map((item) => getContent(item))}
 
             </Tabs>
-        </>
+        </Box>
     )
 }
 

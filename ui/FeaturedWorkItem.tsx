@@ -1,4 +1,5 @@
 import { ActionIcon, Anchor, createStyles, Group, Image, Paper, Text } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import { IconBrandGithub, IconExternalLink, IconFileDescription } from '@tabler/icons';
 import Link from 'next/link';
 import React from 'react';
@@ -9,9 +10,8 @@ const useStyles = createStyles((theme) => ({
         position: 'relative',
         display: 'grid',
         gridTemplateColumns: 'repeat(12, 1fr)',
-        gap: 10,
+        gap: theme.spacing.md,
         alignItems: 'center',
-        marginBottom: 80,
 
         boxShadow: theme.shadows.sm,
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
         textAlign: 'left',
         zIndex: 5,
 
-        [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+        [`@media (max-width: ${theme.breakpoints.md}px)`]: {
             gridColumn: '1 / -1',
             flexDirection: 'column',
             height: '100%',
@@ -43,7 +43,7 @@ const useStyles = createStyles((theme) => ({
         textAlign: 'right',
         zIndex: 5,
 
-        [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+        [`@media (max-width: ${theme.breakpoints.md}px)`]: {
             gridColumn: '1 / -1',
             flexDirection: 'column',
             height: '100%',
@@ -51,12 +51,12 @@ const useStyles = createStyles((theme) => ({
             paddingRight: theme.spacing.lg,
             paddingLeft: theme.spacing.lg,
             justifyContent: 'center',
+            textAlign: 'left',
         },
     },
 
     topline: {
         color: theme.colors.primary[4],
-        marginBottom: theme.spacing.xs,
     },
 
     title: {
@@ -68,7 +68,7 @@ const useStyles = createStyles((theme) => ({
     paragraphBox: {
         backgroundColor: theme.colors.dark[6],
         padding: theme.spacing.md,
-        marginTop: theme.spacing.xs,
+        marginTop: theme.spacing.md,
         boxShadow: theme.shadows.sm,
     },
 
@@ -89,8 +89,9 @@ const useStyles = createStyles((theme) => ({
         gridArea: '1 / 6 / -1 / -1',
         zIndex: 1,
         opacity: 0.8,
+        borderRadius: theme.radius.md,
 
-        [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+        [`@media (max-width: ${theme.breakpoints.md}px)`]: {
             gridColumn: '1 / -1',
             height: '100%',
             opacity: 0.1,
@@ -103,6 +104,12 @@ const useStyles = createStyles((theme) => ({
         zIndex: 1,
         opacity: 0.8,
         borderRadius: theme.radius.md,
+
+        [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+            gridColumn: '1 / -1',
+            height: '100%',
+            opacity: 0.1,
+        },
     },
 
     image: {
@@ -131,6 +138,7 @@ interface Props {
 const FeaturedWorkItem: React.FC<Props> = ({ topline, url, title, paragraph, tags, contentPlacement, externalUrl, githubUrl }: Props) => {
 
     const { classes, theme } = useStyles();
+    const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md}px)`);
 
     return (
         <div className={classes.outerWrapper}>
@@ -139,14 +147,14 @@ const FeaturedWorkItem: React.FC<Props> = ({ topline, url, title, paragraph, tag
 
                 <Text className={classes.topline}>{topline}</Text>
 
-                <Link href={url} passHref>
-                    <Anchor component="a" className={classes.title}>
+                <Link href={url}>
+                    <Text className={classes.title}>
                         {title}
-                    </Anchor >
+                    </Text >
                 </Link >
 
                 <Paper className={classes.paragraphBox}>
-                    <Text>
+                    <Text lineClamp={3}>
                         {paragraph}
                     </Text>
                 </Paper>
@@ -154,7 +162,7 @@ const FeaturedWorkItem: React.FC<Props> = ({ topline, url, title, paragraph, tag
                 <Group
                     spacing={4}
                     className={classes.tags}
-                    sx={{ justifyContent: contentPlacement === "left" ? "flex-start" : "flex-end" }}
+                    sx={{ justifyContent: contentPlacement === "left" || smallScreen ? "flex-start" : "flex-end" }}
                 >
                     {
                         tags.map((tag, i) => (
@@ -163,17 +171,17 @@ const FeaturedWorkItem: React.FC<Props> = ({ topline, url, title, paragraph, tag
                     }
                 </Group>
 
-                <Group sx={{ justifyContent: contentPlacement === "left" ? "flex-start" : "flex-end" }}>
-                    <Link href={url} passHref>
-                        <ActionIcon component="a" size={'lg'} variant='light'>
+                <Group sx={{ justifyContent: contentPlacement === "left" || smallScreen ? "flex-start" : "flex-end" }}>
+                    <Link href={url}>
+                        <ActionIcon size={'lg'} variant='light'>
                             <IconFileDescription size={24} />
                         </ActionIcon>
                     </Link>
 
                     {
                         externalUrl && (
-                            <Link href={externalUrl} passHref>
-                                <ActionIcon component="a" size={'lg'} variant='light'>
+                            <Link href={externalUrl}>
+                                <ActionIcon size={'lg'} variant='light'>
                                     <IconExternalLink size={24} />
                                 </ActionIcon>
                             </Link>
@@ -181,8 +189,8 @@ const FeaturedWorkItem: React.FC<Props> = ({ topline, url, title, paragraph, tag
                     }
                     {
                         githubUrl && (
-                            <Link href={githubUrl} passHref>
-                                <ActionIcon component="a" size={'lg'} variant='light'>
+                            <Link href={githubUrl}>
+                                <ActionIcon size={'lg'} variant='light'>
                                     <IconBrandGithub size={24} />
                                 </ActionIcon>
                             </Link>
@@ -197,21 +205,20 @@ const FeaturedWorkItem: React.FC<Props> = ({ topline, url, title, paragraph, tag
 
                 <Image
                     src='images/projects/thumbnails/marketing-akademie-thumbnail.png'
-                    fit="contain"
+                    fit="cover"
                     className={classes.image}
                     sx={{ borderRadius: theme.radius.md }}
                     styles={(theme) => ({
                         image: {
-                            borderTopRightRadius: contentPlacement === "left" ? theme.radius.md : 0,
-                            borderBottomRightRadius: contentPlacement === "left" ? theme.radius.md : 0,
-                            borderTopLeftRadius: contentPlacement === "left" ? 0 : theme.radius.md,
-                            borderBottomLeftRadius: contentPlacement === "left" ? 0 : theme.radius.md,
-                        }
+                            borderTopRightRadius: contentPlacement === "left" || smallScreen ? theme.radius.md : 0,
+                            borderBottomRightRadius: contentPlacement === "left" || smallScreen ? theme.radius.md : 0,
+                            borderTopLeftRadius: contentPlacement === "right" || smallScreen ? theme.radius.md : 0,
+                            borderBottomLeftRadius: contentPlacement === "right" || smallScreen ? theme.radius.md : 0,
+                        },
                     })}
                 />
 
             </div>
-
         </div>
     )
 }

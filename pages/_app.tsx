@@ -1,10 +1,11 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core'
-import appTheme from '../styles/theme'
-import PageShell from '../components/layout/Shell/PageShell'
-import { useState } from 'react'
 import { appWithTranslation } from 'next-i18next'
+import type { AppProps } from 'next/app'
+import { useState } from 'react'
+import GlobalContextProvider from '../lib/AppContext'
+import '../styles/globals.css'
+import appTheme from '../styles/theme'
+import PageShell from '../ui/Shell'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('dark');
@@ -16,11 +17,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
-        theme={{...appTheme, colorScheme}}
+        theme={{ ...appTheme, colorScheme }}
       >
-        <PageShell>
-          <Component {...pageProps} />
-        </PageShell>
+        <GlobalContextProvider>
+          <PageShell>
+            <Component {...pageProps} />
+          </PageShell>
+        </GlobalContextProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   )
