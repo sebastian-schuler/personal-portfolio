@@ -9,14 +9,13 @@ import PostHeader from '../../ui/blog/post-header'
 import PostBody from '../../ui/blog/post-body'
 import { Container, Title } from '@mantine/core'
 import PostTitle from '../../ui/blog/post-title'
-import PostNav from '../../ui/breadcrumbs'
+import PostNav from '../../ui/blog/post-nav'
 
 type Props = {
   post: PostType
   morePosts: PostType[]
   preview?: boolean
 }
-
 
 const BlogPost: React.FC<Props> = ({ post, morePosts, preview }) => {
 
@@ -37,7 +36,7 @@ const BlogPost: React.FC<Props> = ({ post, morePosts, preview }) => {
             <article className="mb-32">
               <Head>
                 <title>
-                  {post.title} | Next.js Blog Example
+                  {post.title + '| Next.js Blog Example'}
                 </title>
                 <meta property="og:image" content={post.ogImage.url} />
               </Head>

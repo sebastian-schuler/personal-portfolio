@@ -2,10 +2,10 @@ import { Container } from '@mantine/core'
 import type { GetStaticProps, NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
-import AboutSection from '../ui/index/AboutSection'
-import ExperienceSection from '../ui/index/ExperienceSection'
-import HeroSection from '../ui/index/HeroSection'
-import WorkSection from '../ui/index/WorkSection'
+import AboutSection from '../ui/index/about-section'
+import ExperienceSection from '../ui/index/experience-section'
+import HeroSection from '../ui/index/hero-section'
+import WorkSection from '../ui/index/work-section'
 
 interface Props {
 

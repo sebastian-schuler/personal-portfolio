@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useState } from 'react';
 import Contact from './contact';
-import LanguageSwitch from './LanguageSwitch';
+import LanguageSwitch from './language-switch';
 
 export const HEADER_HEIGHT = 80;
 export const HEADER_MOBILE_HEIGHT = 60;
