@@ -1,4 +1,4 @@
-import { MantineThemeOverride } from '@mantine/core';
+import { DefaultMantineColor, MantineThemeOverride, Tuple } from '@mantine/core';
 
 const appTheme: MantineThemeOverride = {
   colors: {
@@ -55,13 +55,75 @@ const appTheme: MantineThemeOverride = {
     xl: 1400,
   },
   components: {
+    Title: {
+      styles: (theme) => ({
+        root: {
+          '&:is(h1)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[8] },
+          '&:is(h2)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[7] },
+          '&:is(h3)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[6] },
+          '&:is(h4)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[6] },
+          '&:is(h5)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
+          '&:is(h6)': { color: theme.colors.primary[4] },
+        }
+      }),
+    },
     Container: {
       defaultProps: {
-        size: 'md',
+        size: 'lg',
         px: 'lg',
       },
+    },
+    TypographyStylesProvider: {
+      styles: (theme) => ({
+        root: {
+          '& h1': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
+          '& h2': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
+          '& h3': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
+          '& h4': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
+          '& h5': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
+          '& h6': { color: theme.colors.primary[4] },
+        }
+      }),
+    },
+  },
+  headings: {
+    fontFamily: 'roboto, arial, sans-serif',
+    sizes: {
+      h1: {
+        fontSize: '3em',
+        fontWeight: 700,
+      },
+      h2: {
+        fontSize: '2.5em',
+        fontWeight: 700,
+      },
+      h3: {
+        fontSize: '2.0em',
+        fontWeight: 700,
+      },
+      h4: {
+        fontSize: '1.7em',
+        fontWeight: 700,
+      },
+      h5: {
+        fontSize: '1.5em',
+        fontWeight: 600,
+      },
+      h6: {
+        fontSize: '1.3em',
+        fontWeight: 500,
+      },
     }
+
   }
 };
+
+type ExtendedCustomColors = 'primary' | 'dark' | DefaultMantineColor;
+
+declare module '@mantine/core' {
+  export interface MantineThemeColorsOverride {
+    colors: Record<ExtendedCustomColors, Tuple<string, 10>>;
+  }
+}
 
 export default appTheme;

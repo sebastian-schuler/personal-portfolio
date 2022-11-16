@@ -2,7 +2,7 @@ import { Box, Button, Center, createStyles, Stack, Text, Title } from '@mantine/
 import { useTranslation } from 'next-i18next';
 import React from 'react'
 import ReactTypingEffect from "react-typing-effect";
-import { HEADER_HEIGHT, HEADER_MOBILE_HEIGHT } from '../Nav';
+import { HEADER_HEIGHT, HEADER_MOBILE_HEIGHT } from '../page-nav';
 
 const useStyles = createStyles((theme) => ({
 

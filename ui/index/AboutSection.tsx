@@ -2,8 +2,8 @@ import { Box, createStyles, Grid, Image, List, SimpleGrid, Space, Stack, Text } 
 import { IconAbacus, IconChevronRight } from '@tabler/icons';
 import { useTranslation } from 'next-i18next';
 import React from 'react'
-import MantineLink from '../MantineLink';
-import SectionHeader from '../SectionHeader'
+import ILink from '../link';
+import SectionHeader from '../section-header'
 
 const useStyles = createStyles((theme) => ({
 
@@ -52,9 +52,9 @@ const AboutSection = () => {
                         <Text align='justify'>{t('about.p2', { ns: 'index' })}</Text>
                         <Text align='justify'>
                             {t('about.p3.1', { ns: 'index' })} {' '}
-                            <MantineLink label={t('menu.experience')} url='#experience' type='scroll' /> {' '}
+                            <ILink label={t('menu.experience')} url='#experience' type='scroll' /> {' '}
                             {t('about.p3.2', { ns: 'index' })} {' '}
-                            <MantineLink label={t('menu.work')} url='#work' type='scroll' /> {' '}
+                            <ILink label={t('menu.work')} url='#work' type='scroll' /> {' '}
                             {t('about.p3.3', { ns: 'index' })}
                         </Text>
                     </Stack>

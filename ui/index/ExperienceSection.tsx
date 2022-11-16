@@ -2,8 +2,8 @@ import { Box, createStyles, List, Stack, Tabs, Text, Title } from '@mantine/core
 import { IconAward, IconBook, IconBuilding, IconPoint, IconSchool } from '@tabler/icons';
 import { useTranslation } from 'next-i18next';
 import { ReactNode } from 'react';
-import MantineLink from '../MantineLink';
-import SectionHeader from '../SectionHeader';
+import ILink from '../link';
+import SectionHeader from '../section-header';
 
 interface ExperienceItem {
     value: string
@@ -54,7 +54,7 @@ const ExperienceSection = () => {
             years: t("experience.ux.years"),
             paragraph: t("experience.ux.paragraph"),
             list: t("experience.ux.list", { returnObjects: true }),
-            footer: (<Text> {t("experience.ux.footer.text")} <MantineLink label={t("experience.ux.footer.linkLabel")} url='https://uxqb.org/en/certification/foundation-level-cpux-f/' type='external' /> </Text>),
+            footer: (<Text> {t("experience.ux.footer.text")} <ILink label={t("experience.ux.footer.linkLabel")} url='https://uxqb.org/en/certification/foundation-level-cpux-f/' type='external' /> </Text>),
         },
         {
             value: 'edv',
@@ -83,7 +83,7 @@ const ExperienceSection = () => {
         return (
             <Tabs.Panel key={value} value={value} pl="lg">
                 <Stack spacing={4} mb={theme.spacing.md}>
-                    <MantineLink label={institution} url={institutionUrl} type='external' />
+                    <ILink label={institution} url={institutionUrl} type='external' />
                     <Title order={3} className={classes.tabsContentTitle}>{title}</Title>
                     <Text>{years}</Text>
                 </Stack>

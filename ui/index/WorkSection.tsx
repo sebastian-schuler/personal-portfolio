@@ -2,7 +2,7 @@ import { Box, createStyles, Stack, Text, Title } from '@mantine/core'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 import FeaturedWorkItem from '../FeaturedWorkItem'
-import SectionHeader from '../SectionHeader'
+import SectionHeader from '../section-header'
 
 const useStyles = createStyles((theme) => ({
 

@@ -1,10 +1,10 @@
-import { ActionIcon, Anchor, Box, Burger, Button, Container, createStyles, Divider, Drawer, Group, Header, ScrollArea, Stack, Text, UnstyledButton, useMantineColorScheme } from '@mantine/core';
+import { ActionIcon, Box, Burger, Button, Container, createStyles, Divider, Drawer, Group, Header, ScrollArea, Stack, Text, UnstyledButton, useMantineColorScheme } from '@mantine/core';
 import { useDisclosure, useMediaQuery, useWindowScroll } from '@mantine/hooks';
-import { IconLanguage, IconMoonStars, IconSun } from '@tabler/icons';
+import { IconMoonStars, IconSun } from '@tabler/icons';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { useGlobalContext } from '../lib/AppContext';
-import ContactDrawer from './ContactDrawer';
+import { useState } from 'react';
+import Contact from './contact';
 import LanguageSwitch from './LanguageSwitch';
 
 export const HEADER_HEIGHT = 80;
@@ -62,9 +62,9 @@ interface HeaderLink {
   link: string; label: string; links?: { link: string; label: string }[];
 }
 
-const Nav = () => {
+const PageNav = () => {
 
-  const { contactDrawerVisible, setContactDrawerVisible } = useGlobalContext();
+  const [contactDrawerVisible, setContactDrawerVisible] = useState(false);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const { classes, theme } = useStyles();
   const [scroll] = useWindowScroll();
@@ -117,7 +117,6 @@ const Nav = () => {
               <UnstyledButton
                 className={classes.link}
                 onClick={() => setContactDrawerVisible(true)}
-              // TODO contact form in modal sidebar
               >
                 Contact
               </UnstyledButton>
@@ -171,7 +170,7 @@ const Nav = () => {
         </ScrollArea>
       </Drawer>
 
-      <ContactDrawer
+      <Contact
         contactDrawerVisible={contactDrawerVisible}
         setContactDrawerVisible={setContactDrawerVisible}
       />
@@ -180,4 +179,4 @@ const Nav = () => {
 
 }
 
-export default Nav;
+export default PageNav;

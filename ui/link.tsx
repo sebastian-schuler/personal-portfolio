@@ -1,9 +1,8 @@
-import { Anchor, createStyles, DefaultMantineColor, Sx } from '@mantine/core'
-import Link from 'next/link'
+import { Anchor, createStyles, DefaultMantineColor, Sx, Text } from '@mantine/core';
+import Link from 'next/link';
 
 
 const useStyles = createStyles((theme) => ({
-
     link: {
         '&:hover': {
         }
@@ -19,7 +18,7 @@ interface Props {
     className?: string
 }
 
-const MantineLink = ({ url, label, color, type, sx, className }: Props) => {
+const ILink = ({ url, label, color, type, sx, className }: Props) => {
 
     const { classes } = useStyles();
 
@@ -27,10 +26,10 @@ const MantineLink = ({ url, label, color, type, sx, className }: Props) => {
         <>
             {
                 type === "internal" && (
-                    <Link href={url} passHref>
-                        <Anchor component="a" color={color ? color : "primary.5"} classNames={[classes.link, className]} sx={{ ...sx }}>
+                    <Link href={url}>
+                        <Text color={color ? color : "primary.5"} classNames={[classes.link, className]} sx={{ ...sx }}>
                             {label}
-                        </Anchor >
+                        </Text >
                     </Link >
                 )
             }
@@ -52,4 +51,4 @@ const MantineLink = ({ url, label, color, type, sx, className }: Props) => {
     )
 }
 
-export default MantineLink
+export default ILink
