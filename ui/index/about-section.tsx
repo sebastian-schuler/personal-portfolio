@@ -52,9 +52,9 @@ const AboutSection = () => {
                         <Text align='justify'>{t('about.p2', { ns: 'index' })}</Text>
                         <Text align='justify'>
                             {t('about.p3.1', { ns: 'index' })} {' '}
-                            <ILink label={t('menu.experience')} url='#experience' type='scroll' /> {' '}
+                            <ILink url='#experience' type='scroll' >{t('menu.experience')}</ILink> {' '}
                             {t('about.p3.2', { ns: 'index' })} {' '}
-                            <ILink label={t('menu.work')} url='#work' type='scroll' /> {' '}
+                            <ILink url='#work' type='scroll'>{t('menu.work')}</ILink> {' '}
                             {t('about.p3.3', { ns: 'index' })}
                         </Text>
                     </Stack>
@@ -82,14 +82,14 @@ const AboutSection = () => {
                         {t('about.tech.text', { ns: 'index' })}
                     </Text>
                     <SimpleGrid cols={2}>
-                        <List size="md" icon={<IconChevronRight size={22} />}>
+                        <List size="sm" icon={<IconChevronRight size={22} />}>
                             <List.Item>Javascript (ES6+)</List.Item>
                             <List.Item>React</List.Item>
                             <List.Item>Node.js</List.Item>
                             <List.Item>Python</List.Item>
                             <List.Item>Bootstrap</List.Item>
                         </List>
-                        <List size="md" icon={<IconChevronRight size={22} />}>
+                        <List size="sm" icon={<IconChevronRight size={22} />}>
                             <List.Item>TypeScript</List.Item>
                             <List.Item>Remix</List.Item>
                             <List.Item>Electron</List.Item>
@@ -105,12 +105,12 @@ const AboutSection = () => {
                         {t('about.tools.text', { ns: 'index' })}
                     </Text>
                     <SimpleGrid cols={2}>
-                        <List size="md" icon={<IconChevronRight size={22} />}>
+                        <List size="sm" icon={<IconChevronRight size={22} />}>
                             <List.Item>Google Analytics</List.Item>
                             <List.Item>Adobe Photoshop</List.Item>
                             <List.Item>Git</List.Item>
                         </List>
-                        <List size="md" icon={<IconChevronRight size={22} />}>
+                        <List size="sm" icon={<IconChevronRight size={22} />}>
                             <List.Item>Google Ads</List.Item>
                             <List.Item>Adobe XD</List.Item>
                             <List.Item>WordPress</List.Item>
@@ -123,4 +123,4 @@ const AboutSection = () => {
     )
 }
 
-export default AboutSection
+export default AboutSection;

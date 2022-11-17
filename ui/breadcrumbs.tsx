@@ -1,25 +1,19 @@
-import { Breadcrumbs, createStyles, Text } from '@mantine/core';
+import { Breadcrumbs, createStyles, Divider, Group, Text } from '@mantine/core';
 import { useRouter } from 'next/router';
 import React from 'react'
 import { toLink } from '../lib/util';
 import ILink from './link';
-
-const useStyles = createStyles((theme) => {
-    return {
-        breadcrumbText: {
-            color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-        },
-    };
-});
 
 interface Link {
     name: string;
     url: string;
 }
 
-const PageBreadcrumbs = () => {
+interface Props {
+    postTitle?: string;
+}
 
-    const { classes } = useStyles();
+const PageBreadcrumbs = ({ postTitle }: Props) => {
 
     const router = useRouter();
     const query = router.query;
@@ -36,31 +30,53 @@ const PageBreadcrumbs = () => {
             url: toLink("blog")
         });
 
-        if (route.startsWith(toLink("blog", "[slug]"))) {
-
-            const slug = query.slug as string;
-
+        if (route.startsWith(toLink("blog", 'posts', "[PostSlug]"))) {
+            // BLOG POST PATH
+            const slug = postTitle ? postTitle : query.PostSlug as string;
             links.push({
-                name: "Blog - " + slug,
-                url: toLink("blog")
+                name: slug,
+                url: toLink("#")
+            });
+        }
+
+        if (route.startsWith(toLink("blog", 'tags', "[TagSlug]"))) {
+            // BLOG TAG PATH
+            const slug = query.TagSlug as string;
+            links.push({
+                name: "#" + slug.toUpperCase(),
+                url: toLink("#")
             });
         }
     }
 
     return (
-        <div>
-            <Breadcrumbs separator=">">
-                {
-                    links.map((link, i) => (
-                        i !== links.length - 1 ? (
-                            <ILink key={i} label={link.name} url={link.url} type="internal" />
-                        ) : (
-                            <Text key={i} className={classes.breadcrumbText}>{link.name}</Text>
-                        )
-                    ))
-                }
-            </Breadcrumbs>
-        </div>
+        <>
+            <Group position='apart' mb={2}>
+                <Breadcrumbs separator=">">
+                    {
+                        links.map((link, i) => (
+                            i !== links.length - 1 ? (
+                                <ILink
+                                    key={i}
+                                    url={link.url}
+                                    type="internal"
+                                >
+                                    {link.name}
+                                </ILink>
+                            ) : (
+                                <Text
+                                    key={i}
+                                    sx={{ letterSpacing: 0.7 }}
+                                >
+                                    {link.name}
+                                </Text>
+                            )
+                        ))
+                    }
+                </Breadcrumbs>
+            </Group>
+            <Divider mb={'md'} />
+        </>
     )
 }
 

@@ -1,6 +1,7 @@
 import { DefaultMantineColor, MantineThemeOverride, Tuple } from '@mantine/core';
 
 const appTheme: MantineThemeOverride = {
+
   colors: {
     primary: [
       "#9CFCE1",
@@ -15,7 +16,7 @@ const appTheme: MantineThemeOverride = {
       "#013F2E",
     ],
     dark: [
-      '#8A99BC', // primary text
+      '#A4B1CB', // primary text, old: 8A99BC
       '#435275',
       '#3C4968',
       '#34405B',
@@ -27,6 +28,11 @@ const appTheme: MantineThemeOverride = {
       '#07090D',
     ],
   },
+  white: '#F2F4F8',
+  black: '#1A1A1A',
+  primaryColor: 'primary',
+  primaryShade: 4,
+
   fontFamily: 'roboto, arial, sans-serif',
   fontSizes: {
     xs: 10,
@@ -35,10 +41,7 @@ const appTheme: MantineThemeOverride = {
     lg: 16,
     xl: 20,
   },
-  white: '#F2F4F8',
-  black: '#1A1A1A',
-  primaryColor: 'primary',
-  primaryShade: 4,
+
   defaultRadius: "md",
   spacing: {
     xs: 4,
@@ -47,6 +50,7 @@ const appTheme: MantineThemeOverride = {
     lg: 32,
     xl: 64,
   },
+
   breakpoints: {
     xs: 576,
     sm: 768,
@@ -54,11 +58,15 @@ const appTheme: MantineThemeOverride = {
     lg: 1200,
     xl: 1400,
   },
+
   components: {
     Title: {
       styles: (theme) => ({
         root: {
-          '&:is(h1)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[8] },
+          '&:is(h1)': { 
+            color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[8],
+            marginLeft: -2,
+          },
           '&:is(h2)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[7] },
           '&:is(h3)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[6] },
           '&:is(h4)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[6] },
@@ -69,7 +77,7 @@ const appTheme: MantineThemeOverride = {
     },
     Container: {
       defaultProps: {
-        size: 'lg',
+        size: 'md',
         px: 'lg',
       },
     },
@@ -85,7 +93,16 @@ const appTheme: MantineThemeOverride = {
         }
       }),
     },
+    Button: {
+      styles: (theme) => ({
+        root: {
+          color: theme.colors.primary[4],
+          borderColor: theme.colors.primary[4],
+        },
+      }),
+    },
   },
+
   headings: {
     fontFamily: 'roboto, arial, sans-serif',
     sizes: {
@@ -114,7 +131,6 @@ const appTheme: MantineThemeOverride = {
         fontWeight: 500,
       },
     }
-
   }
 };
 

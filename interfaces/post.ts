@@ -3,11 +3,13 @@ type PostType = {
   title: string
   date: string
   coverImage: string
-  excerpt: string
-  ogImage: {
+  readTime: number
+  excerpt?: string
+  ogImage?: {
     url: string
   }
-  content: string
+  content?: string
+  tags: string[]
 }
 
 export default PostType

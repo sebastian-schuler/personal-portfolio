@@ -69,7 +69,14 @@ const HeroSection = () => {
                     </Text>
                     <Text className={classes.subText}>{t('hero.subtext')}</Text>
                     <Box pb={100}>
-                        <Button component='a' href='#about' variant='outline' size='md'>{t('hero.learnMoreButton')}</Button>
+                        <Button
+                            component='a'
+                            href='#about'
+                            variant='outline'
+                            size='md'
+                        >
+                            {t('hero.learnMoreButton')}
+                        </Button>
                     </Box>
                 </Stack>
             </Center>

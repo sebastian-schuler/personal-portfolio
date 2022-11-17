@@ -54,7 +54,11 @@ const ExperienceSection = () => {
             years: t("experience.ux.years"),
             paragraph: t("experience.ux.paragraph"),
             list: t("experience.ux.list", { returnObjects: true }),
-            footer: (<Text> {t("experience.ux.footer.text")} <ILink label={t("experience.ux.footer.linkLabel")} url='https://uxqb.org/en/certification/foundation-level-cpux-f/' type='external' /> </Text>),
+            footer: (
+                <Text>
+                    {t("experience.ux.footer.text")}
+                    <ILink url='https://uxqb.org/en/certification/foundation-level-cpux-f/' type='external'>{t("experience.ux.footer.linkLabel")}</ILink>
+                </Text>),
         },
         {
             value: 'edv',
@@ -83,7 +87,7 @@ const ExperienceSection = () => {
         return (
             <Tabs.Panel key={value} value={value} pl="lg">
                 <Stack spacing={4} mb={theme.spacing.md}>
-                    <ILink label={institution} url={institutionUrl} type='external' />
+                    <ILink url={institutionUrl} type='external'>{institution}</ILink>
                     <Title order={3} className={classes.tabsContentTitle}>{title}</Title>
                     <Text>{years}</Text>
                 </Stack>
