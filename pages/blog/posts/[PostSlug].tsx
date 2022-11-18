@@ -81,6 +81,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         content,
       },
     },
+    revalidate: 600, // In seconds
   }
 }
 

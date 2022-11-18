@@ -84,6 +84,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       tags,
       allPosts,
     },
+    revalidate: 600, // 10 minutes
   }
 }
 
