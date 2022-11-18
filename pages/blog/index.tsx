@@ -32,7 +32,14 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
 
   const getPrevLink = () => {
     const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
-    return `${PAGE_URL}/${localePart}blog`
+    const pageNumber = "/page=" + (currentPage - 1);
+    return `${PAGE_URL}/${localePart}blog${pageNumber}`
+  }
+
+  const getNextLink = () => {
+    const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
+    const pageNumber = "/page=" + (currentPage + 1);
+    return `${PAGE_URL}/${localePart}blog${pageNumber}`
   }
 
   return (
@@ -42,7 +49,12 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
         <link rel="canonical" href={getCanonicalLink()} />
         {
           currentPage > 1 && (
-            <link rel='prev' href='' />
+            <link rel='prev' href={getPrevLink()} />
+          )
+        }
+        {
+          currentPage < pageCount && (
+            <link rel='next' href={getNextLink()} />
           )
         }
       </Head>
