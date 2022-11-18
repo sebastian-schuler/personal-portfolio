@@ -1,0 +1,1 @@
+export const PAGE_URL = 'https://sebastian-schuler.de';
