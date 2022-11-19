@@ -43,18 +43,18 @@ const BlogPagination = ({ currentPage, pageCount }: Props) => {
 
                 const page = props.page;
 
-                // Check if page is a number or not
+                // Check if page is a number or 'next' / 'previous' etc.
                 if (isNaN(Number(page))) {
 
                     if (page === 'prev') {
+                        // If page is previous
 
                         if (currentPage === 1) {
-                            return <>
-                                {
-                                    getDefaultButton('<', true)
-                                }
-                            </>
+                            // First page has previus button disabled
+                            return <>{getDefaultButton('<', true)}</>
+
                         } else {
+                            // Other pages have previous button enabled
                             return <Link
                                 href={{
                                     pathname: '/blog',
@@ -62,23 +62,21 @@ const BlogPagination = ({ currentPage, pageCount }: Props) => {
                                 }}
                                 passHref
                             >
-                                {
-                                    getDefaultButton('<')
-                                }
+                                {getDefaultButton('<')}
                             </Link>
                         }
 
                     }
 
                     if (page === 'next') {
+                        // If page is next
 
                         if (currentPage === pageCount) {
-                            return <>
-                                {
-                                    getDefaultButton('>', true)
-                                }
-                            </>
+                            // Last page has the next button disabled
+                            return <>{getDefaultButton('>', true)}</>
+
                         } else {
+                            // Other pages have a next button
                             return <Link
                                 href={{
                                     pathname: '/blog',
@@ -86,18 +84,19 @@ const BlogPagination = ({ currentPage, pageCount }: Props) => {
                                 }}
                                 passHref
                             >
-                                {
-                                    getDefaultButton('>')
-                                }
+                                {getDefaultButton('>')}
                             </Link>
                         }
                     }
 
+                    // Will only happen if we enable edges in pagination ('first','last')
                     return <Link href={toLink('blog')}>{page}</Link>
 
                 } else {
+                    // If page is a number
 
                     if (currentPage === page) {
+                        // If page number equals the currently displayed page
                         return (
                             <Link
                                 href={{
@@ -112,6 +111,7 @@ const BlogPagination = ({ currentPage, pageCount }: Props) => {
                             </Link>
                         )
                     } else {
+                        // If page is not the current page
                         return (
                             <Link
                                 href={{
@@ -120,9 +120,7 @@ const BlogPagination = ({ currentPage, pageCount }: Props) => {
                                 }}
                                 passHref
                             >
-                                {
-                                    getDefaultButton(page.toString())
-                                }
+                                {getDefaultButton(page.toString())}
                             </Link>
                         )
                     }

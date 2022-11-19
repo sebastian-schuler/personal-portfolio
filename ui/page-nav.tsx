@@ -36,11 +36,6 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
-  linkNumber: {
-    color: theme.colors.primary[4],
-    marginRight: theme.spacing.xs,
-  },
-
   linkLabel: {
     marginRight: theme.spacing.sm,
   },
@@ -64,6 +59,7 @@ interface HeaderLink {
 
 const PageNav = () => {
 
+  // TODO save lang and theme in cookie
   const [contactDrawerVisible, setContactDrawerVisible] = useState(false);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const { classes, theme } = useStyles();
@@ -78,7 +74,6 @@ const PageNav = () => {
     { link: '/', label: "Home" },
     { link: '/projects', label: "Projects" },
     { link: '/blog', label: "Blog" },
-    // { link: '#contact', label: t('menu.contact') },
   ]
 
   const items = links.map((link, i) => {
@@ -88,7 +83,6 @@ const PageNav = () => {
           key={link.label}
           className={classes.link}
         >
-          {/* <span className={classes.linkNumber}>0{i + 1}.</span> */}
           {link.label}
         </Text>
       </Link>

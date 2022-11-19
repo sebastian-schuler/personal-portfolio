@@ -41,6 +41,7 @@ const Contact: React.FC<Props> = ({ contactDrawerVisible, setContactDrawerVisibl
                     color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[6],
                 }
             }}
+            
         >
 
             <form onSubmit={(event) => event.preventDefault()}>
