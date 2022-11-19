@@ -1,5 +1,5 @@
 import { Box, Button, Center, createStyles, Stack, Text, Title } from '@mantine/core'
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import React from 'react'
 import ReactTypingEffect from "react-typing-effect";
 import { HEADER_HEIGHT, HEADER_MOBILE_HEIGHT } from '../page-nav';
@@ -47,7 +47,7 @@ const HeroSection = () => {
 
     const { classes, theme } = useStyles();
     const { t } = useTranslation('index');
-    const typingContent = t('hero.typewriterArray', { returnObjects: true });
+    const typingContent = t('hero.typewriterArray', {}, { returnObjects: true });
 
     return (
         <Box className={classes.outer}>

@@ -1,5 +1,4 @@
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core'
-import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import '../styles/globals.css'
@@ -28,4 +27,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default appWithTranslation(MyApp);
+export default MyApp;

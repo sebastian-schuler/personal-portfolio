@@ -1,5 +1,6 @@
 import { Container, Grid, Space, Text } from '@mantine/core'
 import { GetServerSideProps } from 'next'
+import useTranslation from 'next-translate/useTranslation'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Post from '../../interfaces/post'
@@ -22,6 +23,7 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
 
   const router = useRouter();
   const currentPage = router.query.page ? parseInt(router.query.page as string) : 1;
+  const { t } = useTranslation('blog');
 
   const getCanonicalLink = () => {
     const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
@@ -44,7 +46,7 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
   return (
     <>
       <Head>
-        <title>Sebastian Schuler - Blog</title>
+        <title>{"Sebastian Schuler - " + t("title")}</title>
         <link rel="canonical" href={getCanonicalLink()} />
         {
           currentPage > 1 && (
@@ -60,8 +62,8 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
       <Container>
 
         <PageBreadcrumbs />
-        <BlogTitle>Blog</BlogTitle>
-        <Text>My personal blog focused on technology and coding.</Text>
+        <BlogTitle>{t("title")}</BlogTitle>
+        <Text>{t("subtitle")}</Text>
         <Space h={'xl'} />
 
         <Grid gutter={'xl'} pb={'xl'}>
@@ -99,7 +101,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     'coverImage',
     'excerpt',
     'readTime',
-  ],page);
+  ], page);
 
   return {
     props: {

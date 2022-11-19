@@ -1,41 +1,29 @@
-import { useRouter } from 'next/router';
-import React from 'react'
-import { useTranslation } from 'next-i18next';
 import { ActionIcon } from '@mantine/core';
 import { IconLanguage } from '@tabler/icons';
-import Link from 'next/link';
+import setLanguage from 'next-translate/setLanguage';
+import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 
 const LanguageSwitch = () => {
 
     const router = useRouter();
-    const { pathname, asPath, query } = router;
+    const { t } = useTranslation('common');
 
-    const { t, i18n } = useTranslation('common');
-    
     // TODO replace translation system with self made one, add translation of articles in some way?
-    const onToggleLanguageClick = (newLocale: string) => {
-        router.push({ pathname, query }, asPath, { locale: newLocale })
-
+    const onToggleLanguageClick = async (newLocale: string) => {
+        await setLanguage(newLocale);
     }
     const changeTo = router.locale === 'en' ? 'de' : 'en'
 
     return (
-        <div>
-            <Link
-                href='/'
-                locale={changeTo}
-                passHref
-            >
-                <ActionIcon
-                    variant="outline"
-                    color={'red'}
-                    onClick={() => onToggleLanguageClick(changeTo)}
-                    title={t('menu.languageSwitch')}
-                >
-                    {<IconLanguage size={18} />}
-                </ActionIcon>
-            </Link>
-        </div>
+        <ActionIcon
+            variant="outline"
+            color={'red'}
+            onClick={() => onToggleLanguageClick(changeTo)}
+            title={t('languageSwitchTitle')}
+        >
+            {<IconLanguage size={18} />}
+        </ActionIcon>
     )
 }
 

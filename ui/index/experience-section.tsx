@@ -1,6 +1,6 @@
 import { Box, createStyles, List, Stack, Tabs, Text, Title } from '@mantine/core';
 import { IconAward, IconBook, IconBuilding, IconPoint, IconSchool } from '@tabler/icons';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { ReactNode } from 'react';
 import ILink from '../link';
 import SectionHeader from '../section-header';
@@ -31,7 +31,7 @@ const useStyles = createStyles((theme) => ({
 const ExperienceSection = () => {
 
     const { classes, theme } = useStyles();
-    const { t } = useTranslation(['index', 'common']);
+    const { t } = useTranslation('index');
 
     const tabContent: ExperienceItem[] = [
         {
@@ -42,7 +42,7 @@ const ExperienceSection = () => {
             institutionUrl: 'https://www.hs-kl.de/en/informatik-und-mikrosystemtechnik/studiengaenge/digital-media-marketing',
             title: t("experience.hskl.title"),
             years: t("experience.hskl.years"),
-            list: t("experience.hskl.list", { returnObjects: true }) as string[],
+            list: t("experience.hskl.list", {}, { returnObjects: true }) as string[],
         },
         {
             value: 'ux',
@@ -53,7 +53,7 @@ const ExperienceSection = () => {
             title: t("experience.ux.title"),
             years: t("experience.ux.years"),
             paragraph: t("experience.ux.paragraph"),
-            list: t("experience.ux.list", { returnObjects: true }),
+            list: t("experience.ux.list", {}, { returnObjects: true }),
             footer: (
                 <Text>
                     {t("experience.ux.footer.text")}
@@ -69,7 +69,7 @@ const ExperienceSection = () => {
             title: t("experience.edv.title"),
             years: t("experience.edv.years"),
             paragraph: t("experience.edv.paragraph"),
-            list: t("experience.edv.list", { returnObjects: true }),
+            list: t("experience.edv.list", {}, { returnObjects: true }),
         },
         {
             value: 'bbs',
@@ -79,7 +79,7 @@ const ExperienceSection = () => {
             institutionUrl: 'http://www.bbs-suew.de/',
             title: t("experience.bbs.title"),
             years: t("experience.bbs.years"),
-            list: t("experience.bbs.list", { returnObjects: true }),
+            list: t("experience.bbs.list", {}, { returnObjects: true }),
         },
     ]
 
@@ -96,7 +96,7 @@ const ExperienceSection = () => {
                         paragraph && <Text>{paragraph}</Text>
                     }
                     {
-                        list && (
+                        list && Array.isArray(list) && (
                             <List size="md" icon={<IconPoint size={22} />}>
                                 {
                                     list.map((item, index) => (
@@ -118,7 +118,7 @@ const ExperienceSection = () => {
 
     return (
         <Box mb={"xl"}>
-            <SectionHeader anchor='experience' title={t("menu.experience", { ns: "common" })} order={1} />
+            <SectionHeader anchor='experience' title={t("experience.title")} order={1} />
 
             <Tabs orientation="vertical" defaultValue="hskl">
                 <Tabs.List>

@@ -13,13 +13,12 @@
   },
 
   "about": {
-    "p1": "Hi there! My name is Sebastian and I enjoy creating applications as well as digital projects. My interest in development started back in 2012 when I signed up for my schools computer science class. As I found it very interesting, I decided to change to a more development focused school.",
-    "p2": "Since I've always been passionate about many different types of digital media, the Digital Media Marketing program was my first choice. Despite the name, the focus was on the three main categories: Computer Science, Marketing, and UX Design.",
-    "p3": {
-      "1": "More details about me can be found in the next section",
-      "2": ". You could also have a look at my",
-      "3": "straight away."
-    },
+    "title": "About",
+    "text": [
+      "Hi there! My name is Sebastian and I enjoy creating applications as well as digital projects. My interest in development started back in 2012 when I signed up for my schools computer science class. As I found it very interesting, I decided to change to a more development focused school.",
+      "Since I've always been passionate about many different types of digital media, the Digital Media Marketing program was my first choice. Despite the name, the focus was on the three main categories: Computer Science, Marketing, and UX Design.",
+      "More details about me can be found in the next section <0>Experience</0>. You could also have a look at my <1>Work</1> straight away."
+    ],
     "tech": {
       "title": "Technologies",
       "text": "I have worked with:"
@@ -31,6 +30,7 @@
   },
 
   "experience": {
+    "title": "Experience",
     "hskl": {
       "tabTitle": "HSKL",
       "institution": "Hochschule Karlsruhe",
@@ -86,7 +86,8 @@
     }
   },
 
-  "featuredWork": {
+  "work": {
+    "title": "Work",
     "items": [
       {
         "topline": "Featured Project",

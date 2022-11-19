@@ -1,17 +1,11 @@
 import { Container } from '@mantine/core'
-import type { GetStaticProps, NextPage } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 import AboutSection from '../ui/index/about-section'
 import ExperienceSection from '../ui/index/experience-section'
 import HeroSection from '../ui/index/hero-section'
 import WorkSection from '../ui/index/work-section'
 
-interface Props {
-
-}
-
-const Home: NextPage<Props> = ({ }: Props) => {
+const Home = () => {
 
   return (
     <>
@@ -32,16 +26,6 @@ const Home: NextPage<Props> = ({ }: Props) => {
 
     </>
   )
-}
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || "en", ['common', 'index'])),
-    },
-  };
 }
 
 export default Home

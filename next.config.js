@@ -1,18 +1,13 @@
 /** @type {import('next').NextConfig} */
-const { i18n } = require('./next-i18next.config');
+
+const nextTranslate = require("next-translate");
 
 const nextConfig = {
-  i18n,
-  // experimental: { appDir: true }
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: '/blog',
-  //       destination: '/blog/1',
-  //       permanent: true,
-  //     },
-  //   ]
-  // },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'de'],
+    localeDetection: true,
+  },
 }
 
-module.exports = nextConfig
+module.exports = nextTranslate(nextConfig);

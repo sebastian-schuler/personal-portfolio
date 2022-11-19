@@ -1,4 +1,5 @@
 import { createStyles, Group, Text } from '@mantine/core'
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link'
 import { toLink } from '../../lib/util'
 import DateFormatter from '../date-formatter'
@@ -43,6 +44,7 @@ interface Props {
 const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime }: Props) => {
 
   const { classes } = useStyles();
+  const { t } = useTranslation('blog');
 
   const tagList = tags.map((tag, i) => (
     <Link key={i} href={toLink('blog', 'tag', tag)}>
@@ -60,7 +62,7 @@ const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime }:
       </Group>
       <Group position='apart' mb={'sm'}>
         <DateFormatter dateString={date} />
-        <Text>{readTime} min read</Text>
+        <Text>{readTime} {t("postReadTimeLabel")}</Text>
       </Group>
       <Text>
         {excerpt}

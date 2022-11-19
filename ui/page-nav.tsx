@@ -1,11 +1,11 @@
 import { ActionIcon, Box, Burger, Button, Container, createStyles, Divider, Drawer, Group, Header, ScrollArea, Stack, Text, UnstyledButton, useMantineColorScheme } from '@mantine/core';
 import { useDisclosure, useMediaQuery, useWindowScroll } from '@mantine/hooks';
 import { IconMoonStars, IconSun } from '@tabler/icons';
-import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useState } from 'react';
 import Contact from './contact';
 import LanguageSwitch from './language-switch';
+import useTranslation from 'next-translate/useTranslation';
 
 export const HEADER_HEIGHT = 80;
 export const HEADER_MOBILE_HEIGHT = 60;
@@ -59,21 +59,23 @@ interface HeaderLink {
 
 const PageNav = () => {
 
+  const { t } = useTranslation('common');
+
   // TODO save lang and theme in cookie
   const [contactDrawerVisible, setContactDrawerVisible] = useState(false);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const { classes, theme } = useStyles();
   const [scroll] = useWindowScroll();
-  const { t } = useTranslation('common');
+
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
 
   const largeScreen = useMediaQuery('(min-width: ' + theme.breakpoints.sm + 'px)');
   const dark = colorScheme === 'dark';
 
   const links: HeaderLink[] = [
-    { link: '/', label: "Home" },
-    { link: '/projects', label: "Projects" },
-    { link: '/blog', label: "Blog" },
+    { link: '/', label: t('navItems.home') },
+    { link: '/projects', label: t('navItems.projects') },
+    { link: '/blog', label: t('navItems.blog') },
   ]
 
   const items = links.map((link, i) => {
@@ -112,7 +114,7 @@ const PageNav = () => {
                 className={classes.link}
                 onClick={() => setContactDrawerVisible(true)}
               >
-                Contact
+                {t('navItems.contact')}
               </UnstyledButton>
 
               <Group ml={"md"}>
@@ -120,7 +122,7 @@ const PageNav = () => {
                   variant="outline"
                   color={dark ? 'yellow' : 'blue'}
                   onClick={() => toggleColorScheme()}
-                  title={t('menu.colorScheme')}
+                  title={t('colorSchemeTitle')}
                 >
                   {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
                 </ActionIcon>
@@ -138,7 +140,7 @@ const PageNav = () => {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        title="Navigation"
+        title={t('mobileNavTitle')}
         className={classes.hiddenDesktop}
         zIndex={1000000}
         transition={"slide-left"}
@@ -154,13 +156,19 @@ const PageNav = () => {
 
           <Stack spacing={"sm"}>
             {items}
+            <UnstyledButton
+              className={classes.link}
+              onClick={() => {
+                closeDrawer();
+                setContactDrawerVisible(true);
+              }}
+            >
+              {t('navItems.contact')}
+            </UnstyledButton>
           </Stack>
 
           <Divider mt="lg" mb="md" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.4'} />
 
-          <Group position="center" grow pb="xl" px="md">
-            <Button variant="outline">Contact</Button>
-          </Group>
         </ScrollArea>
       </Drawer>
 

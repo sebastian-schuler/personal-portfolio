@@ -1,4 +1,5 @@
 import { createStyles, Stack, Text } from '@mantine/core';
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import Tag from '../../interfaces/tag';
 import { toLink } from '../../lib/util';
@@ -33,10 +34,11 @@ interface Props {
 const BlogTagList = ({ tags }: Props) => {
 
     const { classes } = useStyles();
+    const {t} = useTranslation('blog');
 
     return (
         <>
-            <Text className={classes.title}>Search by tag</Text>
+            <Text className={classes.title}>{t("tagListTitle")}</Text>
             <Stack spacing={0}>
                 {
                     tags.map((tag, i) => (

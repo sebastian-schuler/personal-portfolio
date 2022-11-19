@@ -1,5 +1,5 @@
 import { Box, createStyles, Stack, Text, Title } from '@mantine/core'
-import { useTranslation } from 'next-i18next'
+import useTranslation from 'next-translate/useTranslation';
 import React from 'react'
 import FeaturedWorkItem from '../featured-work-item'
 import SectionHeader from '../section-header'
@@ -30,18 +30,18 @@ interface FeaturedWorkItem {
 
 const WorkSection = () => {
 
-    const { t } = useTranslation(['index', 'common']);
+    const { t } = useTranslation('index');
     const { classes, theme } = useStyles();
 
-    const featuredItems: FeaturedWorkItem[] = t('featuredWork.items', { returnObjects: true });
+    const featuredItems: FeaturedWorkItem[] = t('work.items', {}, { returnObjects: true });
 
     return (
         <Box mb={"xl"}>
-            <SectionHeader anchor='work' title='Work' order={2} subtext='Check out my featured projects below.'/>
+            <SectionHeader anchor='work' title='Work' order={2} subtext='Check out my featured projects below.' />
 
             <Stack spacing={"lg"} mb={"xl"}>
                 {
-                    featuredItems.map((item, index) => (
+                    featuredItems && Array.isArray(featuredItems) && featuredItems.map((item, index) => (
 
                         <FeaturedWorkItem
                             key={item.title + index}
@@ -62,7 +62,7 @@ const WorkSection = () => {
             <Title order={3} className={classes.otherProjectsTitle}>Other Projects</Title>
             <Text className={classes.otherProjectsSub} size={'lg'}>Scroll down or open the archive to see all of my projects in chronological order.</Text>
 
-            
+
         </Box>
     )
 }

@@ -1,9 +1,9 @@
-import { Box, createStyles, Grid, Image, List, SimpleGrid, Space, Stack, Text } from '@mantine/core'
-import { IconAbacus, IconChevronRight } from '@tabler/icons';
-import { useTranslation } from 'next-i18next';
-import React from 'react'
+import { Anchor, Box, createStyles, Grid, Image, List, SimpleGrid, Stack, Text } from '@mantine/core';
+import { IconChevronRight } from '@tabler/icons';
+import useTranslation from 'next-translate/useTranslation';
+import Trans from 'next-translate/Trans';
 import ILink from '../link';
-import SectionHeader from '../section-header'
+import SectionHeader from '../section-header';
 
 const useStyles = createStyles((theme) => ({
 
@@ -37,28 +37,25 @@ const useStyles = createStyles((theme) => ({
 const AboutSection = () => {
 
     const { classes, theme } = useStyles();
-    const { t } = useTranslation(['common', 'index']);
+    const { t } = useTranslation('index');
 
     return (
         <Box mb={"xl"}>
-            <SectionHeader anchor='about' title={t('menu.about')} order={0} />
+            <SectionHeader anchor='about' title={t('about.title')} order={0} />
 
             <Grid gutter={theme.spacing.lg}>
 
                 <Grid.Col sm={6} md={7}>
-
                     <Stack>
-                        <Text align='justify'>{t('about.p1', { ns: 'index' })}</Text>
-                        <Text align='justify'>{t('about.p2', { ns: 'index' })}</Text>
+                        <Text align='justify'>{t('about.text.0')}</Text>
+                        <Text align='justify'>{t('about.text.1')}</Text>
                         <Text align='justify'>
-                            {t('about.p3.1', { ns: 'index' })} {' '}
-                            <ILink url='#experience' type='scroll' >{t('menu.experience')}</ILink> {' '}
-                            {t('about.p3.2', { ns: 'index' })} {' '}
-                            <ILink url='#work' type='scroll'>{t('menu.work')}</ILink> {' '}
-                            {t('about.p3.3', { ns: 'index' })}
+                            <Trans
+                                i18nKey="index:about.text.2"
+                                components={[<Anchor href='#experience' />, <Anchor href='#work' />]}
+                            />
                         </Text>
                     </Stack>
-
                 </Grid.Col>
 
                 <Grid.Col sm={6} md={5}>
@@ -78,8 +75,7 @@ const AboutSection = () => {
 
                 <Grid.Col md={6}>
                     <Text size={"lg"} mb={theme.spacing.sm}>
-                        <span className={classes.techTitle}>{t('about.tech.title', { ns: 'index' })}</span> {' '}
-                        {t('about.tech.text', { ns: 'index' })}
+                        <span className={classes.techTitle}>{t('about.tech.title')}</span> {' '} {t('about.tech.text')}
                     </Text>
                     <SimpleGrid cols={2}>
                         <List size="sm" icon={<IconChevronRight size={22} />}>
@@ -101,8 +97,7 @@ const AboutSection = () => {
 
                 <Grid.Col md={6}>
                     <Text size={"lg"} mb={theme.spacing.sm}>
-                        <span className={classes.techTitle}>{t('about.tools.title', { ns: 'index' })}</span> {' '}
-                        {t('about.tools.text', { ns: 'index' })}
+                        <span className={classes.techTitle}>{t('about.tools.title')}</span> {' '} {t('about.tools.text')}
                     </Text>
                     <SimpleGrid cols={2}>
                         <List size="sm" icon={<IconChevronRight size={22} />}>

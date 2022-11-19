@@ -1,0 +1,12 @@
+{
+  "navItems": {
+    "home": "Home",
+    "projects": "Projekte",
+    "blog": "Blog",
+    "contact": "Kontakt"
+  },
+
+  "colorSchemeTitle": "Tag/Nacht-Modus umschalten",
+  "languageSwitchTitle": "Sprache ändern",
+  "mobileNavTitle": "Navigation"
+}

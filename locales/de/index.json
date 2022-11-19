@@ -1,0 +1,34 @@
+{
+    "hero": {
+      "greeting": "Hi, mein Name ist",
+      "preTypewriter": "Ich bin ",
+      "subtext": "und meine Leidenschaft ist es, großartige und menschenzentrierte Produkte zu schaffen, sei es durch Entwicklung, UX Design oder Online Marketing.",
+      "typewriterArray": [
+          "Full-Stack Entwickler",
+          "Online-Marketing-Manager",
+          "Android Developer",
+          "UX Designer"
+      ],
+      "learnMoreButton": "Mehr erfahren"
+    },
+  
+    "about": {
+      "p1": "Hi! Ich heisse Sebastian und entwickle sowohl Anwendungen als auch digitale Projekte. Mein Interesse an der Software Entwicklung begann im Jahr 2012, als ich mich im Informatik-Kurs der Schule angemeldet hatte. Davon war ich so begeistert, dass ich auf die BBS SÜW wechselte, um meinen Fokus voll auf die Anwendungsentwicklung zu legen.",
+      "p2": "Da ich mich schon immer für viele verschiedene Richtungen der digitalen Medien begeistern konnte, war der Digital Media Marketing Studiengang meine erste Wahl. Trotz des Namens war der Fokus hier auf den drei Hauptrichtungen: Informatik, Marketing und UX Design.",
+      "p3": {
+          "1": "Mehr Details zu mir sind im nächsten Abschnitt",
+          "2": "zu finden. Alternativ kannst du auch direkt meine",
+          "3": "anschauen."
+      },
+      "tech": {
+        "title": "Technologien",
+        "text": "mit denen ich gearbeitet habe:"
+      },
+      "tools": {
+        "title": "Tools",
+        "text": "mit denen ich Erfahrung habe:"
+      }
+    }
+  
+  
+  }
