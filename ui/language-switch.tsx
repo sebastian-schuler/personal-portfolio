@@ -8,11 +8,14 @@ import Link from 'next/link';
 const LanguageSwitch = () => {
 
     const router = useRouter();
+    const { pathname, asPath, query } = router;
+
     const { t, i18n } = useTranslation('common');
     
+    // TODO replace translation system with self made one, add translation of articles in some way?
     const onToggleLanguageClick = (newLocale: string) => {
-        const { pathname, asPath, query } = router
         router.push({ pathname, query }, asPath, { locale: newLocale })
+
     }
     const changeTo = router.locale === 'en' ? 'de' : 'en'
 

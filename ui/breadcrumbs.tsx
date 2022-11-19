@@ -75,7 +75,6 @@ const PageBreadcrumbs = ({ postTitle }: Props) => {
                     }
                 </Breadcrumbs>
             </Group>
-            <Divider mb={'md'} />
         </>
     )
 }

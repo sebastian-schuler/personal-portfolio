@@ -34,12 +34,12 @@ export function getPostBySlug(slug: string, fields: (keyof PostType)[]): PostTyp
         tags: data.tags?.split(','),
         coverImage: data.coverImage,
         readTime: data.readTime || '',
+        excerpt: data.excerpt || ''
     };
 
     // Optional fields
     if (fields.includes('content')) items.content = content;
     if (fields.includes('ogImage')) items.ogImage = data.ogImage || '';
-    if (fields.includes('excerpt')) items.excerpt = data.excerpt || '';
 
     return items;
 }

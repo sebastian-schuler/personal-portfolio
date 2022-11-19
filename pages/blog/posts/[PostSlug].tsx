@@ -1,4 +1,4 @@
-import { Container, Divider, Group, Space } from '@mantine/core'
+import { Container } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
@@ -50,7 +50,10 @@ const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
               coverImage={post.coverImage}
               date={post.date}
             />
-            <PostBody content={post.content || ""} />
+            <PostBody
+              excerpt={post.excerpt}
+              content={post.content || ""}
+            />
           </article>
         </>
       )}

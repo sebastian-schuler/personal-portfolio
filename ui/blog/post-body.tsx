@@ -1,16 +1,20 @@
-import { TypographyStylesProvider } from "@mantine/core"
+import { Text, Title, TypographyStylesProvider } from "@mantine/core"
 
 type Props = {
+    excerpt: string
     content: string
 }
 
-const PostBody = ({ content }: Props) => {
+const PostBody = ({ excerpt, content }: Props) => {
     return (
-        <TypographyStylesProvider>
-            <div
-                dangerouslySetInnerHTML={{ __html: content }}
-            />
-        </TypographyStylesProvider>
+        <>
+            <Text>{excerpt}</Text>
+            <TypographyStylesProvider>
+                <div
+                    dangerouslySetInnerHTML={{ __html: content }}
+                />
+            </TypographyStylesProvider>
+        </>
     )
 }
 

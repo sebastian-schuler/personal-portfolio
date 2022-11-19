@@ -4,7 +4,7 @@ type PostType = {
   date: string
   coverImage: string
   readTime: number
-  excerpt?: string
+  excerpt: string
   ogImage?: {
     url: string
   }
