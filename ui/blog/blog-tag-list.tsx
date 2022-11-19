@@ -1,5 +1,6 @@
 import { createStyles, Stack, Text } from '@mantine/core';
 import Link from 'next/link';
+import Tag from '../../interfaces/tag';
 import { toLink } from '../../lib/util';
 
 const useStyles = createStyles((theme) => {
@@ -26,7 +27,7 @@ const useStyles = createStyles((theme) => {
 });
 
 interface Props {
-    tags: string[]
+    tags: Tag[]
 }
 
 const BlogTagList = ({ tags }: Props) => {
@@ -39,8 +40,8 @@ const BlogTagList = ({ tags }: Props) => {
             <Stack spacing={0}>
                 {
                     tags.map((tag, i) => (
-                        <Link key={i} href={toLink('blog', 'tags', tag)}>
-                            <Text key={i+"text"} className={classes.tag}>#{tag}</Text>
+                        <Link key={i} href={toLink('blog', 'tag', tag.name)}>
+                            <Text key={i+"text"} className={classes.tag}>#{tag.name} {`(${tag.count})`}</Text>
                         </Link>
                     ))
                 }

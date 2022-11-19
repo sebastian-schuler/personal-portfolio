@@ -63,7 +63,7 @@ const appTheme: MantineThemeOverride = {
     Title: {
       styles: (theme) => ({
         root: {
-          '&:is(h1)': { 
+          '&:is(h1)': {
             color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[8],
             marginLeft: -2,
           },
@@ -84,12 +84,26 @@ const appTheme: MantineThemeOverride = {
     TypographyStylesProvider: {
       styles: (theme) => ({
         root: {
-          '& h1': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
-          '& h2': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
-          '& h3': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
-          '& h4': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
-          '& h5': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
-          '& h6': { color: theme.colors.primary[4] },
+          '& h1': {
+            color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5],
+            marginTop: theme.spacing.sm,
+          },
+          '& h2': {
+            color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5],
+            marginTop: theme.spacing.sm,
+          },
+          '& h3': {
+            color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5]
+          },
+          '& h4': {
+            color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5]
+          },
+          '& h5': {
+            color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5]
+          },
+          '& h6': {
+            color: theme.colors.primary[4],
+          },
         }
       }),
     },

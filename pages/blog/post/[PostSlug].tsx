@@ -4,8 +4,9 @@ import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React from 'react'
-import PostType from '../../../interfaces/post'
+import Post from '../../../interfaces/post'
 import { getAllPosts, getPostBySlug } from '../../../lib/blogApi'
+import { PAGE_URL } from '../../../lib/constants'
 import markdownToHtml from '../../../lib/markdownToHtml'
 import PostTitle from '../../../ui/blog/blog-title'
 import PostBody from '../../../ui/blog/post-body'
@@ -13,8 +14,8 @@ import PostHeader from '../../../ui/blog/post-header'
 import PageBreadcrumbs from '../../../ui/breadcrumbs'
 
 type Props = {
-  post: PostType
-  morePosts: PostType[]
+  post: Post
+  morePosts: Post[]
 }
 
 const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
@@ -23,6 +24,8 @@ const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+
+  const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
 
   return (
     <Container>
@@ -39,8 +42,8 @@ const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
                 {post.title + '| Next.js Blog Example'}
               </title>
               <meta property='og:title' content={post.title} />
-              <meta property='og:description' content='Description that will show in the preview' />
-              <meta property='og:url' content='//www.example.com/URL' />
+              <meta property='og:description' content={post.ogDesc} />
+              <meta property='og:url' content={`${PAGE_URL}/${localePart}blog/post/${post.slug}`} />
               {
                 post.ogImage && <meta property="og:image" content={post.ogImage.url} />
               }
@@ -49,6 +52,7 @@ const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
               title={post.title}
               coverImage={post.coverImage}
               date={post.date}
+              tags={post.tags}
             />
             <PostBody
               excerpt={post.excerpt}
@@ -71,6 +75,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'slug',
     'content',
     'ogImage',
+    'ogDesc',
     'coverImage',
     'tags',
   ]);

@@ -1,7 +1,7 @@
 import { Container, Grid } from '@mantine/core';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import PostType from '../../../interfaces/post';
+import Post from '../../../interfaces/post';
 import { getAllTags, getPostsByTag } from '../../../lib/blogApi';
 import BlogPostList from '../../../ui/blog/blog-post-list';
 import BlogTitle from '../../../ui/blog/blog-title';
@@ -9,7 +9,7 @@ import PageBreadcrumbs from '../../../ui/breadcrumbs';
 
 interface Props {
   tag: string
-  allPosts: PostType[]
+  allPosts: Post[]
 }
 
 const BlogTag = ({ tag, allPosts }: Props) => {
@@ -69,7 +69,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: tags.map((tag) => {
       return {
         params: {
-          TagSlug: tag,
+          TagSlug: tag.name,
         },
       }
     }),

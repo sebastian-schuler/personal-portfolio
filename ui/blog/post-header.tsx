@@ -1,7 +1,10 @@
 import { ActionIcon, Divider, Group, Popover, Stack, Text } from "@mantine/core"
 import { IconBrandFacebook, IconBrandLinkedin, IconBrandTwitter, IconLink } from "@tabler/icons"
+import Link from "next/link"
 import { useState } from "react"
+import { toLink } from "../../lib/util"
 import DateFormatter from "../date-formatter"
+import ILink from "../link"
 import BlogTitle from "./blog-title"
 
 
@@ -9,9 +12,10 @@ type Props = {
     title: string
     coverImage: string
     date: string
+    tags: string[]
 }
 
-const PostHeader = ({ title, coverImage, date }: Props) => {
+const PostHeader = ({ title, coverImage, date, tags }: Props) => {
 
     const shareTwitter = () => {
         window.open(`https://twitter.com/intent/tweet?url=${window.location.href}&text=${title}`, '_blank');
@@ -39,6 +43,13 @@ const PostHeader = ({ title, coverImage, date }: Props) => {
     return (
         <Stack spacing={0} mb={'md'}>
             <BlogTitle>{title}</BlogTitle>
+            <Group>
+                {
+                    tags.map(tag => (
+                        <ILink url={toLink('blog','tag',tag)} type="internal" sx={{textTransform: 'uppercase'}}>#{tag}</ILink>
+                    ))
+                }
+            </Group>
             <Text weight={'bold'} size='lg'>Sebastian Schuler</Text>
             <Text size='lg'>
                 <DateFormatter dateString={date} />
@@ -46,7 +57,7 @@ const PostHeader = ({ title, coverImage, date }: Props) => {
             <Divider mt={'md'} mb={'xs'} />
             <Group spacing={'sm'}>
                 <ActionIcon variant="subtle" size={'lg'} onClick={shareTwitter} title={'Share this article on Twitter'}>
-                    <IconBrandTwitter size={24}/>
+                    <IconBrandTwitter size={24} />
                 </ActionIcon>
                 <ActionIcon variant="subtle" size={'lg'} onClick={shareLinkedin} title={'Share this article on LinkedIn'}>
                     <IconBrandLinkedin size={24} />

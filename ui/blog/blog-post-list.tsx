@@ -1,9 +1,9 @@
 import { Divider, Stack } from '@mantine/core';
-import PostType from '../../interfaces/post';
+import Post from '../../interfaces/post';
 import PostPreview from './post-preview';
 
 interface Props {
-    posts: PostType[]
+    posts: Post[]
 }
 
 const BlogPostList = ({ posts }: Props) => {

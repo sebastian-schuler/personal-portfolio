@@ -30,7 +30,7 @@ const PageBreadcrumbs = ({ postTitle }: Props) => {
             url: toLink("blog")
         });
 
-        if (route.startsWith(toLink("blog", 'posts', "[PostSlug]"))) {
+        if (route.startsWith(toLink("blog", 'post', "[PostSlug]"))) {
             // BLOG POST PATH
             const slug = postTitle ? postTitle : query.PostSlug as string;
             links.push({
@@ -39,7 +39,7 @@ const PageBreadcrumbs = ({ postTitle }: Props) => {
             });
         }
 
-        if (route.startsWith(toLink("blog", 'tags', "[TagSlug]"))) {
+        if (route.startsWith(toLink("blog", 'tag', "[TagSlug]"))) {
             // BLOG TAG PATH
             const slug = query.TagSlug as string;
             links.push({

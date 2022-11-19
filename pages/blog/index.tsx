@@ -1,12 +1,11 @@
-import { Container, Grid, Pagination, Space, Text } from '@mantine/core'
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
+import { Container, Grid, Space, Text } from '@mantine/core'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import PostType from '../../interfaces/post'
+import Post from '../../interfaces/post'
+import Tag from '../../interfaces/tag'
 import { getAllPosts, getAllTags, getPageCount } from '../../lib/blogApi'
 import { PAGE_URL } from '../../lib/constants'
-import { toLink } from '../../lib/util'
 import BlogPagination from '../../ui/blog/blog-pagination'
 import BlogPostList from '../../ui/blog/blog-post-list'
 import BlogTagList from '../../ui/blog/blog-tag-list'
@@ -15,8 +14,8 @@ import PageBreadcrumbs from '../../ui/breadcrumbs'
 
 interface Props {
   pageCount: number
-  tags: string[]
-  allPosts: PostType[]
+  tags: Tag[]
+  allPosts: Post[]
 }
 
 const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
@@ -100,10 +99,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     'coverImage',
     'excerpt',
     'readTime',
-  ]);
-
-  allPosts = allPosts.slice((page - 1) * 10, page * 10);
-
+  ],page);
 
   return {
     props: {

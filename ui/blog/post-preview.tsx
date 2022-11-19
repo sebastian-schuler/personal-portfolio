@@ -45,14 +45,14 @@ const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime }:
   const { classes } = useStyles();
 
   const tagList = tags.map((tag, i) => (
-    <Link key={i} href={toLink('blog', 'tags', tag)}>
+    <Link key={i} href={toLink('blog', 'tag', tag)}>
       <Text key={i + 'text'} className={classes.tag}>#{tag}</Text>
     </Link>
   ));
 
   return (
     <div>
-      <Link href={toLink('blog', 'posts', slug)}>
+      <Link href={toLink('blog', 'post', slug)}>
         <h3 className={classes.title}>{title}</h3>
       </Link>
       <Group spacing={'sm'}>

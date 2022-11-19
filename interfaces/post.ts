@@ -1,4 +1,4 @@
-type PostType = {
+type Post = {
   slug: string
   title: string
   date: string
@@ -8,8 +8,9 @@ type PostType = {
   ogImage?: {
     url: string
   }
+  ogDesc?: string
   content?: string
   tags: string[]
 }
 
-export default PostType
+export default Post
