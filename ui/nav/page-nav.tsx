@@ -1,13 +1,11 @@
-import { ActionIcon, Box, Burger, Button, Container, createStyles, Divider, Drawer, Group, Header, ScrollArea, Stack, Text, UnstyledButton, useMantineColorScheme } from '@mantine/core';
+import { ActionIcon, Box, Burger, Container, createStyles, Divider, Drawer, Group, Header, ScrollArea, Stack, Text, UnstyledButton, useMantineColorScheme } from '@mantine/core';
 import { useDisclosure, useMediaQuery, useWindowScroll } from '@mantine/hooks';
 import { IconMoonStars, IconSun } from '@tabler/icons';
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import { useState } from 'react';
 import Contact from './contact';
 import LanguageSwitch from './language-switch';
-import useTranslation from 'next-translate/useTranslation';
-import Cookies from 'js-cookie';
-import { COLOR_SCHEME_COOKIE } from '../../lib/constants';
 
 export const HEADER_HEIGHT = 80;
 export const HEADER_MOBILE_HEIGHT = 60;
@@ -123,11 +121,7 @@ const PageNav = () => {
                 <ActionIcon
                   variant="outline"
                   color={dark ? 'yellow' : 'blue'}
-                  onClick={() => {
-                    const newColorScheme = theme.colorScheme === 'dark' ? 'light' : 'dark';
-                    Cookies.set(COLOR_SCHEME_COOKIE, newColorScheme);
-                    toggleColorScheme();
-                  }}
+                  onClick={() => toggleColorScheme()}
                   title={t('colorSchemeTitle')}
                 >
                   {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
