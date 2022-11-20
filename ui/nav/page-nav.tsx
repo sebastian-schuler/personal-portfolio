@@ -6,6 +6,8 @@ import { useState } from 'react';
 import Contact from './contact';
 import LanguageSwitch from './language-switch';
 import useTranslation from 'next-translate/useTranslation';
+import Cookies from 'js-cookie';
+import { COLOR_SCHEME_COOKIE } from '../../lib/constants';
 
 export const HEADER_HEIGHT = 80;
 export const HEADER_MOBILE_HEIGHT = 60;
@@ -99,7 +101,7 @@ const PageNav = () => {
         styles={(theme) => ({
           root: {
             borderBottomStyle: scroll.y > 0 ? 'solid' : `none`,
-            boxShadow: scroll.y > 0 ? (theme.colorScheme === 'dark' ? theme.shadows.md : theme.shadows.sm) : `none`,
+            boxShadow: scroll.y > 0 ? (dark ? theme.shadows.md : theme.shadows.sm) : `none`,
           }
         })}
       >
@@ -121,7 +123,11 @@ const PageNav = () => {
                 <ActionIcon
                   variant="outline"
                   color={dark ? 'yellow' : 'blue'}
-                  onClick={() => toggleColorScheme()}
+                  onClick={() => {
+                    const newColorScheme = theme.colorScheme === 'dark' ? 'light' : 'dark';
+                    Cookies.set(COLOR_SCHEME_COOKIE, newColorScheme);
+                    toggleColorScheme();
+                  }}
                   title={t('colorSchemeTitle')}
                 >
                   {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}

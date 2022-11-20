@@ -63,7 +63,7 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
 
         <PageBreadcrumbs />
         <BlogTitle>{t("title")}</BlogTitle>
-        <Text>{t("subtitle")}</Text>
+        <Text mt={'xs'}>{t("subtitle")}</Text>
         <Space h={'xl'} />
 
         <Grid gutter={'xl'} pb={'xl'}>

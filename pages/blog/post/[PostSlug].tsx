@@ -3,6 +3,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
 import Post from '../../../interfaces/post'
 import { getAllPosts, getPostBySlug } from '../../../lib/blogApi'
@@ -93,17 +94,27 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts(['slug'])
+export const getStaticPaths: GetStaticPaths = async ({locales}) => {
+  const posts = getAllPosts(['slug']);
 
-  return {
-    paths: posts.map((post) => {
-      return {
+  let paths: {
+    params: ParsedUrlQuery;
+    locale?: string | undefined;
+  }[] = [];
+
+  locales?.forEach(locale => {
+    posts.forEach(post => {
+      paths.push({
         params: {
           PostSlug: post.slug,
         },
-      }
-    }),
+        locale: locale,
+      })
+    })
+  });
+
+  return {
+    paths: paths,
     fallback: false,
   }
 }

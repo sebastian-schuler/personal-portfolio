@@ -8,7 +8,7 @@ type Props = {
 const PostBody = ({ excerpt, content }: Props) => {
     return (
         <>
-            <Text>{excerpt}</Text>
+            <Text mb={'lg'}>{excerpt}</Text>
             <TypographyStylesProvider>
                 <div
                     dangerouslySetInnerHTML={{ __html: content }}

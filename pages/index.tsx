@@ -1,4 +1,5 @@
 import { Container } from '@mantine/core'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import AboutSection from '../ui/index/about-section'
 import ExperienceSection from '../ui/index/experience-section'
@@ -26,6 +27,12 @@ const Home = () => {
 
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  return {
+    props: {},
+  }
 }
 
 export default Home

@@ -1,6 +1,7 @@
-import { Container, Grid } from '@mantine/core';
+import { Container, Grid, Space } from '@mantine/core';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import { ParsedUrlQuery } from 'querystring';
 import Post from '../../../interfaces/post';
 import { getAllTags, getPostsByTag } from '../../../lib/blogApi';
 import BlogPostList from '../../../ui/blog/blog-post-list';
@@ -23,6 +24,7 @@ const BlogTag = ({ tag, allPosts }: Props) => {
 
         <PageBreadcrumbs />
         <BlogTitle isTag>{tag}</BlogTitle>
+        <Space h={'xl'} />
 
         <Grid gutter={'xl'}>
 
@@ -62,17 +64,27 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const tags = getAllTags();
 
-  return {
-    paths: tags.map((tag) => {
-      return {
+  let paths: {
+    params: ParsedUrlQuery;
+    locale?: string | undefined;
+  }[] = [];
+
+  locales?.forEach(locale => {
+    tags.forEach(tag => {
+      paths.push({
         params: {
           TagSlug: tag.name,
         },
-      }
-    }),
+        locale: locale,
+      })
+    })
+  });
+
+  return {
+    paths: paths,
     fallback: false,
   }
 }

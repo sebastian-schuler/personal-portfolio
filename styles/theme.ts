@@ -123,26 +123,32 @@ const appTheme: MantineThemeOverride = {
       h1: {
         fontSize: '4em',
         fontWeight: 700,
+        lineHeight: 1.1,
       },
       h2: {
         fontSize: '2.5em',
         fontWeight: 700,
+        lineHeight: 1.1,
       },
       h3: {
         fontSize: '2.0em',
         fontWeight: 700,
+        lineHeight: 1.1,
       },
       h4: {
         fontSize: '1.7em',
         fontWeight: 700,
+        lineHeight: 1.1,
       },
       h5: {
         fontSize: '1.5em',
         fontWeight: 600,
+        lineHeight: 1.1,
       },
       h6: {
         fontSize: '1.3em',
         fontWeight: 500,
+        lineHeight: 1.1,
       },
     }
   }
