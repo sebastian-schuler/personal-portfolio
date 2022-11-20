@@ -21,6 +21,7 @@ const BlogPostList = ({ posts }: Props) => {
                                 slug={post.slug}
                                 tags={post.tags}
                                 readTime={post.readTime}
+                                locales={post.locales}
                             />
                             {
                                 i < posts.length - 1 && <Divider mt={'lg'} />

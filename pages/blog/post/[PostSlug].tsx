@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'ogDesc',
     'coverImage',
     'tags',
-  ]);
+  ], { locale: context.locale });
 
   const content = await markdownToHtml(post.content || '');
 
@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async ({locales}) => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const posts = getAllPosts(['slug']);
 
   let paths: {

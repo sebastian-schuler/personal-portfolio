@@ -101,7 +101,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     'coverImage',
     'excerpt',
     'readTime',
-  ], page);
+  ], {
+    page: page,
+    locale: context.locale
+  });
 
   return {
     props: {

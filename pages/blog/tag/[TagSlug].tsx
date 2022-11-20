@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'coverImage',
     'excerpt',
     'readTime',
-  ]);
+  ], { locale: context.locale });
 
   return {
     props: {

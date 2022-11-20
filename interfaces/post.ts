@@ -11,6 +11,8 @@ type Post = {
   ogDesc?: string
   content?: string
   tags: string[]
+  locales: string[]
+  locale: string
 }
 
 export default Post

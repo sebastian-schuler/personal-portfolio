@@ -39,9 +39,10 @@ interface Props {
   slug: string
   tags: string[]
   readTime: number
+  locales: string[]
 }
 
-const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime }: Props) => {
+const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime, locales }: Props) => {
 
   const { classes } = useStyles();
   const { t } = useTranslation('blog');
@@ -54,19 +55,36 @@ const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime }:
 
   return (
     <div>
+
       <Link href={toLink('blog', 'post', slug)}>
         <h3 className={classes.title}>{title}</h3>
       </Link>
-      <Group spacing={'sm'}>
-        {tagList}
+
+      <Group position='apart'>
+
+        <Group spacing={'sm'}>
+          {tagList}
+        </Group>
+
+        <Group spacing={'sm'}>
+          {
+            locales.map((locale, i) => (
+              <Text key={i}>{locale}</Text>
+            ))
+          }
+        </Group>
+
       </Group>
+
       <Group position='apart' mb={'sm'}>
         <DateFormatter dateString={date} />
         <Text>{readTime} {t("postReadTimeLabel")}</Text>
       </Group>
+
       <Text>
         {excerpt}
       </Text>
+
     </div>
   )
 }
