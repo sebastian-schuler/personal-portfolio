@@ -15,7 +15,10 @@ const postsDirectory = join(process.cwd(), '_posts');
  * @returns - Array of post slugs
  */
 export function getPostSlugs() {
-    return fs.readdirSync(postsDirectory);
+    const dirents = fs.readdirSync(postsDirectory, { withFileTypes: true });
+    return dirents
+        .filter(dirent => dirent.isFile())
+        .map(dirent => dirent.name);
 }
 
 /**
@@ -85,6 +88,8 @@ export function getPostDataBySlug(slug: string, fields: string[] = []) {
 export function getAllPosts(fields: (keyof Post)[], page?: number): Post[] {
     let slugs = getPostSlugs();
 
+    console.log(slugs);
+
     // If page is set, only load that specific page
     if (page) {
         let fromIndex = page === 1 ? 0 : (page - 1) * POSTS_PER_PAGE;
@@ -109,7 +114,7 @@ export function getAllTags(): Tag[] {
 
     // Get unique tags and count
     slugs.forEach((slug) => {
-        const post = getPostDataBySlug(slug,['tags']);
+        const post = getPostDataBySlug(slug, ['tags']);
         const postTags = post.tags.split(',');
         postTags.forEach((tag) => tags.set(tag, (tags.get(tag) || 0) + 1));
     });
