@@ -1,5 +1,6 @@
 import { Container } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import useTranslation from 'next-translate/useTranslation'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -9,6 +10,7 @@ import Post from '../../../interfaces/post'
 import { getAllPosts, getPostBySlug } from '../../../lib/blogApi'
 import { PAGE_URL } from '../../../lib/constants'
 import markdownToHtml from '../../../lib/markdownToHtml'
+import { formatDate } from '../../../lib/util'
 import PostTitle from '../../../ui/blog/blog-title'
 import PostBody from '../../../ui/blog/post-body'
 import PostHeader from '../../../ui/blog/post-header'
@@ -26,6 +28,7 @@ const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
     return <ErrorPage statusCode={404} />
   }
 
+  const { t, lang } = useTranslation('blog');
   const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
 
   return (
@@ -39,9 +42,7 @@ const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
         <>
           <article>
             <Head>
-              <title>
-                {post.title + '| Next.js Blog Example'}
-              </title>
+              <title>{t("blogPostTabTitle", { title: post.title, date: formatDate(post.date, lang), tags: post.tags.join(', ') })}</title>
               <meta property='og:title' content={post.title} />
               <meta property='og:description' content={post.ogDesc} />
               <meta property='og:url' content={`${PAGE_URL}/${localePart}blog/post/${post.slug}`} />

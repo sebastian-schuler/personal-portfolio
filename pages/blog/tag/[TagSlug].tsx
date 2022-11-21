@@ -1,5 +1,6 @@
 import { Container, Grid, Space } from '@mantine/core';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import useTranslation from 'next-translate/useTranslation';
 import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 import Post from '../../../interfaces/post';
@@ -15,18 +16,20 @@ interface Props {
 
 const BlogTag = ({ tag, allPosts }: Props) => {
 
+  const { t } = useTranslation('blog');
+
   return (
     <>
       <Head>
-        <title>{'Sebastian Schuler - Blog'}</title>
+        <title>{t("tagPageTabTitle", { tag: "#" + tag.toUpperCase() })}</title>
       </Head>
       <Container>
 
         <PageBreadcrumbs />
         <BlogTitle isTag>{tag}</BlogTitle>
-        <Space h={'xl'} />
+        <Space h={'lg'} />
 
-        <Grid gutter={'xl'}>
+        <Grid gutter={'xl'} pb={'xl'}>
 
           <Grid.Col span={8}>
             <BlogPostList posts={allPosts} />

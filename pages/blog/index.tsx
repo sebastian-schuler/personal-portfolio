@@ -46,7 +46,7 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
   return (
     <>
       <Head>
-        <title>{"Sebastian Schuler - " + t("title")}</title>
+        <title>{t("blogPageTabTitle", { page: currentPage })}</title>
         <link rel="canonical" href={getCanonicalLink()} />
         {
           currentPage > 1 && (
@@ -64,7 +64,7 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
         <PageBreadcrumbs />
         <BlogTitle>{t("title")}</BlogTitle>
         <Text mt={'xs'}>{t("subtitle")}</Text>
-        <Space h={'xl'} />
+        <Space h={'lg'} />
 
         <Grid gutter={'xl'} pb={'xl'}>
 

@@ -1,16 +1,14 @@
-import { parseISO, format } from 'date-fns'
+import { de, enGB } from 'date-fns/locale'
 import useTranslation from 'next-translate/useTranslation'
-import { enGB, de } from 'date-fns/locale'
+import { formatDate } from '../lib/util'
 
 type Props = {
     dateString: string
 }
 
 const DateFormatter = ({ dateString }: Props) => {
-    const date = parseISO(dateString)
     const { lang } = useTranslation();
-    const locale = getLocaleByLang(lang);
-    return <time dateTime={dateString}>{format(date, 'LLLL	d, yyyy', { locale })}</time>
+    return <time dateTime={dateString}>{formatDate(dateString, lang)}</time>
 }
 
 export const getLocaleByLang = (lang: string) => {

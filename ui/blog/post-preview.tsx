@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link'
 import { toLink } from '../../lib/util'
 import DateFormatter from '../date-formatter'
+import LocaleFlags from '../locale-flags';
 
 const useStyles = createStyles((theme) => {
 
@@ -23,11 +24,13 @@ const useStyles = createStyles((theme) => {
       textTransform: 'uppercase',
       fontFamily: theme.fontFamilyMonospace,
       color: theme.colors.primary[4],
+      fontSize: '1.15em',
+      lineHeight: 1,
 
       '&:hover': {
         textDecoration: 'underline',
       }
-    },
+    }
   };
 });
 
@@ -60,19 +63,13 @@ const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime, l
         <h3 className={classes.title}>{title}</h3>
       </Link>
 
-      <Group position='apart'>
+      <Group position='apart' mt={'sm'}>
 
         <Group spacing={'sm'}>
           {tagList}
         </Group>
 
-        <Group spacing={'sm'}>
-          {
-            locales.map((locale, i) => (
-              <Text key={i}>{locale}</Text>
-            ))
-          }
-        </Group>
+        <LocaleFlags locales={locales}/>
 
       </Group>
 

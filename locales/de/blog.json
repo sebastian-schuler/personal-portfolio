@@ -2,5 +2,15 @@
     "title": "Blog",
     "subtitle": "Mein persönlicher Blog konzentriert sich auf Technologie und Programmieren.",
     "tagListTitle": "Nach Tag filtern",
-    "postReadTimeLabel": "min lesen"
+    "postReadTimeLabel": "min lesen",
+
+    "shareTwitter": "Diesen Artikel auf Twitter teilen",
+    "shareLinkedIn": "Diesen Artikel auf LinkedIn teilen",
+    "shareFacebook": "Diesen Artikel auf Facebook teilen",
+    "shareLink": "Den Link zu diesem Artikel kopieren",
+    "shareLinkConfirm": "Link in die Zwischenablage kopiert",
+
+    "blogPageTabTitle": "Blog von Sebastian Schuler | Seite {{page}}",
+    "tagPageTabTitle": "{{tag}} Artikel von Sebastian Schuler",
+    "blogPostTabTitle": "{{title}} | von Sebastian Schuler | {{date}} | {{tags}}"
 }
