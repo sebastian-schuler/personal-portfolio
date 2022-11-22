@@ -13,6 +13,7 @@ const useStyles = createStyles((theme) => {
             lineHeight: 1.15,
             marginBottom: theme.spacing.sm,
             fontSize: '1.2em',
+            fontWeight: 600,
         },
 
         tag: {
@@ -29,21 +30,31 @@ const useStyles = createStyles((theme) => {
 
 interface Props {
     tags: Tag[]
+    title: string
 }
 
-const BlogTagList = ({ tags }: Props) => {
+const BlogTagList = ({ tags, title }: Props) => {
 
     const { classes } = useStyles();
-    const {t} = useTranslation('blog');
+    const { t } = useTranslation('blog');
 
     return (
         <>
-            <Text className={classes.title}>{t("tagListTitle")}</Text>
+            <Text className={classes.title}>{title}</Text>
             <Stack spacing={0}>
                 {
                     tags.map((tag, i) => (
-                        <Link key={i} href={toLink('blog', 'tag', tag.name)}>
-                            <Text key={i+"text"} className={classes.tag}>#{tag.name} {`(${tag.count})`}</Text>
+                        <Link
+                            key={i}
+                            href={toLink('blog', 'tag', tag.name)}
+                            title={t('tagLinkTitle', { tag: tag.name })}
+                        >
+                            <Text
+                                key={i + "text"}
+                                className={classes.tag}
+                            >
+                                #{tag.name} {`(${tag.count})`}
+                            </Text>
                         </Link>
                     ))
                 }

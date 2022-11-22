@@ -1,8 +1,10 @@
 {
+  "metaDescription": "Sebastian Schuler is a full-stack-developer who specializes in building exceptional digital experiences.",
+
   "hero": {
     "greeting": "Hi, my name is",
     "preTypewriter": "I'm a ",
-    "subtext": "and very passionate about bringing forward great and human-centered products; whether that's through development, UX Design, or Online Marketing.",
+    "subtext": "My passion lies in bringing forward great and human-centered products; whether that's through development, UX Design, or Online Marketing.",
     "typewriterArray": [
       "Full-Stack Developer",
       "Digital Marketing Specialist",

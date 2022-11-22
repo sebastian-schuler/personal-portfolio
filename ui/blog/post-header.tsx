@@ -21,7 +21,7 @@ const PostHeader = ({ title, coverImage, date, tags }: Props) => {
 
     return (
         <Stack spacing={0} mb={'md'}>
-            <BlogTitle marginBottom>{title}</BlogTitle>
+            <BlogTitle marginTop>{title}</BlogTitle>
             <Group>
                 {
                     tags.map((tag, i) => (

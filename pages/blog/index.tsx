@@ -77,7 +77,7 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
           </Grid.Col>
 
           <Grid.Col span={4}>
-            <BlogTagList tags={tags} />
+            <BlogTagList tags={tags} title={t("tagListTitle")}/>
           </Grid.Col>
 
         </Grid>

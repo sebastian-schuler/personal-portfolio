@@ -4,17 +4,20 @@ import useTranslation from 'next-translate/useTranslation';
 import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 import Post from '../../../interfaces/post';
+import Tag from '../../../interfaces/tag';
 import { getAllTags, getPostsByTag } from '../../../lib/blogApi';
 import BlogPostList from '../../../ui/blog/blog-post-list';
+import BlogTagList from '../../../ui/blog/blog-tag-list';
 import BlogTitle from '../../../ui/blog/blog-title';
 import PageBreadcrumbs from '../../../ui/breadcrumbs';
 
 interface Props {
+  otherTags: Tag[]
   tag: string
   allPosts: Post[]
 }
 
-const BlogTag = ({ tag, allPosts }: Props) => {
+const BlogTag = ({ otherTags, tag, allPosts }: Props) => {
 
   const { t } = useTranslation('blog');
 
@@ -36,6 +39,7 @@ const BlogTag = ({ tag, allPosts }: Props) => {
           </Grid.Col>
 
           <Grid.Col span={4}>
+            <BlogTagList tags={otherTags} title={t("tagPageTagListTitle")} />
           </Grid.Col>
 
         </Grid>
@@ -47,6 +51,7 @@ const BlogTag = ({ tag, allPosts }: Props) => {
 export const getStaticProps: GetStaticProps = async (context) => {
 
   const tag = context.params?.TagSlug as string;
+  const otherTags = getAllTags().filter(t => t.name !== tag);
 
   const allPosts = getPostsByTag(tag, [
     'title',
@@ -60,6 +65,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
+      otherTags,
       tag,
       allPosts,
     },

@@ -1,8 +1,14 @@
+import Head from 'next/head'
 import React from 'react'
 
 const LegalNotice = () => {
   return (
-    <div>legalnotice</div>
+    <div>
+      <Head>
+        <meta name="robots" content="noindex, follow" />
+      </Head>
+
+    </div>
   )
 }
 

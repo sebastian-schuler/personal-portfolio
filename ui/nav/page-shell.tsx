@@ -11,7 +11,7 @@ const PageShell: React.FC<Props> = ({ children }: Props) => {
 
     return (
         <AppShell
-            padding="md"
+            padding={0}
             header={<PageNav />}
         // styles={(theme) => ({
         //     main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },

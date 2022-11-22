@@ -43,7 +43,7 @@ const PageBreadcrumbs = ({ postTitle }: Props) => {
             // BLOG TAG PATH
             const slug = query.TagSlug as string;
             links.push({
-                name: "#" + slug.toUpperCase(),
+                name: 'Tag: '+slug.toUpperCase(),
                 url: toLink("#")
             });
         }

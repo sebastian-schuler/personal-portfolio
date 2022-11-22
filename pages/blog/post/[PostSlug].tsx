@@ -10,6 +10,7 @@ import Post from '../../../interfaces/post'
 import { getAllPosts, getPostBySlug } from '../../../lib/blogApi'
 import { PAGE_URL } from '../../../lib/constants'
 import markdownToHtml from '../../../lib/markdownToHtml'
+import { getMetaDescription } from '../../../lib/seoTools'
 import { formatDate } from '../../../lib/util'
 import PostTitle from '../../../ui/blog/blog-title'
 import PostBody from '../../../ui/blog/post-body'
@@ -41,15 +42,17 @@ const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
       ) : (
         <>
           <article>
+
             <Head>
               <title>{t("blogPostTabTitle", { title: post.title, date: formatDate(post.date, lang), tags: post.tags.join(', ') })}</title>
+              <meta name='description' content={getMetaDescription(post.excerpt)} />
+
               <meta property='og:title' content={post.title} />
               <meta property='og:description' content={post.ogDesc} />
               <meta property='og:url' content={`${PAGE_URL}/${localePart}blog/post/${post.slug}`} />
-              {
-                post.ogImage && <meta property="og:image" content={post.ogImage.url} />
-              }
+              {post.ogImage && <meta property="og:image" content={post.ogImage.url} />}
             </Head>
+
             <PostHeader
               title={post.title}
               coverImage={post.coverImage}

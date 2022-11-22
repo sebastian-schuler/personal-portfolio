@@ -51,7 +51,10 @@ const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime, l
   const { t } = useTranslation('blog');
 
   const tagList = tags.map((tag, i) => (
-    <Link key={i} href={toLink('blog', 'tag', tag)}>
+    <Link
+      key={i}
+      href={toLink('blog', 'tag', tag)}
+    >
       <Text key={i + 'text'} className={classes.tag}>#{tag}</Text>
     </Link>
   ));
@@ -69,7 +72,7 @@ const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime, l
           {tagList}
         </Group>
 
-        <LocaleFlags locales={locales}/>
+        <LocaleFlags locales={locales} />
 
       </Group>
 

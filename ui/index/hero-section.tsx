@@ -17,12 +17,17 @@ const useStyles = createStyles((theme) => ({
         },
     },
 
+    preTitle: {
+        color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+        fontSize: theme.fontSizes.xl,
+    },
+
     title: {
         lineHeight: 1,
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
         fontSize: 'clamp(2.5rem, 7vw, 5rem)',
         marginLeft: '-2px',
-        marginBottom: theme.spacing.lg,
+        marginTop: theme.spacing.md,
     },
 
     typewriterOuterText: {
@@ -37,8 +42,11 @@ const useStyles = createStyles((theme) => ({
     },
 
     subText: {
+        color: theme.colorScheme === 'dark' ? theme.white : theme.black,
         fontSize: theme.fontSizes.lg,
         marginBottom: theme.spacing.lg,
+        marginTop: theme.spacing.lg,
+        maxWidth: 500,
     },
 
 }));
@@ -54,7 +62,7 @@ const HeroSection = () => {
 
             <Center sx={{ height: "100%" }}>
                 <Stack spacing={0} sx={{ width: "100%" }}>
-                    <Text size={20} color={'primary'}>{t('hero.greeting')}</Text>
+                    <Text className={classes.preTitle}>{t('hero.greeting')}</Text>
                     <Title order={1} className={classes.title}>Sebastian Schuler</Title>
                     <Text className={classes.typewriterOuterText}>
                         {t('hero.preTypewriter')}

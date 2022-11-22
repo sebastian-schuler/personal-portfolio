@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import Contact from './contact';
 import LanguageSwitch from './language-switch';
+import PageLogo from './page-logo';
 
 export const HEADER_HEIGHT = 80;
 export const HEADER_MOBILE_HEIGHT = 60;
@@ -61,7 +62,7 @@ const PageNav = () => {
 
   const { t } = useTranslation('common');
 
-  // TODO save lang and theme in cookie
+  // TODO save lang in cookie
   const [contactDrawerVisible, setContactDrawerVisible] = useState(false);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const { classes, theme } = useStyles();
@@ -105,7 +106,7 @@ const PageNav = () => {
       >
         <Container sx={{ height: '100%' }}>
           <Box className={classes.inner} >
-            <Text>Home</Text>
+            <PageLogo />
 
             <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
               {items}
@@ -126,7 +127,9 @@ const PageNav = () => {
                 >
                   {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
                 </ActionIcon>
+
                 <LanguageSwitch />
+
               </Group>
             </Group>
 
