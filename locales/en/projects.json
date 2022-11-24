@@ -1,0 +1,7 @@
+{
+    "title": "Projects",
+    "subtitle": "A list of most of my personal, work, and university projects.",
+
+    "projectsPageTabTitle": "Projects by Sebastian Schuler | Page {{page}}",
+    "projectsPostTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}"
+}

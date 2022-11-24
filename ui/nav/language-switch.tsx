@@ -1,4 +1,6 @@
-import { createStyles, Select } from '@mantine/core';
+import { ActionIcon, createStyles, Drawer, Group, SegmentedControl, Text } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { IconLanguage } from '@tabler/icons';
 import { DE, GB } from 'country-flag-icons/react/3x2';
 import setLanguage from 'next-translate/setLanguage';
 import useTranslation from 'next-translate/useTranslation';
@@ -17,14 +19,14 @@ const useStyles = createStyles((theme) => {
     };
 });
 
+// TODO save lang in cookie
 const LanguageSwitch = () => {
 
     const router = useRouter();
     const { t, lang } = useTranslation('common');
-    const { classes } = useStyles();
+    const { classes, theme } = useStyles();
     const locales = i18nConfig.locales.map(locale => getLanguageById(locale)).filter(locale => locale !== undefined) as LocaleItem[];
-
-    console.log(locales)
+    const [drawerOpen, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
 
     const changeLocale = async (newLocale: string | null) => {
         if (!newLocale) return;
@@ -43,23 +45,59 @@ const LanguageSwitch = () => {
         }
     }
 
+    const data = locales.map((locale, i) => {
+        return {
+            value: locale.value,
+            label: (
+                <Group>
+                    {getFlag(locale.value)}
+                    <Text>{locale.label}</Text>
+                </Group>
+            ),
+        };
+    })
+
     const currentLocale = locales.find(locale => locale.value === router.locale) || locales[0];
     const [locale, setLocale] = useState<LocaleItem>(currentLocale);
 
     return (
         <>
 
-            <Select
-                value={locale.value}
-                onChange={(val) => changeLocale(val)}
-                data={locales}
-                transition="pop-top-left"
-                transitionDuration={80}
-                transitionTimingFunction="ease"
-                nothingFound="Nobody here"
-                sx={{ width: 100 }}
-                // icon={<IconLanguage size={20}/>}
-            />
+            <ActionIcon
+                variant="outline"
+                color={'red'}
+                onClick={() => toggleDrawer()}
+                title={t('languageSwitchTitle')}
+            >
+                <IconLanguage size={18} />
+            </ActionIcon>
+
+            <Drawer
+                opened={drawerOpen}
+                onClose={() => closeDrawer()}
+                title={t('languageSwitchTitle')}
+                padding="xl"
+                size="xl"
+                lockScroll={false}
+                position="right"
+                styles={{
+                    title: {
+                        fontSize: 32,
+                        fontWeight: 700,
+                        color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[6],
+                    }
+                }}
+            >
+                <SegmentedControl
+                    value={locale.value}
+                    onChange={changeLocale}
+                    data={data}
+                    size="lg"
+                    fullWidth
+                    orientation="vertical"
+                />
+            </Drawer>
+
 
         </>
     )

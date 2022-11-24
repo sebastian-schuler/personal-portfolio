@@ -5,7 +5,7 @@ const useStyles = createStyles((theme) => ({
 
     outer: {
         paddingTop: 100,
-        paddingBottom: theme.spacing.lg,
+        paddingBottom: '48px',
     },
 
     title: {
@@ -29,11 +29,10 @@ const useStyles = createStyles((theme) => ({
 interface Props {
     title: string;
     anchor: string;
-    order: number;
     subtext?: string;
 }
 
-const SectionHeader: React.FC<Props> = ({ title, anchor, order, subtext }: Props) => {
+const SectionHeader: React.FC<Props> = ({ title, anchor, subtext }: Props) => {
 
     const { classes } = useStyles();
 

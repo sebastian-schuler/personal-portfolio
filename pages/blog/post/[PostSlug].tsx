@@ -7,15 +7,15 @@ import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
 import Post from '../../../interfaces/post'
-import { getAllPosts, getPostBySlug } from '../../../lib/blogApi'
+import { getAllPosts, getPostBySlug } from '../../../lib/apis/blogApi'
 import { PAGE_URL } from '../../../lib/constants'
 import markdownToHtml from '../../../lib/markdownToHtml'
 import { getMetaDescription } from '../../../lib/seoTools'
 import { formatDate } from '../../../lib/util'
-import PostTitle from '../../../ui/blog/blog-title'
 import PostBody from '../../../ui/blog/post-body'
 import PostHeader from '../../../ui/blog/post-header'
 import PageBreadcrumbs from '../../../ui/breadcrumbs'
+import MyTitle from '../../../ui/my-title'
 
 type Props = {
   post: Post
@@ -38,7 +38,7 @@ const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
       <PageBreadcrumbs postTitle={post.title} />
 
       {router.isFallback ? (
-        <PostTitle>Loading...</PostTitle>
+        <MyTitle>Loading...</MyTitle>
       ) : (
         <>
           <article>

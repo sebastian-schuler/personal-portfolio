@@ -5,10 +5,10 @@ import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 import Post from '../../../interfaces/post';
 import Tag from '../../../interfaces/tag';
-import { getAllTags, getPostsByTag } from '../../../lib/blogApi';
+import { getAllPostTags, getPostsByTag } from '../../../lib/apis/blogApi';
 import BlogPostList from '../../../ui/blog/blog-post-list';
 import BlogTagList from '../../../ui/blog/blog-tag-list';
-import BlogTitle from '../../../ui/blog/blog-title';
+import MyTitle from '../../../ui/my-title';
 import PageBreadcrumbs from '../../../ui/breadcrumbs';
 
 interface Props {
@@ -29,7 +29,7 @@ const BlogTag = ({ otherTags, tag, allPosts }: Props) => {
       <Container>
 
         <PageBreadcrumbs />
-        <BlogTitle isTag>{tag}</BlogTitle>
+        <MyTitle isTag>{tag}</MyTitle>
         <Space h={'lg'} />
 
         <Grid gutter={'xl'} pb={'xl'}>
@@ -51,7 +51,7 @@ const BlogTag = ({ otherTags, tag, allPosts }: Props) => {
 export const getStaticProps: GetStaticProps = async (context) => {
 
   const tag = context.params?.TagSlug as string;
-  const otherTags = getAllTags().filter(t => t.name !== tag);
+  const otherTags = getAllPostTags().filter(t => t.name !== tag);
 
   const allPosts = getPostsByTag(tag, [
     'title',
@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const tags = getAllTags();
+  const tags = getAllPostTags();
 
   let paths: {
     params: ParsedUrlQuery;

@@ -6,9 +6,8 @@ import { useState } from "react"
 import { toLink } from "../../lib/util"
 import DateFormatter from "../date-formatter"
 import ILink from "../link"
-import BlogTitle from "./blog-title"
+import MyTitle from "../my-title"
 import PostSharePanel from "./post-share-panel"
-
 
 type Props = {
     title: string
@@ -21,7 +20,7 @@ const PostHeader = ({ title, coverImage, date, tags }: Props) => {
 
     return (
         <Stack spacing={0} mb={'md'}>
-            <BlogTitle marginTop>{title}</BlogTitle>
+            <MyTitle marginTop>{title}</MyTitle>
             <Group>
                 {
                     tags.map((tag, i) => (

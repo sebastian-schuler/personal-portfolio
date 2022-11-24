@@ -14,7 +14,7 @@ const useStyles = createStyles((theme) => ({
         alignItems: 'center',
 
         boxShadow: theme.shadows.sm,
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.primary[4],
         borderRadius: theme.radius.md,
     },
 
@@ -56,20 +56,29 @@ const useStyles = createStyles((theme) => ({
     },
 
     topline: {
-        color: theme.colors.primary[4],
+        color: theme.colorScheme === 'dark' ? theme.colors.primary[4] : theme.white,
     },
 
     title: {
         color: theme.white,
         fontSize: 32,
         lineHeight: 1,
+        transition: 'color 0.2s ease',
+
+        '&:hover': {
+            textDecoration: 'underline',
+        }
     },
 
     paragraphBox: {
-        backgroundColor: theme.colors.dark[6],
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.dark[4],
         padding: theme.spacing.md,
         marginTop: theme.spacing.md,
         boxShadow: theme.shadows.sm,
+    },
+
+    paragraphText: {
+        color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.white,
     },
 
     tags: {
@@ -82,13 +91,13 @@ const useStyles = createStyles((theme) => ({
         fontFamily: 'monospace, monospace',
         lineHeight: 1,
         fontSize: theme.fontSizes.md,
+        color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.white,
     },
 
     imageWrapperRight: {
         position: 'relative',
         gridArea: '1 / 6 / -1 / -1',
         zIndex: 1,
-        opacity: 0.8,
         borderRadius: theme.radius.md,
 
         [`@media (max-width: ${theme.breakpoints.md}px)`]: {
@@ -102,7 +111,6 @@ const useStyles = createStyles((theme) => ({
         position: 'relative',
         gridArea: '1 / 1 / -1 / 8',
         zIndex: 1,
-        opacity: 0.8,
         borderRadius: theme.radius.md,
 
         [`@media (max-width: ${theme.breakpoints.md}px)`]: {
@@ -113,14 +121,19 @@ const useStyles = createStyles((theme) => ({
     },
 
     image: {
-        // backgroundColor: theme.white,
-        // opacity: 0.8,
         borderRadius: theme.radius.md,
+    },
+
+    linkButton: {
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.dark[4],
+        transition: 'all 0.2s ease',
+        color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.white,
 
         '&:hover': {
-            // opacity: 1,
+            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.dark[2],
+            transform: 'translateY(-0.3rem)',
         },
-    },
+    }
 
 }));
 
@@ -154,13 +167,13 @@ const FeaturedWorkItem: React.FC<Props> = ({ topline, url, title, paragraph, tag
                 </Link >
 
                 <Paper className={classes.paragraphBox}>
-                    <Text lineClamp={3}>
+                    <Text className={classes.paragraphText} lineClamp={3}>
                         {paragraph}
                     </Text>
                 </Paper>
 
                 <Group
-                    spacing={4}
+                    spacing={"xs"}
                     className={classes.tags}
                     sx={{ justifyContent: contentPlacement === "left" || smallScreen ? "flex-start" : "flex-end" }}
                 >
@@ -173,7 +186,7 @@ const FeaturedWorkItem: React.FC<Props> = ({ topline, url, title, paragraph, tag
 
                 <Group sx={{ justifyContent: contentPlacement === "left" || smallScreen ? "flex-start" : "flex-end" }}>
                     <Link href={url}>
-                        <ActionIcon size={'lg'} variant='light'>
+                        <ActionIcon size={'lg'} variant='light' className={classes.linkButton}>
                             <IconFileDescription size={24} />
                         </ActionIcon>
                     </Link>
@@ -181,7 +194,7 @@ const FeaturedWorkItem: React.FC<Props> = ({ topline, url, title, paragraph, tag
                     {
                         externalUrl && (
                             <Link href={externalUrl}>
-                                <ActionIcon size={'lg'} variant='light'>
+                                <ActionIcon size={'lg'} variant='light' className={classes.linkButton}>
                                     <IconExternalLink size={24} />
                                 </ActionIcon>
                             </Link>
@@ -190,7 +203,7 @@ const FeaturedWorkItem: React.FC<Props> = ({ topline, url, title, paragraph, tag
                     {
                         githubUrl && (
                             <Link href={githubUrl}>
-                                <ActionIcon size={'lg'} variant='light'>
+                                <ActionIcon size={'lg'} variant='light' className={classes.linkButton}>
                                     <IconBrandGithub size={24} />
                                 </ActionIcon>
                             </Link>

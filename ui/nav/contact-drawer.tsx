@@ -1,4 +1,5 @@
 import { Button, createStyles, Drawer, Group, SimpleGrid, Textarea, TextInput } from '@mantine/core';
+import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
 
 const useStyles = createStyles((theme) => {
@@ -18,18 +19,19 @@ const useStyles = createStyles((theme) => {
 });
 
 interface Props {
-    contactDrawerVisible: boolean;
-    setContactDrawerVisible: (visible: boolean) => void;
+    closeDrawer: () => void;
+    drawerOpened: boolean;
 }
 
-const Contact: React.FC<Props> = ({ contactDrawerVisible, setContactDrawerVisible }) => {
+const ContactDrawer: React.FC<Props> = ({ closeDrawer, drawerOpened }: Props) => {
 
     const { classes, theme } = useStyles();
+    const { t } = useTranslation('common');
 
     return (
         <Drawer
-            opened={contactDrawerVisible}
-            onClose={() => setContactDrawerVisible(false)}
+            opened={drawerOpened}
+            onClose={() => closeDrawer()}
             title="Get in touch"
             padding="xl"
             size="xl"
@@ -41,14 +43,14 @@ const Contact: React.FC<Props> = ({ contactDrawerVisible, setContactDrawerVisibl
                     color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[6],
                 }
             }}
-            
+
         >
 
             <form onSubmit={(event) => event.preventDefault()}>
 
                 <div className={classes.fields}>
                     <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-                        <TextInput label="Your name" placeholder="Your name" required/>
+                        <TextInput label="Your name" placeholder="Your name" required />
                         <TextInput label="Your email" placeholder="hello@mantine.dev" required />
                     </SimpleGrid>
 
@@ -74,4 +76,4 @@ const Contact: React.FC<Props> = ({ contactDrawerVisible, setContactDrawerVisibl
     );
 }
 
-export default Contact;
+export default ContactDrawer;

@@ -1,14 +1,27 @@
 {
+  "metaDescription": "Sebastian Schuler is a full-stack-developer who specializes in building exceptional digital experiences.",
 
-    "navItems": {
-        "home": "Home",
-        "projects": "Projects",
-        "blog": "Blog",
-        "contact": "Contact"
-    },
+  "navItems": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
 
-    "colorSchemeTitle": "Toggle day/night mode",
-    "languageSwitchTitle": "Switch language",
-    "mobileNavTitle": "Navigation"
+  "breadcrumbs": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog"
+  },
 
+  "colorSchemeTitle": "Toggle day/night mode",
+  "languageSwitchTitle": "Change language",
+  "mobileNavTitle": "Navigation",
+
+  "pagination": {
+    "previous": "Go to previous page",
+    "next": "Go to next page",
+    "otherPage": "Go to page {{page}}",
+    "currentPage": "Current page {{page}}"
+  }
 }

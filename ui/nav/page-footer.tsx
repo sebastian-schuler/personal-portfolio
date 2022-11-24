@@ -1,13 +1,24 @@
 import { ActionIcon, Box, Container, createStyles, Grid, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
 import { IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons';
 import React from 'react'
-import ILink from './link';
+import ILink from '../link';
 
 const useStyles = createStyles((theme) => {
     return {
         footer: {
-            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : 'white',
             borderTop: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}`,
+        },
+        text: {
+            color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+        },
+        icon: {
+            color: theme.colorScheme === 'dark' ? theme.white : theme.colors.gray[6],
+            transition: 'color 200ms ease',
+
+            '&:hover': {
+                color: theme.colors.primary[4],
+            },
         }
     };
 });
@@ -27,7 +38,7 @@ const PageFooter = () => {
                             <ILink url={'/legal-notice'} type='internal'>Legal notice</ILink>
                         </Stack>
 
-                        <Text align='center'>Designed & built by Sebastian Schuler </Text>
+                        <Text align='center' className={classes.text}>Designed & built by Sebastian Schuler </Text>
 
                         <Group spacing={0} align={'start'} sx={{ flexDirection: 'row-reverse' }}>
                             <ActionIcon
@@ -36,6 +47,7 @@ const PageFooter = () => {
                                 variant="subtle"
                                 size={'lg'}
                                 title={'Sebastian Schuler on twitter'}
+                                className={classes.icon}
                             >
                                 <IconBrandTwitter size={24} />
                             </ActionIcon>
@@ -45,6 +57,7 @@ const PageFooter = () => {
                                 variant="subtle"
                                 size={'lg'}
                                 title={'Sebastian Schuler on LinkedIn'}
+                                className={classes.icon}
                             >
                                 <IconBrandLinkedin size={24} />
                             </ActionIcon>

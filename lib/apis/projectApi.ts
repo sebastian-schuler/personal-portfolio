@@ -1,11 +1,11 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
-import Post from '../interfaces/post';
-import PostData from '../interfaces/post-data';
-import Tag from '../interfaces/tag';
+import ItemData from '../../interfaces/item-data';
+import Tag from '../../interfaces/tag';
+import Project from '../../interfaces/project';
 
-const POSTS_PER_PAGE = 10;
+const PROJECTS_PER_PAGE = 10;
 
 interface SlugData {
     value: string;
@@ -13,41 +13,39 @@ interface SlugData {
 }
 
 // posts folder path
-const postsDirectory = join(process.cwd(), '_posts');
+const projectsDirectory = join(process.cwd(), '_projects');
 
 /**
- * Get all posts from the _posts folder
+ * Get all projects from the _projects folder
  * @returns - Array of post slugs
  */
-export function getPostSlugs(): SlugData[] {
-    const dirents = fs.readdirSync(postsDirectory, { withFileTypes: true });
+export function getProjectSlugs(): SlugData[] {
+    const dirents = fs.readdirSync(projectsDirectory, { withFileTypes: true });
+    const projectDirectories = dirents.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name)
 
-    const articleDirectories = dirents.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name)
-
-    let articles = articleDirectories.map((articleDirectory) => {
-        return { value: articleDirectory, locales: getSlugLocales(articleDirectory) };
+    let projects = projectDirectories.map((project) => {
+        return { value: project, locales: getSlugLocales(project) };
     });
-    articles = articles.filter(article => article.locales.length > 0);
-
-    return articles;
+    projects = projects.filter(project => project.locales.length > 0);
+    return projects;
 }
 
-interface GetPostBySlugOptions {
+interface GetProjectBySlugOptions {
     locale?: string;
 }
 /**
- * Get post data from markdown file
+ * Get project data from markdown file
  * @param slug - post slug
  * @param fields - fields to return
  * @returns - typed post data
  */
-export function getPostBySlug(slug: string, fields: (keyof Post)[], options?: GetPostBySlugOptions): Post {
+export function getProjectBySlug(slug: string, fields: (keyof Project)[], options?: GetProjectBySlugOptions): Project {
 
     const availableLocales = getSlugLocales(slug);
     const prefLocale = options?.locale || 'en';
 
     const chosenLocale = availableLocales.includes(prefLocale) ? prefLocale : availableLocales[0];
-    const fullPath = join(postsDirectory, slug, `${chosenLocale}.md`);
+    const fullPath = join(projectsDirectory, slug, `${chosenLocale}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
     // const realSlug = slug.replace(/\.md$/, '');
@@ -55,13 +53,12 @@ export function getPostBySlug(slug: string, fields: (keyof Post)[], options?: Ge
     const { data, content } = matter(fileContents);
 
     // Required fields
-    const items: Post = {
+    const items: Project = {
         slug: realSlug,
         date: data.date || '',
         title: data.title || '',
         tags: data.tags?.split(',') || [],
         coverImage: data.coverImage || '',
-        readTime: data.readTime || '',
         excerpt: data.excerpt || '',
         locales: availableLocales,
         locale: chosenLocale,
@@ -80,17 +77,17 @@ export function getPostBySlug(slug: string, fields: (keyof Post)[], options?: Ge
  * @param fields - fields to return
  * @returns - raw post data, allows minimum transfered data
  */
-function getPostDataBySlug(slug: SlugData, fields: string[] = []) {
+function getProjectDataBySlug(slug: SlugData, fields: string[] = []) {
 
     const chosenLocale = slug.locales.includes("en") ? "en" : slug.locales[0];
 
-    const fullPath = join(postsDirectory, slug.value, `${chosenLocale}.md`);
+    const fullPath = join(projectsDirectory, slug.value, `${chosenLocale}.md`);
     const realSlug = slug.value.replace(/\.md$/, '');
 
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    const items: PostData = {}
+    const items: ItemData = {}
 
     fields.forEach((field) => {
         if (field === 'slug') {
@@ -107,47 +104,47 @@ function getPostDataBySlug(slug: SlugData, fields: string[] = []) {
     return items;
 }
 
-interface GetAllPostsOptions {
+interface GetAllProjectsOptions {
     page?: number
     locale?: string;
 }
 /**
- * Get all posts
+ * Get all projects
  * @param fields - Fields to include in the response
- * @returns - Array of posts
+ * @returns - Array of projects
  */
-export function getAllPosts(fields: (keyof Post)[], options?: GetAllPostsOptions): Post[] {
-    let slugs = getPostSlugs();
+export function getAllProjects(fields: (keyof Project)[], options?: GetAllProjectsOptions): Project[] {
+    let slugs = getProjectSlugs();
 
     // If page is set, only load that specific page
     if (options?.page) {
         const page = options.page;
 
-        let fromIndex = page === 1 ? 0 : (page - 1) * POSTS_PER_PAGE;
-        let toIndex = page === 1 ? POSTS_PER_PAGE : page * POSTS_PER_PAGE;
+        let fromIndex = page === 1 ? 0 : (page - 1) * PROJECTS_PER_PAGE;
+        let toIndex = page === 1 ? PROJECTS_PER_PAGE : page * PROJECTS_PER_PAGE;
         slugs = slugs.slice(fromIndex, toIndex);
     }
 
-    const posts = slugs
-        .map((slug) => getPostBySlug(slug.value, fields, { locale: options?.locale }))
-        // sort posts by date in descending order
+    const projects = slugs
+        .map((slug) => getProjectBySlug(slug.value, fields, { locale: options?.locale }))
+        // sort projects by date in descending order
         .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-    return posts;
+    return projects;
 }
 
 /**
  * Get all tags
  * @returns - Array of tags
  */
-export function getAllTags(): Tag[] {
-    const slugs = getPostSlugs();
+export function getAllProjectTags(): Tag[] {
+    const slugs = getProjectSlugs();
     const tags = new Map<string, number>();
 
     // Get unique tags and count
     slugs.forEach((slug) => {
-        const post = getPostDataBySlug(slug, ['tags']);
-        const postTags = post.tags.split(',');
-        postTags.forEach((tag) => tags.set(tag, (tags.get(tag) || 0) + 1));
+        const post = getProjectDataBySlug(slug, ['tags']);
+        const projectTags = post.tags.split(',');
+        projectTags.forEach((tag) => tags.set(tag, (tags.get(tag) || 0) + 1));
     });
 
     // Sort tags by count
@@ -161,13 +158,13 @@ interface GetPostsByTagOptions {
     locale?: string;
 }
 /**
- * Get all posts for a tag
+ * Get all projects for a tag
  * @param tag - Tag to filter by
  * @param fields - Fields to return
- * @returns - Array of posts
+ * @returns - Array of projects
  */
-export function getPostsByTag(tag: string, fields: (keyof Post)[], options?: GetPostsByTagOptions): Post[] {
-    const allPosts = getAllPosts(fields, { locale: options?.locale });
+export function getProjectsByTag(tag: string, fields: (keyof Project)[], options?: GetPostsByTagOptions): Project[] {
+    const allPosts = getAllProjects(fields, { locale: options?.locale });
     return allPosts.filter((post) => post.tags.includes(tag));
 }
 
@@ -175,16 +172,16 @@ export function getPostsByTag(tag: string, fields: (keyof Post)[], options?: Get
  * 
  * @returns blog post count
  */
-export function getPostCount() {
-    return getPostSlugs().length;
+export function getProjectCount() {
+    return getProjectSlugs().length;
 }
 
 /**
  * 
  * @returns blog page count, based on POSTS_PER_PAGE
  */
-export function getPageCount() {
-    return Math.ceil(getPostCount() / POSTS_PER_PAGE);
+export function getProjectsPageCount() {
+    return Math.ceil(getProjectCount() / PROJECTS_PER_PAGE);
 }
 
 function getSlugLocales(slug: string) {

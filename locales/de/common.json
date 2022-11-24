@@ -1,4 +1,6 @@
 {
+  "metaDescription": "Sebastian Schuler ist ein Full-Stack-Entwickler, der sich auf die Entwicklung herausragender digitaler Anwendungen spezialisiert hat.",
+
   "navItems": {
     "home": "Home",
     "projects": "Projekte",
@@ -6,7 +8,20 @@
     "contact": "Kontakt"
   },
 
+  "breadcrumbs": {
+    "home": "Home",
+    "projects": "Projekte",
+    "blog": "Blog"
+  },
+
   "colorSchemeTitle": "Tag/Nacht-Modus umschalten",
   "languageSwitchTitle": "Sprache ändern",
-  "mobileNavTitle": "Navigation"
+  "mobileNavTitle": "Navigation",
+
+  "pagination": {
+    "previous": "Zur vorherigen Seite",
+    "next": "Zur nächsten Seite",
+    "otherPage": "Zur Seite {{page}}",
+    "currentPage": "Aktuelle Seite {{page}}"
+  }
 }

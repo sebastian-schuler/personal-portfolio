@@ -5,12 +5,12 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Post from '../../interfaces/post'
 import Tag from '../../interfaces/tag'
-import { getAllPosts, getAllTags, getPageCount } from '../../lib/blogApi'
+import { getAllPosts, getAllPostTags, getBlogPageCount } from '../../lib/apis/blogApi'
 import { PAGE_URL } from '../../lib/constants'
-import BlogPagination from '../../ui/blog/blog-pagination'
+import MyPagination from '../../ui/my-pagination'
 import BlogPostList from '../../ui/blog/blog-post-list'
 import BlogTagList from '../../ui/blog/blog-tag-list'
-import BlogTitle from '../../ui/blog/blog-title'
+import MyTitle from '../../ui/my-title'
 import PageBreadcrumbs from '../../ui/breadcrumbs'
 
 interface Props {
@@ -62,7 +62,7 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
       <Container>
 
         <PageBreadcrumbs />
-        <BlogTitle>{t("title")}</BlogTitle>
+        <MyTitle>{t("title")}</MyTitle>
         <Text mt={'xs'}>{t("subtitle")}</Text>
         <Space h={'lg'} />
 
@@ -70,14 +70,15 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
 
           <Grid.Col span={8}>
             <BlogPostList posts={allPosts} />
-            <BlogPagination
+            <MyPagination
               currentPage={currentPage}
               pageCount={pageCount}
+              rootPath={'blog'}
             />
           </Grid.Col>
 
           <Grid.Col span={4}>
-            <BlogTagList tags={tags} title={t("tagListTitle")}/>
+            <BlogTagList tags={tags} title={t("tagListTitle")} />
           </Grid.Col>
 
         </Grid>
@@ -90,8 +91,8 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const page = context.query.page ? parseInt(context.query.page as string) : 1;
-  const tags = getAllTags();
-  const pageCount = getPageCount();
+  const tags = getAllPostTags();
+  const pageCount = getBlogPageCount();
 
   let allPosts = getAllPosts([
     'title',

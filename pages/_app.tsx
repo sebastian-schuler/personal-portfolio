@@ -10,12 +10,12 @@ import { CustomFonts } from '../styles/customFonts'
 import '../styles/globals.css'
 import appTheme from '../styles/theme'
 import PageShell from '../ui/nav/page-shell'
-import PageFooter from '../ui/page-footer'
+import PageFooter from '../ui/nav/page-footer'
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
   const { Component, pageProps } = props;
-  const { t } = useTranslation('index');
+  const { t } = useTranslation('common');
 
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 

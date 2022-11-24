@@ -1,10 +1,11 @@
-import { ActionIcon, Box, Burger, Container, createStyles, Divider, Drawer, Group, Header, ScrollArea, Stack, Text, UnstyledButton, useMantineColorScheme } from '@mantine/core';
+import { Box, Burger, Button, Container, createStyles, Divider, Drawer, Group, Header, ScrollArea, Stack, Text, UnstyledButton } from '@mantine/core';
 import { useDisclosure, useMediaQuery, useWindowScroll } from '@mantine/hooks';
-import { IconMoonStars, IconSun } from '@tabler/icons';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import { useState } from 'react';
-import Contact from './contact';
+import ColorSchemeSwitch from './color-scheme-switch';
+import ContactDrawer from './contact-drawer';
+import Contact from './contact-drawer';
 import LanguageSwitch from './language-switch';
 import PageLogo from './page-logo';
 
@@ -62,16 +63,13 @@ const PageNav = () => {
 
   const { t } = useTranslation('common');
 
-  // TODO save lang in cookie
-  const [contactDrawerVisible, setContactDrawerVisible] = useState(false);
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const { classes, theme } = useStyles();
   const [scroll] = useWindowScroll();
 
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
+  const [contactDrawerOpen, { toggle: toggleContactDrawer, close: closeContactDrawer }] = useDisclosure(false);
 
   const largeScreen = useMediaQuery('(min-width: ' + theme.breakpoints.sm + 'px)');
-  const dark = colorScheme === 'dark';
 
   const links: HeaderLink[] = [
     { link: '/', label: t('navItems.home') },
@@ -100,7 +98,7 @@ const PageNav = () => {
         styles={(theme) => ({
           root: {
             borderBottomStyle: scroll.y > 0 ? 'solid' : `none`,
-            boxShadow: scroll.y > 0 ? (dark ? theme.shadows.md : theme.shadows.sm) : `none`,
+            boxShadow: scroll.y > 0 ? (theme.colorScheme === 'dark' ? theme.shadows.md : theme.shadows.sm) : `none`,
           }
         })}
       >
@@ -113,20 +111,14 @@ const PageNav = () => {
 
               <UnstyledButton
                 className={classes.link}
-                onClick={() => setContactDrawerVisible(true)}
+                onClick={() => toggleContactDrawer()}
               >
                 {t('navItems.contact')}
               </UnstyledButton>
 
               <Group ml={"md"}>
-                <ActionIcon
-                  variant="outline"
-                  color={dark ? 'yellow' : 'blue'}
-                  onClick={() => toggleColorScheme()}
-                  title={t('colorSchemeTitle')}
-                >
-                  {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
-                </ActionIcon>
+
+                <ColorSchemeSwitch />
 
                 <LanguageSwitch />
 
@@ -159,15 +151,17 @@ const PageNav = () => {
 
           <Stack spacing={"sm"}>
             {items}
+
             <UnstyledButton
               className={classes.link}
               onClick={() => {
                 closeDrawer();
-                setContactDrawerVisible(true);
+                toggleContactDrawer();
               }}
             >
               {t('navItems.contact')}
             </UnstyledButton>
+
           </Stack>
 
           <Divider mt="lg" mb="md" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.4'} />
@@ -176,8 +170,8 @@ const PageNav = () => {
       </Drawer>
 
       <Contact
-        contactDrawerVisible={contactDrawerVisible}
-        setContactDrawerVisible={setContactDrawerVisible}
+        drawerOpened={contactDrawerOpen}
+        closeDrawer={closeContactDrawer}
       />
     </>
   );

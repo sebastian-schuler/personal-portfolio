@@ -1,7 +1,8 @@
 import { Button, createStyles, Pagination } from '@mantine/core'
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link'
 import React from 'react'
-import { toLink } from '../../lib/util'
+import { toLink } from '../lib/util'
 
 const useStyles = createStyles((theme) => {
 
@@ -19,15 +20,17 @@ const useStyles = createStyles((theme) => {
 interface Props {
     currentPage: number
     pageCount: number
+    rootPath: string
 }
 
-const BlogPagination = ({ currentPage, pageCount }: Props) => {
+const MyPagination = ({ currentPage, pageCount, rootPath }: Props) => {
 
     const { classes, theme } = useStyles();
+    const { t } = useTranslation('common');
 
-    const getDefaultButton = (text: string, isDisabled?: boolean) => {
+    const getDefaultButton = (text: string, title: string, isDisabled?: boolean) => {
         return (
-            <Button variant='outline' className={classes.defaultButton} disabled={isDisabled}>
+            <Button variant='outline' className={classes.defaultButton} disabled={isDisabled} title={title}>
                 {text}
             </Button>
         )
@@ -51,18 +54,18 @@ const BlogPagination = ({ currentPage, pageCount }: Props) => {
 
                         if (currentPage === 1) {
                             // First page has previus button disabled
-                            return <>{getDefaultButton('<', true)}</>
+                            return <>{getDefaultButton('<', t('pagination.previous'), true)}</>
 
                         } else {
                             // Other pages have previous button enabled
                             return <Link
                                 href={{
-                                    pathname: '/blog',
+                                    pathname: '/' + rootPath,
                                     query: { page: currentPage - 1 },
                                 }}
                                 passHref
                             >
-                                {getDefaultButton('<')}
+                                {getDefaultButton('<', t('pagination.previous'))}
                             </Link>
                         }
 
@@ -73,24 +76,24 @@ const BlogPagination = ({ currentPage, pageCount }: Props) => {
 
                         if (currentPage === pageCount) {
                             // Last page has the next button disabled
-                            return <>{getDefaultButton('>', true)}</>
+                            return <>{getDefaultButton('>', t('pagination.next'), true)}</>
 
                         } else {
                             // Other pages have a next button
                             return <Link
                                 href={{
-                                    pathname: '/blog',
+                                    pathname: '/' + rootPath,
                                     query: { page: currentPage + 1 },
                                 }}
                                 passHref
                             >
-                                {getDefaultButton('>')}
+                                {getDefaultButton('>', t('pagination.next'))}
                             </Link>
                         }
                     }
 
                     // Will only happen if we enable edges in pagination ('first','last')
-                    return <Link href={toLink('blog')}>{page}</Link>
+                    return <Link href={toLink(rootPath)}>{page}</Link>
 
                 } else {
                     // If page is a number
@@ -100,12 +103,12 @@ const BlogPagination = ({ currentPage, pageCount }: Props) => {
                         return (
                             <Link
                                 href={{
-                                    pathname: '/blog',
+                                    pathname: '/' + rootPath,
                                     query: page === 1 ? undefined : { page: page },
                                 }}
                                 passHref
                             >
-                                <Button variant='filled' className={classes.activeButton}>
+                                <Button variant='filled' className={classes.activeButton} title={t('pagination.currentPage', { page: page })}>
                                     {page}
                                 </Button>
                             </Link>
@@ -115,12 +118,12 @@ const BlogPagination = ({ currentPage, pageCount }: Props) => {
                         return (
                             <Link
                                 href={{
-                                    pathname: '/blog',
+                                    pathname: '/' + rootPath,
                                     query: { page: page },
                                 }}
                                 passHref
                             >
-                                {getDefaultButton(page.toString())}
+                                {getDefaultButton(page.toString(), t('pagination.otherPage', { page: page }))}
                             </Link>
                         )
                     }
@@ -130,4 +133,4 @@ const BlogPagination = ({ currentPage, pageCount }: Props) => {
     )
 }
 
-export default BlogPagination
+export default MyPagination
