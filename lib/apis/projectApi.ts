@@ -62,6 +62,7 @@ export function getProjectBySlug(slug: string, fields: (keyof Project)[], option
         excerpt: data.excerpt || '',
         locales: availableLocales,
         locale: chosenLocale,
+        featured: data.featured || false,
     };
 
     // Optional fields

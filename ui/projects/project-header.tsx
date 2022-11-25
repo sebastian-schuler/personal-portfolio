@@ -1,9 +1,7 @@
-import { Divider, Group, Stack, Text } from '@mantine/core'
-import React from 'react'
-import { toLink } from '../../lib/util'
+import { Box, Divider, Group, Stack, Text, useMantineTheme } from '@mantine/core'
+import useTranslation from 'next-translate/useTranslation'
 import PostSharePanel from '../blog/post-share-panel'
 import DateFormatter from '../date-formatter'
-import ILink from '../link'
 import MyTitle from '../my-title'
 
 type Props = {
@@ -11,24 +9,42 @@ type Props = {
     coverImage: string
     date: string
     tags: string[]
+    locales: string[]
 }
 
-const ProjectHeader = ({ title, coverImage, date, tags }: Props) => {
+const ProjectHeader = ({ title, coverImage, date, tags, locales }: Props) => {
+
+    const { t } = useTranslation('projects');
+    const localeStrings = locales.map(locale => t(`common:locale.${locale}`));
+    const theme = useMantineTheme();
 
     return (
         <Stack spacing={0} mb={'md'}>
             <MyTitle marginTop>{title}</MyTitle>
-            <Group>
-                {
-                    tags.map((tag, i) => (
-                        <ILink key={i} url={toLink('projects', 'tag', tag)} type="internal" sx={{ textTransform: 'uppercase', fontSize: 18 }}>#{tag}</ILink>
-                    ))
-                }
-            </Group>
-            <Text size='lg'>Sebastian Schuler</Text>
-            <Text size='lg'>
-                <DateFormatter dateString={date} />
-            </Text>
+
+            <Box sx={{ fontSize: theme.fontSizes.lg }}>
+
+                <Group spacing={'sm'}>
+                    {t('headerProperties.technologies')}:
+                    <Text component='span' weight={'bold'}>{tags.join(', ')}</Text>
+                </Group>
+
+                <Group spacing={'sm'}>
+                    {t('headerProperties.people')}:
+                    <Text component='span' weight={'bold'}>Sebastian Schuler</Text>
+                </Group>
+
+                <Group spacing={'sm'}>
+                    {t('headerProperties.published')}:
+                    <Text component='span' weight={'bold'}><DateFormatter dateString={date} /></Text>
+                </Group>
+
+                <Group spacing={'sm'}>
+                    {t('headerProperties.languages')}:
+                    <Text component='span' weight={'bold'}>{localeStrings.join(', ')}</Text>
+                </Group>
+            </Box>
+
             <Divider mt={'md'} mb={'xs'} />
             <PostSharePanel title={title} />
             <Divider mb={'md'} mt={'xs'} />

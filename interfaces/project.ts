@@ -7,6 +7,7 @@ type Project = {
     ogImage?: {
       url: string
     }
+    featured: boolean
     ogDesc?: string
     content?: string
     tags: string[]

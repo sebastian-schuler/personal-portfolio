@@ -18,6 +18,11 @@
   "languageSwitchTitle": "Change language",
   "mobileNavTitle": "Navigation",
 
+  "locale": {
+    "en": "English",
+    "de": "German"
+  },
+
   "pagination": {
     "previous": "Go to previous page",
     "next": "Go to next page",

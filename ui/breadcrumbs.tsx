@@ -61,7 +61,7 @@ const PageBreadcrumbs = ({ postTitle, projectTitle }: Props) => {
 
         if (route.startsWith(toLink("projects", "[ProjectSlug]"))) {
             // PROJECT POST PATH
-            const slug = postTitle ? postTitle : query.ProjectSlug as string;
+            const slug = projectTitle ? projectTitle : query.ProjectSlug as string;
             links.push({
                 name: slug,
                 url: toLink("#")

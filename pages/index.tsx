@@ -1,4 +1,4 @@
-import { Container } from '@mantine/core'
+import { Container, Stack } from '@mantine/core'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import AboutSection from '../ui/index/about-section'
@@ -17,12 +17,14 @@ const Home = () => {
       <Container>
 
         <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <WorkSection />
+
+        <Stack spacing={150}>
+          <AboutSection />
+          <ExperienceSection />
+          <WorkSection />
+        </Stack>
 
       </Container>
-
     </>
   )
 }

@@ -1,16 +1,14 @@
-import { createStyles, Group, Text } from '@mantine/core'
+import { createStyles, Divider, Group, Text } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
-import Link from 'next/link'
-import { toLink } from '../../lib/util'
-import DateFormatter from '../date-formatter'
-import LocaleFlags from '../locale-flags';
+import Link from 'next/link';
+import { toLink } from '../../lib/util';
+import DateFormatter from '../date-formatter';
 
 const useStyles = createStyles((theme) => {
 
   return {
     title: {
       color: theme.colorScheme === 'dark' ? 'white' : theme.black,
-      lineHeight: 1.15,
       margin: 0,
       fontSize: '1.6em',
 
@@ -19,16 +17,15 @@ const useStyles = createStyles((theme) => {
       }
     },
 
-    tag: {
-      textTransform: 'uppercase',
+    details: {
       fontFamily: theme.fontFamilyMonospace,
       color: theme.colors.primary[4],
       fontSize: '1.15em',
-      lineHeight: 1,
+    },
 
-      '&:hover': {
-        textDecoration: 'underline',
-      }
+    featured: {
+      borderLeft: `2px solid ${theme.colors.primary[4]}`,
+      paddingLeft: '1em',
     }
   };
 });
@@ -41,40 +38,30 @@ interface Props {
   slug: string
   tags: string[]
   locales: string[]
+  isFeatured: boolean
 }
 
-const ProjectPreview = ({ title, coverImage, date, excerpt, slug, tags, locales }: Props) => {
+const ProjectPreview = ({ title, coverImage, date, excerpt, slug, tags, locales, isFeatured }: Props) => {
 
   const { classes } = useStyles();
   const { t } = useTranslation('blog');
 
-  const tagList = tags.map((tag, i) => (
-    <Link
-      key={i}
-      href={toLink('projects', 'tag', tag)}
-    >
-      <Text key={i + 'text'} className={classes.tag}>#{tag}</Text>
-    </Link>
-  ));
+  const localeStrings = locales.map(locale => t(`common:locale.${locale}`));
 
   return (
-    <div>
+    <div className={isFeatured ? classes.featured : ""}>
 
       <Link href={toLink('projects', slug)}>
         <h3 className={classes.title}>{title}</h3>
       </Link>
 
-      <Group position='apart' mt={'sm'}>
-
-        <Group spacing={'sm'}>
-          {tagList}
-        </Group>
-
-        <LocaleFlags locales={locales} />
-
+      <Group spacing={'sm'} className={classes.details}>
+        {tags.join(', ').toUpperCase()}
+        <Divider orientation='vertical' />
+        <DateFormatter dateString={date} />
+        <Divider orientation='vertical' />
+        {localeStrings.join(', ')}
       </Group>
-
-      <DateFormatter dateString={date} />
 
       <Text>
         {excerpt}

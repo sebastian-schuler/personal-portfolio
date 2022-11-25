@@ -23,6 +23,7 @@ const ProjectList = ({ projects }: Props) => {
                 slug={project.slug}
                 tags={project.tags}
                 locales={project.locales}
+                isFeatured={project.featured}
               />
               {
                 i < projects.length - 1 && <Divider mt={'lg'} />

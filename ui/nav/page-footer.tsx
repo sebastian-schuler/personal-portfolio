@@ -44,6 +44,7 @@ const PageFooter = () => {
                             <ActionIcon
                                 component='a'
                                 href='https://twitter.com/sebschuler'
+                                target={'_blank'}
                                 variant='subtle'
                                 size={'lg'}
                                 title={t('footer.twitterLinkTitle')}
@@ -54,6 +55,7 @@ const PageFooter = () => {
                             <ActionIcon
                                 component='a'
                                 href='https://www.linkedin.com/in/sebastian-schuler-8a1b8022b/'
+                                target={'_blank'}
                                 variant='subtle'
                                 size={'lg'}
                                 title={t('footer.linkedinLinkTitle')}
@@ -64,6 +66,7 @@ const PageFooter = () => {
                             <ActionIcon
                                 component='a'
                                 href='https://github.com/mildlyadequate'
+                                target={'_blank'}
                                 variant='subtle'
                                 size={'lg'}
                                 title={t('footer.githubLinkTitle')}

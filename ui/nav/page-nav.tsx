@@ -7,6 +7,7 @@ import ColorSchemeSwitch from './color-scheme-switch';
 import LanguageDrawer from './language-drawer';
 import PageLogo from './page-logo';
 import PageNavMobile from './page-nav-mobile';
+import ScrollTopButton from './scroll-top-button';
 
 export const HEADER_HEIGHT = 80;
 export const HEADER_MOBILE_HEIGHT = 60;
@@ -25,23 +26,15 @@ const useStyles = createStyles((theme) => ({
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontSize: theme.fontSizes.lg,
     fontWeight: 500,
-    borderRadius: 0,
 
     '&:hover': {
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
       textDecoration: 'none',
     },
-  },
 
-  menuItemActive: {
-    lineHeight: 1,
-    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-    fontSize: theme.fontSizes.lg,
-    fontWeight: 600,
+    '&:active': {
+      fontWeight: 'bolder',
 
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-      textDecoration: 'none',
     },
   },
 
@@ -124,7 +117,8 @@ const PageNav = () => {
                     <Button
                       key={link.label}
                       variant='subtle'
-                      className={link.isActive ? classes.menuItemActive : classes.menuItem}
+                      className={classes.menuItem}
+                      sx={{ fontWeight: link.isActive ? 'bold' : 'normal' }}
                     >
                       {link.label}
                     </Button>
@@ -149,6 +143,8 @@ const PageNav = () => {
         drawerOpened={drawerOpened}
         navLinks={navLinks}
       />
+
+      <ScrollTopButton />
 
     </>
   );

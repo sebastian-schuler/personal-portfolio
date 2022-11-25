@@ -41,7 +41,7 @@ const AboutSection = () => {
 
     return (
         <Box mb={"xl"}>
-            <SectionHeader anchor='about' title={t('about.title')} order={0} />
+            <SectionHeader anchor='about' title={t('about.title')} />
 
             <Grid gutter={theme.spacing.lg}>
 

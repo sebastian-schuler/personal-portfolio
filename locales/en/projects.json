@@ -3,5 +3,12 @@
     "subtitle": "A list of most of my personal, work, and university projects.",
 
     "projectsPageTabTitle": "Projects by Sebastian Schuler | Page {{page}}",
-    "projectsPostTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}"
+    "projectTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}",
+
+    "headerProperties": {
+        "technologies": "Technologies",
+        "people": "People",
+        "published": "Published",
+        "languages": "Available languages"
+    }
 }

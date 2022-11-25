@@ -18,6 +18,11 @@
   "languageSwitchTitle": "Sprache ändern",
   "mobileNavTitle": "Navigation",
 
+  "locale": {
+    "en": "Englisch",
+    "de": "Deutsch"
+  },
+
   "pagination": {
     "previous": "Zur vorherigen Seite",
     "next": "Zur nächsten Seite",
@@ -27,6 +32,9 @@
 
   "footer": {
     "privacyPolicy": "Datenschutzerklärung",
-    "legalNotice": "Impressum"
+    "legalNotice": "Impressum",
+    "twitterLinkTitle": "Sebastian Schuler auf Twitter",
+    "githubLinkTitle": "Sebastian Schuler auf GitHub",
+    "linkedinLinkTitle": "Sebastian Schuler auf LinkedIn"
   }
 }

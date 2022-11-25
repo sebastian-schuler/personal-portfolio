@@ -4,8 +4,9 @@ import React from 'react'
 const useStyles = createStyles((theme) => ({
 
     outer: {
-        paddingTop: 100,
+        // paddingTop: 100,
         paddingBottom: '48px',
+        scrollMarginTop: 160,
     },
 
     title: {

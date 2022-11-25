@@ -15,6 +15,7 @@ import { getMetaDescription } from '../../lib/seoTools';
 import { formatDate } from '../../lib/util';
 import { PAGE_URL } from '../../lib/constants';
 import ProjectHeader from '../../ui/projects/project-header';
+import ProjectBody from '../../ui/projects/project-body';
 
 type Props = {
     project: Project
@@ -42,7 +43,7 @@ const ProjectPage: React.FC<Props> = ({ project }) => {
                     <article>
 
                         <Head>
-                            <title>{t("blogPostTabTitle", { title: project.title, date: formatDate(project.date, lang), tags: project.tags.join(', ') })}</title>
+                            <title>{t("projectTabTitle", { title: project.title, date: formatDate(project.date, lang), tags: project.tags.join(', ') })}</title>
                             <meta name='description' content={getMetaDescription(project.excerpt)} />
 
                             <meta property='og:title' content={project.title} />
@@ -56,11 +57,12 @@ const ProjectPage: React.FC<Props> = ({ project }) => {
                             coverImage={project.coverImage}
                             date={project.date}
                             tags={project.tags}
+                            locales={project.locales}
                         />
-                        {/* <PostBody
-              excerpt={post.excerpt}
-              content={post.content || ""}
-            /> */}
+                        <ProjectBody
+                            excerpt={project.excerpt}
+                            content={project.content || ""}
+                        />
                     </article>
                 </>
             )}
