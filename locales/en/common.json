@@ -23,5 +23,13 @@
     "next": "Go to next page",
     "otherPage": "Go to page {{page}}",
     "currentPage": "Current page {{page}}"
+  },
+
+  "footer": {
+    "privacyPolicy": "Privacy Policy",
+    "legalNotice": "Legal Notice",
+    "twitterLinkTitle": "Sebastian Schuler on Twitter",
+    "githubLinkTitle": "Sebastian Schuler on GitHub",
+    "linkedinLinkTitle": "Sebastian Schuler on LinkedIn"
   }
 }

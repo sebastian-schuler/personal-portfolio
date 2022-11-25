@@ -6,6 +6,7 @@ module.exports = {
         '/': ['index'],
         "rgx:/(blog)": ["blog"],
         "rgx:/(projects)": ["projects"],
+        "/contact": ["contact"],
     },
     defaultNS: 'common',
 }

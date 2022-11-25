@@ -23,5 +23,10 @@
     "next": "Zur nächsten Seite",
     "otherPage": "Zur Seite {{page}}",
     "currentPage": "Aktuelle Seite {{page}}"
+  },
+
+  "footer": {
+    "privacyPolicy": "Datenschutzerklärung",
+    "legalNotice": "Impressum"
   }
 }

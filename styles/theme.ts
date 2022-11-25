@@ -111,7 +111,6 @@ const appTheme: MantineThemeOverride = {
       styles: (theme) => ({
         root: {
           color: theme.colors.primary[4],
-          borderColor: theme.colors.primary[4],
         },
       }),
     },

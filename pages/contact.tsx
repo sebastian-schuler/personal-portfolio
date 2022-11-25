@@ -1,6 +1,6 @@
-import { Button, createStyles, Drawer, Group, SimpleGrid, Textarea, TextInput } from '@mantine/core';
+import { Button, Container, createStyles, Group, SimpleGrid, Textarea, TextInput } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
+import MyTitle from '../ui/my-title';
 
 const useStyles = createStyles((theme) => {
     const BREAKPOINT = theme.fn.smallerThan('sm');
@@ -18,33 +18,17 @@ const useStyles = createStyles((theme) => {
     };
 });
 
-interface Props {
-    closeDrawer: () => void;
-    drawerOpened: boolean;
-}
-
-const ContactDrawer: React.FC<Props> = ({ closeDrawer, drawerOpened }: Props) => {
+const ContactPage = () => {
 
     const { classes, theme } = useStyles();
-    const { t } = useTranslation('common');
+    const { t } = useTranslation('contact');
 
     return (
-        <Drawer
-            opened={drawerOpened}
-            onClose={() => closeDrawer()}
-            title="Get in touch"
-            padding="xl"
-            size="xl"
-            lockScroll={false}
-            styles={{
-                title: {
-                    fontSize: 32,
-                    fontWeight: 700,
-                    color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[6],
-                }
-            }}
+        <Container>
 
-        >
+            <MyTitle marginTop marginBottom>
+                {t('title')}
+            </MyTitle>
 
             <form onSubmit={(event) => event.preventDefault()}>
 
@@ -72,8 +56,8 @@ const ContactDrawer: React.FC<Props> = ({ closeDrawer, drawerOpened }: Props) =>
                 </div>
             </form>
 
-        </Drawer>
-    );
+        </Container>
+    )
 }
 
-export default ContactDrawer;
+export default ContactPage;

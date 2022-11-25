@@ -1,13 +1,12 @@
-import { ActionIcon, Box, Container, createStyles, Grid, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
-import { IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons';
-import React from 'react'
+import { ActionIcon, Box, Container, createStyles, Group, SimpleGrid, Stack, Text } from '@mantine/core';
+import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons';
+import useTranslation from 'next-translate/useTranslation';
 import ILink from '../link';
 
 const useStyles = createStyles((theme) => {
     return {
         footer: {
             backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : 'white',
-            borderTop: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}`,
         },
         text: {
             color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
@@ -25,6 +24,7 @@ const useStyles = createStyles((theme) => {
 
 const PageFooter = () => {
 
+    const { t } = useTranslation('common');
     const { classes, theme } = useStyles();
 
     return (
@@ -34,8 +34,8 @@ const PageFooter = () => {
                     <SimpleGrid cols={3}>
 
                         <Stack spacing={0}>
-                            <ILink url={'/privacy-policy'} type='internal'>Privacy policy</ILink>
-                            <ILink url={'/legal-notice'} type='internal'>Legal notice</ILink>
+                            <ILink url={'/privacy-policy'} type='internal'>{t('footer.privacyPolicy')}</ILink>
+                            <ILink url={'/legal-notice'} type='internal'>{t('footer.legalNotice')}</ILink>
                         </Stack>
 
                         <Text align='center' className={classes.text}>Designed & built by Sebastian Schuler </Text>
@@ -44,9 +44,9 @@ const PageFooter = () => {
                             <ActionIcon
                                 component='a'
                                 href='https://twitter.com/sebschuler'
-                                variant="subtle"
+                                variant='subtle'
                                 size={'lg'}
-                                title={'Sebastian Schuler on twitter'}
+                                title={t('footer.twitterLinkTitle')}
                                 className={classes.icon}
                             >
                                 <IconBrandTwitter size={24} />
@@ -54,12 +54,22 @@ const PageFooter = () => {
                             <ActionIcon
                                 component='a'
                                 href='https://www.linkedin.com/in/sebastian-schuler-8a1b8022b/'
-                                variant="subtle"
+                                variant='subtle'
                                 size={'lg'}
-                                title={'Sebastian Schuler on LinkedIn'}
+                                title={t('footer.linkedinLinkTitle')}
                                 className={classes.icon}
                             >
                                 <IconBrandLinkedin size={24} />
+                            </ActionIcon>
+                            <ActionIcon
+                                component='a'
+                                href='https://github.com/mildlyadequate'
+                                variant='subtle'
+                                size={'lg'}
+                                title={t('footer.githubLinkTitle')}
+                                className={classes.icon}
+                            >
+                                <IconBrandGithub size={24} />
                             </ActionIcon>
                         </Group>
 

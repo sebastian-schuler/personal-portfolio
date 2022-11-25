@@ -1,13 +1,12 @@
-import { Box, Burger, Button, Container, createStyles, Divider, Drawer, Group, Header, ScrollArea, Stack, Text, UnstyledButton } from '@mantine/core';
+import { Box, Burger, Button, Container, createStyles, Group, Header } from '@mantine/core';
 import { useDisclosure, useMediaQuery, useWindowScroll } from '@mantine/hooks';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
 import ColorSchemeSwitch from './color-scheme-switch';
-import ContactDrawer from './contact-drawer';
-import Contact from './contact-drawer';
-import LanguageSwitch from './language-switch';
+import LanguageDrawer from './language-drawer';
 import PageLogo from './page-logo';
+import PageNavMobile from './page-nav-mobile';
 
 export const HEADER_HEIGHT = 80;
 export const HEADER_MOBILE_HEIGHT = 60;
@@ -21,16 +20,24 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
   },
 
-  link: {
-    display: 'block',
+  menuItem: {
     lineHeight: 1,
-    padding: '8px 12px',
-    borderRadius: theme.radius.sm,
-    textDecoration: 'none',
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontSize: theme.fontSizes.lg,
     fontWeight: 500,
-    fontFamily: 'monospace, monospace',
+    borderRadius: 0,
+
+    '&:hover': {
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+      textDecoration: 'none',
+    },
+  },
+
+  menuItemActive: {
+    lineHeight: 1,
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    fontSize: theme.fontSizes.lg,
+    fontWeight: 600,
 
     '&:hover': {
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
@@ -55,40 +62,44 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface HeaderLink {
-  link: string; label: string; links?: { link: string; label: string }[];
+export interface NavHeaderLink {
+  link: string
+  label: string
+  isActive: boolean
 }
 
 const PageNav = () => {
 
   const { t } = useTranslation('common');
-
   const { classes, theme } = useStyles();
+  const router = useRouter();
   const [scroll] = useWindowScroll();
-
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
-  const [contactDrawerOpen, { toggle: toggleContactDrawer, close: closeContactDrawer }] = useDisclosure(false);
 
   const largeScreen = useMediaQuery('(min-width: ' + theme.breakpoints.sm + 'px)');
 
-  const links: HeaderLink[] = [
-    { link: '/', label: t('navItems.home') },
-    { link: '/projects', label: t('navItems.projects') },
-    { link: '/blog', label: t('navItems.blog') },
-  ]
-
-  const items = links.map((link, i) => {
-    return (
-      <Link key={i} href={link.link}>
-        <Text
-          key={link.label}
-          className={classes.link}
-        >
-          {link.label}
-        </Text>
-      </Link>
-    );
-  });
+  const navLinks: NavHeaderLink[] = [
+    {
+      link: '/',
+      label: t('navItems.home'),
+      isActive: router.route === '/'
+    },
+    {
+      link: '/projects',
+      label: t('navItems.projects'),
+      isActive: router.route.startsWith('/projects')
+    },
+    {
+      link: '/blog',
+      label: t('navItems.blog'),
+      isActive: router.route.startsWith('/blog')
+    },
+    {
+      link: '/contact',
+      label: t('navItems.contact'),
+      isActive: router.route === '/contact'
+    },
+  ];
 
   return (
     <>
@@ -107,22 +118,25 @@ const PageNav = () => {
             <PageLogo />
 
             <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
-              {items}
-
-              <UnstyledButton
-                className={classes.link}
-                onClick={() => toggleContactDrawer()}
-              >
-                {t('navItems.contact')}
-              </UnstyledButton>
+              {
+                navLinks.map((link, i) => (
+                  <Link key={i} href={link.link}>
+                    <Button
+                      key={link.label}
+                      variant='subtle'
+                      className={link.isActive ? classes.menuItemActive : classes.menuItem}
+                    >
+                      {link.label}
+                    </Button>
+                  </Link>
+                ))
+              }
 
               <Group ml={"md"}>
-
                 <ColorSchemeSwitch />
-
-                <LanguageSwitch />
-
+                <LanguageDrawer />
               </Group>
+
             </Group>
 
             <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
@@ -130,49 +144,12 @@ const PageNav = () => {
         </Container>
       </Header>
 
-      <Drawer
-        opened={drawerOpened}
-        onClose={closeDrawer}
-        size="100%"
-        padding="md"
-        title={t('mobileNavTitle')}
-        className={classes.hiddenDesktop}
-        zIndex={1000000}
-        transition={"slide-left"}
-        styles={(theme) => ({
-          closeButton: {
-            color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.dark[7],
-          }
-        })}
-      >
-        <ScrollArea sx={{ height: 'calc(100vh - ' + HEADER_HEIGHT + 'px)' }} mx="-md">
-
-          <Divider mb="lg" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.4'} />
-
-          <Stack spacing={"sm"}>
-            {items}
-
-            <UnstyledButton
-              className={classes.link}
-              onClick={() => {
-                closeDrawer();
-                toggleContactDrawer();
-              }}
-            >
-              {t('navItems.contact')}
-            </UnstyledButton>
-
-          </Stack>
-
-          <Divider mt="lg" mb="md" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.4'} />
-
-        </ScrollArea>
-      </Drawer>
-
-      <Contact
-        drawerOpened={contactDrawerOpen}
-        closeDrawer={closeContactDrawer}
+      <PageNavMobile
+        closeDrawer={closeDrawer}
+        drawerOpened={drawerOpened}
+        navLinks={navLinks}
       />
+
     </>
   );
 
