@@ -56,7 +56,7 @@ const ProjectsPage = ({ pageCount, projects }: Props) => {
           )
         }
       </Head>
-      <Container>
+      <Container pb={'xl'}>
 
         <PageBreadcrumbs />
         <MyTitle>{t("title")}</MyTitle>

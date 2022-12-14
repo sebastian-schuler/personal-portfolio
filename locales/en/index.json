@@ -88,21 +88,9 @@
 
   "work": {
     "title": "Work",
-    "items": [
-      {
-        "topline": "Featured Project",
-        "title": "Marketing Academy",
-        "url": "marketing-academy",
-        "paragraph": "Development of a CMS based website for the Marketing Academy of the University of Kaiserslautern using the given corporate identity design and drafts of a visual marketing campaign.",
-        "tags": ["WordPress", "Elementor", "Adobe XD"]
-      },
-      {
-        "topline": "Featured Project",
-        "title": "Marketing Academy",
-        "url": "marketing-academy",
-        "paragraph": "Development of a CMS based website for the Marketing Academy of the University of Kaiserslautern using the given corporate identity design and drafts of a visual marketing campaign.",
-        "tags": ["WordPress", "Elementor", "Adobe XD"]
-      }
-    ]
+    "toplineFeatured":"Featured Project",
+    "internalLinkTitle": "View {{title}} project page",
+    "externalLinkTitle": "View {{title}} website",
+    "githubLinkTitle": "View {{title}} on GitHub"
   }
 }

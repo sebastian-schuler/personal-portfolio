@@ -7,11 +7,11 @@ import Post from '../../interfaces/post'
 import Tag from '../../interfaces/tag'
 import { getAllPosts, getAllPostTags, getBlogPageCount } from '../../lib/apis/blogApi'
 import { PAGE_URL } from '../../lib/constants'
-import MyPagination from '../../ui/my-pagination'
 import BlogPostList from '../../ui/blog/blog-post-list'
 import BlogTagList from '../../ui/blog/blog-tag-list'
-import MyTitle from '../../ui/my-title'
 import PageBreadcrumbs from '../../ui/breadcrumbs'
+import MyPagination from '../../ui/my-pagination'
+import MyTitle from '../../ui/my-title'
 
 interface Props {
   pageCount: number
@@ -59,14 +59,14 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
           )
         }
       </Head>
-      <Container>
+      <Container pb={'xl'}>
 
         <PageBreadcrumbs />
         <MyTitle>{t("title")}</MyTitle>
         <Text mt={'xs'}>{t("subtitle")}</Text>
         <Space h={'lg'} />
 
-        <Grid gutter={'xl'} pb={'xl'}>
+        <Grid gutter={'xl'}>
 
           <Grid.Col span={8}>
             <BlogPostList posts={allPosts} />

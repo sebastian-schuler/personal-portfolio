@@ -4,9 +4,12 @@ import React from 'react'
 const useStyles = createStyles((theme) => ({
 
     outer: {
-        // paddingTop: 100,
         paddingBottom: '48px',
         scrollMarginTop: 160,
+
+        [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+            scrollMarginTop: 100,
+        },
     },
 
     title: {

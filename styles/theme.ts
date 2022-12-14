@@ -75,25 +75,27 @@ const appTheme: MantineThemeOverride = {
         }
       }),
     },
+
     Container: {
       defaultProps: {
         size: 'md',
         px: 'lg',
       },
     },
+
     TypographyStylesProvider: {
       styles: (theme) => ({
         root: {
-          '& h1': {
-            color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5],
-            marginTop: theme.spacing.sm,
+          '& p': {
+            marginBottom: theme.spacing.md
           },
           '& h2': {
             color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5],
-            marginTop: theme.spacing.sm,
+            marginTop: theme.spacing.lg,
           },
           '& h3': {
-            color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5]
+            color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5],
+            marginTop: theme.spacing.lg,
           },
           '& h4': {
             color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5]
@@ -102,15 +104,21 @@ const appTheme: MantineThemeOverride = {
             color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5]
           },
           '& h6': {
-            color: theme.colors.primary[4],
+            fontWeight: 600,
           },
+          '& pre': {
+            padding: theme.spacing.md,
+          },
+          '& code': {
+            fontSize: theme.fontSizes.sm,
+          }
         }
       }),
     },
     Button: {
-      styles: (theme) => ({
+      styles: (theme,_params) => ({
         root: {
-          color: theme.colors.primary[4],
+          color: _params.variant === 'filled' ? theme.white : theme.colors.primary[4],
         },
       }),
     },

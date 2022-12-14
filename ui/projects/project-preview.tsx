@@ -1,4 +1,4 @@
-import { createStyles, Divider, Group, Text } from '@mantine/core';
+import { createStyles, Group, Text } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import { toLink } from '../../lib/util';
@@ -55,11 +55,11 @@ const ProjectPreview = ({ title, coverImage, date, excerpt, slug, tags, locales,
         <h3 className={classes.title}>{title}</h3>
       </Link>
 
-      <Group spacing={'sm'} className={classes.details}>
-        {tags.join(', ').toUpperCase()}
-        <Divider orientation='vertical' />
+      <Group noWrap spacing="sm" className={classes.details}>
+        <Text>{tags.join(', ')}</Text>
+        <Text>•</Text>
         <DateFormatter dateString={date} />
-        <Divider orientation='vertical' />
+        <Text>•</Text>
         {localeStrings.join(', ')}
       </Group>
 

@@ -26,6 +26,7 @@ export function getProjectSlugs(): SlugData[] {
     let projects = projectDirectories.map((project) => {
         return { value: project, locales: getSlugLocales(project) };
     });
+
     projects = projects.filter(project => project.locales.length > 0);
     return projects;
 }
@@ -69,6 +70,8 @@ export function getProjectBySlug(slug: string, fields: (keyof Project)[], option
     if (fields.includes('content')) items.content = content;
     if (fields.includes('ogImage')) items.ogImage = data.ogImage || '';
     if (fields.includes('ogDesc')) items.ogDesc = data.ogDesc || '';
+    if (fields.includes('githubUrl')) items.githubUrl = data.githubUrl || '';
+    if (fields.includes('externalUrl')) items.externalUrl = data.externalUrl || '';
 
     return items;
 }
@@ -129,7 +132,15 @@ export function getAllProjects(fields: (keyof Project)[], options?: GetAllProjec
     const projects = slugs
         .map((slug) => getProjectBySlug(slug.value, fields, { locale: options?.locale }))
         // sort projects by date in descending order
-        .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+        .sort((post1, post2) => {
+            if (post1.featured && !post2.featured) {
+                return -1
+            } else if (!post1.featured && post2.featured) {
+                return 1;
+            } else {
+                return post1.date > post2.date ? -1 : 1;
+            }
+        });
     return projects;
 }
 
@@ -186,6 +197,6 @@ export function getProjectsPageCount() {
 }
 
 function getSlugLocales(slug: string) {
-    const files = fs.readdirSync(join(process.cwd(), '_posts', slug));
+    const files = fs.readdirSync(join(process.cwd(), '_projects', slug));
     return files.map(name => name.replace(/\.md$/, ''));
 }

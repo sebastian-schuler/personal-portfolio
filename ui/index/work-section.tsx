@@ -4,6 +4,7 @@ import React from 'react'
 import FeaturedWorkItem from './work/featured-work-item'
 import SectionHeader from '../section-header'
 import OtherWorkItem from './work/other-work-item';
+import Project from '../../interfaces/project';
 
 const useStyles = createStyles((theme) => ({
 
@@ -29,29 +30,31 @@ interface FeaturedWorkItem {
     externalUrl?: string
 }
 
-const WorkSection = () => {
+interface Props {
+    featuredProjects: Project[]
+    otherProjects: Project[]
+}
+
+const WorkSection = ({ featuredProjects, otherProjects }: Props) => {
 
     const { t } = useTranslation('index');
     const { classes, theme } = useStyles();
-
-    const featuredItems: FeaturedWorkItem[] = t('work.items', {}, { returnObjects: true });
 
     return (
         <Box mb={"xl"}>
             <SectionHeader anchor='work' title='Work' subtext='Check out my featured projects below.' />
 
-            <Stack spacing={"xl"} mb={"xl"}>
+            <Stack spacing={"lg"} mb={"xl"}>
                 {
-                    featuredItems && Array.isArray(featuredItems) && featuredItems.map((item, index) => (
+                    featuredProjects.map((item, index) => (
 
                         <FeaturedWorkItem
                             key={item.title + index}
-                            topline={item.topline}
                             title={item.title}
-                            url={item.url}
-                            paragraph={item.paragraph}
+                            slug={item.slug}
+                            excerpt={item.excerpt}
                             tags={item.tags}
-                            contentPlacement={index % 2 === 0 ? 'left' : 'right'}
+                            placement={index % 2 === 0 ? 'left' : 'right'}
                             githubUrl={item.githubUrl}
                             externalUrl={item.externalUrl}
                         />
@@ -66,14 +69,19 @@ const WorkSection = () => {
             <Space h={'lg'} />
 
             <SimpleGrid cols={3}>
-                <OtherWorkItem
-                    title='Testproject where we do cool shit'
-                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel aliquam aliquam, nunc nisl aliquam nisl, eu aliquam nunc nisl eget nunc.'
-                    tags={['React', 'Next.js', 'TypeScript', 'Mantine']}
-                    internalLink='/work/testproject'
-                    externalLink='https://google.com'
-                    githubLink='https://github.com'
-                />
+                {
+                    otherProjects.map((item, index) => (
+                        <OtherWorkItem
+                            key={item.title + index}
+                            title={item.title}
+                            slug={item.slug}
+                            excerpt={item.excerpt}
+                            tags={item.tags}
+                            githubUrl={item.githubUrl}
+                            externalUrl={item.externalUrl}
+                        />
+                    ))
+                }
             </SimpleGrid>
 
         </Box>

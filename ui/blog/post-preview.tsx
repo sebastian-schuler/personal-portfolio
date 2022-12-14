@@ -26,10 +26,16 @@ const useStyles = createStyles((theme) => {
       color: theme.colors.primary[4],
       fontSize: '1.15em',
       lineHeight: 1,
+      fontWeight: 500,
 
       '&:hover': {
         textDecoration: 'underline',
       }
+    },
+
+    details: {
+      fontSize: '1.15em',
+      color: theme.colorScheme === 'dark' ? 'white' : theme.black,
     }
   };
 });
@@ -59,6 +65,8 @@ const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime, l
     </Link>
   ));
 
+  const localeStrings = locales.map(locale => t(`common:locale.${locale}`));
+
   return (
     <div>
 
@@ -67,18 +75,17 @@ const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime, l
       </Link>
 
       <Group position='apart' mt={'sm'}>
-
         <Group spacing={'sm'}>
           {tagList}
         </Group>
-
-        <LocaleFlags locales={locales} />
-
       </Group>
 
-      <Group position='apart' mb={'sm'}>
+      <Group noWrap spacing="sm" className={classes.details}>
         <DateFormatter dateString={date} />
+        <Text>•</Text>
         <Text>{readTime} {t("postReadTimeLabel")}</Text>
+        <Text>•</Text>
+        {localeStrings.join(', ')}
       </Group>
 
       <Text>
