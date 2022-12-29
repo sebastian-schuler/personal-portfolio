@@ -1,4 +1,4 @@
-import { Container } from '@mantine/core'
+import { Container, Divider, Space, Text, Title } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import ErrorPage from 'next/error'
@@ -6,23 +6,28 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
+import { Root } from 'remark-html'
 import Post from '../../../interfaces/post'
 import { getAllPosts, getPostBySlug } from '../../../lib/apis/blogApi'
 import { PAGE_URL } from '../../../lib/constants'
-import markdownToHtml from '../../../lib/markdownToHtml'
+import { parseMarkdown } from '../../../lib/markdown/customMarkdownParser'
+import markdownToHtml from '../../../lib/markdown/markdownToHtml'
 import { getMetaDescription } from '../../../lib/seoTools'
 import { formatDate } from '../../../lib/util'
-import PostBody from '../../../ui/blog/post-body'
+import PostFooter from '../../../ui/blog/post-footer'
 import PostHeader from '../../../ui/blog/post-header'
 import PageBreadcrumbs from '../../../ui/breadcrumbs'
 import MyTitle from '../../../ui/my-title'
 
 type Props = {
+  content: Root
   post: Post
   morePosts: Post[]
 }
 
-const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
+const BlogPost: React.FC<Props> = ({ post, morePosts, content }) => {
+
+  const jsxContent = parseMarkdown(content);
 
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
@@ -59,10 +64,14 @@ const BlogPost: React.FC<Props> = ({ post, morePosts }) => {
               date={post.date}
               tags={post.tags}
             />
-            <PostBody
-              excerpt={post.excerpt}
-              content={post.content || ""}
-            />
+
+            <Text mb={'lg'}>{post.excerpt}</Text>
+
+            {jsxContent}
+
+
+            <PostFooter />
+
           </article>
         </>
       )}
@@ -84,15 +93,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'coverImage',
     'tags',
   ], { locale: context.locale });
-
   const content = await markdownToHtml(post.content || '');
 
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      content: content,
+      post: post,
     },
     revalidate: 600, // In seconds
   }

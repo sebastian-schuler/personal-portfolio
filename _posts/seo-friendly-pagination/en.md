@@ -45,23 +45,23 @@ In it's developer blog, Google suggests using the `rel="canonical"` tag to solve
 Additionally, you can use the `rel="next"` and `rel="prev"` tags to tell search engines which page is the next or previous one ([Google Developers - Pagination with rel="next" and rel="prev"](https://developers.google.com/search/blog/2011/09/pagination-with-relnext-and-relprev)). This way, they will be able to index all pages and will be able to navigate between them.
 
 ```typescript
-  const getCanonicalLink = () => {
+const getCanonicalLink = () => {
     const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
     const pageNumber = currentPage > 1 ? "/page=" + currentPage : "";
     return `${PAGE_URL}/${localePart}blog${pageNumber}`
-  }
+}
 
-  const getPrevLink = () => {
+const getPrevLink = () => {
     const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
     const pageNumber = "/page=" + (currentPage - 1);
     return `${PAGE_URL}/${localePart}blog${pageNumber}`
-  }
+}
 
-  const getNextLink = () => {
+const getNextLink = () => {
     const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
     const pageNumber = "/page=" + (currentPage + 1);
     return `${PAGE_URL}/${localePart}blog${pageNumber}`
-  }
+}
 ```
 
 These functions inside our blog component will generate canonical, next, and prev links. You can leave out `localePart` if your website doesn't support multiple languages. The constant `PAGE_URL` contains the base URL of your website. The final links should look something like this:
@@ -94,7 +94,7 @@ Notice that we only add the `rel="prev"` and `rel="next"` tags if there is a pre
 
 To use the Mantine pagination component with your newly created pagination, you need to make use of the `itemComponent` prop in Mantines pagination component. This prop allows you to pass a custom component that will be used to render each page. This custom component should be a Next.js Link to make use of Next.js' client-side navigation. I'll show you an example component below.
 
-```typescript
+```tsx
 interface Props {
     currentPage: number
     pageCount: number

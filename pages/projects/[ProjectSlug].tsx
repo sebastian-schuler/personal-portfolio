@@ -4,7 +4,7 @@ import { ParsedUrlQuery } from 'querystring';
 import React from 'react'
 import Project from '../../interfaces/project';
 import { getAllProjects, getProjectBySlug } from '../../lib/apis/projectApi';
-import markdownToHtml from '../../lib/markdownToHtml';
+import markdownToHtml from '../../lib/markdown/markdownToHtml';
 import ErrorPage from 'next/error'
 import useTranslation from 'next-translate/useTranslation';
 import { Container } from '@mantine/core';
