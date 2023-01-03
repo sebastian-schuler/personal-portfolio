@@ -118,7 +118,7 @@ const ExperienceSection = () => {
 
     return (
         <Box mb={"xl"}>
-            <SectionHeader anchor='experience' title={t("experience.title")} order={1} />
+            <SectionHeader anchor='experience' title={t("experience.title")} />
 
             <Tabs orientation="vertical" defaultValue="hskl">
                 <Tabs.List>

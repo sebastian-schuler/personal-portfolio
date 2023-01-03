@@ -1,33 +1,38 @@
+import { Container } from '@mantine/core';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import useTranslation from 'next-translate/useTranslation';
+import ErrorPage from 'next/error';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
-import React from 'react'
+import React from 'react';
+import { Root } from 'remark-html';
 import Project from '../../interfaces/project';
 import { getAllProjects, getProjectBySlug } from '../../lib/apis/projectApi';
+import { PAGE_URL } from '../../lib/constants';
+import { MarkdownParser } from '../../lib/markdown/customMarkdownParser';
 import markdownToHtml from '../../lib/markdown/markdownToHtml';
-import ErrorPage from 'next/error'
-import useTranslation from 'next-translate/useTranslation';
-import { Container } from '@mantine/core';
-import PageBreadcrumbs from '../../ui/breadcrumbs';
-import MyTitle from '../../ui/my-title';
-import Head from 'next/head';
 import { getMetaDescription } from '../../lib/seoTools';
 import { formatDate } from '../../lib/util';
-import { PAGE_URL } from '../../lib/constants';
+import PageBreadcrumbs from '../../ui/breadcrumbs';
+import MyTitle from '../../ui/my-title';
 import ProjectHeader from '../../ui/projects/project-header';
-import ProjectBody from '../../ui/projects/project-body';
 
 type Props = {
+    content: Root
     project: Project
 }
 
-const ProjectPage: React.FC<Props> = ({ project }) => {
+const ProjectPage: React.FC<Props> = ({ content, project }) => {
 
     const router = useRouter()
     if (!router.isFallback && !project?.slug) {
         return <ErrorPage statusCode={404} />
     }
 
+    const parser = new MarkdownParser();
+    const jsxContent = parser.parseMarkdown(content);
+    
     const { t, lang } = useTranslation('projects');
     const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
 
@@ -59,10 +64,9 @@ const ProjectPage: React.FC<Props> = ({ project }) => {
                             tags={project.tags}
                             locales={project.locales}
                         />
-                        <ProjectBody
-                            excerpt={project.excerpt}
-                            content={project.content || ""}
-                        />
+
+                        {jsxContent}
+
                     </article>
                 </>
             )}
@@ -89,10 +93,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     return {
         props: {
-            project: {
-                ...project,
-                content,
-            },
+            content,
+            project,
         },
         revalidate: 600, // In seconds
     }

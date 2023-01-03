@@ -1,4 +1,4 @@
-import { Container, Divider, Space, Text, Title } from '@mantine/core'
+import { Container, Text } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import ErrorPage from 'next/error'
@@ -10,7 +10,7 @@ import { Root } from 'remark-html'
 import Post from '../../../interfaces/post'
 import { getAllPosts, getPostBySlug } from '../../../lib/apis/blogApi'
 import { PAGE_URL } from '../../../lib/constants'
-import { parseMarkdown } from '../../../lib/markdown/customMarkdownParser'
+import { MarkdownParser } from '../../../lib/markdown/customMarkdownParser'
 import markdownToHtml from '../../../lib/markdown/markdownToHtml'
 import { getMetaDescription } from '../../../lib/seoTools'
 import { formatDate } from '../../../lib/util'
@@ -27,7 +27,8 @@ type Props = {
 
 const BlogPost: React.FC<Props> = ({ post, morePosts, content }) => {
 
-  const jsxContent = parseMarkdown(content);
+  const parser = new MarkdownParser();
+  const jsxContent = parser.parseMarkdown(content);
 
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
@@ -69,7 +70,6 @@ const BlogPost: React.FC<Props> = ({ post, morePosts, content }) => {
 
             {jsxContent}
 
-
             <PostFooter />
 
           </article>
@@ -93,6 +93,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'coverImage',
     'tags',
   ], { locale: context.locale });
+
   const content = await markdownToHtml(post.content || '');
 
   return {

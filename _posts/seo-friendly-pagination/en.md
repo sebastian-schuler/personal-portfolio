@@ -9,7 +9,8 @@ ogDesc: 'An easy guide on how and why to implement a pagination in Next.JS'
 tags: 'next,mantine,seo'
 readTime: 10
 ---
-***When to use pagination?***\
+## When to use pagination?
+
 Websites that use dynamic content, such as blogs (just like this one) or ecommerce platforms will usually have too much content to list on a single page. Statically displaying every article or product on the same page is going to cause the file size to be way too large. Dynamically loading content ('endless scrolling') is terrible for SEO as search engine bots can't see the dynamic content. A properly implemented pagination will give you the best of both worlds, good SEO and small file sizes.
 
 ## Pagination in Next.js
