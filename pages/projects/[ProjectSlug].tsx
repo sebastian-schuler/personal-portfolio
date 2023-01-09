@@ -8,7 +8,7 @@ import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 import { Root } from 'remark-html';
 import Project from '../../interfaces/project';
-import { getAllProjects, getProjectBySlug } from '../../lib/apis/projectApi';
+import { getAllProjects, getProjectBySlug, getRecommendedProjects } from '../../lib/apis/projectApi';
 import { PAGE_URL } from '../../lib/constants';
 import { MarkdownParser } from '../../lib/markdown/customMarkdownParser';
 import markdownToHtml from '../../lib/markdown/markdownToHtml';
@@ -16,14 +16,17 @@ import { getMetaDescription } from '../../lib/seoTools';
 import { formatDate } from '../../lib/util';
 import PageBreadcrumbs from '../../ui/breadcrumbs';
 import MyTitle from '../../ui/my-title';
+import ProjectFooter from '../../ui/projects/project-footer';
 import ProjectHeader from '../../ui/projects/project-header';
+import TableOfContents from '../../ui/tableOfContents';
 
 type Props = {
     content: Root
     project: Project
+    recommendedProjects: Project[]
 }
 
-const ProjectPage: React.FC<Props> = ({ content, project }) => {
+const ProjectPage: React.FC<Props> = ({ content, project, recommendedProjects }) => {
 
     const router = useRouter()
     if (!router.isFallback && !project?.slug) {
@@ -32,7 +35,8 @@ const ProjectPage: React.FC<Props> = ({ content, project }) => {
 
     const parser = new MarkdownParser();
     const jsxContent = parser.parseMarkdown(content);
-    
+    const headers = parser.getHeaders();
+
     const { t, lang } = useTranslation('projects');
     const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
 
@@ -63,9 +67,14 @@ const ProjectPage: React.FC<Props> = ({ content, project }) => {
                             date={project.date}
                             tags={project.tags}
                             locales={project.locales}
+                            excerpt={project.excerpt}
                         />
 
+                        <TableOfContents headers={headers} />
+
                         {jsxContent}
+
+                        <ProjectFooter recommendedProjects={recommendedProjects} />
 
                     </article>
                 </>
@@ -89,12 +98,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
         'tags',
     ], { locale: context.locale });
 
+    const recommendedProjects = getRecommendedProjects(slug, project.tags);
     const content = await markdownToHtml(project.content || '');
 
     return {
         props: {
             content,
             project,
+            recommendedProjects
         },
         revalidate: 600, // In seconds
     }

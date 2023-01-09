@@ -4,6 +4,7 @@ import { join } from 'path';
 import Post from '../../interfaces/post';
 import ItemData from '../../interfaces/item-data';
 import Tag from '../../interfaces/tag';
+import { arrSampleSize, clamp } from '../util';
 
 const POSTS_PER_PAGE = 10;
 
@@ -186,7 +187,40 @@ export function getBlogPageCount() {
     return Math.ceil(getPostCount() / POSTS_PER_PAGE);
 }
 
+/**
+ * Get all existing locales for a slug
+ * @param slug 
+ * @returns 
+ */
 function getSlugLocales(slug: string) {
     const files = fs.readdirSync(join(process.cwd(), '_posts', slug));
     return files.map(name => name.replace(/\.md$/, ''));
+}
+
+/**
+ * Get a number of recommended posts based on tags
+ * @param slug 
+ * @param tags 
+ * @returns 
+ */
+export function getRecommendedPosts(slug: string, tags: string[]) {
+
+    const allPosts = getAllPosts(['slug', 'tags', 'title', 'locales', 'readTime']);
+    const matchingTags = allPosts.filter(p => p.tags.some(t => tags.includes(t)) && p.slug !== slug);
+    const recommendedPosts = arrSampleSize(matchingTags, clamp(4, 0, matchingTags.length));
+
+    // If there are not enough posts, fill the rest with random posts
+    if (recommendedPosts.length < 4) {
+
+        // Filter out posts that are already recommended
+        const notSelected = allPosts.filter(p => !recommendedPosts.some(r => r.slug === p.slug));
+
+        // Get random posts
+        const randomPosts = arrSampleSize(notSelected, 4 - recommendedPosts.length);
+
+        // Add random posts to recommended posts
+        recommendedPosts.push(...randomPosts);
+    }
+
+    return recommendedPosts;
 }

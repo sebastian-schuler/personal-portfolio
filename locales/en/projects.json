@@ -10,5 +10,7 @@
         "people": "People",
         "published": "Published",
         "languages": "Available languages"
-    }
+    },
+
+    "otherProjectsHeader": "Other projects you might like"
 }

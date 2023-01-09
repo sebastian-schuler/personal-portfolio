@@ -8,7 +8,7 @@ import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
 import { Root } from 'remark-html'
 import Post from '../../../interfaces/post'
-import { getAllPosts, getPostBySlug } from '../../../lib/apis/blogApi'
+import { getAllPosts, getPostBySlug, getRecommendedPosts } from '../../../lib/apis/blogApi'
 import { PAGE_URL } from '../../../lib/constants'
 import { MarkdownParser } from '../../../lib/markdown/customMarkdownParser'
 import markdownToHtml from '../../../lib/markdown/markdownToHtml'
@@ -18,17 +18,19 @@ import PostFooter from '../../../ui/blog/post-footer'
 import PostHeader from '../../../ui/blog/post-header'
 import PageBreadcrumbs from '../../../ui/breadcrumbs'
 import MyTitle from '../../../ui/my-title'
+import TableOfContents from '../../../ui/tableOfContents'
 
 type Props = {
   content: Root
   post: Post
-  morePosts: Post[]
+  recommendedPosts: Post[]
 }
 
-const BlogPost: React.FC<Props> = ({ post, morePosts, content }) => {
+const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
 
   const parser = new MarkdownParser();
   const jsxContent = parser.parseMarkdown(content);
+  const headers = parser.getHeaders();
 
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
@@ -64,13 +66,14 @@ const BlogPost: React.FC<Props> = ({ post, morePosts, content }) => {
               coverImage={post.coverImage}
               date={post.date}
               tags={post.tags}
+              excerpt={post.excerpt}
             />
 
-            <Text mb={'lg'}>{post.excerpt}</Text>
+            <TableOfContents headers={headers} />
 
             {jsxContent}
 
-            <PostFooter />
+            <PostFooter recommendedPosts={recommendedPosts}/>
 
           </article>
         </>
@@ -81,7 +84,7 @@ const BlogPost: React.FC<Props> = ({ post, morePosts, content }) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
 
-  const slug = context.params?.PostSlug as string
+  const slug = context.params?.PostSlug as string;
 
   const post = getPostBySlug(slug, [
     'title',
@@ -94,12 +97,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'tags',
   ], { locale: context.locale });
 
+  const recommendedPosts = getRecommendedPosts(slug, post.tags);
+
   const content = await markdownToHtml(post.content || '');
 
   return {
     props: {
-      content: content,
-      post: post,
+      content,
+      post,
+      recommendedPosts,
     },
     revalidate: 600, // In seconds
   }

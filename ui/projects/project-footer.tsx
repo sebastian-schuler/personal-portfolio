@@ -1,9 +1,7 @@
-import { Card, createStyles, Divider, SimpleGrid, Space, Text, Title } from '@mantine/core';
-import { NextLink } from '@mantine/next';
+import { Card, createStyles, Divider, SimpleGrid, Space, Text } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
-import React from 'react'
-import Post from '../../interfaces/post';
+import Project from '../../interfaces/project';
 
 const useStyles = createStyles((theme) => {
 
@@ -28,27 +26,27 @@ const useStyles = createStyles((theme) => {
 });
 
 type Props = {
-    recommendedPosts: Post[]
+    recommendedProjects: Project[]
 }
 
-const PostFooter = ({ recommendedPosts }: Props) => {
+const ProjectFooter = ({ recommendedProjects }: Props) => {
 
     const { classes } = useStyles();
-    const { t } = useTranslation('blog');
+    const { t } = useTranslation('projects');
 
     return (
         <>
             <Divider mt={'xl'} mb={'lg'} />
 
-            <Text size={"lg"} mb={"lg"} weight={"bold"} className={classes.title}>{t("otherPostsHeader")}</Text>
+            <Text size={"lg"} mb={"lg"} weight={"bold"} className={classes.title}>{t("otherProjectsHeader")}</Text>
 
             <SimpleGrid cols={2}>
                 {
-                    recommendedPosts.map((post, index) => (
-                        <Link key={index} href={`/blog/post/${post.slug}`}>
+                    recommendedProjects.map((project, index) => (
+                        <Link key={index} href={`/projects/${project.slug}`} title={`Project: ${project.title}`}>
                             <Card className={classes.card}>
-                                <Text className={classes.cardTitle}>{post.title}</Text>
-                                <Text lineClamp={3}>{post.excerpt}</Text>
+                                <Text className={classes.cardTitle}>{project.title}</Text>
+                                <Text lineClamp={3}>{project.excerpt}</Text>
                             </Card>
                         </Link>
                     ))
@@ -60,4 +58,4 @@ const PostFooter = ({ recommendedPosts }: Props) => {
     )
 }
 
-export default PostFooter;
+export default ProjectFooter;

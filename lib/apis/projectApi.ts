@@ -4,6 +4,7 @@ import { join } from 'path';
 import ItemData from '../../interfaces/item-data';
 import Tag from '../../interfaces/tag';
 import Project from '../../interfaces/project';
+import { arrSampleSize, clamp } from '../util';
 
 const PROJECTS_PER_PAGE = 10;
 
@@ -196,7 +197,40 @@ export function getProjectsPageCount() {
     return Math.ceil(getProjectCount() / PROJECTS_PER_PAGE);
 }
 
+/**
+ * Get all existing locales for a slug
+ * @param slug 
+ * @returns 
+ */
 function getSlugLocales(slug: string) {
     const files = fs.readdirSync(join(process.cwd(), '_projects', slug));
     return files.map(name => name.replace(/\.md$/, ''));
+}
+
+/**
+ * Get a number of recommended projects based on tags
+ * @param slug 
+ * @param tags 
+ * @returns 
+ */
+export function getRecommendedProjects(slug: string, tags: string[]) {
+
+    const allPosts = getAllProjects(['slug', 'tags', 'title', 'locales']);
+    const matchingTags = allPosts.filter(p => p.tags.some(t => tags.includes(t)) && p.slug !== slug);
+    const recommendedProjects = arrSampleSize(matchingTags, clamp(4, 0, matchingTags.length));
+
+    // If there are not enough projects, fill the rest with random projects
+    if (recommendedProjects.length < 4) {
+
+        // Filter out projects that are already recommended
+        const notSelected = allPosts.filter(p => !recommendedProjects.some(r => r.slug === p.slug));
+
+        // Get random projects
+        const randomProjects = arrSampleSize(notSelected, 4 - recommendedProjects.length);
+
+        // Add random projects to recommended posts
+        recommendedProjects.push(...randomProjects);
+    }
+
+    return recommendedProjects;
 }

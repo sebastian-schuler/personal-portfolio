@@ -10,9 +10,10 @@ type Props = {
     date: string
     tags: string[]
     locales: string[]
+    excerpt: string
 }
 
-const ProjectHeader = ({ title, coverImage, date, tags, locales }: Props) => {
+const ProjectHeader = ({ title, coverImage, date, tags, locales, excerpt }: Props) => {
 
     const { t } = useTranslation('projects');
     const localeStrings = locales.map(locale => t(`common:locale.${locale}`));
@@ -48,6 +49,8 @@ const ProjectHeader = ({ title, coverImage, date, tags, locales }: Props) => {
             <Divider mt={'md'} mb={'xs'} />
             <PostSharePanel title={title} />
             <Divider mb={'md'} mt={'xs'} />
+
+            <Text>{excerpt}</Text>
         </Stack>
     )
 }

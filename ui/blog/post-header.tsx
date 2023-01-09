@@ -1,8 +1,4 @@
-import { ActionIcon, Divider, Group, Popover, Stack, Text } from "@mantine/core"
-import { IconBrandFacebook, IconBrandLinkedin, IconBrandTwitter, IconLink } from "@tabler/icons"
-import useTranslation from "next-translate/useTranslation"
-import Link from "next/link"
-import { useState } from "react"
+import { Divider, Group, Stack, Text } from "@mantine/core"
 import { toLink } from "../../lib/util"
 import DateFormatter from "../date-formatter"
 import ILink from "../link"
@@ -14,9 +10,10 @@ type Props = {
     coverImage: string
     date: string
     tags: string[]
+    excerpt: string
 }
 
-const PostHeader = ({ title, coverImage, date, tags }: Props) => {
+const PostHeader = ({ title, coverImage, date, tags, excerpt }: Props) => {
 
     return (
         <Stack spacing={0} mb={'md'}>
@@ -35,6 +32,8 @@ const PostHeader = ({ title, coverImage, date, tags }: Props) => {
             <Divider mt={'md'} mb={'xs'} />
             <PostSharePanel title={title} />
             <Divider mb={'md'} mt={'xs'} />
+
+            <Text>{excerpt}</Text>
         </Stack>
     )
 }

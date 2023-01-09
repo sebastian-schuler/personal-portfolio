@@ -36,5 +36,9 @@
     "twitterLinkTitle": "Sebastian Schuler on Twitter",
     "githubLinkTitle": "Sebastian Schuler on GitHub",
     "linkedinLinkTitle": "Sebastian Schuler on LinkedIn"
+  },
+
+  "post": {
+    "tableOfContents": "Table of Contents"
   }
 }

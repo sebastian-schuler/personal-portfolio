@@ -14,5 +14,7 @@
 
     "blogPageTabTitle": "Blog by Sebastian Schuler | Page {{page}}",
     "tagPageTabTitle": "{{tag}} articles by Sebastian Schuler",
-    "blogPostTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}"
+    "blogPostTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}",
+
+    "otherPostsHeader": "Other posts you might like"
 }
