@@ -3,7 +3,7 @@ import { NextLink } from '@mantine/next';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import React from 'react'
-import Post from '../../interfaces/post';
+import { Post } from '../../interfaces/post';
 
 const useStyles = createStyles((theme) => {
 
@@ -45,7 +45,7 @@ const PostFooter = ({ recommendedPosts }: Props) => {
             <SimpleGrid cols={2}>
                 {
                     recommendedPosts.map((post, index) => (
-                        <Link key={index} href={`/blog/post/${post.slug}`}>
+                        <Link key={index} href={`/blog/${post.slug}`}>
                             <Card className={classes.card}>
                                 <Text className={classes.cardTitle}>{post.title}</Text>
                                 <Text lineClamp={3}>{post.excerpt}</Text>

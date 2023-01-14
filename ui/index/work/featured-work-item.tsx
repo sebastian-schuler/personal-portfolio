@@ -62,7 +62,7 @@ const FeaturedWorkItem: React.FC<Props> = ({ slug, title, excerpt, tags, placeme
     const { classes, theme } = useStyles();
     const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
     const isLeft = placement === "left" || smallScreen;
-    const internalUrl = toLink('projects', slug)
+    const internalUrl = toLink('blog', slug)
 
     const image = (
         <Image src={'images/projects/thumbnails/marketing-akademie-thumbnail.png'} height={350} fit="cover" />

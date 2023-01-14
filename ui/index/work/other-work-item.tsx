@@ -64,7 +64,7 @@ const OtherWorkItem = ({ slug, title, excerpt, tags, githubUrl, externalUrl }: P
 
     const { classes } = useStyles();
     const { t } = useTranslation('index');
-    const internalUrl = toLink('projects', slug)
+    const internalUrl = toLink('blog', slug)
 
     return (
         <Card radius="md" shadow={'sm'} p={0} className={classes.card}>

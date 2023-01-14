@@ -16,5 +16,11 @@
     "tagPageTabTitle": "{{tag}} articles by Sebastian Schuler",
     "blogPostTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}",
 
-    "otherPostsHeader": "Other posts you might like"
+    "otherPostsHeader": "Other posts you might like",
+
+    "postTypeProject": "Project",
+    "postTypeArticle": "Article",
+
+    "postPreviewLinkTitle": "Read more about '{{title}}'"
+
 }

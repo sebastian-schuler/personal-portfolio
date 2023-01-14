@@ -4,7 +4,7 @@ import React from 'react'
 import FeaturedWorkItem from './work/featured-work-item'
 import SectionHeader from '../section-header'
 import OtherWorkItem from './work/other-work-item';
-import Project from '../../interfaces/project';
+import { Post } from '../../interfaces/post';
 
 const useStyles = createStyles((theme) => ({
 
@@ -31,8 +31,8 @@ interface FeaturedWorkItem {
 }
 
 interface Props {
-    featuredProjects: Project[]
-    otherProjects: Project[]
+    featuredProjects: Post[]
+    otherProjects: Post[]
 }
 
 const WorkSection = ({ featuredProjects, otherProjects }: Props) => {
@@ -47,18 +47,17 @@ const WorkSection = ({ featuredProjects, otherProjects }: Props) => {
             <Stack spacing={"lg"} mb={"xl"}>
                 {
                     featuredProjects.map((item, index) => (
-
-                        <FeaturedWorkItem
-                            key={item.title + index}
-                            title={item.title}
-                            slug={item.slug}
-                            excerpt={item.excerpt}
-                            tags={item.tags}
-                            placement={index % 2 === 0 ? 'left' : 'right'}
-                            githubUrl={item.githubUrl}
-                            externalUrl={item.externalUrl}
-                        />
-
+                        item.type === "project" ?
+                            <FeaturedWorkItem
+                                key={item.title + index}
+                                title={item.title}
+                                slug={item.slug}
+                                excerpt={item.excerpt}
+                                tags={item.tags}
+                                placement={index % 2 === 0 ? 'left' : 'right'}
+                                githubUrl={item.githubUrl}
+                                externalUrl={item.externalUrl}
+                            /> : null
                     ))
                 }
             </Stack>
@@ -68,18 +67,25 @@ const WorkSection = ({ featuredProjects, otherProjects }: Props) => {
 
             <Space h={'lg'} />
 
-            <SimpleGrid cols={3}>
+            <SimpleGrid
+                breakpoints={[
+                    { minWidth: 'md', cols: 3, spacing: 'md' },
+                    { minWidth: 'sm', cols: 2, spacing: 'sm' },
+                    { minWidth: 'xs', cols: 1, spacing: 'sm' },
+                ]}
+            >
                 {
                     otherProjects.map((item, index) => (
-                        <OtherWorkItem
-                            key={item.title + index}
-                            title={item.title}
-                            slug={item.slug}
-                            excerpt={item.excerpt}
-                            tags={item.tags}
-                            githubUrl={item.githubUrl}
-                            externalUrl={item.externalUrl}
-                        />
+                        item.type === "project" ?
+                            <OtherWorkItem
+                                key={item.title + index}
+                                title={item.title}
+                                slug={item.slug}
+                                excerpt={item.excerpt}
+                                tags={item.tags}
+                                githubUrl={item.githubUrl}
+                                externalUrl={item.externalUrl}
+                            /> : null
                     ))
                 }
             </SimpleGrid>

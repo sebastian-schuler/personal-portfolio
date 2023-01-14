@@ -3,9 +3,9 @@ import { GetServerSideProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Post from '../../interfaces/post'
+import { Post } from '../../interfaces/post'
 import Tag from '../../interfaces/tag'
-import { getAllPosts, getAllPostTags, getBlogPageCount } from '../../lib/apis/blogApi'
+import { getAllPosts, getAllPostTags, getBlogPageCount } from '../../lib/api/blogApi'
 import { PAGE_URL } from '../../lib/constants'
 import BlogPostList from '../../ui/blog/blog-post-list'
 import BlogTagList from '../../ui/blog/blog-tag-list'
@@ -106,7 +106,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     page: page,
     locale: context.locale
   });
-
+  
   return {
     props: {
       pageCount,

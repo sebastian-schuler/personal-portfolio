@@ -1,9 +1,9 @@
-import { createStyles, Group, Text } from '@mantine/core'
+import { Badge, createStyles, Group, Stack, Text, Title } from '@mantine/core'
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link'
+import { PostType } from '../../interfaces/post';
 import { toLink } from '../../lib/util'
 import DateFormatter from '../date-formatter'
-import LocaleFlags from '../locale-flags';
 
 const useStyles = createStyles((theme) => {
 
@@ -20,19 +20,6 @@ const useStyles = createStyles((theme) => {
       }
     },
 
-    tag: {
-      textTransform: 'uppercase',
-      fontFamily: theme.fontFamilyMonospace,
-      color: theme.colors.primary[4],
-      fontSize: '1.15em',
-      lineHeight: 1,
-      fontWeight: 500,
-
-      '&:hover': {
-        textDecoration: 'underline',
-      }
-    },
-
     details: {
       fontSize: '1.15em',
       color: theme.colorScheme === 'dark' ? 'white' : theme.black,
@@ -41,6 +28,7 @@ const useStyles = createStyles((theme) => {
 });
 
 interface Props {
+  type: PostType
   title: string
   coverImage: string
   date: string
@@ -51,48 +39,64 @@ interface Props {
   locales: string[]
 }
 
-const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime, locales }: Props) => {
+const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readTime, locales }: Props) => {
 
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
   const { t } = useTranslation('blog');
 
+  const articleLink = toLink('blog', slug);
+
+  const postTypeNode = type === 'article' ?
+    <Badge
+      variant='outline'
+      radius={'md'}
+      color={theme.colorScheme === "dark" ? 'themeBlue.6' : 'themeBlue.4'}
+      size={'md'}
+    >{t('postTypeArticle')}</Badge> :
+    <Badge
+      variant='outline'
+      radius={'md'}
+      color={ theme.colorScheme === "dark" ? 'themePurple.0' : 'themePurple.1'}
+      size={'md'}
+    >{t('postTypeProject')}</Badge>;
+
   const tagList = tags.map((tag, i) => (
-    <Link
-      key={i}
-      href={toLink('blog', 'tag', tag)}
-    >
-      <Text key={i + 'text'} className={classes.tag}>#{tag}</Text>
-    </Link>
+    <Badge
+      variant='outline'
+      key={i + 'text'}
+      color={theme.colorScheme === "dark" ? 'primary.4' : 'primary.4'}
+      size={'md'}
+      radius={'md'}
+    >#{tag}</Badge>
   ));
 
   const localeStrings = locales.map(locale => t(`common:locale.${locale}`));
 
   return (
-    <div>
+    <Link href={articleLink} title={t('postPreviewLinkTitle', { title: title })}>
+      <Stack spacing={"sm"}>
 
-      <Link href={toLink('blog', 'post', slug)}>
-        <h3 className={classes.title}>{title}</h3>
-      </Link>
+        <Title order={3} className={classes.title}>{title}</Title>
 
-      <Group position='apart' mt={'sm'}>
         <Group spacing={'sm'}>
+          {postTypeNode}
           {tagList}
         </Group>
-      </Group>
 
-      <Group noWrap spacing="sm" className={classes.details}>
-        <DateFormatter dateString={date} />
-        <Text>•</Text>
-        <Text>{readTime} {t("postReadTimeLabel")}</Text>
-        <Text>•</Text>
-        {localeStrings.join(', ')}
-      </Group>
+        <Group noWrap spacing="sm" className={classes.details}>
+          <DateFormatter dateString={date} />
+          <Text>•</Text>
+          <Text>{readTime} {t("postReadTimeLabel")}</Text>
+          <Text>•</Text>
+          {localeStrings.join(', ')}
+        </Group>
 
-      <Text>
-        {excerpt}
-      </Text>
+        <Text color={theme.colorScheme === "dark" ? theme.white :  theme.colors.gray[7]}>
+          {excerpt}
+        </Text>
 
-    </div>
+      </Stack>
+    </Link>
   )
 }
 

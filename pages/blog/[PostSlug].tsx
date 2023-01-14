@@ -1,4 +1,4 @@
-import { Container, Text } from '@mantine/core'
+import { Container } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import ErrorPage from 'next/error'
@@ -7,18 +7,18 @@ import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
 import { Root } from 'remark-html'
-import Post from '../../../interfaces/post'
-import { getAllPosts, getPostBySlug, getRecommendedPosts } from '../../../lib/apis/blogApi'
-import { PAGE_URL } from '../../../lib/constants'
-import { MarkdownParser } from '../../../lib/markdown/customMarkdownParser'
-import markdownToHtml from '../../../lib/markdown/markdownToHtml'
-import { getMetaDescription } from '../../../lib/seoTools'
-import { formatDate } from '../../../lib/util'
-import PostFooter from '../../../ui/blog/post-footer'
-import PostHeader from '../../../ui/blog/post-header'
-import PageBreadcrumbs from '../../../ui/breadcrumbs'
-import MyTitle from '../../../ui/my-title'
-import TableOfContents from '../../../ui/tableOfContents'
+import { Post } from '../../interfaces/post'
+import { getAllPosts, getPostBySlug, getRecommendedPosts } from '../../lib/api/blogApi'
+import { PAGE_URL } from '../../lib/constants'
+import { MarkdownParser } from '../../lib/markdown/customMarkdownParser'
+import markdownToHtml from '../../lib/markdown/markdownToHtml'
+import { getMetaDescription } from '../../lib/seoTools'
+import { formatDate } from '../../lib/util'
+import PostFooter from '../../ui/blog/post-footer'
+import PostHeader from '../../ui/blog/post-header'
+import PageBreadcrumbs from '../../ui/breadcrumbs'
+import MyTitle from '../../ui/my-title'
+import TableOfContents from '../../ui/table-of-contents'
 
 type Props = {
   content: Root
@@ -62,6 +62,7 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
             </Head>
 
             <PostHeader
+              type={post.type}
               title={post.title}
               coverImage={post.coverImage}
               date={post.date}
@@ -73,7 +74,7 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
 
             {jsxContent}
 
-            <PostFooter recommendedPosts={recommendedPosts}/>
+            <PostFooter recommendedPosts={recommendedPosts} />
 
           </article>
         </>
@@ -97,8 +98,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'tags',
   ], { locale: context.locale });
 
-  const recommendedPosts = getRecommendedPosts(slug, post.tags);
-
+  const recommendedPosts = getRecommendedPosts(slug, post.tags, post.type);
   const content = await markdownToHtml(post.content || '');
 
   return {

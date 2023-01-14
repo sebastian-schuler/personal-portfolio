@@ -1,5 +1,5 @@
 import { Divider, Stack } from '@mantine/core';
-import Post from '../../interfaces/post';
+import { Post } from '../../interfaces/post';
 import PostPreview from './post-preview';
 
 interface Props {
@@ -14,10 +14,11 @@ const BlogPostList = ({ posts }: Props) => {
                     posts.map((post, i) => (
                         <div key={i}>
                             <PostPreview
+                                type={post.type}
                                 title={post.title}
                                 coverImage={post.coverImage}
                                 date={post.date}
-                                excerpt={post.excerpt || ''}
+                                excerpt={post.excerpt}
                                 slug={post.slug}
                                 tags={post.tags}
                                 readTime={post.readTime}

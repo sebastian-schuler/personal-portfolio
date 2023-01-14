@@ -1,14 +1,13 @@
 ---
-title: 'Marketing Academy'
-excerpt: 'Development of a CMS based website for the Marketing Academy of the University of Kaiserslautern using the given corporate identity design and drafts of a visual marketing campaign.'
+type: 'article'
+title: 'Making A Simple Web-Crawler in Node.js'
+excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
 coverImage: '/assets/blog/preview/cover.jpg'
-date: '2022-03-13T05:35:07.322Z'
+date: '2020-03-13T05:35:07.322Z'
 ogImage:
   url: '/images/blog/opengraph/preview.png'
-tags: 'WordPress,Elementor,Adobe XD'
-featured: true
-githubUrl: 'https://www.github.com'
-externalUrl: ''
+tags: 'node,crawler'
+readTime: 9
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.

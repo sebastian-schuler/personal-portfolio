@@ -1,8 +1,8 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
-import Post from '../../interfaces/post';
 import ItemData from '../../interfaces/item-data';
+import { Post, PostType, Project } from '../../interfaces/post';
 import Tag from '../../interfaces/tag';
 import { arrSampleSize, clamp } from '../util';
 
@@ -14,7 +14,8 @@ interface SlugData {
 }
 
 // posts folder path
-const postsDirectory = join(process.cwd(), '_posts');
+const directoryName = '_data';
+const postsDirectory = join(process.cwd(), directoryName);
 
 /**
  * Get all posts from the _posts folder
@@ -54,18 +55,42 @@ export function getPostBySlug(slug: string, fields: (keyof Post)[], options?: Ge
     const realSlug = slug;
     const { data, content } = matter(fileContents);
 
-    // Required fields
-    const items: Post = {
-        slug: realSlug,
-        date: data.date || '',
-        title: data.title || '',
-        tags: data.tags?.split(',') || [],
-        coverImage: data.coverImage || '',
-        readTime: data.readTime || '',
-        excerpt: data.excerpt || '',
-        locales: availableLocales,
-        locale: chosenLocale,
-    };
+    let items: Post | undefined = undefined;
+
+    if (data.type === "project") {
+        items = {
+            type: "project",
+            slug: realSlug,
+            date: data.date || '',
+            title: data.title || '',
+            readTime: data.readTime || 0,
+            tags: data.tags?.split(',') || [],
+            coverImage: data.coverImage || '',
+            excerpt: data.excerpt || '',
+            locales: availableLocales,
+            locale: chosenLocale,
+            featured: data.featured || false,
+            githubUrl: data.githubUrl || '',
+            externalUrl: data.externalUrl || '',
+        };
+    } else if (data.type === "article") {
+        items = {
+            type: "article",
+            slug: realSlug,
+            date: data.date || '',
+            title: data.title || '',
+            readTime: data.readTime || 0,
+            tags: data.tags?.split(',') || [],
+            coverImage: data.coverImage || '',
+            excerpt: data.excerpt || '',
+            locales: availableLocales,
+            locale: chosenLocale,
+        };
+    }
+
+    if (!items) {
+        throw new Error(`Invalid post type: ${fullPath}`);
+    }
 
     // Optional fields
     if (fields.includes('content')) items.content = content;
@@ -136,6 +161,33 @@ export function getAllPosts(fields: (keyof Post)[], options?: GetAllPostsOptions
 }
 
 /**
+ * Get all posts
+ * @param fields - Fields to include in the response
+ * @returns - Array of posts
+ */
+export function getAllPostedProjects(fields: (keyof Project)[], options?: GetAllPostsOptions): Post[] {
+    let slugs = getPostSlugs();
+
+    // If page is set, only load that specific page
+    if (options?.page) {
+        const page = options.page;
+
+        let fromIndex = page === 1 ? 0 : (page - 1) * POSTS_PER_PAGE;
+        let toIndex = page === 1 ? POSTS_PER_PAGE : page * POSTS_PER_PAGE;
+        slugs = slugs.slice(fromIndex, toIndex);
+    }
+
+    // Type is always project, so we can cast to Post safely
+    const postFields = fields as (keyof Post)[];
+
+    const posts = slugs
+        .map((slug) => getPostBySlug(slug.value, postFields, { locale: options?.locale }))
+        .filter((post) => post.type === 'project')
+        .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+    return posts;
+}
+
+/**
  * Get all tags
  * @returns - Array of tags
  */
@@ -193,7 +245,7 @@ export function getBlogPageCount() {
  * @returns 
  */
 function getSlugLocales(slug: string) {
-    const files = fs.readdirSync(join(process.cwd(), '_posts', slug));
+    const files = fs.readdirSync(join(process.cwd(), directoryName, slug));
     return files.map(name => name.replace(/\.md$/, ''));
 }
 
@@ -203,7 +255,7 @@ function getSlugLocales(slug: string) {
  * @param tags 
  * @returns 
  */
-export function getRecommendedPosts(slug: string, tags: string[]) {
+export function getRecommendedPosts(slug: string, tags: string[], type: PostType) {
 
     const allPosts = getAllPosts(['slug', 'tags', 'title', 'locales', 'readTime']);
     const matchingTags = allPosts.filter(p => p.tags.some(t => tags.includes(t)) && p.slug !== slug);

@@ -78,11 +78,6 @@ const PageNav = () => {
       isActive: router.route === '/'
     },
     {
-      link: '/projects',
-      label: t('navItems.projects'),
-      isActive: router.route.startsWith('/projects')
-    },
-    {
       link: '/blog',
       label: t('navItems.blog'),
       isActive: router.route.startsWith('/blog')

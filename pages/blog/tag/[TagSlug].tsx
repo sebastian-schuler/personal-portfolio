@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 import Post from '../../../interfaces/post';
 import Tag from '../../../interfaces/tag';
-import { getAllPostTags, getPostsByTag } from '../../../lib/apis/blogApi';
+import { getAllPostTags, getPostsByTag } from '../../../lib/api/blogApi';
 import BlogPostList from '../../../ui/blog/blog-post-list';
 import BlogTagList from '../../../ui/blog/blog-tag-list';
 import MyTitle from '../../../ui/my-title';

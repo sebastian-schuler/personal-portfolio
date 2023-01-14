@@ -1,4 +1,5 @@
 ---
+type: 'project'
 title: 'Convertee - Convert Anything'
 excerpt: 'A compact and user-friendly conversion app for Android systems. Easily convert a large number of units, including currencies.'
 coverImage: '/assets/blog/preview/cover.jpg'

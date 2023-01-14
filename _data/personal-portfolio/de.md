@@ -1,12 +1,15 @@
 ---
-title: 'Build Your Own React Translation Hook'
+type: 'project'
+title: 'Test Artikel - Nur in Deutsch'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
 coverImage: '/assets/blog/preview/cover.jpg'
 date: '2020-03-13T05:35:07.322Z'
 ogImage:
   url: '/images/blog/opengraph/preview.png'
-tags: 'react,next,l18n'
-readTime: 9
+tags: 'WordPress,Elementor,Adobe XD'
+featured: true
+githubUrl: ''
+externalUrl: ''
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.

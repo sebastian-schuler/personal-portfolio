@@ -1,12 +1,13 @@
 ---
-title: 'Test Artikel - Nur in Deutsch'
-excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
+type: 'project'
+title: 'Copsi - Collaboration Application'
+excerpt: 'Copsi is a desktop application which can be used for communication and the exchange of documents between professors, assistants, and students of the University of Applied Sciences Kaiserslautern.'
 coverImage: '/assets/blog/preview/cover.jpg'
-date: '2020-03-13T05:35:07.322Z'
+date: '2021-03-13T05:35:07.322Z'
 ogImage:
   url: '/images/blog/opengraph/preview.png'
 tags: 'WordPress,Elementor,Adobe XD'
-featured: true
+featured: false
 githubUrl: ''
 externalUrl: ''
 ---
@@ -15,6 +16,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
 
-## Lorem Ipsum
+## Introduction
 
 Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
+
+## Project objectives
+
+## Technology
+
+## Project environment
+
+## Documentation and download
+

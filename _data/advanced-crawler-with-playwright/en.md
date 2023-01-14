@@ -1,5 +1,6 @@
 ---
-title: 'Einen erweiterten Crawler mit Playwright schreiben'
+type: 'article'
+title: 'Making An Advanced Web-Crawler Using Playwright'
 excerpt: "At a certain point the amount of content on your website might be too much for one single page. Long loading times will negatively affect user experience. This article will show you how to implement pagination a possible solution to this using Next.js and Mantine. We'll also discuss alternatives and why they all perform worse than pagination."
 coverImage: '/assets/blog/preview/cover.jpg'
 date: '2022-11-21T05:35:07.322Z'

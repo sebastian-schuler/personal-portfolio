@@ -1,4 +1,6 @@
-import { Divider, Group, Stack, Text } from "@mantine/core"
+import { Badge, Divider, Group, Stack, Text } from "@mantine/core"
+import useTranslation from "next-translate/useTranslation"
+import { PostType } from "../../interfaces/post"
 import { toLink } from "../../lib/util"
 import DateFormatter from "../date-formatter"
 import ILink from "../link"
@@ -6,6 +8,7 @@ import MyTitle from "../my-title"
 import PostSharePanel from "./post-share-panel"
 
 type Props = {
+    type: PostType
     title: string
     coverImage: string
     date: string
@@ -13,11 +16,34 @@ type Props = {
     excerpt: string
 }
 
-const PostHeader = ({ title, coverImage, date, tags, excerpt }: Props) => {
+const PostHeader = ({ type, title, coverImage, date, tags, excerpt }: Props) => {
+
+    const { t } = useTranslation('blog');
+
+    const postTypeNode = type === 'article' ?
+        <Badge
+            variant='filled'
+            radius={'md'}
+            color={'themeBlue.7'}
+            size={'lg'}
+        >{t('postTypeArticle')}</Badge> :
+        <Badge
+            variant='filled'
+            radius={'md'}
+            color={'themePurple.4'}
+            size={'lg'}
+        >{t('postTypeProject')}</Badge>;
 
     return (
         <Stack spacing={0} mb={'md'}>
-            <MyTitle marginTop>{title}</MyTitle>
+
+            <MyTitle marginTop>
+                <div>
+                    {postTypeNode}
+                </div>
+                {title}
+            </MyTitle>
+
             <Group>
                 {
                     tags.map((tag, i) => (

@@ -3,7 +3,7 @@ import { Prism } from '@mantine/prism';
 import { PrismProps } from '@mantine/prism/lib/Prism/Prism';
 import { Content } from 'mdast';
 import { Root } from 'remark-html';
-import TableOfContents from '../../ui/tableOfContents';
+import TableOfContents from '../../ui/table-of-contents';
 
 export type HeaderData = {
     link: string;
