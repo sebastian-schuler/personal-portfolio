@@ -1,9 +1,38 @@
-import { Anchor, Box, createStyles, Grid, Image, List, SimpleGrid, Stack, Text } from '@mantine/core';
-import { IconChevronRight } from '@tabler/icons';
-import useTranslation from 'next-translate/useTranslation';
+import { Anchor, Badge, Box, createStyles, Grid, Group, Image, Stack, Text } from '@mantine/core';
 import Trans from 'next-translate/Trans';
-import ILink from '../link';
+import useTranslation from 'next-translate/useTranslation';
 import SectionHeader from '../section-header';
+
+const dataTechnologies = [
+    "Javascript (ES6+)",
+    "TypeScript",
+    "React",
+    "React Native",
+    "Node.js",
+    "Next.js",
+    "Remix",
+    "Python",
+    "Bootstrap",
+    "Material UI",
+    "Tailwind",
+    "Mantine",
+    "Electron",
+    "Java",
+    "Android (Java)",
+    "PostgreSQL",
+    "MongoDB",
+]
+
+const dataTools = [
+    "Git",
+    "Google Analytics",
+    "Google Ads",
+    "Adobe Photoshop",
+    "Adobe XD",
+    "WordPress",
+    "Obsidian",
+    "Android Studio",
+]
 
 const useStyles = createStyles((theme) => ({
 
@@ -77,40 +106,36 @@ const AboutSection = () => {
                     <Text size={"lg"} mb={theme.spacing.sm}>
                         <span className={classes.techTitle}>{t('about.tech.title')}</span> {' '} {t('about.tech.text')}
                     </Text>
-                    <SimpleGrid cols={2}>
-                        <List size="sm" icon={<IconChevronRight size={22} />}>
-                            <List.Item>Javascript (ES6+)</List.Item>
-                            <List.Item>React</List.Item>
-                            <List.Item>Node.js</List.Item>
-                            <List.Item>Python</List.Item>
-                            <List.Item>Bootstrap</List.Item>
-                        </List>
-                        <List size="sm" icon={<IconChevronRight size={22} />}>
-                            <List.Item>TypeScript</List.Item>
-                            <List.Item>Remix</List.Item>
-                            <List.Item>Electron</List.Item>
-                            <List.Item>Java / Android</List.Item>
-                            <List.Item>Tailwind</List.Item>
-                        </List>
-                    </SimpleGrid>
+                    <Group spacing={"xs"}>
+                        {
+                            dataTechnologies.map((tech, index) => (
+                                <Badge
+                                    key={index}
+                                    variant="outline"
+                                    color="primary.4"
+                                    size="md"
+                                    mb={"xs"}>{tech}</Badge>
+                            ))
+                        }
+                    </Group>
                 </Grid.Col>
 
                 <Grid.Col md={6}>
                     <Text size={"lg"} mb={theme.spacing.sm}>
                         <span className={classes.techTitle}>{t('about.tools.title')}</span> {' '} {t('about.tools.text')}
                     </Text>
-                    <SimpleGrid cols={2}>
-                        <List size="sm" icon={<IconChevronRight size={22} />}>
-                            <List.Item>Google Analytics</List.Item>
-                            <List.Item>Adobe Photoshop</List.Item>
-                            <List.Item>Git</List.Item>
-                        </List>
-                        <List size="sm" icon={<IconChevronRight size={22} />}>
-                            <List.Item>Google Ads</List.Item>
-                            <List.Item>Adobe XD</List.Item>
-                            <List.Item>WordPress</List.Item>
-                        </List>
-                    </SimpleGrid>
+                    <Group spacing={"xs"}>
+                        {
+                            dataTools.map((tech, index) => (
+                                <Badge
+                                    key={index}
+                                    variant="outline"
+                                    color="primary.4"
+                                    size="md"
+                                    mb={"xs"}>{tech}</Badge>
+                            ))
+                        }
+                    </Group>
                 </Grid.Col>
 
             </Grid>

@@ -61,8 +61,8 @@ const appTheme: MantineThemeOverride = {
   fontSizes: {
     xs: 10,
     sm: 12,
-    md: 14,
-    lg: 16,
+    md: 16,
+    lg: 18,
     xl: 20,
   },
 
@@ -143,6 +143,7 @@ const appTheme: MantineThemeOverride = {
       styles: (theme,_params) => ({
         root: {
           color: _params.variant === 'filled' ? theme.white : theme.colors.primary[4],
+          backgroundColor: _params.variant === 'filled' ? theme.colors.primary[5] : undefined,
         },
       }),
     },

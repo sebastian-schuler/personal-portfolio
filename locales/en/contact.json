@@ -1,3 +1,29 @@
 {
-    "title": "Contact Me"
+    "title": "Get in touch",
+    "subtitleSocials": "Socials",
+    "subtitleContact": "Contact Form",
+
+    "socials": {
+        "email": "Email",
+        "country": "Country",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "twitter": "Twitter"
+    },
+
+    "form": {
+        "name": "Name",
+        "namePlaceholder": "Your name",
+
+        "email": "Email",
+        "emailPlaceholder": "Your email",
+
+        "subject": "Subject",
+        "subjectPlaceholder": "Subject",
+
+        "message": "Message",
+        "messagePlaceholder": "Your message",
+
+        "submit": "Send message"
+    }
 }

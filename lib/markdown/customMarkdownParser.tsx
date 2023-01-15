@@ -1,9 +1,8 @@
-import { Anchor, Code, createStyles, Text, Title } from '@mantine/core';
+import { Anchor, Box, Code, Text, Title } from '@mantine/core';
 import { Prism } from '@mantine/prism';
 import { PrismProps } from '@mantine/prism/lib/Prism/Prism';
 import { Content } from 'mdast';
 import { Root } from 'remark-html';
-import TableOfContents from '../../ui/table-of-contents';
 
 export type HeaderData = {
     link: string;
@@ -23,92 +22,108 @@ export class MarkdownParser {
         return this.headers;
     }
 
-    parseMarkdown(markdown: Root) {
-        const rootChildren = this.handleNodeContent(markdown.children);
-
-        const root = <div>{rootChildren}</div>;
-        return root;
+    /**
+     * Render an entire markdown file using Mantine components
+     * @param md 
+     * @returns 
+     */
+    renderMarkdown(md: Root) {
+        const rootChildren = this.handleMany(md.children);
+        return <div>{rootChildren}</div>;
     }
 
-    private handleNodeContent(node: Content[]): JSX.Element {
+    /**
+     * Create multiple mantine components from nodes
+     * @param nodes - Markdown as syntax tree nodes
+     * @returns Box of mantine components
+     */
+    private handleMany(nodes: Content[]): JSX.Element[] {
+        return nodes.map((x, ix) => {
+            return <Box key={ix} sx={{ display: 'inline' }}>{this.handle(x)}</Box>
+        });
+    }
 
-        const children: JSX.Element[] = [];
+    /**
+     * Create a mantine component from node
+     * @param node  - Markdown as syntax tree node
+     * @returns Mantine component as JSX
+     */
+    private handle(node: Content): JSX.Element {
 
-        for (const child of node) {
-
-            if (child.type === 'heading') {
-
-                const title = this.handleNodeContent(child.children).props.children[0].props.children;
-                const link = encodeURIComponent(title);
-
-                this.headers.push({ title: title, order: child.depth, link: link });
-                children.push(
-                    <Title id={link} order={child.depth} mt={"lg"} mb={"xs"} sx={{scrollSnapMarginTop: 100}}>
-                        {title}
-                    </Title>
-                );
-
-            } else if (child.type === "paragraph") {
-                children.push(
-                    <Text>
-                        {this.handleNodeContent(child.children)}
-                    </Text>
-                );
-
-            } else if (child.type === "code") {
-                const language = child.lang as PrismProps["language"];
-
-                children.push(
-                    <Prism
-                        withLineNumbers
-                        language={language}
-                        my={"md"}
-                        styles={(theme) => ({
-                            lineContent: {
-                                paddingLeft: 8,
-                            },
-                        })}
-                    >
-                        {child.value}
-                    </Prism>
-                )
-
-            } else if (child.type === "inlineCode") {
-                children.push(
-                    <Code sx={{ fontSize: 14 }}>{child.value}</Code>
-                )
-
-            } else if (child.type === "emphasis") {
-                children.push(
-                    <>
-                        {this.handleNodeContent(child.children)}
-                    </>
-                )
-
-            } else if (child.type === "strong") {
-                children.push(
-                    <Text weight={"bold"} size={'lg'}>
-                        {this.handleNodeContent(child.children)}
-                    </Text>
-                )
-
-            } else if (child.type === "link") {
-                children.push(
-                    <Anchor href={child.url}>
-                        {this.handleNodeContent(child.children)}
-                    </Anchor>
-                )
-
-            } else if (child.type === "text") {
-                children.push(
-                    <>{child.value}</>
-                );
-
-            } else {
-                /* console.log(child) */
+        if (node.type === 'heading') {
+            const title = node.children.find(x => x.type == "text");
+            let link = '';
+            if (title && title.type === "text") {
+                link = encodeURIComponent(title.value);
+                this.headers.push({ title: title.value, order: node.depth, link: link });
             }
+
+            return (
+                <Title id={link} order={node.depth} mt={"lg"} mb={"xs"} sx={{ scrollMarginTop: 100 }}>
+                    {this.handleMany(node.children)}
+                </Title>
+            );
+
+        } else if (node.type === "paragraph") {
+            return (
+                <Text>
+                    {this.handleMany(node.children)}
+                </Text>
+            );
+
+        } else if (node.type === "code") {
+            const language = node.lang as PrismProps["language"];
+
+            return (
+                <Prism
+                    withLineNumbers
+                    language={language}
+                    my={"md"}
+                    styles={(theme) => ({
+                        lineContent: {
+                            paddingLeft: theme.spacing.xs,
+                        },
+                    })}
+                >
+                    {node.value}
+                </Prism>
+            )
+
+        } else if (node.type === "inlineCode") {
+            return (
+                <Code sx={{ fontSize: 14 }}>{node.value}</Code>
+            )
+
+        } else if (node.type === "emphasis") {
+            return (
+                <>
+                    {this.handleMany(node.children)}
+                </>
+            )
+
+        } else if (node.type === "strong") {
+            return (
+                <Text weight={"bold"} size={'lg'}>
+                    {this.handleMany(node.children)}
+                </Text>
+            )
+
+        } else if (node.type === "link") {
+            return (
+                <Anchor href={node.url}>
+                    {this.handleMany(node.children)}
+                </Anchor>
+            )
+
+        } else if (node.type === "text") {
+            return (
+                <>{node.value}</>
+            );
+
+        } else {
+            console.log("ERROR", node)
         }
 
-        return <>{children}</>;
+        return <b>TODO element fehlt: {node.type}</b>
     }
 }

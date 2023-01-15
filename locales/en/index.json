@@ -20,12 +20,12 @@
       "More details about me can be found in the next section <0>Experience</0>. You could also have a look at my <1>Work</1> straight away."
     ],
     "tech": {
-      "title": "Technologies",
-      "text": "I have worked with:"
+      "title": "Technology",
+      "text": "skills"
     },
     "tools": {
-      "title": "Tools",
-      "text": "I have experience with:"
+      "title": "Tool",
+      "text": "skills"
     }
   },
 

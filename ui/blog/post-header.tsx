@@ -1,4 +1,4 @@
-import { Badge, Divider, Group, Stack, Text } from "@mantine/core"
+import { Badge, Box, Divider, Group, Stack, Text, useMantineTheme } from "@mantine/core"
 import useTranslation from "next-translate/useTranslation"
 import { PostType } from "../../interfaces/post"
 import { toLink } from "../../lib/util"
@@ -14,11 +14,13 @@ type Props = {
     date: string
     tags: string[]
     excerpt: string
+    readTime: number
 }
 
-const PostHeader = ({ type, title, coverImage, date, tags, excerpt }: Props) => {
+const PostHeader = ({ type, title, coverImage, date, tags, excerpt, readTime }: Props) => {
 
     const { t } = useTranslation('blog');
+    const theme = useMantineTheme();
 
     const postTypeNode = type === 'article' ?
         <Badge
@@ -34,33 +36,47 @@ const PostHeader = ({ type, title, coverImage, date, tags, excerpt }: Props) => 
             size={'lg'}
         >{t('postTypeProject')}</Badge>;
 
+    const postTags = <Group>
+        {postTypeNode}
+        {
+            tags.map((tag, i) => (
+                <Badge
+                    variant='outline'
+                    radius={'md'}
+                    size={'lg'}
+                >#{tag}</Badge>
+            ))
+        }
+    </Group>
+
     return (
-        <Stack spacing={0} mb={'md'}>
+        <Box mb={'md'}>
 
-            <MyTitle marginTop>
-                <div>
-                    {postTypeNode}
-                </div>
-                {title}
-            </MyTitle>
+            <Stack spacing={'xs'}>
+                <MyTitle marginTop>
+                    <div>{postTags}</div>
+                    {title}
+                </MyTitle>
 
-            <Group>
-                {
-                    tags.map((tag, i) => (
-                        <ILink key={i} url={toLink('blog', 'tag', tag)} type="internal" sx={{ textTransform: 'uppercase', fontSize: 18 }}>#{tag}</ILink>
-                    ))
-                }
+            </Stack>
+
+            <Group position="apart" align={'end'} mt={'sm'}>
+                <Text size='md'>
+                    <DateFormatter dateString={date} /> • {readTime} min read
+                </Text>
+                <PostSharePanel title={title} />
             </Group>
-            <Text size='lg'>Sebastian Schuler</Text>
-            <Text size='lg'>
-                <DateFormatter dateString={date} />
-            </Text>
-            <Divider mt={'md'} mb={'xs'} />
-            <PostSharePanel title={title} />
-            <Divider mb={'md'} mt={'xs'} />
+            <Divider mt={'xs'} mb={'xl'}/>
 
-            <Text>{excerpt}</Text>
-        </Stack>
+
+            <div>
+                <Text size={'lg'} color={theme.colorScheme === "dark" ? 'white' : theme.black}>Excerpt</Text>
+                <Text>{excerpt}</Text>
+            </div>
+
+
+
+        </Box>
     )
 }
 

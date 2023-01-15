@@ -1,28 +1,7 @@
-import { Box, createStyles, Divider, Group, Text } from '@mantine/core'
-import { IconListSearch } from '@tabler/icons'
+import { Anchor, Box, Divider, Group, List, Text, useMantineTheme } from '@mantine/core';
+import { IconListSearch } from '@tabler/icons';
 import useTranslation from 'next-translate/useTranslation';
-import React from 'react'
-import { HeaderData } from '../lib/markdown/customMarkdownParser'
-
-const useStylesTableOfContents = createStyles((theme) => ({
-    link: {
-        ...theme.fn.focusStyles(),
-        display: 'block',
-        textDecoration: 'none',
-        color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
-        lineHeight: 1.2,
-        fontSize: theme.fontSizes.md,
-        padding: theme.spacing.xs,
-        borderTopRightRadius: theme.radius.sm,
-        borderBottomRightRadius: theme.radius.sm,
-        borderLeft: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
-            }`,
-
-        '&:hover': {
-            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-        },
-    },
-}));
+import { HeaderData } from '../lib/markdown/customMarkdownParser';
 
 type Props = {
     headers: HeaderData[]
@@ -30,30 +9,52 @@ type Props = {
 
 const TableOfContents = ({ headers }: Props) => {
 
-    const { classes } = useStylesTableOfContents();
     const { t } = useTranslation('common');
+    const theme = useMantineTheme();
 
-    const items = headers.map((header, i) => (
-        <Box<'a'>
-            component="a"
-            href={'#' + header.link}
-            key={header.link + i}
-            className={classes.link}
-            sx={(theme) => ({ paddingLeft: (header.order - 1) * theme.spacing.lg })}
-        >
-            {header.title}
-        </Box>
-    ));
+    const getList = (data: HeaderData[], depth: number, listNumber: number): JSX.Element => {
+
+        let items: JSX.Element[] = [];
+
+        for (let i = 0; i < data.length; i++) {
+
+            const header = data[i];
+
+            if (header.order === depth) {
+                items.push(
+                    <List.Item key={i}>
+                        <Anchor href={`#${header.link}`}>
+                            {header.title}
+                        </Anchor>
+                    </List.Item>
+                );
+
+            } else {
+                let listUntil = i;
+                while (listUntil < data.length && data[listUntil].order >= header.order) {
+                    listUntil++;
+                }
+                const newList = data.slice(i, listUntil);
+                const list = getList(newList, header.order, listNumber + 1);
+                items.push(list);
+                i = listUntil - 1;
+
+            }
+        }
+
+        return <List key={listNumber} withPadding={depth > 2 ? true : false}>
+            {
+                items.map((item, i) => item)
+            }
+        </List>
+    }
+
+    const items = getList(headers, 2, 1);
 
     return (
-        <Box mb={'lg'}>
-            <Divider mb={'lg'} />
-            <Group mb="md">
-                <IconListSearch size={24} stroke={1.5} />
-                <Text size={"lg"} weight={"bold"} color={'white'}>{t("post.tableOfContents")}</Text>
-            </Group>
+        <Box mb={'xl'}>
+            <Text size={"lg"} color={theme.colorScheme === "dark" ? 'white' : theme.black}>{t("post.tableOfContents")}</Text>
             {items}
-            <Divider mt={'lg'} />
         </Box>
     )
 }

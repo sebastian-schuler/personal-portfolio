@@ -29,7 +29,7 @@ const PageFooter = () => {
 
     return (
         <footer>
-            <Box pt={theme.spacing.lg} pb={theme.spacing.lg} className={classes.footer}>
+            <Box pt={theme.spacing.xl} pb={theme.spacing.xl} className={classes.footer}>
                 <Container>
                     <SimpleGrid cols={3}>
 

@@ -8,13 +8,19 @@ type ContactData = (
         type: 'text'
         title: string
         icon: TablerIcon
-        description: string
+        text: string
+    } |
+    {
+        type: 'email'
+        title: string
+        icon: TablerIcon
+        text: JSX.Element
     } |
     {
         type: 'link'
         title: string
         icon: TablerIcon
-        description: string
+        text: string
         url: string
         linkTitle: string
     }
@@ -54,7 +60,7 @@ function ContactIcon({
     ...others
 }: ContactIconProps) {
     const { classes, cx } = useStyles();
-    const { title, description, type } = data;
+    const { title, text, type } = data;
     const Icon: TablerIcon = data.icon;
     const isLink = type === "link";
 
@@ -79,11 +85,11 @@ function ContactIcon({
                         >
                             <Group spacing={2} align={'center'}>
                                 <IconExternalLink size={15} />
-                                {description}
+                                {text}
                             </Group>
                         </Anchor>
                     ) : (
-                        <Text className={classes.description}>{description}</Text>
+                        <Text className={classes.description}>{text}</Text>
 
                     )
                 }
@@ -100,40 +106,40 @@ const ContactList = () => {
 
     const DATA: ContactData[] = [
         {
-            type: "text",
-            title: 'Email',
-            description: 'hello@mantine.dev',
+            type: "email",
+            title: t('socials.email'),
+            text: <>&#x73;&#x65;&#x62;&#x61;&#x73;&#x74;&#x69;&#x61;&#x6e;&#x2e;&#x73;&#x63;&#x68;&#x75;&#x6c;&#x65;&#x72;&#x2e;&#x73;&#x62;&#x73;&#x63;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</>,
             icon: IconAt
         },
         {
             type: "text",
-            title: 'Country',
-            description: 'Germany',
+            title: t('socials.country'),
+            text: 'Germany',
             icon: IconMapPin
         },
         {
             type: "link",
-            title: 'Github',
-            description: SOCIAL_LINKS.github.name,
+            title: t('socials.github'),
+            text: SOCIAL_LINKS.github.name,
             url: SOCIAL_LINKS.github.url,
             icon: IconBrandGithub,
-            linkTitle: t('footer.githubLinkTitle')
+            linkTitle: t('common:footer.githubLinkTitle')
         },
         {
             type: "link",
-            title: 'LinkedIn',
-            description: SOCIAL_LINKS.linkedin.name,
+            title: t('socials.linkedin'),
+            text: SOCIAL_LINKS.linkedin.name,
             url: SOCIAL_LINKS.linkedin.url,
             icon: IconBrandLinkedin,
-            linkTitle: t('footer.linkedinLinkTitle')
+            linkTitle: t('common:footer.linkedinLinkTitle')
         },
         {
             type: "link",
-            title: 'Twitter',
-            description: SOCIAL_LINKS.twitter.name,
+            title: t('socials.twitter'),
+            text: SOCIAL_LINKS.twitter.name,
             url: SOCIAL_LINKS.twitter.url,
             icon: IconBrandTwitter,
-            linkTitle: t('footer.twitterLinkTitle')
+            linkTitle: t('common:footer.twitterLinkTitle')
         },
     ];
 

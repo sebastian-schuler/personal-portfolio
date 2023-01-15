@@ -1,4 +1,4 @@
-import { Container } from '@mantine/core'
+import { Container, Space, useMantineTheme } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import ErrorPage from 'next/error'
@@ -29,15 +29,16 @@ type Props = {
 const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
 
   const parser = new MarkdownParser();
-  const jsxContent = parser.parseMarkdown(content);
+  const jsxContent = parser.renderMarkdown(content);
   const headers = parser.getHeaders();
 
-  const router = useRouter()
+  const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
 
   const { t, lang } = useTranslation('blog');
+  const theme = useMantineTheme();
   const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
 
   return (
@@ -57,7 +58,7 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
 
               <meta property='og:title' content={post.title} />
               <meta property='og:description' content={post.ogDesc} />
-              <meta property='og:url' content={`${PAGE_URL}/${localePart}blog/post/${post.slug}`} />
+              <meta property='og:url' content={`${PAGE_URL}/${localePart}blog/${post.slug}`} />
               {post.ogImage && <meta property="og:image" content={post.ogImage.url} />}
             </Head>
 
@@ -68,10 +69,11 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
               date={post.date}
               tags={post.tags}
               excerpt={post.excerpt}
+              readTime={post.readTime}
             />
 
             <TableOfContents headers={headers} />
-
+            
             {jsxContent}
 
             <PostFooter recommendedPosts={recommendedPosts} />

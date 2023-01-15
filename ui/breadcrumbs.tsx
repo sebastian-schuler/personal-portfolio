@@ -35,7 +35,7 @@ const PageBreadcrumbs = ({ postTitle, projectTitle }: Props) => {
             url: toLink("blog")
         });
 
-        if (route.startsWith(toLink("blog", 'post', "[PostSlug]"))) {
+        if (route.startsWith(toLink("blog", "[PostSlug]"))) {
             // BLOG POST PATH
             const slug = postTitle ? postTitle : query.PostSlug as string;
             links.push({
@@ -49,21 +49,6 @@ const PageBreadcrumbs = ({ postTitle, projectTitle }: Props) => {
             const slug = query.TagSlug as string;
             links.push({
                 name: '#' + slug.toUpperCase(),
-                url: toLink("#")
-            });
-        }
-    } else if (route.startsWith(toLink("projects"))) {
-        // PROJECTS PATH
-        links.push({
-            name: t("breadcrumbs.projects"),
-            url: toLink("projects")
-        });
-
-        if (route.startsWith(toLink("projects", "[ProjectSlug]"))) {
-            // PROJECT POST PATH
-            const slug = projectTitle ? projectTitle : query.ProjectSlug as string;
-            links.push({
-                name: slug,
                 url: toLink("#")
             });
         }

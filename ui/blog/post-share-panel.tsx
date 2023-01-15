@@ -1,4 +1,4 @@
-import { ActionIcon, Group, Popover, Text } from "@mantine/core";
+import { ActionIcon, createStyles, Group, Popover, Stack, Text } from "@mantine/core";
 import {
     IconBrandFacebook,
     IconBrandLinkedin,
@@ -8,12 +8,32 @@ import {
 import useTranslation from "next-translate/useTranslation";
 import React, { useState } from "react";
 
+const useStyles = createStyles((theme) => {
+    return {
+        footer: {
+            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : 'white',
+        },
+        text: {
+            color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+        },
+        icon: {
+            color: theme.colorScheme === 'dark' ? theme.white : theme.colors.gray[6],
+            transition: 'color 200ms ease',
+
+            '&:hover': {
+                color: theme.colors.primary[4],
+            },
+        }
+    };
+});
+
 interface Props {
     title: string
 }
 
 const PostSharePanel = ({ title }: Props) => {
     const { t } = useTranslation("blog");
+    const { classes, theme } = useStyles();
 
     const shareTwitter = () => {
         window.open(
@@ -54,6 +74,7 @@ const PostSharePanel = ({ title }: Props) => {
                 size={"lg"}
                 onClick={shareTwitter}
                 title={t("shareTwitter")}
+                className={classes.icon}
             >
                 <IconBrandTwitter size={24} />
             </ActionIcon>
@@ -62,6 +83,7 @@ const PostSharePanel = ({ title }: Props) => {
                 size={"lg"}
                 onClick={shareLinkedin}
                 title={t("shareLinkedIn")}
+                className={classes.icon}
             >
                 <IconBrandLinkedin size={24} />
             </ActionIcon>
@@ -70,6 +92,7 @@ const PostSharePanel = ({ title }: Props) => {
                 size={"lg"}
                 onClick={shareFacebook}
                 title={t("shareFacebook")}
+                className={classes.icon}
             >
                 <IconBrandFacebook size={24} />
             </ActionIcon>
@@ -85,6 +108,7 @@ const PostSharePanel = ({ title }: Props) => {
                         size={"lg"}
                         onClick={copyLink}
                         title={t("shareLink")}
+                        className={classes.icon}
                     >
                         <IconLink size={24} />
                     </ActionIcon>

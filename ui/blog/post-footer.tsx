@@ -1,9 +1,7 @@
-import { Card, createStyles, Divider, SimpleGrid, Space, Text, Title } from '@mantine/core';
-import { NextLink } from '@mantine/next';
+import { createStyles, Divider, SimpleGrid, Space, Text } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
-import Link from 'next/link';
-import React from 'react'
 import { Post } from '../../interfaces/post';
+import PostPreview from './post-preview';
 
 const useStyles = createStyles((theme) => {
 
@@ -40,17 +38,28 @@ const PostFooter = ({ recommendedPosts }: Props) => {
         <>
             <Divider mt={'xl'} mb={'lg'} />
 
-            <Text size={"lg"} mb={"lg"} weight={"bold"} className={classes.title}>{t("otherPostsHeader")}</Text>
+            <Text size={48} mb={"lg"} className={classes.title}>{t("otherPostsHeader")}</Text>
 
-            <SimpleGrid cols={2}>
+            <SimpleGrid
+                breakpoints={[
+                    { minWidth: 'sm', cols: 1 },
+                    { minWidth: 'md', cols: 2 },
+                ]}
+                spacing='lg'>
                 {
                     recommendedPosts.map((post, index) => (
-                        <Link key={index} href={`/blog/${post.slug}`}>
-                            <Card className={classes.card}>
-                                <Text className={classes.cardTitle}>{post.title}</Text>
-                                <Text lineClamp={3}>{post.excerpt}</Text>
-                            </Card>
-                        </Link>
+                        <PostPreview
+                            key={index}
+                            title={post.title}
+                            type={post.type}
+                            slug={post.slug}
+                            date={post.date}
+                            coverImage={post.coverImage}
+                            excerpt={post.excerpt}
+                            locales={post.locales}
+                            readTime={post.readTime}
+                            tags={post.tags}
+                        />
                     ))
                 }
             </SimpleGrid>

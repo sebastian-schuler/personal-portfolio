@@ -21,7 +21,8 @@ const useStyles = createStyles((theme) => {
     },
 
     details: {
-      fontSize: '1.15em',
+      fontSize: theme.fontSizes.md,
+      fontWeight: 'bold',
       color: theme.colorScheme === 'dark' ? 'white' : theme.black,
     }
   };
@@ -56,7 +57,7 @@ const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readT
     <Badge
       variant='outline'
       radius={'md'}
-      color={ theme.colorScheme === "dark" ? 'themePurple.0' : 'themePurple.1'}
+      color={theme.colorScheme === "dark" ? 'themePurple.0' : 'themePurple.1'}
       size={'md'}
     >{t('postTypeProject')}</Badge>;
 
@@ -76,12 +77,14 @@ const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readT
     <Link href={articleLink} title={t('postPreviewLinkTitle', { title: title })}>
       <Stack spacing={"sm"}>
 
-        <Title order={3} className={classes.title}>{title}</Title>
 
         <Group spacing={'sm'}>
           {postTypeNode}
           {tagList}
         </Group>
+
+        <Title order={3} className={classes.title}>{title}</Title>
+
 
         <Group noWrap spacing="sm" className={classes.details}>
           <DateFormatter dateString={date} />
@@ -91,7 +94,7 @@ const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readT
           {localeStrings.join(', ')}
         </Group>
 
-        <Text color={theme.colorScheme === "dark" ? theme.white :  theme.colors.gray[7]}>
+        <Text color={theme.colorScheme === "dark" ? theme.colors.gray[5] : theme.colors.gray[7]}>
           {excerpt}
         </Text>
 
