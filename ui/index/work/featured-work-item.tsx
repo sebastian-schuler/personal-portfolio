@@ -1,4 +1,4 @@
-import { ActionIcon, Box, Card, createStyles, Group, Image, SimpleGrid, Space, Stack, Text } from '@mantine/core';
+import { ActionIcon, Badge, Box, Card, createStyles, Group, Image, SimpleGrid, Space, Stack, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { IconBrandGithub, IconExternalLink, IconFileDescription } from '@tabler/icons';
 import useTranslation from 'next-translate/useTranslation';
@@ -40,7 +40,9 @@ const useStyles = createStyles((theme) => ({
     linkButton: {
         transition: 'all 0.2s ease',
         '&:hover': {
-            transform: 'translateY(-0.3rem)',
+            transform: 'scale(1.1)',
+            color: theme.colors.primary[4],
+            borderColor: theme.colors.primary[4]
         },
     },
 
@@ -68,30 +70,30 @@ const FeaturedWorkItem: React.FC<Props> = ({ slug, title, excerpt, tags, placeme
         <Image src={'images/projects/thumbnails/marketing-akademie-thumbnail.png'} height={350} fit="cover" />
     )
 
+    const tagList = tags.map((tag, i) => (
+        <Badge
+            variant='outline'
+            key={i + 'text'}
+            color={'primary.4'}
+            size={'lg'}
+            radius={'md'}
+        >{tag}</Badge>
+    ));
+
     return (
         <Card radius="md" shadow={'sm'} p={0} className={classes.card}>
             <SimpleGrid cols={smallScreen ? 1 : 2} spacing={0}>
-                {
-                    (placement === "left" || smallScreen) && image
-                }
+
+                {(placement === "left" || smallScreen) && image}
+
                 <Box className={classes.body} sx={{ textAlign: isLeft ? 'left' : 'right' }}>
-                    <Text transform="uppercase" color="primary" weight={700} size="sm">
-                        {t('work.toplineFeatured')}
-                    </Text>
+
                     <Stack>
+                        <Group spacing={'sm'}>{tagList}</Group>
                         <Link href={internalUrl}>
-                            <Text className={classes.title} mt="xs">
-                                {title}
-                            </Text>
+                            <Text className={classes.title} mt="xs">{title}</Text>
                         </Link >
-                        <Text className={classes.tag}>
-                            {
-                                tags.join(', ')
-                            }
-                        </Text>
-                        <Text>
-                            {excerpt}
-                        </Text>
+                        <Text>{excerpt}</Text>
                     </Stack>
                     <Space sx={{ flexGrow: 1 }} />
                     <Group sx={{ justifyContent: isLeft ? "flex-start" : "flex-end", paddingTop: theme.spacing.sm }}>
@@ -99,7 +101,7 @@ const FeaturedWorkItem: React.FC<Props> = ({ slug, title, excerpt, tags, placeme
                             href={internalUrl}
                             title={t('work.internalLinkTitle', { title: title })}
                         >
-                            <ActionIcon size={'xl'} variant='outline' color={'primary'} className={classes.linkButton}>
+                            <ActionIcon size={'xl'} variant='outline' className={classes.linkButton}>
                                 <IconFileDescription size={24} />
                             </ActionIcon>
                         </Link>
@@ -109,7 +111,7 @@ const FeaturedWorkItem: React.FC<Props> = ({ slug, title, excerpt, tags, placeme
                                     href={externalUrl}
                                     title={t('work.externalLinkTitle', { title: title })}
                                 >
-                                    <ActionIcon size={'xl'} variant='outline' color={'primary'} className={classes.linkButton}>
+                                    <ActionIcon size={'xl'} variant='outline' className={classes.linkButton}>
                                         <IconExternalLink size={24} />
                                     </ActionIcon>
                                 </Link>
@@ -121,7 +123,7 @@ const FeaturedWorkItem: React.FC<Props> = ({ slug, title, excerpt, tags, placeme
                                     href={githubUrl}
                                     title={t('work.githubLinkTitle', { title: title })}
                                 >
-                                    <ActionIcon size={'xl'} variant='outline' color={'primary'} className={classes.linkButton}>
+                                    <ActionIcon size={'xl'} variant='outline' className={classes.linkButton}>
                                         <IconBrandGithub size={24} />
                                     </ActionIcon>
                                 </Link>
@@ -129,9 +131,9 @@ const FeaturedWorkItem: React.FC<Props> = ({ slug, title, excerpt, tags, placeme
                         }
                     </Group>
                 </Box>
-                {
-                    (placement === "right" && !smallScreen) && image
-                }
+
+                {(placement === "right" && !smallScreen) && image}
+
             </SimpleGrid>
         </Card >
     );

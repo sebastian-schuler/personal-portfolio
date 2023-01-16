@@ -145,7 +145,10 @@ const ContactList = () => {
 
     const items = DATA.map((item, index) => <ContactIcon key={index} data={item} />);
 
-    return <Stack>{items}</Stack>;
+    return <Stack>
+        
+        {items}
+    </Stack>;
 }
 
 export default ContactList;

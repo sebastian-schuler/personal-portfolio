@@ -8,14 +8,10 @@ import { Post } from '../../interfaces/post';
 
 const useStyles = createStyles((theme) => ({
 
-    otherProjectsTitle: {
+    title: {
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
         fontWeight: 600,
-        textAlign: 'center',
-    },
-
-    otherProjectsSub: {
-        textAlign: 'center',
+        textAlign: 'left',
     },
 
 }));
@@ -44,6 +40,10 @@ const WorkSection = ({ featuredProjects, otherProjects }: Props) => {
         <Box mb={"xl"}>
             <SectionHeader anchor='work' title='Work' subtext='Check out my featured projects below.' />
 
+            <Title order={3} className={classes.title}>Featured</Title>
+            <Text size={'lg'}>Scroll down or open the archive to see all of my projects in chronological order.</Text>
+            <Space h={'lg'} />
+
             <Stack spacing={"lg"} mb={"xl"}>
                 {
                     featuredProjects.map((item, index) => (
@@ -62,15 +62,13 @@ const WorkSection = ({ featuredProjects, otherProjects }: Props) => {
                 }
             </Stack>
 
-            <Title order={3} className={classes.otherProjectsTitle}>Other Projects</Title>
-            <Text className={classes.otherProjectsSub} size={'lg'}>Scroll down or open the archive to see all of my projects in chronological order.</Text>
-
+            <Title order={3} className={classes.title}>Other Projects</Title>
+            <Text size={'lg'}>Scroll down or open the archive to see all of my projects in chronological order.</Text>
             <Space h={'lg'} />
 
             <SimpleGrid
                 breakpoints={[
-                    { minWidth: 'md', cols: 3, spacing: 'md' },
-                    { minWidth: 'sm', cols: 2, spacing: 'sm' },
+                    { minWidth: 'sm', cols: 2, spacing: 'md' },
                     { minWidth: 'xs', cols: 1, spacing: 'sm' },
                 ]}
             >
@@ -85,6 +83,9 @@ const WorkSection = ({ featuredProjects, otherProjects }: Props) => {
                                 tags={item.tags}
                                 githubUrl={item.githubUrl}
                                 externalUrl={item.externalUrl}
+                                readTime={item.readTime}
+                                date={item.date}
+                                locales={item.locales}
                             /> : null
                     ))
                 }

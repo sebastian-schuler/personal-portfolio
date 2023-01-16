@@ -5,8 +5,8 @@ export const COLOR_SCHEME_COOKIE = 'preferred-color-scheme';
 export const SOCIAL_LINKS = {
 
     github: {
-        name: 'mildlyadequate',
-        url: ''
+        name: 'sebastian-schuler',
+        url: 'https://github.com/sebastian-schuler'
     },
 
     twitter: {
@@ -16,7 +16,7 @@ export const SOCIAL_LINKS = {
 
     linkedin: {
         name: 'Sebastian Schuler',
-        url: ''
+        url: 'https://www.linkedin.com/in/sebastian-schuler-8a1b8022b/'
     },
 
 }

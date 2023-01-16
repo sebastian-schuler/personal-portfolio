@@ -43,9 +43,7 @@ const TableOfContents = ({ headers }: Props) => {
         }
 
         return <List key={listNumber} withPadding={depth > 2 ? true : false}>
-            {
-                items.map((item, i) => item)
-            }
+            {items.map((item, i) => item)}
         </List>
     }
 

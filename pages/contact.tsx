@@ -7,7 +7,19 @@ const useStyles = createStyles((theme) => {
     const BREAKPOINT = theme.fn.smallerThan('sm');
 
     return {
+        textField: {
+            '::placeholder': {
+                color: theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.dark[0],
+            }
+        },
+        submit: {
+            backgroundColor: theme.colors.primary[5],
+            transition: 'background-color 150ms ease',
 
+            '&:hover': {
+                backgroundColor: theme.colors.primary[4],
+            },
+        }
     };
 });
 
@@ -32,7 +44,7 @@ const ContactPage = () => {
     });
 
     return (
-        <Container>
+        <Container pb={'lg'}>
 
             <Title
                 order={1}
@@ -45,7 +57,7 @@ const ContactPage = () => {
 
             <Grid mt="xl">
 
-                <Grid.Col xs={12} sm={4}>
+                <Grid.Col xs={12} sm={5}>
                     <Title
                         order={2}
                         weight={900}
@@ -57,7 +69,7 @@ const ContactPage = () => {
                     <ContactList />
                 </Grid.Col>
 
-                <Grid.Col xs={12} sm={8}>
+                <Grid.Col xs={12} sm={7}>
 
                     <Title
                         order={2}
@@ -75,6 +87,8 @@ const ContactPage = () => {
                                 placeholder={t('form.namePlaceholder')}
                                 name="name"
                                 variant="filled"
+                                size="md"
+                                classNames={{ input: classes.textField}}
                                 {...form.getInputProps('name')}
                             />
                             <TextInput
@@ -82,6 +96,8 @@ const ContactPage = () => {
                                 placeholder={t('form.emailPlaceholder')}
                                 name="email"
                                 variant="filled"
+                                size="md"
+                                classNames={{ input: classes.textField}}
                                 {...form.getInputProps('email')}
                             />
                         </SimpleGrid>
@@ -92,6 +108,8 @@ const ContactPage = () => {
                             mt="md"
                             name="subject"
                             variant="filled"
+                            size="md"
+                            classNames={{ input: classes.textField}}
                             {...form.getInputProps('subject')}
                         />
                         <Textarea
@@ -103,11 +121,13 @@ const ContactPage = () => {
                             autosize
                             name="message"
                             variant="filled"
+                            size="md"
+                            classNames={{ input: classes.textField}}
                             {...form.getInputProps('message')}
                         />
 
                         <Group position="right" mt="lg">
-                            <Button type="submit" size="md" variant='filled'>
+                            <Button type="submit" size="md" className={classes.submit}>
                                 {t('form.submit')}
                             </Button>
                         </Group>

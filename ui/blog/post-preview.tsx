@@ -53,13 +53,13 @@ const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readT
       radius={'md'}
       color={theme.colorScheme === "dark" ? 'themeBlue.6' : 'themeBlue.4'}
       size={'md'}
-    >{t('postTypeArticle')}</Badge> :
+    >{t('common:post.typeArticle')}</Badge> :
     <Badge
       variant='outline'
       radius={'md'}
       color={theme.colorScheme === "dark" ? 'themePurple.0' : 'themePurple.1'}
       size={'md'}
-    >{t('postTypeProject')}</Badge>;
+    >{t('common:post.typeProject')}</Badge>;
 
   const tagList = tags.map((tag, i) => (
     <Badge
@@ -68,7 +68,7 @@ const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readT
       color={theme.colorScheme === "dark" ? 'primary.4' : 'primary.4'}
       size={'md'}
       radius={'md'}
-    >#{tag}</Badge>
+    >{tag}</Badge>
   ));
 
   const localeStrings = locales.map(locale => t(`common:locale.${locale}`));
@@ -84,7 +84,6 @@ const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readT
         </Group>
 
         <Title order={3} className={classes.title}>{title}</Title>
-
 
         <Group noWrap spacing="sm" className={classes.details}>
           <DateFormatter dateString={date} />

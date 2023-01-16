@@ -111,9 +111,9 @@ const AboutSection = () => {
                             dataTechnologies.map((tech, index) => (
                                 <Badge
                                     key={index}
-                                    variant="outline"
+                                    variant="light"
                                     color="primary.4"
-                                    size="md"
+                                    size="lg"
                                     mb={"xs"}>{tech}</Badge>
                             ))
                         }
@@ -129,9 +129,9 @@ const AboutSection = () => {
                             dataTools.map((tech, index) => (
                                 <Badge
                                     key={index}
-                                    variant="outline"
+                                    variant="light"
                                     color="primary.4"
-                                    size="md"
+                                    size="lg"
                                     mb={"xs"}>{tech}</Badge>
                             ))
                         }

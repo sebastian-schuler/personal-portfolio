@@ -39,6 +39,8 @@
   },
 
   "post": {
-    "tableOfContents": "Table of Contents"
+    "typeProject": "Project",
+    "typeArticle": "Article",
+    "readTimeLabel": "min read"
   }
 }

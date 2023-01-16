@@ -14,7 +14,6 @@ const useStyles = createStyles((theme) => ({
 
     title: {
         fontWeight: 600,
-        fontSize: 32,
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     },
 

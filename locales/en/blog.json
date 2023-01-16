@@ -1,7 +1,6 @@
 {
     "title": "Blog",
     "subtitle": "My personal blog focused on technology and coding.",
-    "postReadTimeLabel": "min read",
     "tagListTitle": "Filter by tag",
     "tagPageTagListTitle": "Other tags",
     "tagLinkTitle": "Show all posts with the tag #{{tag}}",
@@ -17,10 +16,8 @@
     "blogPostTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}",
 
     "otherPostsHeader": "Other posts you might like",
+    "postPreviewLinkTitle": "Read more about '{{title}}'",
 
-    "postTypeProject": "Project",
-    "postTypeArticle": "Article",
-
-    "postPreviewLinkTitle": "Read more about '{{title}}'"
+    "tableOfContents": "Table of Contents"
 
 }
