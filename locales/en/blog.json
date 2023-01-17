@@ -1,6 +1,6 @@
 {
     "title": "Blog",
-    "subtitle": "My personal blog focused on technology and coding.",
+    "subtitle": "My blog contains some of my projects and articles about software development, programming, and other topics.",
     "tagListTitle": "Filter by tag",
     "tagPageTagListTitle": "Other tags",
     "tagLinkTitle": "Show all posts with the tag #{{tag}}",
@@ -19,5 +19,4 @@
     "postPreviewLinkTitle": "Read more about '{{title}}'",
 
     "tableOfContents": "Table of Contents"
-
 }

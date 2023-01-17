@@ -5,25 +5,30 @@ import { PostType } from '../../interfaces/post';
 import { toLink } from '../../lib/util'
 import DateFormatter from '../date-formatter'
 
-const useStyles = createStyles((theme) => {
+const useStyles = createStyles((theme, _params, getRef) => {
 
   return {
 
+    container: {
+      cursor: 'pointer',
+
+      [`&:hover .${getRef('title')}`]: {
+        textDecoration: 'underline',
+      }
+    },
+
     title: {
-      color: theme.colorScheme === 'dark' ? 'white' : theme.black,
+      ref: getRef('title'),
       lineHeight: 1.15,
       margin: 0,
       fontSize: '1.6em',
-
-      '&:hover': {
-        textDecoration: 'underline',
-      }
+      color: theme.colors.blue[4]
     },
 
     details: {
       fontSize: theme.fontSizes.md,
       fontWeight: 'bold',
-      color: theme.colorScheme === 'dark' ? 'white' : theme.black,
+      color: theme.colorScheme === 'dark' ? 'white' : theme.fn.rgba(theme.colors.dark[4], 0.8),
     }
   };
 });
@@ -75,7 +80,7 @@ const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readT
 
   return (
     <Link href={articleLink} title={t('postPreviewLinkTitle', { title: title })}>
-      <Stack spacing={"sm"}>
+      <Stack spacing={"sm"} className={classes.container}>
 
 
         <Group spacing={'sm'}>
@@ -83,12 +88,12 @@ const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readT
           {tagList}
         </Group>
 
-        <Title order={3} className={classes.title}>{title}</Title>
+        <Title order={3} className={classes.title} color={'cyan'}>{title}</Title>
 
         <Group noWrap spacing="sm" className={classes.details}>
           <DateFormatter dateString={date} />
           <Text>•</Text>
-          <Text>{readTime} {t("postReadTimeLabel")}</Text>
+          <Text>{readTime} {t("common:post.readTimeLabel")}</Text>
           <Text>•</Text>
           {localeStrings.join(', ')}
         </Group>

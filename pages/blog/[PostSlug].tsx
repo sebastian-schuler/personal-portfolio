@@ -73,6 +73,8 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
             />
 
             <TableOfContents headers={headers} />
+
+            <Space h="xl" />
             
             {jsxContent}
 

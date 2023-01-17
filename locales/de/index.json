@@ -1,34 +1,96 @@
 {
-    "hero": {
-      "greeting": "Hi, mein Name ist",
-      "preTypewriter": "Ich bin ",
-      "subtext": "Meine Leidenschaft liegt darin, großartige und menschenzentrierte Produkte zu entwickeln, sei es durch Softwareentwicklung, UX Design oder Online-Marketing.",
-      "typewriterArray": [
-          "Full-Stack Entwickler",
-          "Online-Marketing-Manager",
-          "Android Developer",
-          "UX Designer"
-      ],
-      "learnMoreButton": "Mehr erfahren"
+  "hero": {
+    "greeting": "Hi, mein Name ist",
+    "preTypewriter": "Ich bin ",
+    "subtext": "Meine Leidenschaft liegt darin, großartige und menschenzentrierte Produkte zu entwickeln, sei es durch Softwareentwicklung, UX Design oder Online-Marketing.",
+    "typewriterArray": [
+      "Full-Stack Entwickler",
+      "Online-Marketing-Manager",
+      "Android Developer",
+      "UX Designer"
+    ],
+    "learnMoreButton": "Mehr erfahren"
+  },
+
+  "about": {
+    "p1": "Hi! Ich heisse Sebastian und entwickle sowohl Anwendungen als auch digitale Projekte. Mein Interesse an der Software Entwicklung begann im Jahr 2012, als ich mich im Informatik-Kurs der Schule angemeldet hatte. Davon war ich so begeistert, dass ich auf die BBS SÜW wechselte, um meinen Fokus voll auf die Anwendungsentwicklung zu legen.",
+    "p2": "Da ich mich schon immer für viele verschiedene Richtungen der digitalen Medien begeistern konnte, war der Digital Media Marketing Studiengang meine erste Wahl. Trotz des Namens war der Fokus hier auf den drei Hauptrichtungen: Informatik, Marketing und UX Design.",
+    "p3": {
+      "1": "Mehr Details zu mir sind im nächsten Abschnitt",
+      "2": "zu finden. Alternativ kannst du auch direkt meine",
+      "3": "anschauen."
     },
-  
-    "about": {
-      "p1": "Hi! Ich heisse Sebastian und entwickle sowohl Anwendungen als auch digitale Projekte. Mein Interesse an der Software Entwicklung begann im Jahr 2012, als ich mich im Informatik-Kurs der Schule angemeldet hatte. Davon war ich so begeistert, dass ich auf die BBS SÜW wechselte, um meinen Fokus voll auf die Anwendungsentwicklung zu legen.",
-      "p2": "Da ich mich schon immer für viele verschiedene Richtungen der digitalen Medien begeistern konnte, war der Digital Media Marketing Studiengang meine erste Wahl. Trotz des Namens war der Fokus hier auf den drei Hauptrichtungen: Informatik, Marketing und UX Design.",
-      "p3": {
-          "1": "Mehr Details zu mir sind im nächsten Abschnitt",
-          "2": "zu finden. Alternativ kannst du auch direkt meine",
-          "3": "anschauen."
-      },
-      "tech": {
-        "title": "Technologien",
-        "text": "mit denen ich gearbeitet habe:"
-      },
-      "tools": {
-        "title": "Tools",
-        "text": "mit denen ich Erfahrung habe:"
-      }
+    "tech": {
+      "title": "Technologien",
+      "text": "mit denen ich gearbeitet habe:"
+    },
+    "tools": {
+      "title": "Tools",
+      "text": "mit denen ich Erfahrung habe:"
     }
-  
-  
+  },
+
+  "experience": {
+    "title": "Lebenslauf",
+    "hskl": {
+      "tabTitle": "HSKL",
+      "institution": "Hochschule Kaiserslautern - University of Applied Sciences",
+      "title": "Digital Media Marketing",
+      "years": "2017 - 2022",
+      "list": [
+        "Ziel des Studiengangs ist die berufsorientierte Ausbildung von Informatiker*innen mit Grundkenntnissen in Informatik, Webentwicklung, Marketing und digitaler Inhaltserstellung.",
+        "Zu den erworbenen Fähigkeiten gehören unter anderem Webentwicklung, Java-Desktop-Programmierung, SEO, CMS, Online-Marketing, UX-Design, Datenbanken und App-Entwicklung.",
+        "Im Rahmen meines Studiums habe ich zahlreiche Projekte durchgeführt, von denen viele im nächsten Abschnitt zu finden sind."
+      ]
+    },
+
+    "ux": {
+      "tabTitle": "UXQB",
+      "institution": "International Software Quality Institute",
+      "title": "Certified Professional for Usability and UX - Foundation Level",
+      "years": "Completed in 2017",
+
+      "paragraph": "The UXQB - CPUX-F certificate attests that I am familiar with the basic terms and concepts of usability and user experience, and that I'm able to apply them in the following areas of competence:",
+      "list": [
+        "The objective of the course is the career-oriented education of computer scientists with basic skills in marketing and digital content creation.",
+        "Acquired Skills include, but are not limited to, web development, Java desktop programming, SEO, CMS, online marketing, UX design, databases, and app development.",
+        "I completed numerous projects as part of my studies, many of which can be found in the next section."
+      ],
+      "footer": {
+        "text": "Source:",
+        "linkLabel": "UXQB"
+      }
+    },
+
+    "edv": {
+      "tabTitle": "EDV Höhne",
+      "institution": "EDV Höhne",
+      "title": "Software Developer / Praktikum",
+      "years": "2015 - 2016",
+      "paragraph": "",
+      "list": [
+        "I had to complete at least half a year of internship in order to get the apprenticeship recognized as part of my high school diploma (A-Level). I was able to learn a lot during my time here, as the company gave me the opportunity to work full time as a software developer.",
+        "Used technologies included Visual Basic, Java, Android, and SQL. My biggest project was the creation of an interface for the internal phone system that automatically displayed the status of employees and allows routing between departments."
+      ]
+    },
+
+    "bbs": {
+      "tabTitle": "BBS SÜW",
+      "institution": "BBS SÜW",
+      "title": "Fachabitur / Assistent für Anwendungsentwicklung",
+      "years": "2014-2015",
+      "list": [
+        "Here was my first 'professional' touch point with computer science and programming. The degree consists of two parts: A-Levels to study at universities, and an apprenticeship as an assistant for application development.",
+        "The topics were mainly Java programming, hardware and electrical engineering.",
+        "My final project was an Android app including a backend that could scan food barcodes and warn users, if any of their allergies were affected."
+      ]
+    }
+  },
+
+  "work": {
+    "title": "Projekte",
+    "internalLinkTitle": "{{title}} Projektseite öffnen",
+    "externalLinkTitle": "{{title}} website öffnen",
+    "githubLinkTitle": "{{title}} auf GitHub öffnen"
   }
+}

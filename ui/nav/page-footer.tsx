@@ -1,6 +1,7 @@
 import { ActionIcon, Box, Container, createStyles, Group, SimpleGrid, Stack, Text } from '@mantine/core';
 import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons';
 import useTranslation from 'next-translate/useTranslation';
+import { SOCIAL_LINKS } from '../../lib/constants';
 import ILink from '../link';
 
 const useStyles = createStyles((theme) => {
@@ -43,7 +44,7 @@ const PageFooter = () => {
                         <Group spacing={0} align={'start'} sx={{ flexDirection: 'row-reverse' }}>
                             <ActionIcon
                                 component='a'
-                                href='https://twitter.com/sebschuler'
+                                href={SOCIAL_LINKS.twitter.url}
                                 target={'_blank'}
                                 variant='subtle'
                                 size={'lg'}
@@ -54,7 +55,7 @@ const PageFooter = () => {
                             </ActionIcon>
                             <ActionIcon
                                 component='a'
-                                href='https://www.linkedin.com/in/sebastian-schuler-8a1b8022b/'
+                                href={SOCIAL_LINKS.linkedin.url}
                                 target={'_blank'}
                                 variant='subtle'
                                 size={'lg'}
@@ -65,7 +66,7 @@ const PageFooter = () => {
                             </ActionIcon>
                             <ActionIcon
                                 component='a'
-                                href='https://github.com/mildlyadequate'
+                                href={SOCIAL_LINKS.github.url}
                                 target={'_blank'}
                                 variant='subtle'
                                 size={'lg'}

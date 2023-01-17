@@ -2,6 +2,7 @@ import { Anchor, Box, createStyles, Group, Stack, Text } from '@mantine/core';
 import { IconAt, IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconMapPin, TablerIcon, IconExternalLink } from '@tabler/icons';
 import useTranslation from 'next-translate/useTranslation';
 import { SOCIAL_LINKS } from '../../lib/constants';
+import EncryptedEmail from './encryptedEmail';
 
 type ContactData = (
     {
@@ -108,7 +109,7 @@ const ContactList = () => {
         {
             type: "email",
             title: t('socials.email'),
-            text: <>&#x73;&#x65;&#x62;&#x61;&#x73;&#x74;&#x69;&#x61;&#x6e;&#x2e;&#x73;&#x63;&#x68;&#x75;&#x6c;&#x65;&#x72;&#x2e;&#x73;&#x62;&#x73;&#x63;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</>,
+            text: <EncryptedEmail email='sebastian.schuler@live.com' />,
             icon: IconAt
         },
         {

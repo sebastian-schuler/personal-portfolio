@@ -9,7 +9,7 @@ type Props = {
 
 const TableOfContents = ({ headers }: Props) => {
 
-    const { t } = useTranslation('common');
+    const { t } = useTranslation('blog');
     const theme = useMantineTheme();
 
     const getList = (data: HeaderData[], depth: number, listNumber: number): JSX.Element => {
@@ -50,8 +50,8 @@ const TableOfContents = ({ headers }: Props) => {
     const items = getList(headers, 2, 1);
 
     return (
-        <Box mb={'xl'}>
-            <Text size={"lg"} color={theme.colorScheme === "dark" ? 'white' : theme.black}>{t("post.tableOfContents")}</Text>
+        <Box>
+            <Text size={"lg"} color={theme.colorScheme === "dark" ? 'white' : theme.black}>{t("tableOfContents")}</Text>
             {items}
         </Box>
     )

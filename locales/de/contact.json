@@ -1,3 +1,29 @@
 {
-    
+    "title": "Kontaktiere mich",
+    "subtitleSocials": "Soziale Medien",
+    "subtitleContact": "Kontaktformular",
+
+    "socials": {
+        "email": "Email",
+        "country": "Land",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "twitter": "Twitter"
+    },
+
+    "form": {
+        "name": "Name",
+        "namePlaceholder": "Dein name",
+
+        "email": "Email",
+        "emailPlaceholder": "Deine email",
+
+        "subject": "Betreff",
+        "subjectPlaceholder": "Betreff",
+
+        "message": "Nachricht",
+        "messagePlaceholder": "Deine Nachricht",
+
+        "submit": "Absenden"
+    }
 }

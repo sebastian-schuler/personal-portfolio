@@ -36,5 +36,11 @@
     "twitterLinkTitle": "Sebastian Schuler auf Twitter",
     "githubLinkTitle": "Sebastian Schuler auf GitHub",
     "linkedinLinkTitle": "Sebastian Schuler auf LinkedIn"
+  },
+
+  "post": {
+    "typeProject": "Projekt",
+    "typeArticle": "Artikel",
+    "readTimeLabel": "min lesen"
   }
 }

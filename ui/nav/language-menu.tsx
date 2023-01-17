@@ -28,7 +28,7 @@ const useStyles = createStyles((theme) => {
     };
 });
 
-const LanguageDrawer = () => {
+const LanguageMenu = () => {
 
     const { t } = useTranslation('common');
     const theme = useMantineTheme();
@@ -74,4 +74,4 @@ const LanguageDrawer = () => {
     )
 }
 
-export default LanguageDrawer
+export default LanguageMenu

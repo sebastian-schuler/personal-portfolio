@@ -1,9 +1,9 @@
-import { Affix, Button, Transition, useMantineTheme } from '@mantine/core';
+import { ActionIcon, Affix, Transition, useMantineTheme } from '@mantine/core';
 import { useWindowScroll } from '@mantine/hooks';
 import { IconArrowUp } from '@tabler/icons';
-import React from 'react'
 
 const ScrollTopButton = () => {
+
     const [scroll, scrollTo] = useWindowScroll();
     const theme = useMantineTheme();
 
@@ -11,17 +11,25 @@ const ScrollTopButton = () => {
         <Affix position={{ bottom: 20, right: 20 }}>
             <Transition transition="slide-up" mounted={scroll.y > 0}>
                 {(transitionStyles) => (
-                    <Button
+
+                    <ActionIcon
+                        variant="filled"
+                        size={'lg'}
+                        onClick={() => scrollTo({ y: 0 })}
+                        style={transitionStyles}
+                        title="Scroll to top"
                         sx={{
                             color: 'white',
-                            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.dark[1],
+                            backgroundColor: theme.colors.primary[5],
+                            boxShadow: theme.shadows.md,
+
+                            '&:hover': {
+                                backgroundColor: theme.colors.primary[4],
+                            }
                         }}
-                        leftIcon={<IconArrowUp size={16} />}
-                        style={transitionStyles}
-                        onClick={() => scrollTo({ y: 0 })}
                     >
-                        Scroll to top
-                    </Button>
+                        <IconArrowUp size={18} />
+                    </ActionIcon>
                 )}
             </Transition>
         </Affix>

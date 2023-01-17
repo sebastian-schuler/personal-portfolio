@@ -92,9 +92,9 @@ const appTheme: MantineThemeOverride = {
             marginLeft: -2,
           },
           '&:is(h2)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[7] },
-          '&:is(h3)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[6] },
-          '&:is(h4)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[6] },
-          '&:is(h5)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5] },
+          '&:is(h3)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[7] },
+          '&:is(h4)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[7] },
+          '&:is(h5)': { color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[7] },
           '&:is(h6)': { color: theme.colors.primary[4] },
         }
       }),

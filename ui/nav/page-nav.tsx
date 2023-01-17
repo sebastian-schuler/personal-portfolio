@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ColorSchemeSwitch from './color-scheme-switch';
-import LanguageDrawer from './language-drawer';
+import LanguageMenu from './language-menu';
 import PageLogo from './page-logo';
 import PageNavMobile from './page-nav-mobile';
 import ScrollTopButton from './scroll-top-button';
@@ -123,7 +123,7 @@ const PageNav = () => {
 
               <Group ml={"md"}>
                 <ColorSchemeSwitch />
-                <LanguageDrawer />
+                <LanguageMenu />
               </Group>
 
             </Group>

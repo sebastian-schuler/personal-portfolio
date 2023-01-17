@@ -28,13 +28,13 @@ const PostHeader = ({ type, title, coverImage, date, tags, excerpt, readTime }: 
             radius={'md'}
             color={'themeBlue.7'}
             size={'lg'}
-        >{t('postTypeArticle')}</Badge> :
+        >{t('common:post.typeArticle')}</Badge> :
         <Badge
             variant='filled'
             radius={'md'}
             color={'themePurple.4'}
             size={'lg'}
-        >{t('postTypeProject')}</Badge>;
+        >{t('common:post.typeProject')}</Badge>;
 
     const postTags = <Group>
         {postTypeNode}
@@ -66,8 +66,8 @@ const PostHeader = ({ type, title, coverImage, date, tags, excerpt, readTime }: 
                 </Text>
                 <PostSharePanel title={title} />
             </Group>
-            <Divider mt={'xs'} mb={'xl'}/>
 
+            <Divider mt={'xs'} mb={'md'}/>
 
             <div>
                 <Text size={'lg'} color={theme.colorScheme === "dark" ? 'white' : theme.black}>Excerpt</Text>

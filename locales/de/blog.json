@@ -14,5 +14,10 @@
 
     "blogPageTabTitle": "Blog von Sebastian Schuler | Seite {{page}}",
     "tagPageTabTitle": "{{tag}} Artikel von Sebastian Schuler",
-    "blogPostTabTitle": "{{title}} | von Sebastian Schuler | {{date}} | {{tags}}"
+    "blogPostTabTitle": "{{title}} | von Sebastian Schuler | {{date}} | {{tags}}",
+
+    "otherPostsHeader": "Andere Beiträge, die dich interessieren könnten",
+    "postPreviewLinkTitle": "Mehr über '{{title}}' lesen",
+
+    "tableOfContents": "Inhalt"
 }

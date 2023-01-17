@@ -33,11 +33,11 @@
     "title": "Experience",
     "hskl": {
       "tabTitle": "HSKL",
-      "institution": "Hochschule Karlsruhe",
+      "institution": "Hochschule Kaiserslautern - University of Applied Sciences",
       "title": "Digital Media Marketing",
       "years": "2017 - 2022",
       "list": [
-        "The objective of the course is the career-oriented education of computer scientists with basic skills in marketing and digital content creation.",
+        "The objective of the course is the career-oriented education of computer scientists with basic skills in computer science, web development, marketing and digital content creation.",
         "Acquired Skills include, but are not limited to, web development, Java desktop programming, SEO, CMS, online marketing, UX design, databases, and app development.",
         "I completed numerous projects as part of my studies, many of which can be found in the next section."
       ]
@@ -88,7 +88,7 @@
 
   "work": {
     "title": "Work",
-    "toplineFeatured":"Featured Project",
+    "toplineFeatured": "Featured Project",
     "internalLinkTitle": "View {{title}} project page",
     "externalLinkTitle": "View {{title}} website",
     "githubLinkTitle": "View {{title}} on GitHub"
