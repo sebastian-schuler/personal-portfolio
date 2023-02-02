@@ -1,5 +1,5 @@
 import { Anchor, Box, createStyles, Group, Stack, Text } from '@mantine/core';
-import { IconAt, IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconMapPin, TablerIcon, IconExternalLink } from '@tabler/icons';
+import { IconAt, IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconMapPin, IconExternalLink } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import { SOCIAL_LINKS } from '../../lib/constants';
 import EncryptedEmail from './encryptedEmail';
@@ -8,19 +8,19 @@ type ContactData = (
     {
         type: 'text'
         title: string
-        icon: TablerIcon
+        icon: JSX.Element
         text: string
     } |
     {
         type: 'email'
         title: string
-        icon: TablerIcon
+        icon: JSX.Element
         text: JSX.Element
     } |
     {
         type: 'link'
         title: string
-        icon: TablerIcon
+        icon: JSX.Element
         text: string
         url: string
         linkTitle: string
@@ -62,14 +62,14 @@ function ContactIcon({
 }: ContactIconProps) {
     const { classes, cx } = useStyles();
     const { title, text, type } = data;
-    const Icon: TablerIcon = data.icon;
+    const icon: JSX.Element = data.icon;
     const isLink = type === "link";
 
     return (
         <div className={cx(classes.wrapper, className)} {...others}>
             {
                 <Box mr="md">
-                    <Icon size={24} className={classes.icon} />
+                    {icon}
                 </Box>
             }
             <div>
@@ -85,7 +85,7 @@ function ContactIcon({
                             title={data.linkTitle}
                         >
                             <Group spacing={2} align={'center'}>
-                                <IconExternalLink size={15} />
+                                <IconExternalLink />
                                 {text}
                             </Group>
                         </Anchor>
@@ -110,20 +110,20 @@ const ContactList = () => {
             type: "email",
             title: t('socials.email'),
             text: <EncryptedEmail email='sebastian.schuler@live.com' />,
-            icon: IconAt
+            icon: <IconAt size={18} />
         },
         {
             type: "text",
             title: t('socials.country'),
             text: 'Germany',
-            icon: IconMapPin
+            icon: <IconMapPin size={18} />
         },
         {
             type: "link",
             title: t('socials.github'),
             text: SOCIAL_LINKS.github.name,
             url: SOCIAL_LINKS.github.url,
-            icon: IconBrandGithub,
+            icon: <IconBrandGithub size={18} />,
             linkTitle: t('common:footer.githubLinkTitle')
         },
         {
@@ -131,7 +131,7 @@ const ContactList = () => {
             title: t('socials.linkedin'),
             text: SOCIAL_LINKS.linkedin.name,
             url: SOCIAL_LINKS.linkedin.url,
-            icon: IconBrandLinkedin,
+            icon: <IconBrandLinkedin size={18} />,
             linkTitle: t('common:footer.linkedinLinkTitle')
         },
         {
@@ -139,7 +139,7 @@ const ContactList = () => {
             title: t('socials.twitter'),
             text: SOCIAL_LINKS.twitter.name,
             url: SOCIAL_LINKS.twitter.url,
-            icon: IconBrandTwitter,
+            icon: <IconBrandTwitter size={18} />,
             linkTitle: t('common:footer.twitterLinkTitle')
         },
     ];
@@ -147,7 +147,7 @@ const ContactList = () => {
     const items = DATA.map((item, index) => <ContactIcon key={index} data={item} />);
 
     return <Stack>
-        
+
         {items}
     </Stack>;
 }

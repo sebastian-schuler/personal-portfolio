@@ -1,6 +1,6 @@
 import { ActionIcon, Affix, Transition, useMantineTheme } from '@mantine/core';
 import { useWindowScroll } from '@mantine/hooks';
-import { IconArrowUp } from '@tabler/icons';
+import { IconArrowUp } from '@tabler/icons-react';
 
 const ScrollTopButton = () => {
 

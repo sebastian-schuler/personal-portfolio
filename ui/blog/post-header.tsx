@@ -4,7 +4,7 @@ import { PostType } from "../../interfaces/post"
 import { toLink } from "../../lib/util"
 import DateFormatter from "../date-formatter"
 import ILink from "../link"
-import MyTitle from "../my-title"
+import MyTitle from "../title"
 import PostSharePanel from "./post-share-panel"
 
 type Props = {
@@ -36,7 +36,7 @@ const PostHeader = ({ type, title, coverImage, date, tags, excerpt, readTime }: 
             size={'lg'}
         >{t('common:post.typeProject')}</Badge>;
 
-    const postTags = <Group>
+    const postTags = <Group spacing={'sm'}>
         {postTypeNode}
         {
             tags.map((tag, i) => (
@@ -52,13 +52,7 @@ const PostHeader = ({ type, title, coverImage, date, tags, excerpt, readTime }: 
     return (
         <Box mb={'md'}>
 
-            <Stack spacing={'xs'}>
-                <MyTitle marginTop>
-                    <div>{postTags}</div>
-                    {title}
-                </MyTitle>
-
-            </Stack>
+            <MyTitle>{postTags}{title}</MyTitle>
 
             <Group position="apart" align={'end'} mt={'sm'}>
                 <Text size='md'>
@@ -67,14 +61,12 @@ const PostHeader = ({ type, title, coverImage, date, tags, excerpt, readTime }: 
                 <PostSharePanel title={title} />
             </Group>
 
-            <Divider mt={'xs'} mb={'md'}/>
+            <Divider mt={'xs'} mb={'md'} />
 
             <div>
                 <Text size={'lg'} color={theme.colorScheme === "dark" ? 'white' : theme.black}>Excerpt</Text>
                 <Text>{excerpt}</Text>
             </div>
-
-
 
         </Box>
     )

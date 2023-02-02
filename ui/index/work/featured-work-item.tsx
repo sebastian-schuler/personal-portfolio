@@ -1,6 +1,6 @@
 import { ActionIcon, Badge, Box, Card, createStyles, Group, Image, SimpleGrid, Space, Stack, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { IconBrandGithub, IconExternalLink, IconFileDescription } from '@tabler/icons';
+import { IconBrandGithub, IconExternalLink, IconFileDescription } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import React from 'react';

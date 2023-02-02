@@ -10,8 +10,8 @@ import { PAGE_URL } from '../../lib/constants'
 import BlogPostList from '../../ui/blog/blog-post-list'
 import BlogTagList from '../../ui/blog/blog-tag-list'
 import PageBreadcrumbs from '../../ui/breadcrumbs'
-import MyPagination from '../../ui/my-pagination'
-import MyTitle from '../../ui/my-title'
+import MyPagination from '../../ui/pagination'
+import MyTitle from '../../ui/title'
 
 interface Props {
   pageCount: number
@@ -66,9 +66,9 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
         <Text mt={'xs'}>{t("subtitle")}</Text>
         <Space h={'lg'} />
 
-        <Grid gutter={'xl'}>
+        <Grid gutter={'lg'} gutterMd={'xl'}>
 
-          <Grid.Col span={8}>
+          <Grid.Col order={2} orderMd={1} sm={12} md={'auto'}>
             <BlogPostList posts={allPosts} />
             <MyPagination
               currentPage={currentPage}
@@ -77,7 +77,7 @@ const BlogPage = ({ pageCount, tags, allPosts }: Props) => {
             />
           </Grid.Col>
 
-          <Grid.Col span={4}>
+          <Grid.Col order={1} orderMd={2} sm={12} md={'content'}>
             <BlogTagList tags={tags} title={t("tagListTitle")} />
           </Grid.Col>
 
@@ -106,7 +106,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     page: page,
     locale: context.locale
   });
-  
+
   return {
     props: {
       pageCount,

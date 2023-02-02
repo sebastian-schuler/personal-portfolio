@@ -50,11 +50,7 @@
       "years": "Completed in 2017",
 
       "paragraph": "The UXQB - CPUX-F certificate attests that I am familiar with the basic terms and concepts of usability and user experience, and that I'm able to apply them in the following areas of competence:",
-      "list": [
-        "The objective of the course is the career-oriented education of computer scientists with basic skills in marketing and digital content creation.",
-        "Acquired Skills include, but are not limited to, web development, Java desktop programming, SEO, CMS, online marketing, UX design, databases, and app development.",
-        "I completed numerous projects as part of my studies, many of which can be found in the next section."
-      ],
+      "list": ["", "", ""],
       "footer": {
         "text": "Source:",
         "linkLabel": "UXQB"

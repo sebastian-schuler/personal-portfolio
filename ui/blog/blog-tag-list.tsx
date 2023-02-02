@@ -1,4 +1,4 @@
-import { createStyles, Stack, Text } from '@mantine/core';
+import { createStyles, Group, MediaQuery, Stack, Text } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import Tag from '../../interfaces/tag';
@@ -14,6 +14,10 @@ const useStyles = createStyles((theme) => {
             marginBottom: theme.spacing.sm,
             fontSize: '1.2em',
             fontWeight: 600,
+
+            [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+                paddingBottom: theme.spacing.xs,
+            },
         },
 
         tag: {
@@ -23,7 +27,11 @@ const useStyles = createStyles((theme) => {
 
             '&:hover': {
                 textDecoration: 'underline',
-            }
+            },
+
+            [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+                lineHeight: .6,
+            },
         },
     };
 });
@@ -38,27 +46,32 @@ const BlogTagList = ({ tags, title }: Props) => {
     const { classes } = useStyles();
     const { t } = useTranslation('blog');
 
+    const tagList = tags.map((tag, i) => (
+        <Link
+            key={i}
+            href={toLink('blog', 'tag', tag.name)}
+            title={t('tagLinkTitle', { tag: tag.name })}
+        >
+            <Text key={i + "text"} className={classes.tag}>#{tag.name}</Text>
+        </Link>
+    ));
+
     return (
         <>
             <Text className={classes.title}>{title}</Text>
-            <Stack spacing={0}>
-                {
-                    tags.map((tag, i) => (
-                        <Link
-                            key={i}
-                            href={toLink('blog', 'tag', tag.name)}
-                            title={t('tagLinkTitle', { tag: tag.name })}
-                        >
-                            <Text
-                                key={i + "text"}
-                                className={classes.tag}
-                            >
-                                #{tag.name} {`(${tag.count})`}
-                            </Text>
-                        </Link>
-                    ))
-                }
-            </Stack>
+
+            <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
+                <Stack spacing={0}>
+                    {tagList}
+                </Stack>
+            </MediaQuery>
+
+            <MediaQuery largerThan="md" styles={{ display: 'none' }}>
+                <Group spacing={"md"}>
+                    {tagList}
+                </Group>
+            </MediaQuery>
+
         </>
     )
 }

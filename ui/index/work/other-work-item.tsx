@@ -1,5 +1,5 @@
 import { ActionIcon, Badge, Box, Card, createStyles, Divider, Group, Stack, Text, Title } from '@mantine/core';
-import { IconBrandGithub, IconExternalLink, IconFileDescription } from '@tabler/icons';
+import { IconBrandGithub, IconExternalLink, IconFileDescription } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import React from 'react'

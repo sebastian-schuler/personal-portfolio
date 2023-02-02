@@ -1,5 +1,5 @@
 import { Box, createStyles, List, Stack, Tabs, Text, Title } from '@mantine/core';
-import { IconAward, IconBook, IconBuilding, IconPoint, IconSchool } from '@tabler/icons';
+import { IconAward, IconBook, IconBuilding, IconPoint, IconSchool } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import { ReactNode } from 'react';
 import ILink from '../link';

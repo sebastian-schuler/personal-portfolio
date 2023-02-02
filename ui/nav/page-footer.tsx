@@ -1,5 +1,5 @@
 import { ActionIcon, Box, Container, createStyles, Group, SimpleGrid, Stack, Text } from '@mantine/core';
-import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons';
+import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import { SOCIAL_LINKS } from '../../lib/constants';
 import ILink from '../link';

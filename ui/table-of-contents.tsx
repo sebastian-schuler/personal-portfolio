@@ -1,5 +1,4 @@
-import { Anchor, Box, Divider, Group, List, Text, useMantineTheme } from '@mantine/core';
-import { IconListSearch } from '@tabler/icons';
+import { Anchor, Box, List, Text, useMantineTheme } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
 import { HeaderData } from '../lib/markdown/customMarkdownParser';
 

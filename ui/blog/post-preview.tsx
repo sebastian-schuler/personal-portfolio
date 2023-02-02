@@ -29,7 +29,8 @@ const useStyles = createStyles((theme, _params, getRef) => {
       fontSize: theme.fontSizes.md,
       fontWeight: 'bold',
       color: theme.colorScheme === 'dark' ? 'white' : theme.fn.rgba(theme.colors.dark[4], 0.8),
-    }
+    },
+
   };
 });
 
@@ -81,7 +82,6 @@ const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readT
   return (
     <Link href={articleLink} title={t('postPreviewLinkTitle', { title: title })}>
       <Stack spacing={"sm"} className={classes.container}>
-
 
         <Group spacing={'sm'}>
           {postTypeNode}

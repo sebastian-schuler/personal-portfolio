@@ -13,6 +13,9 @@ const BlogPostList = ({ posts }: Props) => {
                 {
                     posts.map((post, i) => (
                         <div key={i}>
+                            {
+                                i === 0 && <Divider mb={'lg'} />
+                            }
                             <PostPreview
                                 type={post.type}
                                 title={post.title}
@@ -25,7 +28,7 @@ const BlogPostList = ({ posts }: Props) => {
                                 locales={post.locales}
                             />
                             {
-                                i < posts.length - 1 && <Divider mt={'lg'} />
+                                i < posts.length && <Divider mt={'lg'} />
                             }
                         </div>
                     ))

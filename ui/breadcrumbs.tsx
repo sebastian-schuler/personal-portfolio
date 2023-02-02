@@ -1,8 +1,23 @@
-import { Breadcrumbs, Group, Text } from '@mantine/core';
+import { Breadcrumbs, createStyles, Group, Text } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { toLink } from '../lib/util';
 import ILink from './link';
+
+const useStyles = createStyles((theme) => {
+
+    return {
+        root: {
+            alignItems: 'baseline'
+        },
+        separator: {
+            color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+        },
+        breadcrumb: {
+            whiteSpace: 'pre-wrap'
+        }
+    };
+});
 
 interface Link {
     name: string;
@@ -18,6 +33,7 @@ const PageBreadcrumbs = ({ postTitle, projectTitle }: Props) => {
 
     const { t } = useTranslation('common');
     const router = useRouter();
+    const { classes, theme } = useStyles();
     const query = router.query;
     const route = router.route;
 
@@ -55,32 +71,30 @@ const PageBreadcrumbs = ({ postTitle, projectTitle }: Props) => {
     }
 
     return (
-        <>
-            <Group position='apart' mb={2}>
-                <Breadcrumbs separator=">">
-                    {
-                        links.map((link, i) => (
-                            i !== links.length - 1 ? (
-                                <ILink
-                                    key={i}
-                                    url={link.url}
-                                    type="internal"
-                                >
-                                    {link.name}
-                                </ILink>
-                            ) : (
-                                <Text
-                                    key={i}
-                                    sx={{ letterSpacing: 0.7 }}
-                                >
-                                    {link.name}
-                                </Text>
-                            )
-                        ))
-                    }
-                </Breadcrumbs>
-            </Group>
-        </>
+        <Group position='apart' mb={theme.spacing.lg} pt={theme.spacing.md}>
+            <Breadcrumbs separator=">" classNames={{ root: classes.root, separator: classes.separator, breadcrumb: classes.breadcrumb }}>
+                {
+                    links.map((link, i) => (
+                        i !== links.length - 1 ? (
+                            <ILink
+                                key={i}
+                                url={link.url}
+                                type="internal"
+                            >
+                                {link.name}
+                            </ILink>
+                        ) : (
+                            <Text
+                                key={i}
+                                sx={{ letterSpacing: 0.7 }}
+                            >
+                                {link.name}
+                            </Text>
+                        )
+                    ))
+                }
+            </Breadcrumbs>
+        </Group>
     )
 }
 

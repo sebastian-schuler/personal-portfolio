@@ -1,4 +1,4 @@
-import { Container, Space, useMantineTheme } from '@mantine/core'
+import { Container, Space } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import ErrorPage from 'next/error'
@@ -17,7 +17,7 @@ import { formatDate } from '../../lib/util'
 import PostFooter from '../../ui/blog/post-footer'
 import PostHeader from '../../ui/blog/post-header'
 import PageBreadcrumbs from '../../ui/breadcrumbs'
-import MyTitle from '../../ui/my-title'
+import MyTitle from '../../ui/title'
 import TableOfContents from '../../ui/table-of-contents'
 
 type Props = {
@@ -28,6 +28,8 @@ type Props = {
 
 const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
 
+  const { t, lang } = useTranslation('blog');
+
   const parser = new MarkdownParser();
   const jsxContent = parser.renderMarkdown(content);
   const headers = parser.getHeaders();
@@ -37,8 +39,6 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
     return <ErrorPage statusCode={404} />
   }
 
-  const { t, lang } = useTranslation('blog');
-  const theme = useMantineTheme();
   const localePart = router.locale === router.defaultLocale ? "" : router.locale + "/";
 
   return (

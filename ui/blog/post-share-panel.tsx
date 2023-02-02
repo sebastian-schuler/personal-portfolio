@@ -4,7 +4,7 @@ import {
     IconBrandLinkedin,
     IconBrandTwitter,
     IconLink,
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 import useTranslation from "next-translate/useTranslation";
 import React, { useState } from "react";
 

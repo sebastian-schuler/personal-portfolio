@@ -1,13 +1,12 @@
-import { ActionIcon, createStyles, Drawer, Menu, useMantineTheme } from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks';
-import { IconLanguage } from '@tabler/icons'
+import { ActionIcon, createStyles, Menu, useMantineTheme } from '@mantine/core';
+import { IconLanguage } from '@tabler/icons-react';
 import { DE, GB } from 'country-flag-icons/react/3x2';
+import setLanguage from 'next-translate/setLanguage';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react'
+import { useState } from 'react';
 import i18nConfig from '../../i18n';
 import { getLanguageById, LocaleItem } from '../../lib/localeUtil';
-import setLanguage from 'next-translate/setLanguage';
 
 const useStyles = createStyles((theme) => {
     return {
@@ -53,7 +52,7 @@ const LanguageMenu = () => {
                     color={'red'}
                     title={t('languageSwitchTitle')}
                 >
-                    <IconLanguage size={18} />
+                    <IconLanguage size={18} /> {/* 18 */}
                 </ActionIcon>
             </Menu.Target>
 

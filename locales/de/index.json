@@ -13,20 +13,19 @@
   },
 
   "about": {
-    "p1": "Hi! Ich heisse Sebastian und entwickle sowohl Anwendungen als auch digitale Projekte. Mein Interesse an der Software Entwicklung begann im Jahr 2012, als ich mich im Informatik-Kurs der Schule angemeldet hatte. Davon war ich so begeistert, dass ich auf die BBS SÜW wechselte, um meinen Fokus voll auf die Anwendungsentwicklung zu legen.",
-    "p2": "Da ich mich schon immer für viele verschiedene Richtungen der digitalen Medien begeistern konnte, war der Digital Media Marketing Studiengang meine erste Wahl. Trotz des Namens war der Fokus hier auf den drei Hauptrichtungen: Informatik, Marketing und UX Design.",
-    "p3": {
-      "1": "Mehr Details zu mir sind im nächsten Abschnitt",
-      "2": "zu finden. Alternativ kannst du auch direkt meine",
-      "3": "anschauen."
-    },
+    "title": "About",
+    "text": [
+      "Hi! Ich heisse Sebastian und entwickle sowohl Anwendungen als auch digitale Projekte. Mein Interesse an der Software Entwicklung begann im Jahr 2012, als ich mich im Informatik-Kurs der Schule angemeldet hatte. Davon war ich so begeistert, dass ich auf die BBS SÜW wechselte, um meinen Fokus voll auf die Anwendungsentwicklung zu legen.",
+      "Da ich mich schon immer für viele verschiedene Richtungen der digitalen Medien begeistern konnte, war der Digital Media Marketing Studiengang meine erste Wahl. Trotz des Namens war der Fokus hier auf den drei Hauptrichtungen: Informatik, Marketing und UX Design.",
+      "Mehr Details zu mir sind im nächsten Abschnitt <0>Lebenslauf</0>zu finden. Alternativ kannst du auch direkt meine <1>Projekte</1> anschauen."
+    ],
     "tech": {
       "title": "Technologien",
-      "text": "mit denen ich gearbeitet habe:"
+      "text": "mit denen ich Erfahrung habe"
     },
     "tools": {
       "title": "Tools",
-      "text": "mit denen ich Erfahrung habe:"
+      "text": "mit denen ich gearbeitet habe"
     }
   },
 
@@ -50,11 +49,11 @@
       "title": "Certified Professional for Usability and UX - Foundation Level",
       "years": "Completed in 2017",
 
-      "paragraph": "The UXQB - CPUX-F certificate attests that I am familiar with the basic terms and concepts of usability and user experience, and that I'm able to apply them in the following areas of competence:",
+      "paragraph": "Das Zertifikat UXQB - CPUX-F bescheinigt, dass ich mit den grundlegenden Begriffen und Konzepten der Usability und User Experience vertraut bin und diese in den folgenden Kompetenzbereichen anwenden kann:",
       "list": [
-        "The objective of the course is the career-oriented education of computer scientists with basic skills in marketing and digital content creation.",
-        "Acquired Skills include, but are not limited to, web development, Java desktop programming, SEO, CMS, online marketing, UX design, databases, and app development.",
-        "I completed numerous projects as part of my studies, many of which can be found in the next section."
+        "",
+        "",
+        ""
       ],
       "footer": {
         "text": "Source:",
@@ -69,8 +68,8 @@
       "years": "2015 - 2016",
       "paragraph": "",
       "list": [
-        "I had to complete at least half a year of internship in order to get the apprenticeship recognized as part of my high school diploma (A-Level). I was able to learn a lot during my time here, as the company gave me the opportunity to work full time as a software developer.",
-        "Used technologies included Visual Basic, Java, Android, and SQL. My biggest project was the creation of an interface for the internal phone system that automatically displayed the status of employees and allows routing between departments."
+        "Ich musste mindestens ein halbjähriges Praktikum absolvieren, um die Ausbildung als Teil meines Schulabschlusses (Abitur) anerkannt zu bekommen. Während meiner Zeit hier konnte ich viel lernen, da das Unternehmen mir die Möglichkeit gab, in Vollzeit als Softwareentwickler zu arbeiten.",
+        "Zu den verwendeten Technologien gehörten Visual Basic, Java, Android und SQL. Mein größtes Projekt war die Erstellung einer Schnittstelle für das interne Telefonsystem, die automatisch den Status der Mitarbeiter anzeigt und die Weiterleitung zwischen den Abteilungen ermöglicht."
       ]
     },
 
@@ -80,9 +79,9 @@
       "title": "Fachabitur / Assistent für Anwendungsentwicklung",
       "years": "2014-2015",
       "list": [
-        "Here was my first 'professional' touch point with computer science and programming. The degree consists of two parts: A-Levels to study at universities, and an apprenticeship as an assistant for application development.",
-        "The topics were mainly Java programming, hardware and electrical engineering.",
-        "My final project was an Android app including a backend that could scan food barcodes and warn users, if any of their allergies were affected."
+        "Hier hatte ich meinen ersten 'professionellen' Kontakt mit Informatik und Programmierung. Das Studium besteht aus zwei Teilen: Einem Abitur, um an Universitäten zu studieren, und einer Ausbildung zum Assistenten für Anwendungsentwicklung.",
+        "Die Themen waren hauptsächlich Java-Programmierung, Hardware und Elektrotechnik.",
+        "Mein Abschlussprojekt war eine Android-App mit einem Backend, das Barcodes von Lebensmitteln scannen und die Nutzer warnen konnte, wenn eine ihrer Allergien betroffen war."
       ]
     }
   },
