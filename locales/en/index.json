@@ -84,7 +84,11 @@
 
   "work": {
     "title": "Work",
-    "toplineFeatured": "Featured Project",
+    "titleDescription": "Check out a lot of my projects and their documentation below. You can also view my GitHub profile to see all of my projects.",
+    "subtitleFeatured": "Featured",
+    "descriptionFeatured": "These are some of my recent projects you might be interested in.",
+    "subtitleOthers": "Other Projects",
+    "descriptionOthers": "Here are some of my other projects that I've worked on.",
     "internalLinkTitle": "View {{title}} project page",
     "externalLinkTitle": "View {{title}} website",
     "githubLinkTitle": "View {{title}} on GitHub"

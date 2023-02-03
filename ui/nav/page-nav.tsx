@@ -1,4 +1,4 @@
-import { Box, Burger, Button, Container, createStyles, Group, Header } from '@mantine/core';
+import { Box, Burger, Button, Container, createStyles, Group, Header, MediaQuery } from '@mantine/core';
 import { useDisclosure, useMediaQuery, useWindowScroll } from '@mantine/hooks';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
@@ -61,15 +61,76 @@ export interface NavHeaderLink {
   isActive: boolean
 }
 
-const PageNav = () => {
+interface PageNavProps {
+  drawerOpened: boolean
+  toggleDrawer: () => void
+}
+
+const PageNav: React.FC<PageNavProps> = ({ drawerOpened, toggleDrawer }: PageNavProps) => {
 
   const { t } = useTranslation('common');
-  const { classes, theme } = useStyles();
+  const { classes } = useStyles();
+  const router = useRouter();
+
+  const navLinks: NavHeaderLink[] = [
+    {
+      link: '/',
+      label: t('navItems.home'),
+      isActive: router.route === '/'
+    },
+    {
+      link: '/blog',
+      label: t('navItems.blog'),
+      isActive: router.route.startsWith('/blog')
+    },
+    {
+      link: '/contact',
+      label: t('navItems.contact'),
+      isActive: router.route === '/contact'
+    },
+  ];
+
+  return (
+    <Container sx={{ height: '100%' }}>
+      <Box className={classes.inner} >
+        <PageLogo />
+
+        <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
+          {
+            navLinks.map((link, i) => (
+              <Link key={i} href={link.link}>
+                <Button
+                  key={link.label}
+                  variant='subtle'
+                  className={classes.menuItem}
+                  sx={{ fontWeight: link.isActive ? 'bold' : 'normal' }}
+                >
+                  {link.label}
+                </Button>
+              </Link>
+            ))
+          }
+
+          <Group ml={"md"}>
+            <ColorSchemeSwitch />
+            <LanguageMenu />
+          </Group>
+
+        </Group>
+
+        <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
+      </Box>
+    </Container>
+  );
+
+}
+
+const PageNavContainer = () => {
+
+  const { t } = useTranslation('common');
   const router = useRouter();
   const [scroll] = useWindowScroll();
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
-
-  const largeScreen = useMediaQuery('(min-width: ' + theme.breakpoints.sm + 'px)');
 
   const navLinks: NavHeaderLink[] = [
     {
@@ -91,47 +152,35 @@ const PageNav = () => {
 
   return (
     <>
-      <Header
-        height={largeScreen ? HEADER_HEIGHT : HEADER_MOBILE_HEIGHT}
-        fixed
-        styles={(theme) => ({
-          root: {
-            borderBottomStyle: scroll.y > 0 ? 'solid' : `none`,
-            boxShadow: scroll.y > 0 ? (theme.colorScheme === 'dark' ? theme.shadows.md : theme.shadows.sm) : `none`,
-          }
-        })}
-      >
-        <Container sx={{ height: '100%' }}>
-          <Box className={classes.inner} >
-            <PageLogo />
+      <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+        <Header
+          height={HEADER_HEIGHT}
+          fixed
+          styles={(theme) => ({
+            root: {
+              borderBottomStyle: scroll.y > 0 ? 'solid' : `none`,
+              boxShadow: scroll.y > 0 ? (theme.colorScheme === 'dark' ? theme.shadows.md : theme.shadows.sm) : `none`,
+            }
+          })}
+        >
+          <PageNav drawerOpened={drawerOpened} toggleDrawer={toggleDrawer} />
+        </Header>
+      </MediaQuery>
 
-            <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
-              {
-                navLinks.map((link, i) => (
-                  <Link key={i} href={link.link}>
-                    <Button
-                      key={link.label}
-                      variant='subtle'
-                      className={classes.menuItem}
-                      sx={{ fontWeight: link.isActive ? 'bold' : 'normal' }}
-                    >
-                      {link.label}
-                    </Button>
-                  </Link>
-                ))
-              }
-
-              <Group ml={"md"}>
-                <ColorSchemeSwitch />
-                <LanguageMenu />
-              </Group>
-
-            </Group>
-
-            <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
-          </Box>
-        </Container>
-      </Header>
+      <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+        <Header
+          height={HEADER_MOBILE_HEIGHT}
+          fixed
+          styles={(theme) => ({
+            root: {
+              borderBottomStyle: scroll.y > 0 ? 'solid' : `none`,
+              boxShadow: scroll.y > 0 ? (theme.colorScheme === 'dark' ? theme.shadows.md : theme.shadows.sm) : `none`,
+            }
+          })}
+        >
+          <PageNav drawerOpened={drawerOpened} toggleDrawer={toggleDrawer} />
+        </Header>
+      </MediaQuery>
 
       <PageNavMobile
         closeDrawer={closeDrawer}
@@ -140,10 +189,9 @@ const PageNav = () => {
       />
 
       <ScrollTopButton />
-
     </>
   );
 
 }
 
-export default PageNav;
+export default PageNavContainer;

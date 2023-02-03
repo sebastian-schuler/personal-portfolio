@@ -11,7 +11,7 @@ const useStyles = createStyles((theme) => ({
     title: {
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
         fontWeight: 600,
-        textAlign: 'left',
+        textAlign: 'center',
     },
 
 }));
@@ -37,11 +37,11 @@ const WorkSection = ({ featuredProjects, otherProjects }: Props) => {
     const { classes, theme } = useStyles();
 
     return (
-        <Box mb={"xl"}>
-            <SectionHeader anchor='work' title='Work' subtext='Check out my featured projects below.' />
+        <div>
+            <SectionHeader anchor='work' title='Work' subtext={t('work.titleDescription')} />
 
-            <Title order={3} className={classes.title}>Featured</Title>
-            <Text size={'lg'}>Scroll down or open the archive to see all of my projects in chronological order.</Text>
+            <Title order={3} size={'h5'} className={classes.title}>{t('work.subtitleFeatured')}</Title>
+            <Text size={'md'} align={'center'}>{t('work.descriptionFeatured')}</Text>
             <Space h={'lg'} />
 
             <Stack spacing={"lg"} mb={"xl"}>
@@ -62,8 +62,8 @@ const WorkSection = ({ featuredProjects, otherProjects }: Props) => {
                 }
             </Stack>
 
-            <Title order={3} className={classes.title}>Other Projects</Title>
-            <Text size={'lg'}>Scroll down or open the archive to see all of my projects in chronological order.</Text>
+            <Title order={3} size={'h5'} className={classes.title}>{t('work.subtitleOthers')}</Title>
+            <Text size={'md'} align={'center'}>{t('work.descriptionOthers')}</Text>
             <Space h={'lg'} />
 
             <SimpleGrid
@@ -90,8 +90,7 @@ const WorkSection = ({ featuredProjects, otherProjects }: Props) => {
                     ))
                 }
             </SimpleGrid>
-
-        </Box>
+        </div>
     )
 }
 

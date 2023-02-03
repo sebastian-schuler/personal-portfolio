@@ -1,9 +1,10 @@
-import { Box, createStyles, List, Stack, Tabs, Text, Title } from '@mantine/core';
+import { Box, createStyles, List, MediaQuery, Stack, Tabs, Text, Title } from '@mantine/core';
 import { IconAward, IconBook, IconBuilding, IconPoint, IconSchool } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import { ReactNode } from 'react';
 import ILink from '../link';
 import SectionHeader from '../section-header';
+import { motion } from 'framer-motion';
 
 interface ExperienceItem {
     value: string
@@ -24,7 +25,7 @@ const useStyles = createStyles((theme) => ({
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
         fontWeight: 600,
         lineHeight: 1,
-    }
+    },
 
 }));
 
@@ -85,54 +86,78 @@ const ExperienceSection = () => {
 
     const getContent = ({ value, institution, institutionUrl, title, years, paragraph, list, footer }: ExperienceItem) => {
         return (
-            <Tabs.Panel key={value} value={value} pl="lg">
-                <Stack spacing={4} mb={theme.spacing.md}>
-                    <ILink url={institutionUrl} type='external'>{institution}</ILink>
-                    <Title order={3} className={classes.tabsContentTitle}>{title}</Title>
-                    <Text>{years}</Text>
-                </Stack>
-                <Stack spacing={theme.spacing.sm} mb={theme.spacing.md}>
-                    {
-                        paragraph && <Text>{paragraph}</Text>
-                    }
-                    {
-                        list && Array.isArray(list) && (
-                            <List size="md" icon={<IconPoint size={22} />}>
-                                {
-                                    list.map((item, index) => (
-                                        <List.Item key={index}>
-                                            {item}
-                                        </List.Item>
-                                    ))
-                                }
-                            </List>
-                        )
-                    }
-                    {
-                        footer && footer
-                    }
-                </Stack>
+            <Tabs.Panel key={value} value={value} >
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1.3, ease: 'easeIn' }}
+                >
+                    <div>
+                        <Stack spacing={4} mb={theme.spacing.md}>
+                            <div>
+                                <ILink url={institutionUrl} type='external'>{institution}</ILink>
+                            </div>
+                            <Title order={3} className={classes.tabsContentTitle}>{title}</Title>
+                            <Text>{years}</Text>
+                        </Stack>
+                        <Stack spacing={theme.spacing.sm} mb={theme.spacing.md}>
+                            {paragraph && <Text>{paragraph}</Text>}
+                            {
+                                list && Array.isArray(list) && (
+                                    <List size="md" icon={<IconPoint size={22} />}>
+                                        {
+                                            list.map((item, index) => (
+                                                <List.Item key={index}>
+                                                    {item}
+                                                </List.Item>
+                                            ))
+                                        }
+                                    </List>
+                                )
+                            }
+                            {footer && footer}
+                        </Stack>
+                    </div>
+                </motion.div>
             </Tabs.Panel>
         )
     }
 
     return (
-        <Box mb={"xl"}>
+        <div>
             <SectionHeader anchor='experience' title={t("experience.title")} />
 
-            <Tabs orientation="vertical" defaultValue="hskl">
-                <Tabs.List>
-                    {
-                        tabContent.map(({ value, tabTitle, tabIcon }) => (
-                            <Tabs.Tab key={value} value={value} icon={tabIcon}>{tabTitle}</Tabs.Tab>
-                        ))
-                    }
-                </Tabs.List>
+            <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+                <Tabs orientation="vertical" defaultValue="hskl" keepMounted={false}>
+                    <Tabs.List mr={'lg'}>
+                        {
+                            tabContent.map(({ value, tabTitle, tabIcon }) => (
+                                <Tabs.Tab key={value} value={value} icon={tabIcon}>{tabTitle}</Tabs.Tab>
+                            ))
+                        }
+                    </Tabs.List>
 
-                {tabContent.map((item) => getContent(item))}
+                    {tabContent.map((item) => getContent(item))}
 
-            </Tabs>
-        </Box>
+                </Tabs>
+            </MediaQuery>
+
+            <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+                <Tabs orientation="horizontal" defaultValue="hskl" keepMounted={false}>
+                    <Tabs.List mb={'md'} grow>
+                        {
+                            tabContent.map(({ value, tabTitle, tabIcon }) => (
+                                <Tabs.Tab key={value} value={value} icon={tabIcon}>{ }</Tabs.Tab>
+                            ))
+                        }
+                    </Tabs.List>
+
+                    {tabContent.map((item) => getContent(item))}
+
+                </Tabs>
+            </MediaQuery>
+
+        </div>
     )
 }
 

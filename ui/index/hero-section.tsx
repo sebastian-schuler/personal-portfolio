@@ -1,20 +1,13 @@
-import { Box, Button, Center, createStyles, Stack, Text, Title } from '@mantine/core'
+import { Box, Button, Center, createStyles, Stack, Text, Title } from '@mantine/core';
+import { motion } from 'framer-motion';
 import useTranslation from 'next-translate/useTranslation';
-import React from 'react'
 import ReactTypingEffect from "react-typing-effect";
-import { HEADER_HEIGHT, HEADER_MOBILE_HEIGHT } from '../nav/page-nav';
+import { HEADER_MOBILE_HEIGHT } from '../nav/page-nav';
 
 const useStyles = createStyles((theme) => ({
 
     outer: {
-
-        [theme.fn.smallerThan('sm')]: {
-            height: `calc(100vh - ${HEADER_MOBILE_HEIGHT}px)`,
-        },
-
-        [theme.fn.largerThan('sm')]: {
-            height: `calc(100vh - ${HEADER_HEIGHT}px)`,
-        },
+        height: `calc(100vh - ${HEADER_MOBILE_HEIGHT}px)`,
     },
 
     preTitle: {
@@ -31,7 +24,6 @@ const useStyles = createStyles((theme) => ({
     },
 
     typewriterOuterText: {
-        lineHeight: 1,
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
         fontWeight: 600,
         fontSize: 'clamp(1.4rem, 5vw, 2.2rem)',
@@ -62,30 +54,66 @@ const HeroSection = () => {
 
             <Center sx={{ height: "100%" }}>
                 <Stack spacing={0} sx={{ width: "100%" }}>
-                    <Text className={classes.preTitle}>{t('hero.greeting')}</Text>
-                    <Title order={1} className={classes.title}>Sebastian Schuler</Title>
-                    <Text className={classes.typewriterOuterText}>
-                        {t('hero.preTypewriter')}
-                        <ReactTypingEffect
-                            className={classes.typewriterText}
-                            text={typingContent}
-                            typingDelay={700}
-                            eraseDelay={1200}
-                            eraseSpeed={100}
-                            speed={250}
-                        />
-                    </Text>
-                    <Text className={classes.subText}>{t('hero.subtext')}</Text>
-                    <Box pb={100}>
-                        <Button
-                            component='a'
-                            href='#about'
-                            variant='outline'
-                            size='md'
-                        >
-                            {t('hero.learnMoreButton')}
-                        </Button>
-                    </Box>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: .5, ease: 'easeIn' }}
+                    >
+                        <Text className={classes.preTitle}>{t('hero.greeting')}</Text>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: .5, delay: .1, ease: 'easeIn' }}
+                    >
+                        <Title order={1} className={classes.title}>Sebastian Schuler</Title>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: .2, ease: 'easeIn' }}
+                    >
+                        <Text className={classes.typewriterOuterText}>
+                            {t('hero.preTypewriter')}
+                            <ReactTypingEffect
+                                className={classes.typewriterText}
+                                text={typingContent}
+                                typingDelay={700}
+                                eraseDelay={1200}
+                                eraseSpeed={100}
+                                speed={250}
+                            />
+                        </Text>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: .5, delay: .3, ease: 'easeIn' }}
+                    >
+                        <Text className={classes.subText}>{t('hero.subtext')}</Text>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: .5, delay: .4, ease: 'easeIn' }}
+                    >
+                        <Box pb={100}>
+                            <Button
+                                component='a'
+                                href='#about'
+                                variant='outline'
+                                size='md'
+                            >
+                                {t('hero.learnMoreButton')}
+                            </Button>
+                        </Box>
+                    </motion.div>
+
                 </Stack>
             </Center>
 

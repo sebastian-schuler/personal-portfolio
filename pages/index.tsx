@@ -1,7 +1,7 @@
-import { Container, Space, Stack } from '@mantine/core'
+import { Container, Stack } from '@mantine/core'
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import { Post, Project } from '../interfaces/post'
+import { Post } from '../interfaces/post'
 import { getAllPostedProjects } from '../lib/api/blogApi'
 import AboutSection from '../ui/index/about-section'
 import ExperienceSection from '../ui/index/experience-section'
@@ -25,7 +25,7 @@ const Home: NextPage<Props> = ({ featuredProjects, otherProjects }: Props) => {
 
         <HeroSection />
 
-        <Stack spacing={150}>
+        <Stack spacing={150} mb={'xl'}>
           <AboutSection />
           <ExperienceSection />
           <WorkSection
@@ -33,8 +33,6 @@ const Home: NextPage<Props> = ({ featuredProjects, otherProjects }: Props) => {
             otherProjects={otherProjects}
           />
         </Stack>
-
-        <Space h={150} />
 
       </Container>
     </>
@@ -83,6 +81,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       featuredProjects,
       otherProjects,
     },
+    revalidate: 120,
   }
 }
 

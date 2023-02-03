@@ -20,6 +20,7 @@
     "cookies-next": "^2.1.1",
     "country-flag-icons": "^1.5.5",
     "date-fns": "^2.29.3",
+    "framer-motion": "^9.0.1",
     "gray-matter": "^4.0.3",
     "next": "13.1.6",
     "next-translate": "^1.6.0",

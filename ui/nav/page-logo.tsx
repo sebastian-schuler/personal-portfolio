@@ -5,32 +5,39 @@ import React from 'react'
 const useStyles = createStyles((theme) => ({
 
     text: {
-        fontSize: '2.4em',
+        fontSize: '1.4em',
         fontFamily: 'Norican Regular, sans-serif',
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
         cursor: 'pointer',
         transition: 'color 0.5s',
         textDecoration: 'none',
-        paddingBottom: 2,
         lineHeight: '1',
         position: 'absolute',
-        top: '30%',
+        top: '35%',
 
-        '&:hover': {
-            color: theme.colors.primary[4],
+        [`@media (min-width: ${theme.breakpoints.sm}px)`]: {
+            top: '28%',
+            fontSize: '2.4em',
+            paddingBottom: 2,
+        },
 
-            '&:before': {
-                width: '100%',
-                background: theme.colorScheme === 'dark' ? theme.white : theme.black,
-                WebkitTransition: 'width .5s ease',
-                transition: 'width .5s ease',
-            },
+        '@media (hover: hover)': {
+            '&:hover': {
+                color: theme.colors.primary[4],
 
-            '&:after': {
-                width: '100%',
-                background: '0 0',
-                WebkitTransition: 'all 0s ease',
-                transition: 'all 0s ease',
+                '&:before': {
+                    width: '100%',
+                    background: theme.colorScheme === 'dark' ? theme.white : theme.black,
+                    WebkitTransition: 'width .5s ease',
+                    transition: 'width .5s ease',
+                },
+
+                '&:after': {
+                    width: '100%',
+                    background: '0 0',
+                    WebkitTransition: 'all 0s ease',
+                    transition: 'all 0s ease',
+                },
             },
         },
 
@@ -67,7 +74,7 @@ const PageLogo = () => {
 
     return (
         <Link href="/">
-            <Text className={classes.text}>Sebastian Schuler</Text>
+            <Text component='span' className={classes.text}>Sebastian Schuler</Text>
         </Link>
     )
 }

@@ -18,7 +18,9 @@ const useStyles = createStyles((theme) => ({
     },
 
     subtext: {
-        fontSize: theme.fontSizes.lg,
+        fontSize: theme.fontSizes.md,
+        textAlign: 'center',
+        marginTop: theme.spacing.md
     },
 
     linkNumber: {
@@ -42,7 +44,7 @@ const SectionHeader: React.FC<Props> = ({ title, anchor, subtext }: Props) => {
     return (
         <Box id={anchor} className={classes.outer}>
             <Group>
-                <Divider orientation='horizontal' sx={{ width: 30 }} />
+                <Divider orientation='horizontal' sx={{ flexGrow: 1 }} />
                 <Title order={2} className={classes.title}>{title}</Title>
                 <Divider orientation='horizontal' sx={{ flexGrow: 1 }} />
             </Group>

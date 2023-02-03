@@ -1,4 +1,4 @@
-import { ActionIcon, Badge, Box, Card, createStyles, Divider, Group, Stack, Text, Title } from '@mantine/core';
+import { ActionIcon, Badge, Box, Card, createStyles, Divider, Flex, Group, Stack, Text, Title } from '@mantine/core';
 import { IconBrandGithub, IconExternalLink, IconFileDescription } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
@@ -86,19 +86,15 @@ const OtherWorkItem = ({ slug, title, date, excerpt, tags, githubUrl, externalUr
 
     return (
         <Card radius="md" shadow={'sm'} p={0} className={classes.card}>
-            <Stack className={classes.cardContent}>
-                <Group spacing={'sm'}>
-                    {tagList}
-                </Group>
 
-                <Link
-                    href={internalUrl}
-                    title={t('work.internalLinkTitle', { title: title })}
-                >
+            <Flex direction={'column'} className={classes.cardContent}>
+                <Group spacing={'xs'} mb={'sm'}>{tagList}</Group>
+
+                <Link href={internalUrl} title={t('work.internalLinkTitle', { title: title })}>
                     <Title order={3} weight={500} className={classes.title}>{title}</Title>
                 </Link>
 
-                <Group noWrap spacing="sm" className={classes.details}>
+                <Group noWrap spacing="sm" mt={'xs'} className={classes.details}>
                     <DateFormatter dateString={date} />
                     <Text>•</Text>
                     <Text>{readTime} {t("common:post.readTimeLabel")}</Text>
@@ -106,8 +102,8 @@ const OtherWorkItem = ({ slug, title, date, excerpt, tags, githubUrl, externalUr
                     {localeStrings.join(', ')}
                 </Group>
 
-                <Text>{excerpt}</Text>
-            </Stack>
+                <Text lineClamp={4} mt={'md'}>{excerpt}</Text>
+            </Flex>
 
             <Divider />
 

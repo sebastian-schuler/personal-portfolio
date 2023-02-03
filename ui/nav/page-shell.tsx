@@ -1,21 +1,17 @@
-import { AppShell, useMantineTheme } from '@mantine/core';
+import { AppShell } from '@mantine/core';
 import React from 'react';
-import PageNav from './page-nav';
+import PageNavContainer from './page-nav';
 
 interface Props {
     children: React.ReactNode;
 }
 
 const PageShell: React.FC<Props> = ({ children }: Props) => {
-    const theme = useMantineTheme();
 
     return (
         <AppShell
             padding={0}
-            header={<PageNav />}
-        // styles={(theme) => ({
-        //     main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
-        // })}
+            header={<PageNavContainer />}
         >
             {children}
         </AppShell>

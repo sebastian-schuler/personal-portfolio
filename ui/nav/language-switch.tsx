@@ -8,10 +8,19 @@ import { getLanguageById, LocaleItem } from '../../lib/localeUtil';
 
 const useStyles = createStyles((theme) => {
     return {
+
         flag: {
             width: '1.5em',
             opacity: 0.75,
             borderRadius: theme.radius.sm,
+        },
+
+        control: {
+            borderRadius: theme.radius.md,
+        },
+
+        active: {
+            border: theme.colorScheme === 'dark' ? 'none' : `1px solid ${theme.colors.primary[4]}`,
         }
     };
 });
@@ -31,7 +40,7 @@ const LanguageSwitch = ({ closeDrawer }: Props) => {
         if (!newLocale) return;
         setLocale(locales.find(locale => locale.value === newLocale) as LocaleItem);
         await setLanguage(newLocale);
-        if(closeDrawer) closeDrawer();
+        if (closeDrawer) closeDrawer();
     }
 
     const getFlag = (locale: string) => {
@@ -49,7 +58,7 @@ const LanguageSwitch = ({ closeDrawer }: Props) => {
         return {
             value: locale.value,
             label: (
-                <Group>
+                <Group position='center'>
                     {getFlag(locale.value)}
                     <Text>{locale.label}</Text>
                 </Group>
@@ -68,6 +77,10 @@ const LanguageSwitch = ({ closeDrawer }: Props) => {
             size="lg"
             fullWidth
             orientation="vertical"
+            classNames={{
+                control: classes.control,
+                active: classes.active,
+            }}
         />
     )
 }

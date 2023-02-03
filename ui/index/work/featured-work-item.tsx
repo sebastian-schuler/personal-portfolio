@@ -1,4 +1,4 @@
-import { ActionIcon, Badge, Box, Card, createStyles, Group, Image, SimpleGrid, Space, Stack, Text } from '@mantine/core';
+import { ActionIcon, Badge, Box, Card, createStyles, Flex, Group, Image, MediaQuery, SimpleGrid, Space, Stack, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { IconBrandGithub, IconExternalLink, IconFileDescription } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
@@ -16,6 +16,7 @@ const useStyles = createStyles((theme) => ({
         padding: theme.spacing.lg,
         display: 'flex',
         flexDirection: 'column',
+        maxHeight: 350,
     },
 
     title: {
@@ -63,6 +64,7 @@ const FeaturedWorkItem: React.FC<Props> = ({ slug, title, excerpt, tags, placeme
     const { t } = useTranslation('index');
     const { classes, theme } = useStyles();
     const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
+    const largeScreen = useMediaQuery(`(min-width: ${theme.breakpoints.lg}px)`);
     const isLeft = placement === "left" || smallScreen;
     const internalUrl = toLink('blog', slug)
 
@@ -75,7 +77,7 @@ const FeaturedWorkItem: React.FC<Props> = ({ slug, title, excerpt, tags, placeme
             variant='outline'
             key={i + 'text'}
             color={'primary.4'}
-            size={'lg'}
+            size={'md'}
             radius={'md'}
         >{tag}</Badge>
     ));
@@ -88,14 +90,16 @@ const FeaturedWorkItem: React.FC<Props> = ({ slug, title, excerpt, tags, placeme
 
                 <Box className={classes.body} sx={{ textAlign: isLeft ? 'left' : 'right' }}>
 
-                    <Stack>
-                        <Group spacing={'sm'}>{tagList}</Group>
-                        <Link href={internalUrl}>
-                            <Text className={classes.title} mt="xs">{title}</Text>
+                    <Flex direction={'column'}>
+                        <Group spacing={'xs'} mb={'xs'}>{tagList}</Group>
+                        <Link href={internalUrl} title={t('work.internalLinkTitle', { title: title })}>
+                            <Text className={classes.title}>{title}</Text>
                         </Link >
-                        <Text>{excerpt}</Text>
-                    </Stack>
+                        <Text lineClamp={largeScreen ? 5 : 4} mt={'md'}>{excerpt}</Text>
+                    </Flex>
+
                     <Space sx={{ flexGrow: 1 }} />
+
                     <Group sx={{ justifyContent: isLeft ? "flex-start" : "flex-end", paddingTop: theme.spacing.sm }}>
                         <Link
                             href={internalUrl}

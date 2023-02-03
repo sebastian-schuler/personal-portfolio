@@ -13,9 +13,9 @@ const useStyles = createStyles((theme) => ({
     },
     menuItem: {
         lineHeight: 1,
-        color: theme.colorScheme === 'dark' ? theme.white : theme.black,
         fontSize: theme.fontSizes.lg,
         fontWeight: 500,
+        backgroundColor: theme.colors.dark[8]
     },
 }));
 
@@ -56,10 +56,9 @@ const PageNavMobile = ({ drawerOpened, closeDrawer, navLinks }: Props) => {
                             <Link key={i} href={link.link}>
                                 <Button
                                     key={link.label}
-                                    variant={'default'}
+                                    variant={link.isActive ? 'outline' : 'default'}
                                     className={classes.menuItem}
                                     fullWidth
-                                    sx={{ borderColor: link.isActive ? theme.colors.primary[4] : theme.colors.dark[4] }}
                                     onClick={closeDrawer}
                                 >
                                     {link.label}

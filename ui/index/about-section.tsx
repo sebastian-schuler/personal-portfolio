@@ -69,7 +69,7 @@ const AboutSection = () => {
     const { t } = useTranslation('index');
 
     return (
-        <Box mb={"xl"}>
+        <div>
             <SectionHeader anchor='about' title={t('about.title')} />
 
             <Grid gutter={theme.spacing.lg}>
@@ -139,7 +139,7 @@ const AboutSection = () => {
                 </Grid.Col>
 
             </Grid>
-        </Box>
+        </div>
     )
 }
 
