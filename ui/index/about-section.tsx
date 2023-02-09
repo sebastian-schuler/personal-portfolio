@@ -1,6 +1,8 @@
 import { Anchor, Badge, Box, createStyles, Grid, Group, Image, Stack, Text } from '@mantine/core';
+import { useIntersection, useWindowEvent } from '@mantine/hooks';
 import Trans from 'next-translate/Trans';
 import useTranslation from 'next-translate/useTranslation';
+import { useRef } from 'react';
 import SectionHeader from '../section-header';
 
 const dataTechnologies = [
@@ -68,6 +70,24 @@ const AboutSection = () => {
     const { classes, theme } = useStyles();
     const { t } = useTranslation('index');
 
+    const technology = dataTechnologies.map((tech, index) => (
+        <Badge
+            key={index}
+            variant="outline"
+            color={theme.colorScheme === 'dark' ? 'dark.0' : 'dark.3'}
+            size="md"
+            mb={"xs"}>{tech}</Badge>
+    ));
+
+    const tools = dataTools.map((tech, index) => (
+        <Badge
+            key={index}
+            variant="outline"
+            color={theme.colorScheme === 'dark' ? 'dark.0' : 'dark.3'}
+            size="md"
+            mb={"xs"}>{tech}</Badge>
+    ));
+
     return (
         <div>
             <SectionHeader anchor='about' title={t('about.title')} />
@@ -104,37 +124,19 @@ const AboutSection = () => {
 
                 <Grid.Col md={6}>
                     <Text size={"lg"} mb={theme.spacing.sm}>
-                        <span className={classes.techTitle}>{t('about.tech.title')}</span>
+                        <span className={classes.techTitle}>{t('about.techTitle')}</span>
                     </Text>
                     <Group spacing={"xs"}>
-                        {
-                            dataTechnologies.map((tech, index) => (
-                                <Badge
-                                    key={index}
-                                    variant="outline"
-                                    color="dark.0"
-                                    size="lg"
-                                    mb={"xs"}>{tech}</Badge>
-                            ))
-                        }
+                        {technology}
                     </Group>
                 </Grid.Col>
 
                 <Grid.Col md={6}>
                     <Text size={"lg"} mb={theme.spacing.sm}>
-                        <span className={classes.techTitle}>{t('about.tools.title')}</span>
+                        <span className={classes.techTitle}>{t('about.toolsTitle')}</span>
                     </Text>
                     <Group spacing={"xs"}>
-                        {
-                            dataTools.map((tech, index) => (
-                                <Badge
-                                    key={index}
-                                    variant="outline"
-                                    color="dark.0"
-                                    size="lg"
-                                    mb={"xs"}>{tech}</Badge>
-                            ))
-                        }
+                        {tools}
                     </Group>
                 </Grid.Col>
 

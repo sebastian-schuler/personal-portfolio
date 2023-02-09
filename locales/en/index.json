@@ -1,4 +1,6 @@
 {
+  "indexPageTabTitle": "Sebastian Schuler - Full-Stack Developer, UX Designer, Digital Marketing Specialist",
+
   "hero": {
     "greeting": "Hi, my name is",
     "preTypewriter": "I'm a ",
@@ -6,7 +8,6 @@
     "typewriterArray": [
       "Full-Stack Developer",
       "Digital Marketing Specialist",
-      "Native Android Developer",
       "UX Designer"
     ],
     "learnMoreButton": "Learn More"
@@ -19,12 +20,8 @@
       "Since I've always been passionate about many different types of digital media, the Digital Media Marketing program was my first choice. Despite the name, the focus was on the three main categories: Computer Science, Marketing, and UX Design.",
       "More details about me can be found in the next section <0>Experience</0>. You could also have a look at my <1>Work</1> straight away."
     ],
-    "tech": {
-      "title": "Technologies"
-    },
-    "tools": {
-      "title": "Tools"
-    }
+    "techTitle": "Technologies",
+    "toolsTitle": "Tools"
   },
 
   "experience": {

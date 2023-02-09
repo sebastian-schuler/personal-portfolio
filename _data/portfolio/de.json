@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "slug": "copsi",
+      "title": "Copsi",
+      "description": "Copsi ist eine Desktop-Anwendung, die für Organisation, Kommunikation und den Austausch von Dokumenten zwischen Professoren, Assistenten und Studenten der Hochschule Kaiserslautern genutzt werden kann.",
+      "tags": ["Electron", "Node.js", "Express", "MongoDB"],
+      "image": "/images/portfolio/test.jpg",
+      "appUrl": null,
+      "githubUrl": null
+    }
+  ]
+}

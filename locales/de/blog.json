@@ -1,7 +1,6 @@
 {
     "title": "Blog",
     "subtitle": "Mein persönlicher Blog konzentriert sich auf Technologie und Programmieren.",
-    "postReadTimeLabel": "min lesen",
     "tagListTitle": "Nach Tag filtern",
     "tagPageTagListTitle": "Andere Tags",
     "tagLinkTitle": "Alle Artikel mit dem Tag #{{tag}} anzeigen",

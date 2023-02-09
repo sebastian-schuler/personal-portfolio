@@ -1,16 +1,7 @@
 {
-    "title": "Projects",
-    "subtitle": "A list of most of my personal, work, and university projects.",
+    "title": "Portfolio",
+    "subtitle": "A list of my personal, work, and university projects.",
 
-    "projectsPageTabTitle": "Projects by Sebastian Schuler | Page {{page}}",
-    "projectTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}",
-
-    "headerProperties": {
-        "technologies": "Technologies",
-        "people": "People",
-        "published": "Published",
-        "languages": "Available languages"
-    },
-
-    "otherProjectsHeader": "Other projects you might like"
+    "portfolioPageTabTitle": "Portfolio | Sebastian Schuler",
+    "portfolioItemTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}"
 }

@@ -56,7 +56,7 @@ const WorkSection = ({ featuredProjects }: Props) => {
             </SimpleGrid>
 
             <Group position='center'>
-                <Button component={NextLink} href={'/portfolio'} variant='outline' size='md' legacyBehavior>{t('work.portfolioButton')}</Button>
+                <Button component={NextLink} href={'/portfolio'} variant='subtle' size='md' legacyBehavior>{t('work.portfolioButton')}</Button>
             </Group>
         </div>
     )

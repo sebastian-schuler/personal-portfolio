@@ -1,5 +1,6 @@
 import { Container, Stack } from '@mantine/core'
 import { GetStaticProps, NextPage } from 'next'
+import useTranslation from 'next-translate/useTranslation'
 import Head from 'next/head'
 import { getFeaturedPortfolioData } from '../lib/api/portfolioApi'
 import { PortfolioItem } from '../types/portfolio'
@@ -10,15 +11,16 @@ import WorkSection from '../ui/index/work-section'
 
 interface Props {
   featuredProjects: PortfolioItem[]
-  // otherProjects: Post[]
 }
 
 const Home: NextPage<Props> = ({ featuredProjects }: Props) => {
 
+  const {t} = useTranslation('index');
+
   return (
     <>
       <Head>
-        <title>Sebastian Schuler | Home</title>
+        <title>{t('indexPageTabTitle')}</title>
       </Head>
 
       <Container>

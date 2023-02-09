@@ -1,4 +1,6 @@
 {
+  "indexPageTabTitle": "Sebastian Schuler - Full-Stack Entwickler, UX Designer, Online-Marketing-Manager",
+
   "hero": {
     "greeting": "Hi, mein Name ist",
     "preTypewriter": "Ich bin ",
@@ -6,7 +8,6 @@
     "typewriterArray": [
       "Full-Stack Entwickler",
       "Online-Marketing-Manager",
-      "Android Developer",
       "UX Designer"
     ],
     "learnMoreButton": "Mehr erfahren"
@@ -19,14 +20,8 @@
       "Da ich mich schon immer für viele verschiedene Richtungen der digitalen Medien begeistern konnte, war der Digital Media Marketing Studiengang meine erste Wahl. Trotz des Namens war der Fokus hier auf den drei Hauptrichtungen: Informatik, Marketing und UX Design.",
       "Mehr Details zu mir sind im nächsten Abschnitt <0>Lebenslauf</0>zu finden. Alternativ kannst du auch direkt meine <1>Projekte</1> anschauen."
     ],
-    "tech": {
-      "title": "Technologien",
-      "text": "mit denen ich Erfahrung habe"
-    },
-    "tools": {
-      "title": "Tools",
-      "text": "mit denen ich gearbeitet habe"
-    }
+    "techTitle": "Technologien",
+    "toolsTitle": "Tools"
   },
 
   "experience": {
@@ -50,11 +45,7 @@
       "years": "Completed in 2017",
 
       "paragraph": "Das Zertifikat UXQB - CPUX-F bescheinigt, dass ich mit den grundlegenden Begriffen und Konzepten der Usability und User Experience vertraut bin und diese in den folgenden Kompetenzbereichen anwenden kann:",
-      "list": [
-        "",
-        "",
-        ""
-      ],
+      "list": ["", "", ""],
       "footer": {
         "text": "Source:",
         "linkLabel": "UXQB"
@@ -87,9 +78,8 @@
   },
 
   "work": {
-    "title": "Projekte",
-    "internalLinkTitle": "{{title}} Projektseite öffnen",
-    "externalLinkTitle": "{{title}} website öffnen",
-    "githubLinkTitle": "{{title}} auf GitHub öffnen"
+    "title": "Ausgewählte Projekte",
+    "titleDescription": "Eine Auswahl einiger Projekten findest du unten. Alle meine Projekte sind auch in meinem <0>Portfolio</0> oder auf meinem <1>GitHub</1> Profil zu finden.",
+    "portfolioButton": "Zu meinem Portfolio"
   }
 }

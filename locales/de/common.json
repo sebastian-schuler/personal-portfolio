@@ -3,7 +3,7 @@
 
   "navItems": {
     "home": "Home",
-    "projects": "Projekte",
+    "portfolio": "Portfolio",
     "blog": "Blog",
     "contact": "Kontakt"
   },
@@ -11,7 +11,8 @@
   "breadcrumbs": {
     "home": "Home",
     "blog": "Blog",
-    "portfolio": "Portfolio"
+    "portfolio": "Portfolio",
+    "contact": "Kontakt"
   },
 
   "colorSchemeTitle": "Tag/Nacht-Modus umschalten",
@@ -39,8 +40,9 @@
   },
 
   "post": {
-    "typeProject": "Projekt",
-    "typeArticle": "Artikel",
-    "readTimeLabel": "min lesen"
+    "readTimeLabel": "min lesen",
+    "internalLinkTitle": "{{title}} Projektseite",
+    "externalLinkTitle": "{{title}} Webseite",
+    "githubLinkTitle": "{{title}} auf GitHub"
   }
 }

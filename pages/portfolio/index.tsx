@@ -33,7 +33,7 @@ const PortfolioPage: NextPage<Props> = ({ data }: Props) => {
   return (
     <>
       <Head>
-        <title>{t("blogPageTabTitle")}</title>
+        <title>{t("portfolioPageTabTitle")}</title>
       </Head>
 
       <Container pb={'xl'}>
@@ -59,7 +59,7 @@ const PortfolioPage: NextPage<Props> = ({ data }: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
-  const data = await getPortfolioData("en");
+  const data = await getPortfolioData(context.locale || 'en');
 
   return {
     props: {

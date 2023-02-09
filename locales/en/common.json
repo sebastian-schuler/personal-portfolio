@@ -40,11 +40,9 @@
   },
 
   "post": {
-    "typeProject": "Project",
-    "typeArticle": "Article",
     "readTimeLabel": "min read",
-    "internalLinkTitle": "View {{title}} project page",
-    "externalLinkTitle": "View {{title}} website",
-    "githubLinkTitle": "View {{title}} on GitHub"
+    "internalLinkTitle": "{{title}} project page",
+    "externalLinkTitle": "{{title}} website",
+    "githubLinkTitle": "{{title}} on GitHub"
   }
 }

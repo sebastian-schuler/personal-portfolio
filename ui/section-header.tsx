@@ -1,5 +1,7 @@
 import { Box, createStyles, Divider, Group, Text, Title } from '@mantine/core'
-import React from 'react'
+import { useIntersection, useWindowEvent } from '@mantine/hooks';
+import { useRouter } from 'next/router';
+import React, { useEffect, useRef, useState } from 'react'
 
 const useStyles = createStyles((theme) => ({
 

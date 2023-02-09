@@ -1,3 +1,7 @@
 {
-    
+    "title": "Portfolio",
+    "subtitle": "Eine Liste meiner persönlichen, beruflichen und universitären Projekte.",
+
+    "portfolioPageTabTitle": "Portfolio | Sebastian Schuler",
+    "portfolioItemTabTitle": "{{title}} | Sebastian Schuler | {{date}} | {{tags}}"
 }
