@@ -20,12 +20,10 @@
       "More details about me can be found in the next section <0>Experience</0>. You could also have a look at my <1>Work</1> straight away."
     ],
     "tech": {
-      "title": "Technology",
-      "text": "skills"
+      "title": "Technologies"
     },
     "tools": {
-      "title": "Tool",
-      "text": "skills"
+      "title": "Tools"
     }
   },
 
@@ -83,14 +81,8 @@
   },
 
   "work": {
-    "title": "Work",
-    "titleDescription": "Check out a lot of my projects and their documentation below. You can also view my GitHub profile to see all of my projects.",
-    "subtitleFeatured": "Featured",
-    "descriptionFeatured": "These are some of my recent projects you might be interested in.",
-    "subtitleOthers": "Other Projects",
-    "descriptionOthers": "Here are some of my other projects that I've worked on.",
-    "internalLinkTitle": "View {{title}} project page",
-    "externalLinkTitle": "View {{title}} website",
-    "githubLinkTitle": "View {{title}} on GitHub"
+    "title": "Featured Projects",
+    "titleDescription": "Check out a selection of featured projects below. All my projects can also be found in my <0>Portfolio</0> or on my <1>GitHub</1> profile.",
+    "portfolioButton": "To my portfolio"
   }
 }

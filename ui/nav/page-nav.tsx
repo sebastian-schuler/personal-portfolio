@@ -62,33 +62,16 @@ export interface NavHeaderLink {
 }
 
 interface PageNavProps {
+  navLinks: NavHeaderLink[]
   drawerOpened: boolean
   toggleDrawer: () => void
 }
 
-const PageNav: React.FC<PageNavProps> = ({ drawerOpened, toggleDrawer }: PageNavProps) => {
+const PageNav: React.FC<PageNavProps> = ({ navLinks, drawerOpened, toggleDrawer }: PageNavProps) => {
 
   const { t } = useTranslation('common');
   const { classes } = useStyles();
   const router = useRouter();
-
-  const navLinks: NavHeaderLink[] = [
-    {
-      link: '/',
-      label: t('navItems.home'),
-      isActive: router.route === '/'
-    },
-    {
-      link: '/blog',
-      label: t('navItems.blog'),
-      isActive: router.route.startsWith('/blog')
-    },
-    {
-      link: '/contact',
-      label: t('navItems.contact'),
-      isActive: router.route === '/contact'
-    },
-  ];
 
   return (
     <Container sx={{ height: '100%' }}>
@@ -139,6 +122,11 @@ const PageNavContainer = () => {
       isActive: router.route === '/'
     },
     {
+      link: '/portfolio',
+      label: t('navItems.portfolio'),
+      isActive: router.route.startsWith('/portfolio')
+    },
+    {
       link: '/blog',
       label: t('navItems.blog'),
       isActive: router.route.startsWith('/blog')
@@ -152,7 +140,7 @@ const PageNavContainer = () => {
 
   return (
     <>
-      <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+      {/* <MediaQuery smallerThan="sm" styles={{ display: 'none' }}> */}
         <Header
           height={HEADER_HEIGHT}
           fixed
@@ -163,11 +151,11 @@ const PageNavContainer = () => {
             }
           })}
         >
-          <PageNav drawerOpened={drawerOpened} toggleDrawer={toggleDrawer} />
+          <PageNav navLinks={navLinks} drawerOpened={drawerOpened} toggleDrawer={toggleDrawer} />
         </Header>
-      </MediaQuery>
+      {/* </MediaQuery> */}
 
-      <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+      {/* <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
         <Header
           height={HEADER_MOBILE_HEIGHT}
           fixed
@@ -178,9 +166,9 @@ const PageNavContainer = () => {
             }
           })}
         >
-          <PageNav drawerOpened={drawerOpened} toggleDrawer={toggleDrawer} />
+          <PageNav navLinks={navLinks} drawerOpened={drawerOpened} toggleDrawer={toggleDrawer} />
         </Header>
-      </MediaQuery>
+      </MediaQuery> */}
 
       <PageNavMobile
         closeDrawer={closeDrawer}

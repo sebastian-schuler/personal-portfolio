@@ -1,0 +1,41 @@
+{
+  "items": [
+    {
+      "slug": "copsi",
+      "title": "Copsi",
+      "description": "Copsi is a desktop application which can be used for communication and the exchange of documents between professors, assistants, and students of the University of Applied Sciences Kaiserslautern.",
+      "tags": ["Electron", "Node.js", "Express", "MongoDB"],
+      "image": "/images/portfolio/test.jpg",
+      "appUrl": null,
+      "githubUrl": null
+    },
+    {
+      "slug": "nextjs-portfolio",
+      "title": "Personal Portfolio",
+      "description": "A portfolio website built with Next.js and TypeScript",
+      "tags": ["Next.js", "TypeScript", "React", "Mantine", "Markdown"],
+      "image": "/images/portfolio/test.jpg",
+      "appUrl": "https://www.sebastian-schuler.com",
+      "githubUrl": "https://www.sebastian-schuler.com",
+      "featured": true
+    },
+    {
+      "slug": "university-index",
+      "title": "University Index",
+      "description": "A portfolio website built with Next.js and TypeScript",
+      "tags": ["Next.js", "TypeScript", "React", "Mantine", "PostgreSQL"],
+      "image": "/images/portfolio/test.jpg",
+      "appUrl": null,
+      "githubUrl": null
+    },
+    {
+      "slug": "nextjs-portfolio",
+      "title": "Convertee",
+      "description": "A compact and user-friendly conversion app for Android systems. Easily convert a large number of units, including currencies.",
+      "tags": ["Android", "Java"],
+      "image": "/images/portfolio/test.jpg",
+      "appUrl": null,
+      "githubUrl": null
+    }
+  ]
+}

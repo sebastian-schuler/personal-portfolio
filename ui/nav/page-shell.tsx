@@ -9,10 +9,7 @@ interface Props {
 const PageShell: React.FC<Props> = ({ children }: Props) => {
 
     return (
-        <AppShell
-            padding={0}
-            header={<PageNavContainer />}
-        >
+        <AppShell padding={0} header={<PageNavContainer />}>
             {children}
         </AppShell>
     )

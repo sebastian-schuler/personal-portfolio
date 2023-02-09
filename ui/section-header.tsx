@@ -32,9 +32,9 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface Props {
-    title: string;
-    anchor: string;
-    subtext?: string;
+    title: string
+    anchor: string
+    subtext?: string | JSX.Element
 }
 
 const SectionHeader: React.FC<Props> = ({ title, anchor, subtext }: Props) => {

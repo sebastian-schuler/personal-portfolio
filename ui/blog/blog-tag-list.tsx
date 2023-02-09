@@ -1,8 +1,8 @@
 import { createStyles, Group, MediaQuery, Stack, Text } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
-import Tag from '../../interfaces/tag';
 import { toLink } from '../../lib/util';
+import { Tag } from '../../types/blog';
 
 const useStyles = createStyles((theme) => {
 

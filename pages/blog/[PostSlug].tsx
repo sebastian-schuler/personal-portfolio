@@ -7,18 +7,17 @@ import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
 import { Root } from 'remark-html'
-import { Post } from '../../interfaces/post'
 import { getAllPosts, getPostBySlug, getRecommendedPosts } from '../../lib/api/blogApi'
 import { PAGE_URL } from '../../lib/constants'
 import { MarkdownParser } from '../../lib/markdown/customMarkdownParser'
 import markdownToHtml from '../../lib/markdown/markdownToHtml'
 import { getMetaDescription } from '../../lib/seoTools'
 import { formatDate } from '../../lib/util'
+import { Post } from '../../types/blog'
 import PostFooter from '../../ui/blog/post-footer'
 import PostHeader from '../../ui/blog/post-header'
 import PageBreadcrumbs from '../../ui/breadcrumbs'
 import MyTitle from '../../ui/title'
-import TableOfContents from '../../ui/table-of-contents'
 
 type Props = {
   content: Root
@@ -55,7 +54,6 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
             <Head>
               <title>{t("blogPostTabTitle", { title: post.title, date: formatDate(post.date, lang), tags: post.tags.join(', ') })}</title>
               <meta name='description' content={getMetaDescription(post.excerpt)} />
-
               <meta property='og:title' content={post.title} />
               <meta property='og:description' content={post.ogDesc} />
               <meta property='og:url' content={`${PAGE_URL}/${localePart}blog/${post.slug}`} />
@@ -63,19 +61,17 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
             </Head>
 
             <PostHeader
-              type={post.type}
               title={post.title}
               coverImage={post.coverImage}
               date={post.date}
               tags={post.tags}
               excerpt={post.excerpt}
               readTime={post.readTime}
+              headers={headers}
             />
 
-            <TableOfContents headers={headers} />
+            <Space h="md" />
 
-            <Space h="xl" />
-            
             {jsxContent}
 
             <PostFooter recommendedPosts={recommendedPosts} />
@@ -102,7 +98,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'tags',
   ], { locale: context.locale });
 
-  const recommendedPosts = getRecommendedPosts(slug, post.tags, post.type);
+  const recommendedPosts = getRecommendedPosts(slug, post.tags);
   const content = await markdownToHtml(post.content || '');
 
   return {

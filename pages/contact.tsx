@@ -1,7 +1,9 @@
-import { Button, Container, createStyles, Grid, Group, SimpleGrid, Textarea, TextInput, Title } from '@mantine/core';
+import { Button, Container, createStyles, Grid, Group, SimpleGrid, Space, Textarea, TextInput, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import useTranslation from 'next-translate/useTranslation';
+import PageBreadcrumbs from '../ui/breadcrumbs';
 import ContactList from '../ui/contact/contact-list';
+import SectionHeader from '../ui/section-header';
 
 const useStyles = createStyles((theme) => {
     const BREAKPOINT = theme.fn.smallerThan('sm');
@@ -46,20 +48,18 @@ const ContactPage = () => {
     return (
         <Container pb={'lg'}>
 
-            <Title
-                order={1}
-                weight={900}
-                align="left"
-                mt="xl"
-            >
-                {t('title')}
-            </Title>
+            <PageBreadcrumbs />
 
-            <Grid mt="xl">
+            <Space h={'xl'} />
 
-                <Grid.Col xs={12} sm={5}>
+            <SectionHeader title={t('title')} anchor='form' />
+
+            <Grid gutter={'lg'}>
+
+                <Grid.Col xs={12} sm={5} mb={'lg'}>
                     <Title
                         order={2}
+                        size='h4'
                         weight={900}
                         align="left"
                         mb="md"
@@ -69,10 +69,11 @@ const ContactPage = () => {
                     <ContactList />
                 </Grid.Col>
 
-                <Grid.Col xs={12} sm={7}>
+                <Grid.Col xs={12} sm={7} mb={'lg'}>
 
                     <Title
                         order={2}
+                        size='h4'
                         weight={900}
                         align="left"
                         mb="md"
@@ -88,7 +89,7 @@ const ContactPage = () => {
                                 name="name"
                                 variant="filled"
                                 size="md"
-                                classNames={{ input: classes.textField}}
+                                classNames={{ input: classes.textField }}
                                 {...form.getInputProps('name')}
                             />
                             <TextInput
@@ -97,7 +98,7 @@ const ContactPage = () => {
                                 name="email"
                                 variant="filled"
                                 size="md"
-                                classNames={{ input: classes.textField}}
+                                classNames={{ input: classes.textField }}
                                 {...form.getInputProps('email')}
                             />
                         </SimpleGrid>
@@ -109,7 +110,7 @@ const ContactPage = () => {
                             name="subject"
                             variant="filled"
                             size="md"
-                            classNames={{ input: classes.textField}}
+                            classNames={{ input: classes.textField }}
                             {...form.getInputProps('subject')}
                         />
                         <Textarea
@@ -122,7 +123,7 @@ const ContactPage = () => {
                             name="message"
                             variant="filled"
                             size="md"
-                            classNames={{ input: classes.textField}}
+                            classNames={{ input: classes.textField }}
                             {...form.getInputProps('message')}
                         />
 

@@ -1,9 +1,8 @@
-import { Badge, createStyles, Group, Stack, Text, Title } from '@mantine/core'
+import { Badge, createStyles, Group, Stack, Text, Title } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
-import Link from 'next/link'
-import { PostType } from '../../interfaces/post';
-import { toLink } from '../../lib/util'
-import DateFormatter from '../date-formatter'
+import Link from 'next/link';
+import { toLink } from '../../lib/util';
+import DateFormatter from '../date-formatter';
 
 const useStyles = createStyles((theme, _params, getRef) => {
 
@@ -35,7 +34,6 @@ const useStyles = createStyles((theme, _params, getRef) => {
 });
 
 interface Props {
-  type: PostType
   title: string
   coverImage: string
   date: string
@@ -46,26 +44,12 @@ interface Props {
   locales: string[]
 }
 
-const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readTime, locales }: Props) => {
+const PostPreview = ({ title, coverImage, date, excerpt, slug, tags, readTime, locales }: Props) => {
 
   const { classes, theme } = useStyles();
   const { t } = useTranslation('blog');
 
   const articleLink = toLink('blog', slug);
-
-  const postTypeNode = type === 'article' ?
-    <Badge
-      variant='outline'
-      radius={'md'}
-      color={theme.colorScheme === "dark" ? 'themeBlue.6' : 'themeBlue.4'}
-      size={'md'}
-    >{t('common:post.typeArticle')}</Badge> :
-    <Badge
-      variant='outline'
-      radius={'md'}
-      color={theme.colorScheme === "dark" ? 'themePurple.0' : 'themePurple.1'}
-      size={'md'}
-    >{t('common:post.typeProject')}</Badge>;
 
   const tagList = tags.map((tag, i) => (
     <Badge
@@ -83,10 +67,7 @@ const PostPreview = ({ type, title, coverImage, date, excerpt, slug, tags, readT
     <Link href={articleLink} title={t('postPreviewLinkTitle', { title: title })}>
       <Stack spacing={"sm"} className={classes.container}>
 
-        <Group spacing={'sm'}>
-          {postTypeNode}
-          {tagList}
-        </Group>
+        <Group spacing={'sm'}>{tagList}</Group>
 
         <Title order={3} className={classes.title} color={'cyan'}>{title}</Title>
 

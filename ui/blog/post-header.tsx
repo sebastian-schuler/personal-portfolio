@@ -1,46 +1,31 @@
-import { Badge, Box, Divider, Group, Stack, Text, useMantineTheme } from "@mantine/core"
+import { Badge, Box, Divider, Group, Text, useMantineTheme } from "@mantine/core"
 import useTranslation from "next-translate/useTranslation"
-import { PostType } from "../../interfaces/post"
-import { toLink } from "../../lib/util"
+import { HeaderData } from "../../lib/markdown/customMarkdownParser"
 import DateFormatter from "../date-formatter"
-import ILink from "../link"
+import TableOfContents from "../table-of-contents"
 import MyTitle from "../title"
 import PostSharePanel from "./post-share-panel"
 
 type Props = {
-    type: PostType
     title: string
     coverImage: string
     date: string
     tags: string[]
     excerpt: string
     readTime: number
+    headers: HeaderData[]
 }
 
-const PostHeader = ({ type, title, coverImage, date, tags, excerpt, readTime }: Props) => {
+const PostHeader = ({ title, coverImage, date, tags, excerpt, readTime, headers }: Props) => {
 
     const { t } = useTranslation('blog');
     const theme = useMantineTheme();
 
-    const postTypeNode = type === 'article' ?
-        <Badge
-            variant='filled'
-            radius={'md'}
-            color={'themeBlue.7'}
-            size={'lg'}
-        >{t('common:post.typeArticle')}</Badge> :
-        <Badge
-            variant='filled'
-            radius={'md'}
-            color={'themePurple.4'}
-            size={'lg'}
-        >{t('common:post.typeProject')}</Badge>;
-
     const postTags = <Group spacing={'sm'}>
-        {postTypeNode}
         {
             tags.map((tag, i) => (
                 <Badge
+                    key={i}
                     variant='outline'
                     radius={'md'}
                     size={'lg'}
@@ -61,12 +46,16 @@ const PostHeader = ({ type, title, coverImage, date, tags, excerpt, readTime }: 
                 <PostSharePanel title={title} />
             </Group>
 
-            <Divider mt={'xs'} mb={'md'} />
+            <Divider my={'md'} />
 
-            <div>
+            <Box mb={'md'}>
                 <Text size={'lg'} color={theme.colorScheme === "dark" ? 'white' : theme.black}>Excerpt</Text>
                 <Text>{excerpt}</Text>
-            </div>
+            </Box>
+
+            <TableOfContents headers={headers} />
+
+            <Divider my={'md'} />
 
         </Box>
     )

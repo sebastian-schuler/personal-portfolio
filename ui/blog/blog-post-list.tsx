@@ -1,5 +1,5 @@
 import { Divider, Stack } from '@mantine/core';
-import { Post } from '../../interfaces/post';
+import { Post } from '../../types/blog';
 import PostPreview from './post-preview';
 
 interface Props {
@@ -17,7 +17,6 @@ const BlogPostList = ({ posts }: Props) => {
                                 i === 0 && <Divider mb={'lg'} />
                             }
                             <PostPreview
-                                type={post.type}
                                 title={post.title}
                                 coverImage={post.coverImage}
                                 date={post.date}

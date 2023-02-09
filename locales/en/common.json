@@ -3,15 +3,16 @@
 
   "navItems": {
     "home": "Home",
-    "projects": "Projects",
+    "portfolio": "Portfolio",
     "blog": "Blog",
     "contact": "Contact"
   },
 
   "breadcrumbs": {
     "home": "Home",
-    "projects": "Projects",
-    "blog": "Blog"
+    "blog": "Blog",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
   },
 
   "colorSchemeTitle": "Toggle day/night mode",
@@ -41,6 +42,9 @@
   "post": {
     "typeProject": "Project",
     "typeArticle": "Article",
-    "readTimeLabel": "min read"
+    "readTimeLabel": "min read",
+    "internalLinkTitle": "View {{title}} project page",
+    "externalLinkTitle": "View {{title}} website",
+    "githubLinkTitle": "View {{title}} on GitHub"
   }
 }

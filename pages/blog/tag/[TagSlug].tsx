@@ -3,13 +3,12 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
-import Tag from '../../../interfaces/tag';
 import { getAllPostTags, getPostsByTag } from '../../../lib/api/blogApi';
 import BlogPostList from '../../../ui/blog/blog-post-list';
 import BlogTagList from '../../../ui/blog/blog-tag-list';
 import MyTitle from '../../../ui/title';
 import PageBreadcrumbs from '../../../ui/breadcrumbs';
-import { Post } from '../../../interfaces/post';
+import { Post, Tag } from '../../../types/blog';
 
 interface Props {
   otherTags: Tag[]

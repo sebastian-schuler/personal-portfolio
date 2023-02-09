@@ -104,15 +104,15 @@ const AboutSection = () => {
 
                 <Grid.Col md={6}>
                     <Text size={"lg"} mb={theme.spacing.sm}>
-                        <span className={classes.techTitle}>{t('about.tech.title')}</span> {' '} {t('about.tech.text')}
+                        <span className={classes.techTitle}>{t('about.tech.title')}</span>
                     </Text>
                     <Group spacing={"xs"}>
                         {
                             dataTechnologies.map((tech, index) => (
                                 <Badge
                                     key={index}
-                                    variant="light"
-                                    color="primary.4"
+                                    variant="outline"
+                                    color="dark.0"
                                     size="lg"
                                     mb={"xs"}>{tech}</Badge>
                             ))
@@ -122,15 +122,15 @@ const AboutSection = () => {
 
                 <Grid.Col md={6}>
                     <Text size={"lg"} mb={theme.spacing.sm}>
-                        <span className={classes.techTitle}>{t('about.tools.title')}</span> {' '} {t('about.tools.text')}
+                        <span className={classes.techTitle}>{t('about.tools.title')}</span>
                     </Text>
                     <Group spacing={"xs"}>
                         {
                             dataTools.map((tech, index) => (
                                 <Badge
                                     key={index}
-                                    variant="light"
-                                    color="primary.4"
+                                    variant="outline"
+                                    color="dark.0"
                                     size="lg"
                                     mb={"xs"}>{tech}</Badge>
                             ))

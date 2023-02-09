@@ -68,10 +68,24 @@ const PageBreadcrumbs = ({ postTitle, projectTitle }: Props) => {
                 url: toLink("#")
             });
         }
+    } else if (route.startsWith(toLink("portfolio"))) {
+        // BLOG PATH
+        links.push({
+            name: t("breadcrumbs.portfolio"),
+            url: toLink("portfolio")
+        });
+
+    } else if (route.startsWith(toLink("contact"))) {
+        // CONTACT PATH
+        links.push({
+            name: t("breadcrumbs.contact"),
+            url: toLink("contact")
+        });
+
     }
 
     return (
-        <Group position='apart' mb={theme.spacing.lg} pt={theme.spacing.md}>
+        <Group position='apart' mb={theme.spacing.lg} pt={theme.spacing.lg}>
             <Breadcrumbs separator=">" classNames={{ root: classes.root, separator: classes.separator, breadcrumb: classes.breadcrumb }}>
                 {
                     links.map((link, i) => (

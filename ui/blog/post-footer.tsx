@@ -1,6 +1,6 @@
 import { createStyles, Divider, SimpleGrid, Space, Text } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
-import { Post } from '../../interfaces/post';
+import { Post } from '../../types/blog';
 import PostPreview from './post-preview';
 
 const useStyles = createStyles((theme) => {
@@ -36,7 +36,7 @@ const PostFooter = ({ recommendedPosts }: Props) => {
 
     return (
         <>
-            <Divider mt={'xl'} mb={'lg'} />
+            <Divider my={'xl'} />
 
             <Text size={48} mb={"lg"} className={classes.title}>{t("otherPostsHeader")}</Text>
 
@@ -51,7 +51,6 @@ const PostFooter = ({ recommendedPosts }: Props) => {
                         <PostPreview
                             key={index}
                             title={post.title}
-                            type={post.type}
                             slug={post.slug}
                             date={post.date}
                             coverImage={post.coverImage}

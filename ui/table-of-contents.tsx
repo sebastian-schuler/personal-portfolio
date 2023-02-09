@@ -1,4 +1,4 @@
-import { Anchor, Box, List, Text, useMantineTheme } from '@mantine/core';
+import { Anchor, List, Text, useMantineTheme } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
 import { HeaderData } from '../lib/markdown/customMarkdownParser';
 
@@ -6,7 +6,7 @@ type Props = {
     headers: HeaderData[]
 }
 
-const TableOfContents = ({ headers }: Props) => {
+const TableOfContents: React.FC<Props> = ({ headers }: Props) => {
 
     const { t } = useTranslation('blog');
     const theme = useMantineTheme();
@@ -41,7 +41,7 @@ const TableOfContents = ({ headers }: Props) => {
             }
         }
 
-        return <List key={listNumber} withPadding={depth > 2 ? true : false}>
+        return <List key={listNumber} withPadding={depth > 2 ? true : false} >
             {items.map((item, i) => item)}
         </List>
     }
@@ -49,10 +49,10 @@ const TableOfContents = ({ headers }: Props) => {
     const items = getList(headers, 2, 1);
 
     return (
-        <Box>
+        <div>
             <Text size={"lg"} color={theme.colorScheme === "dark" ? 'white' : theme.black}>{t("tableOfContents")}</Text>
             {items}
-        </Box>
+        </div>
     )
 }
 
