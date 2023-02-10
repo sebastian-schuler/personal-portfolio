@@ -69,11 +69,21 @@ const PageBreadcrumbs = ({ postTitle, projectTitle }: Props) => {
             });
         }
     } else if (route.startsWith(toLink("portfolio"))) {
-        // BLOG PATH
+        // PORTFOLIO PATH
         links.push({
             name: t("breadcrumbs.portfolio"),
             url: toLink("portfolio")
         });
+
+        if (route.startsWith(toLink("portfolio", ""))) {
+            // PORTFOLIO PROJECT PATH
+            if (projectTitle) {
+                links.push({
+                    name: projectTitle,
+                    url: toLink("#")
+                });
+            }
+        }
 
     } else if (route.startsWith(toLink("contact"))) {
         // CONTACT PATH

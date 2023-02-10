@@ -5,15 +5,9 @@
     "tagPageTagListTitle": "Other tags",
     "tagLinkTitle": "Show all posts with the tag #{{tag}}",
 
-    "shareTwitter": "Share this article on Twitter",
-    "shareLinkedIn": "Share this article on LinkedIn",
-    "shareFacebook": "Share this article on Facebook",
-    "shareLink": "Copy the link to this article",
-    "shareLinkConfirm": "Link copied to clipboard",
-
-    "blogPageTabTitle": "Blog by Sebastian Schuler | Page {{page}}",
+    "blogPageTabTitle": "Blog | Sebastian Schuler | Page {{page}}",
     "tagPageTabTitle": "{{tag}} articles by Sebastian Schuler",
-    "blogPostTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}",
+    "blogPostTabTitle": "{{title}} | Sebastian Schuler | {{date}} | {{tags}}",
 
     "otherPostsHeader": "Other posts you might like",
     "postPreviewLinkTitle": "Read more about '{{title}}'",

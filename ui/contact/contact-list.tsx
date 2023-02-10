@@ -1,4 +1,4 @@
-import { Anchor, Box, createStyles, Group, Stack, Text } from '@mantine/core';
+import { Anchor, Box, createStyles, Group, Stack, Text, ThemeIcon } from '@mantine/core';
 import { IconAt, IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconMapPin, IconExternalLink } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import { SOCIAL_LINKS } from '../../lib/constants';
@@ -35,6 +35,7 @@ const useStyles = createStyles((theme) => ({
     wrapper: {
         display: 'flex',
         alignItems: 'center',
+        gap: theme.spacing.md,
     },
 
     icon: {
@@ -68,9 +69,9 @@ function ContactIcon({
     return (
         <div className={cx(classes.wrapper, className)} {...others}>
             {
-                <Box mr="md">
+                <ThemeIcon size={'lg'} variant={'outline'}>
                     {icon}
-                </Box>
+                </ThemeIcon>
             }
             <div>
                 <Text size="xs" className={classes.title}>
@@ -110,20 +111,20 @@ const ContactList = () => {
             type: "email",
             title: t('socials.email'),
             text: <EncryptedEmail email='sebastian.schuler@live.com' />,
-            icon: <IconAt size={18} />
+            icon: <IconAt size={20} />
         },
         {
             type: "text",
             title: t('socials.country'),
             text: 'Germany',
-            icon: <IconMapPin size={18} />
+            icon: <IconMapPin size={20} />
         },
         {
             type: "link",
             title: t('socials.github'),
             text: SOCIAL_LINKS.github.name,
             url: SOCIAL_LINKS.github.url,
-            icon: <IconBrandGithub size={18} />,
+            icon: <IconBrandGithub size={20} />,
             linkTitle: t('common:footer.githubLinkTitle')
         },
         {
@@ -131,7 +132,7 @@ const ContactList = () => {
             title: t('socials.linkedin'),
             text: SOCIAL_LINKS.linkedin.name,
             url: SOCIAL_LINKS.linkedin.url,
-            icon: <IconBrandLinkedin size={18} />,
+            icon: <IconBrandLinkedin size={20} />,
             linkTitle: t('common:footer.linkedinLinkTitle')
         },
         {
@@ -139,7 +140,7 @@ const ContactList = () => {
             title: t('socials.twitter'),
             text: SOCIAL_LINKS.twitter.name,
             url: SOCIAL_LINKS.twitter.url,
-            icon: <IconBrandTwitter size={18} />,
+            icon: <IconBrandTwitter size={20} />,
             linkTitle: t('common:footer.twitterLinkTitle')
         },
     ];

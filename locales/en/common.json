@@ -43,6 +43,12 @@
     "readTimeLabel": "min read",
     "internalLinkTitle": "{{title}} project page",
     "externalLinkTitle": "{{title}} website",
-    "githubLinkTitle": "{{title}} on GitHub"
+    "githubLinkTitle": "{{title}} on GitHub",
+
+    "shareTwitter": "Share this article on Twitter",
+    "shareLinkedIn": "Share this article on LinkedIn",
+    "shareFacebook": "Share this article on Facebook",
+    "shareLink": "Copy the link to this article",
+    "shareLinkConfirm": "Link copied to clipboard"
   }
 }

@@ -3,5 +3,6 @@
     "subtitle": "A list of my personal, work, and university projects.",
 
     "portfolioPageTabTitle": "Portfolio | Sebastian Schuler",
-    "portfolioItemTabTitle": "{{title}} | by Sebastian Schuler | {{date}} | {{tags}}"
+    "portfolioItemTabTitle": "{{title}} | Sebastian Schuler"
+    
 }

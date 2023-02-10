@@ -9,6 +9,7 @@ export const zodPortfolioItem = z.object({
     appUrl: z.string().or(z.null()),
     githubUrl: z.string().or(z.null()),
     featured: z.optional(z.boolean()),
+    date: z.string().datetime(),
 });
 
 export const zodPortfolioFile = z.object({

@@ -32,7 +32,7 @@ interface Props {
 }
 
 const PostSharePanel = ({ title }: Props) => {
-    const { t } = useTranslation("blog");
+    const { t } = useTranslation("common");
     const { classes, theme } = useStyles();
 
     const shareTwitter = () => {
@@ -73,7 +73,7 @@ const PostSharePanel = ({ title }: Props) => {
                 variant="subtle"
                 size={"lg"}
                 onClick={shareTwitter}
-                title={t("shareTwitter")}
+                title={t("post.shareTwitter")}
                 className={classes.icon}
             >
                 <IconBrandTwitter size={24} />
@@ -82,7 +82,7 @@ const PostSharePanel = ({ title }: Props) => {
                 variant="subtle"
                 size={"lg"}
                 onClick={shareLinkedin}
-                title={t("shareLinkedIn")}
+                title={t("post.shareLinkedIn")}
                 className={classes.icon}
             >
                 <IconBrandLinkedin size={24} />
@@ -91,7 +91,7 @@ const PostSharePanel = ({ title }: Props) => {
                 variant="subtle"
                 size={"lg"}
                 onClick={shareFacebook}
-                title={t("shareFacebook")}
+                title={t("post.shareFacebook")}
                 className={classes.icon}
             >
                 <IconBrandFacebook size={24} />
@@ -107,14 +107,14 @@ const PostSharePanel = ({ title }: Props) => {
                         variant="subtle"
                         size={"lg"}
                         onClick={copyLink}
-                        title={t("shareLink")}
+                        title={t("post.shareLink")}
                         className={classes.icon}
                     >
                         <IconLink size={24} />
                     </ActionIcon>
                 </Popover.Target>
                 <Popover.Dropdown>
-                    <Text size="sm">{t("shareLinkConfirm")}</Text>
+                    <Text size="sm">{t("post.shareLinkConfirm")}</Text>
                 </Popover.Dropdown>
             </Popover>
         </Group>

@@ -10,8 +10,9 @@ const TableOfContents: React.FC<Props> = ({ headers }: Props) => {
 
     const { t } = useTranslation('blog');
     const theme = useMantineTheme();
+    let listNumber = 0;
 
-    const getList = (data: HeaderData[], depth: number, listNumber: number): JSX.Element => {
+    const getList = (data: HeaderData[], depth: number): JSX.Element => {
 
         let items: JSX.Element[] = [];
 
@@ -34,19 +35,21 @@ const TableOfContents: React.FC<Props> = ({ headers }: Props) => {
                     listUntil++;
                 }
                 const newList = data.slice(i, listUntil);
-                const list = getList(newList, header.order, listNumber + 1);
+                const list = getList(newList, header.order);
                 items.push(list);
                 i = listUntil - 1;
 
             }
         }
 
-        return <List key={listNumber} withPadding={depth > 2 ? true : false} >
+        listNumber++;
+
+        return <List key={"outer"+listNumber} withPadding={depth > 2 ? true : false} >
             {items.map((item, i) => item)}
         </List>
     }
 
-    const items = getList(headers, 2, 1);
+    const items = getList(headers, 2);
 
     return (
         <div>

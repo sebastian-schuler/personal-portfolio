@@ -10,8 +10,9 @@ const useStyles = createStyles((theme) => {
 
     return {
         textField: {
+            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3],
             '::placeholder': {
-                color: theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.dark[0],
+                color: theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[6],
             }
         },
         submit: {

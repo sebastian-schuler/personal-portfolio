@@ -7,26 +7,29 @@
       "tags": ["Electron", "Node.js", "Express", "MongoDB"],
       "image": "/images/portfolio/test.jpg",
       "appUrl": null,
-      "githubUrl": null
+      "githubUrl": null,
+      "date": "2022-11-21T05:35:07.322Z"
     },
     {
-      "slug": "nextjs-portfolio",
-      "title": "Personal Portfolio",
-      "description": "A portfolio website built with Next.js and TypeScript",
+      "slug": "personal-portfolio",
+      "title": "Personal Website & Portfolio",
+      "description": "My personal website that I built with Next.js and Mantine UI. It's also a blog where I write about my projects and other topics.",
       "tags": ["Next.js", "TypeScript", "React", "Mantine", "Markdown"],
       "image": "/images/portfolio/test.jpg",
       "appUrl": "https://www.sebastian-schuler.com",
-      "githubUrl": "https://www.sebastian-schuler.com",
-      "featured": true
+      "githubUrl": "https://github.com/sebastian-schuler/personal-portfolio-mantine",
+      "featured": true,
+      "date": "2022-11-21T05:35:07.322Z"
     },
     {
       "slug": "university-index",
       "title": "University Index",
-      "description": "A portfolio website built with Next.js and TypeScript",
+      "description": "My portfolio website built with Next.js and TypeScript",
       "tags": ["Next.js", "TypeScript", "React", "Mantine", "PostgreSQL"],
       "image": "/images/portfolio/test.jpg",
       "appUrl": null,
-      "githubUrl": null
+      "githubUrl": null,
+      "date": "2022-11-21T05:35:07.322Z"
     },
     {
       "slug": "convertee",
@@ -35,7 +38,8 @@
       "tags": ["Android", "Java"],
       "image": "/images/portfolio/test.jpg",
       "appUrl": null,
-      "githubUrl": null
+      "githubUrl": null,
+      "date": "2022-11-21T05:35:07.322Z"
     }
   ]
 }

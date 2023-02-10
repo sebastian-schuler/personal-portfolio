@@ -97,12 +97,12 @@ const PortfolioPreview: React.FC<Props> = ({ slug, title, description, image, ap
                     </ActionIcon>
 
                     {appUrl &&
-                        <ActionIcon component='a' href={appUrl} title={t('common:post.externalLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' >
+                        <ActionIcon component='a' href={appUrl} target={'_blank'} title={t('common:post.externalLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' >
                             <IconExternalLink size={24} />
                         </ActionIcon>
                     }
                     {githubUrl &&
-                        <ActionIcon component='a' href={githubUrl} title={t('common:post.githubLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' >
+                        <ActionIcon component='a' href={githubUrl} target={'_blank'} title={t('common:post.githubLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' >
                             <IconBrandGithub size={24} />
                         </ActionIcon>
                     }

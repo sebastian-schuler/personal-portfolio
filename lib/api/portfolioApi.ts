@@ -41,6 +41,11 @@ export const getFeaturedPortfolioData = async (locale: string) => {
     return portfolioData.filter(item => item.featured);
 }
 
+export const getPortfolioItem = async (locale: string, slug: string) => {
+    const portfolioData = await getPortfolioData(locale);
+    return portfolioData.find(item => item.slug === slug);
+}
+
 const readFileContent = (locale: string) => {
     return fs.readFile(join(directory, `${locale}.json`), 'utf8');
 }

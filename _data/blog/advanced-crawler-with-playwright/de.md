@@ -1,7 +1,7 @@
 ---
 type: 'article'
 title: 'Einen erweiterten Crawler mit Playwright schreiben'
-excerpt: "At a certain point the amount of content on your website might be too much for one single page. Long loading times will negatively affect user experience. This article will show you how to implement pagination a possible solution to this using Next.js and Mantine. We'll also discuss alternatives and why they all perform worse than pagination."
+excerpt: "Die Menge an Inhalten auf deiner Website kann irgendwann zu viel für eine einzelne Seite werden. Lange Ladezeiten wirken sich negativ auf die User Experience aus. Dieser Artikel zeigt dir, wie du die 'Paginierung', eine mögliche Lösung für dieses Problem, mit Next.js und Mantine implementieren kannst. Außerdem besprechen wir Alternativen und warum sie schlechter abschneiden als die Seitennummerierung."
 coverImage: '/assets/blog/preview/cover.jpg'
 date: '2022-11-21T05:35:07.322Z'
 ogImage:
