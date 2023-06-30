@@ -39,9 +39,11 @@ const PageNavMobile = ({ drawerOpened, closeDrawer, navLinks }: Props) => {
             title={t('mobileNavTitle')}
             className={classes.hiddenDesktop}
             zIndex={1000000}
-            transition={'slide-left'}
+            transitionProps={{
+                transition: 'slide-left',
+            }}
             styles={(theme) => ({
-                closeButton: {
+                close: {
                     color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.dark[7],
                 }
             })}

@@ -1,10 +1,11 @@
-import { ActionIcon, Anchor, Box, Button, createStyles, Group, Paper, Stack, Text } from '@mantine/core';
-import { NextLink } from '@mantine/next';
+import { ActionIcon, Anchor, Box, Button, createStyles, getStylesRef, Group, Paper, Stack, Text } from '@mantine/core';
 import { IconBrandGithub, IconExternalLink, IconFileDescription, IconLink, IconX } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
-const useStyles = createStyles((theme, _params, getRef) => ({
+const useStyles = createStyles((theme, _params) => ({
     card: {
         position: 'relative',
         height: 440,
@@ -17,7 +18,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
         transition: 'all 0.2s ease-in-out',
         background: 'linear-gradient(to top, #3204fd00, #9907facc)',
 
-        [`&:hover .${getRef('overlay')}`]: {
+        [`&:hover .${getStylesRef('overlay')}`]: {
             opacity: 1,
         },
     },
@@ -58,7 +59,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
         backgroundColor: theme.colorScheme === "dark" ? theme.fn.rgba(theme.colors.dark[5], 0.8) : theme.fn.rgba(theme.colors.dark[1], 0.8),
         borderRadius: theme.radius.md,
 
-        ref: getRef('overlay'),
+        ref: getStylesRef('overlay'),
     }
 }));
 
@@ -77,40 +78,47 @@ const PortfolioPreview: React.FC<Props> = ({ slug, title, description, image, ap
     const { t } = useTranslation();
 
     return (
-        <Paper
-            shadow="md"
-            p="lg"
-            radius="md"
-            sx={{ backgroundImage: `url(${image})` }}
-            className={classes.card}
+        <motion.div
+            layout
+            initial={false}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ type: "spring", duration: .5 }}
         >
-            <Text className={classes.title}>{title}</Text>
-            <Box p={'lg'} className={classes.overlay}>
-                <Stack>
-                    <Text className={classes.title}>{title}</Text>
-                    <Text className={classes.description}>{description}</Text>
-                </Stack>
+            <Paper
+                shadow="md"
+                p="lg"
+                radius="md"
+                sx={{ backgroundImage: `url(${image})` }}
+                className={classes.card}
+            >
+                <Text className={classes.title}>{title}</Text>
+                <Box p={'lg'} className={classes.overlay}>
+                    <Stack>
+                        <Text className={classes.title}>{title}</Text>
+                        <Text className={classes.description}>{description}</Text>
+                    </Stack>
 
-                <Group>
-                    <ActionIcon component={NextLink} href={`/portfolio/${slug}`} title={t('common:post.internalLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' legacyBehavior>
-                        <IconFileDescription size={24} />
-                    </ActionIcon>
-
-                    {appUrl &&
-                        <ActionIcon component='a' href={appUrl} target={'_blank'} title={t('common:post.externalLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' >
-                            <IconExternalLink size={24} />
+                    <Group>
+                        <ActionIcon component={Link} href={`/portfolio/${slug}`} title={t('common:post.internalLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' legacyBehavior>
+                            <IconFileDescription size={24} />
                         </ActionIcon>
-                    }
-                    {githubUrl &&
-                        <ActionIcon component='a' href={githubUrl} target={'_blank'} title={t('common:post.githubLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' >
-                            <IconBrandGithub size={24} />
-                        </ActionIcon>
-                    }
-                </Group>
 
-            </Box>
+                        {appUrl &&
+                            <ActionIcon component='a' href={appUrl} target={'_blank'} title={t('common:post.externalLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' >
+                                <IconExternalLink size={24} />
+                            </ActionIcon>
+                        }
+                        {githubUrl &&
+                            <ActionIcon component='a' href={githubUrl} target={'_blank'} title={t('common:post.githubLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' >
+                                <IconBrandGithub size={24} />
+                            </ActionIcon>
+                        }
+                    </Group>
 
-        </Paper>
+                </Box>
+            </Paper>
+        </motion.div>
     )
 }
 

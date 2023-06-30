@@ -1,5 +1,5 @@
-import { Box, Burger, Button, Container, createStyles, Group, Header, MediaQuery } from '@mantine/core';
-import { useDisclosure, useMediaQuery, useWindowScroll } from '@mantine/hooks';
+import { Box, Burger, Button, Container, createStyles, Group, Header } from '@mantine/core';
+import { useWindowScroll, useDisclosure } from '@mantine/hooks';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import { useRouter } from 'next/router';

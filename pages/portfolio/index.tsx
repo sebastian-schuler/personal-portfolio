@@ -1,10 +1,13 @@
 import { Container, SimpleGrid, Space, Text } from '@mantine/core';
+import { AnimatePresence } from 'framer-motion';
 import { GetServerSideProps, NextPage } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import Head from 'next/head';
+import { useState } from 'react';
 import { getPortfolioData } from '../../lib/api/portfolioApi';
 import { PortfolioItem } from '../../types/portfolio';
 import PageBreadcrumbs from '../../ui/breadcrumbs';
+import PortfolioFilter from '../../ui/portfolio/portfolio-filter';
 import PortfolioPreview from '../../ui/portfolio/portfolio-preview';
 import MyTitle from '../../ui/title';
 
@@ -16,7 +19,17 @@ const PortfolioPage: NextPage<Props> = ({ data }: Props) => {
 
   const { t } = useTranslation('portfolio');
 
-  const items = data.map((item) => {
+  const [filter, setFilter] = useState<string[] | undefined>();
+  const tags: string[] = [...new Set(data.map((item) => item.tags).flat())].sort();
+
+  const items = data.filter(item => {
+
+    if (filter === undefined) return true;
+    if (filter.length === 0) return true;
+    if (item.tags.some(tag => filter.includes(tag))) return true;
+    return false;
+
+  }).map((item) => {
     return (
       <PortfolioPreview
         key={item.slug}
@@ -40,7 +53,13 @@ const PortfolioPage: NextPage<Props> = ({ data }: Props) => {
         <PageBreadcrumbs />
         <MyTitle>{t("title")}</MyTitle>
         <Text mt={'xs'}>{t("subtitle")}</Text>
+
+        <Space h={'xl'} />
+
+        <PortfolioFilter tags={tags} filter={filter} setFilter={setFilter} />
+
         <Space h={'lg'} />
+
         <SimpleGrid
           spacing={'lg'}
           breakpoints={[
@@ -50,7 +69,9 @@ const PortfolioPage: NextPage<Props> = ({ data }: Props) => {
             { cols: 1, spacing: 'sm' },
           ]}
         >
-          {items}
+          <AnimatePresence>
+            {items}
+          </AnimatePresence>
         </SimpleGrid>
       </Container>
     </>

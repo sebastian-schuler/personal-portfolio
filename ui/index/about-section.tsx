@@ -1,9 +1,8 @@
-import { Anchor, Badge, Box, createStyles, Grid, Group, Image, Stack, Text } from '@mantine/core';
-import { useIntersection, useWindowEvent } from '@mantine/hooks';
+import { Anchor, Badge, createStyles, Grid, Group, Image, Stack, Text } from '@mantine/core';
 import Trans from 'next-translate/Trans';
 import useTranslation from 'next-translate/useTranslation';
-import { useRef } from 'react';
 import SectionHeader from '../section-header';
+import { motion } from 'framer-motion';
 
 const dataTechnologies = [
     "Javascript (ES6+)",

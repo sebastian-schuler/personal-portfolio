@@ -36,99 +36,103 @@ const MyPagination = ({ currentPage, pageCount, rootPath }: Props) => {
         )
     }
 
+    // TODO: Fix this
     return (
         <Pagination
-            page={currentPage}
+            value={currentPage}
             total={pageCount}
             position='center'
             mt={'lg'}
-            itemComponent={(props, context) => {
+            // getItemProps={(page) => {
 
-                const page = props.page;
+            // }}
+            // itemComponent={(props, context) => {
 
-                // Check if page is a number or 'next' / 'previous' etc.
-                if (isNaN(Number(page))) {
+            //     const page = props.page;
 
-                    if (page === 'prev') {
-                        // If page is previous
+            //     // Check if page is a number or 'next' / 'previous' etc.
+            //     if (isNaN(Number(page))) {
 
-                        if (currentPage === 1) {
-                            // First page has previus button disabled
-                            return <>{getDefaultButton('<', t('pagination.previous'), true)}</>
+            //         if (page === 'prev') {
+            //             // If page is previous
 
-                        } else {
-                            // Other pages have previous button enabled
-                            return <Link
-                                href={{
-                                    pathname: '/' + rootPath,
-                                    query: { page: currentPage - 1 },
-                                }}
-                                passHref
-                            >
-                                {getDefaultButton('<', t('pagination.previous'))}
-                            </Link>
-                        }
+            //             if (currentPage === 1) {
+            //                 // First page has previus button disabled
+            //                 return <>{getDefaultButton('<', t('pagination.previous'), true)}</>
 
-                    }
+            //             } else {
+            //                 // Other pages have previous button enabled
+            //                 return <Link
+            //                     href={{
+            //                         pathname: '/' + rootPath,
+            //                         query: { page: currentPage - 1 },
+            //                     }}
+            //                     passHref
+            //                 >
+            //                     {getDefaultButton('<', t('pagination.previous'))}
+            //                 </Link>
+            //             }
 
-                    if (page === 'next') {
-                        // If page is next
+            //         }
 
-                        if (currentPage === pageCount) {
-                            // Last page has the next button disabled
-                            return <>{getDefaultButton('>', t('pagination.next'), true)}</>
+            //         if (page === 'next') {
+            //             // If page is next
 
-                        } else {
-                            // Other pages have a next button
-                            return <Link
-                                href={{
-                                    pathname: '/' + rootPath,
-                                    query: { page: currentPage + 1 },
-                                }}
-                                passHref
-                            >
-                                {getDefaultButton('>', t('pagination.next'))}
-                            </Link>
-                        }
-                    }
+            //             if (currentPage === pageCount) {
+            //                 // Last page has the next button disabled
+            //                 return <>{getDefaultButton('>', t('pagination.next'), true)}</>
 
-                    // Will only happen if we enable edges in pagination ('first','last')
-                    return <Link href={toLink(rootPath)}>{page}</Link>
+            //             } else {
+            //                 // Other pages have a next button
+            //                 return <Link
+            //                     href={{
+            //                         pathname: '/' + rootPath,
+            //                         query: { page: currentPage + 1 },
+            //                     }}
+            //                     passHref
+            //                 >
+            //                     {getDefaultButton('>', t('pagination.next'))}
+            //                 </Link>
+            //             }
+            //         }
 
-                } else {
-                    // If page is a number
+            //         // Will only happen if we enable edges in pagination ('first','last')
+            //         return <Link href={toLink(rootPath)}>{page}</Link>
 
-                    if (currentPage === page) {
-                        // If page number equals the currently displayed page
-                        return (
-                            <Link
-                                href={{
-                                    pathname: '/' + rootPath,
-                                    query: page === 1 ? undefined : { page: page },
-                                }}
-                                passHref
-                            >
-                                <Button variant='filled' className={classes.activeButton} title={t('pagination.currentPage', { page: page })}>
-                                    {page}
-                                </Button>
-                            </Link>
-                        )
-                    } else {
-                        // If page is not the current page
-                        return (
-                            <Link
-                                href={{
-                                    pathname: '/' + rootPath,
-                                    query: { page: page },
-                                }}
-                                passHref
-                            >
-                                {getDefaultButton(page.toString(), t('pagination.otherPage', { page: page }))}
-                            </Link>
-                        )
-                    }
-                }
-            }}
+            //     } else {
+            //         // If page is a number
+
+            //         if (currentPage === page) {
+            //             // If page number equals the currently displayed page
+            //             return (
+            //                 <Link
+            //                     href={{
+            //                         pathname: '/' + rootPath,
+            //                         query: page === 1 ? undefined : { page: page },
+            //                     }}
+            //                     passHref
+            //                 >
+            //                     <Button variant='filled' className={classes.activeButton} title={t('pagination.currentPage', { page: page })}>
+            //                         {page}
+            //                     </Button>
+            //                 </Link>
+            //             )
+            //         } else {
+            //             // If page is not the current page
+            //             return (
+            //                 <Link
+            //                     href={{
+            //                         pathname: '/' + rootPath,
+            //                         query: { page: page },
+            //                     }}
+            //                     passHref
+            //                 >
+            //                     {getDefaultButton(page.toString(), t('pagination.otherPage', { page: page }))}
+            //                 </Link>
+            //             )
+            //         }
+            //     }
+            // }}
         />
     )
 }

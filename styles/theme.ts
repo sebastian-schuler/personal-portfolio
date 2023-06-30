@@ -59,28 +59,28 @@ const appTheme: MantineThemeOverride = {
 
   fontFamily: 'roboto, arial, sans-serif',
   fontSizes: {
-    xs: 10,
-    sm: 12,
-    md: 16,
-    lg: 18,
-    xl: 20,
+    xs: '0.625rem',
+    sm: '0.75rem',
+    md: '1rem',
+    lg: '1.125rem',
+    xl: '1.5rem',
   },
 
   defaultRadius: "md",
   spacing: {
-    xs: 4,
-    sm: 8,
-    md: 16,
-    lg: 32,
-    xl: 64,
+    xs: '0.25rem',
+    sm: '0.5rem',
+    md: '1rem',
+    lg: '2rem',
+    xl: '4rem',
   },
 
   breakpoints: {
-    xs: 576,
-    sm: 768,
-    md: 992,
-    lg: 1200,
-    xl: 1400,
+    xs: '36rem',
+    sm: '48rem',
+    md: '62rem',
+    lg: '75rem',
+    xl: '87rem',
   },
 
   components: {
@@ -140,7 +140,7 @@ const appTheme: MantineThemeOverride = {
       }),
     },
     Button: {
-      styles: (theme,_params) => ({
+      styles: (theme, _params) => ({
         root: {
           color: _params.variant === 'filled' ? theme.white : theme.colors.primary[4],
           backgroundColor: _params.variant === 'filled' ? theme.colors.primary[5] : undefined,

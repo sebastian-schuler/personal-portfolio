@@ -1,7 +1,7 @@
-import { Anchor, Box, Button, Group, SimpleGrid, Skeleton, Space } from '@mantine/core';
-import { NextLink } from '@mantine/next';
+import { Anchor, Button, Group, SimpleGrid, Space } from '@mantine/core';
 import Trans from 'next-translate/Trans';
 import useTranslation from 'next-translate/useTranslation';
+import Link from 'next/link';
 import { SOCIAL_LINKS } from '../../lib/constants';
 import { PortfolioItem } from '../../types/portfolio';
 import PortfolioPreview from '../portfolio/portfolio-preview';
@@ -23,7 +23,7 @@ const WorkSection = ({ featuredProjects }: Props) => {
                 subtext={
                     <Trans
                         i18nKey="index:work.titleDescription"
-                        components={[<Anchor component={NextLink} href='/portfolio' legacyBehavior />, <Anchor href={SOCIAL_LINKS.github.url} target='_blank' />]}
+                        components={[<Anchor component={Link} href='/portfolio' legacyBehavior />, <Anchor href={SOCIAL_LINKS.github.url} target='_blank' />]}
                     />
                 }
             />
@@ -56,7 +56,7 @@ const WorkSection = ({ featuredProjects }: Props) => {
             </SimpleGrid>
 
             <Group position='center'>
-                <Button component={NextLink} href={'/portfolio'} variant='subtle' size='md' legacyBehavior>{t('work.portfolioButton')}</Button>
+                <Button component={Link} href={'/portfolio'} variant='subtle' size='md' legacyBehavior>{t('work.portfolioButton')}</Button>
             </Group>
         </div>
     )

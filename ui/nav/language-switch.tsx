@@ -79,7 +79,7 @@ const LanguageSwitch = ({ closeDrawer }: Props) => {
             orientation="vertical"
             classNames={{
                 control: classes.control,
-                active: classes.active,
+                indicator: classes.active,
             }}
         />
     )

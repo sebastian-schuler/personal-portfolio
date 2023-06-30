@@ -3,6 +3,8 @@
     "subtitle": "A list of my personal, work, and university projects.",
 
     "portfolioPageTabTitle": "Portfolio | Sebastian Schuler",
-    "portfolioItemTabTitle": "{{title}} | Sebastian Schuler"
+    "portfolioItemTabTitle": "{{title}} | Sebastian Schuler",
+
+    "filterPlaceholder": "Filter projects by tag"
     
 }

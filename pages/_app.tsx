@@ -2,7 +2,7 @@ import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core
 import { setCookie, getCookie } from 'cookies-next'
 import { GetServerSidePropsContext } from 'next'
 import useTranslation from 'next-translate/useTranslation'
-import type { AppProps } from 'next/app'
+import type { AppContext, AppInitialProps, AppProps } from 'next/app'
 import Head from 'next/head'
 import { useState } from 'react'
 import { COLOR_SCHEME_COOKIE } from '../lib/constants'
@@ -11,17 +11,18 @@ import '../styles/globals.css'
 import appTheme from '../styles/theme'
 import PageShell from '../ui/nav/page-shell'
 import PageFooter from '../ui/nav/page-footer'
+import App from 'next/app'
 
-export default function App(props: AppProps & { colorScheme: ColorScheme }) {
+export default function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
 
   const { Component, pageProps } = props;
   const { t } = useTranslation('common');
 
-  const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
+  const [activeColorScheme, setActiveColorScheme] = useState<ColorScheme>(props.colorScheme || 'dark');
 
   const toggleColorScheme = (value?: ColorScheme) => {
-    const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
-    setColorScheme(nextColorScheme);
+    const nextColorScheme = value || (activeColorScheme === 'dark' ? 'light' : 'dark');
+    setActiveColorScheme(nextColorScheme);
     setCookie(COLOR_SCHEME_COOKIE, nextColorScheme, { maxAge: 60 * 60 * 24 * 30 }); // 30 days
   };
 
@@ -32,11 +33,11 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         <link rel="icon" href="/favicon.ico" />
         <meta name="robots" content="index, follow" />
       </Head>
-      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+      <ColorSchemeProvider colorScheme={activeColorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider
           withGlobalStyles
           withNormalizeCSS
-          theme={{ ...appTheme, colorScheme }}
+          theme={{ ...appTheme, colorScheme: activeColorScheme }}
         >
           <CustomFonts />
           <PageShell>
@@ -49,7 +50,18 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   )
 }
 
-App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
-  // get color scheme from cookie
-  colorScheme: getCookie(COLOR_SCHEME_COOKIE, ctx) || 'dark',
-});
+// MyApp.getInitialProps = async (appContext: AppContext) => {
+
+//   const appProps = await App.getInitialProps(appContext)
+
+//   const cookie = getCookie(COLOR_SCHEME_COOKIE, appContext.ctx);
+
+//   const props:AppInitialProps = {
+//     ...appProps,
+//     pageProps: {
+//       colorScheme: cookie,
+//     }
+//   }
+
+//   return props;
+// }

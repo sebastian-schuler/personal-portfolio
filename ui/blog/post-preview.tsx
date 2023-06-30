@@ -1,23 +1,23 @@
-import { Badge, createStyles, Group, Stack, Text, Title } from '@mantine/core';
+import { Badge, createStyles, getStylesRef, Group, Stack, Text, Title } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import { toLink } from '../../lib/util';
 import DateFormatter from '../date-formatter';
 
-const useStyles = createStyles((theme, _params, getRef) => {
+const useStyles = createStyles((theme, _params) => {
 
   return {
 
     container: {
       cursor: 'pointer',
 
-      [`&:hover .${getRef('title')}`]: {
+      [`&:hover .${getStylesRef('title')}`]: {
         textDecoration: 'underline',
       }
     },
 
     title: {
-      ref: getRef('title'),
+      ref: getStylesRef('title'),
       lineHeight: 1.15,
       margin: 0,
       fontSize: '1.6em',
