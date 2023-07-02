@@ -21,7 +21,8 @@
       "More details about me can be found in the next section <0>Experience</0>. You could also have a look at my <1>Work</1> straight away."
     ],
     "techTitle": "Technologies",
-    "toolsTitle": "Tools"
+    "toolsTitle": "Tools",
+    "imageAlt": "A picture of me hiking on the Grand Chamousset in France"
   },
 
   "experience": {

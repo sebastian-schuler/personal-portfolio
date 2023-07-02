@@ -3,25 +3,28 @@ import { useForm } from '@mantine/form';
 import useTranslation from 'next-translate/useTranslation';
 import PageBreadcrumbs from '../ui/breadcrumbs';
 import ContactList from '../ui/contact/contact-list';
-import SectionHeader from '../ui/section-header';
+import MyTitle from '../ui/title';
 
 const useStyles = createStyles((theme) => {
-    const BREAKPOINT = theme.fn.smallerThan('sm');
-
     return {
         textField: {
-            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3],
+            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[3],
             '::placeholder': {
                 color: theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[6],
             }
         },
         submit: {
             backgroundColor: theme.colors.primary[5],
+            color: theme.white,
             transition: 'background-color 150ms ease',
 
             '&:hover': {
                 backgroundColor: theme.colors.primary[4],
             },
+        },
+        label: {
+            color: theme.colorScheme === 'dark' ? theme.fn.rgba(theme.white, 0.8) : theme.fn.rgba(theme.colors.dark[7], 0.5),
+            fontWeight: 400,
         }
     };
 });
@@ -51,9 +54,8 @@ const ContactPage = () => {
 
             <PageBreadcrumbs />
 
-            <Space h={'xl'} />
-
-            <SectionHeader title={t('title')} anchor='form' />
+            <MyTitle>{t("title")}</MyTitle>
+            <Space h={'lg'} />
 
             <Grid gutter={'lg'}>
 
@@ -90,7 +92,10 @@ const ContactPage = () => {
                                 name="name"
                                 variant="filled"
                                 size="md"
-                                classNames={{ input: classes.textField }}
+                                classNames={{ 
+                                    input: classes.textField,
+                                    label: classes.label
+                                }}
                                 {...form.getInputProps('name')}
                             />
                             <TextInput
@@ -99,7 +104,10 @@ const ContactPage = () => {
                                 name="email"
                                 variant="filled"
                                 size="md"
-                                classNames={{ input: classes.textField }}
+                                classNames={{ 
+                                    input: classes.textField,
+                                    label: classes.label
+                                }}
                                 {...form.getInputProps('email')}
                             />
                         </SimpleGrid>
@@ -111,7 +119,10 @@ const ContactPage = () => {
                             name="subject"
                             variant="filled"
                             size="md"
-                            classNames={{ input: classes.textField }}
+                            classNames={{ 
+                                input: classes.textField,
+                                label: classes.label
+                            }}
                             {...form.getInputProps('subject')}
                         />
                         <Textarea
@@ -124,7 +135,10 @@ const ContactPage = () => {
                             name="message"
                             variant="filled"
                             size="md"
-                            classNames={{ input: classes.textField }}
+                            classNames={{ 
+                                input: classes.textField,
+                                label: classes.label
+                            }}
                             {...form.getInputProps('message')}
                         />
 

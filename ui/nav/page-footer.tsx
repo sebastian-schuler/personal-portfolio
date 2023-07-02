@@ -9,11 +9,8 @@ const useStyles = createStyles((theme) => {
         footer: {
             backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : 'white',
         },
-        text: {
-            color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-        },
         icon: {
-            color: theme.colorScheme === 'dark' ? theme.white : theme.colors.gray[6],
+            color: theme.colorScheme === 'dark' ? theme.white : theme.colors.gray[7],
             transition: 'color 200ms ease',
 
             '&:hover': {
@@ -30,16 +27,18 @@ const PageFooter = () => {
 
     return (
         <footer>
-            <Box pt={theme.spacing.xl} pb={theme.spacing.xl} className={classes.footer}>
+            <Box pt={theme.spacing.xl} pb={theme.spacing.md} className={classes.footer}>
                 <Container>
-                    <SimpleGrid cols={3}>
 
-                        <Stack spacing={0}>
-                            <ILink url={'/privacy-policy'} type='internal'>{t('footer.privacyPolicy')}</ILink>
-                            <ILink url={'/legal-notice'} type='internal'>{t('footer.legalNotice')}</ILink>
-                        </Stack>
+                    <Group position='apart' px={0}>
 
-                        <Text align='center' className={classes.text}>Designed & built by Sebastian Schuler </Text>
+                        <ILink
+                            href={'/legal-notice'}
+                            type='internal'
+                            sx={{ color: theme.colorScheme === 'dark' ? theme.white : theme.colors.gray[8] }}
+                        >
+                            {t('footer.legalNotice')}
+                        </ILink>
 
                         <Group spacing={0} align={'start'} sx={{ flexDirection: 'row-reverse' }}>
                             <ActionIcon
@@ -77,7 +76,14 @@ const PageFooter = () => {
                             </ActionIcon>
                         </Group>
 
-                    </SimpleGrid>
+                    </Group>
+
+                    <Text 
+                    align='center' 
+                    pt={'xl'} 
+                    color={theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[6]}
+                    >Designed & built by Sebastian Schuler</Text>
+
                 </Container>
             </Box>
         </footer>

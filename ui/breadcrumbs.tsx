@@ -102,7 +102,7 @@ const PageBreadcrumbs = ({ postTitle, projectTitle }: Props) => {
                         i !== links.length - 1 ? (
                             <ILink
                                 key={i}
-                                url={link.url}
+                                href={link.url}
                                 type="internal"
                             >
                                 {link.name}

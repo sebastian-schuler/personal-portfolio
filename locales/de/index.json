@@ -18,10 +18,11 @@
     "text": [
       "Hi! Ich heisse Sebastian und entwickle sowohl Anwendungen als auch digitale Projekte. Mein Interesse an der Software Entwicklung begann im Jahr 2012, als ich mich im Informatik-Kurs der Schule angemeldet hatte. Davon war ich so begeistert, dass ich auf die BBS SÜW wechselte, um meinen Fokus voll auf die Anwendungsentwicklung zu legen.",
       "Da ich mich schon immer für viele verschiedene Richtungen der digitalen Medien begeistern konnte, war der Digital Media Marketing Studiengang meine erste Wahl. Trotz des Namens war der Fokus hier auf den drei Hauptrichtungen: Informatik, Marketing und UX Design.",
-      "Mehr Details zu mir sind im nächsten Abschnitt <0>Lebenslauf</0>zu finden. Alternativ kannst du auch direkt meine <1>Projekte</1> anschauen."
+      "Mehr Details zu mir sind im nächsten Abschnitt <0>Lebenslauf</0> zu finden. Alternativ kannst du auch direkt meine <1>Projekte</1> anschauen."
     ],
     "techTitle": "Technologien",
-    "toolsTitle": "Tools"
+    "toolsTitle": "Tools",
+    "imageAlt": "Ein Bild von mir beim Wandern auf dem Grand Chamousset in Frankreich"
   },
 
   "experience": {

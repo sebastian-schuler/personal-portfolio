@@ -43,8 +43,8 @@ const useStyles = createStyles((theme) => ({
     },
 
     title: {
-        color: theme.colorScheme === 'dark' ? theme.fn.rgba(theme.white, 0.5) : theme.fn.rgba(theme.colors.dark[7], 0.5),
-        fontWeight: 600,
+        color: theme.colorScheme === 'dark' ? theme.fn.rgba(theme.white, 0.8) : theme.fn.rgba(theme.colors.dark[7], 0.5),
+        letterSpacing: 1,
     },
 
     description: {
@@ -74,7 +74,7 @@ function ContactIcon({
                 </ThemeIcon>
             }
             <div>
-                <Text size="xs" className={classes.title}>
+                <Text size="sm" className={classes.title}>
                     {title}
                 </Text>
                 {
@@ -92,7 +92,6 @@ function ContactIcon({
                         </Anchor>
                     ) : (
                         <Text className={classes.description}>{text}</Text>
-
                     )
                 }
             </div>
@@ -110,14 +109,8 @@ const ContactList = () => {
         {
             type: "email",
             title: t('socials.email'),
-            text: <EncryptedEmail email='sebastian.schuler@live.com' />,
+            text: <EncryptedEmail email='sebastian.schuler.sbsc@gmail.com' />,
             icon: <IconAt size={20} />
-        },
-        {
-            type: "text",
-            title: t('socials.country'),
-            text: 'Germany',
-            icon: <IconMapPin size={20} />
         },
         {
             type: "link",
@@ -142,6 +135,12 @@ const ContactList = () => {
             url: SOCIAL_LINKS.twitter.url,
             icon: <IconBrandTwitter size={20} />,
             linkTitle: t('common:footer.twitterLinkTitle')
+        },
+        {
+            type: "text",
+            title: t('socials.country'),
+            text: 'Germany',
+            icon: <IconMapPin size={20} />
         },
     ];
 

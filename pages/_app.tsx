@@ -1,19 +1,20 @@
-import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core'
-import { setCookie, getCookie } from 'cookies-next'
-import { GetServerSidePropsContext } from 'next'
+import { ColorScheme, ColorSchemeProvider, MantineProvider, Text } from '@mantine/core'
+import { setCookie } from 'cookies-next'
 import useTranslation from 'next-translate/useTranslation'
-import type { AppContext, AppInitialProps, AppProps } from 'next/app'
+import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useState } from 'react'
 import { COLOR_SCHEME_COOKIE } from '../lib/constants'
 import { CustomFonts } from '../styles/customFonts'
+import localFont from 'next/font/local'
 import '../styles/globals.css'
 import appTheme from '../styles/theme'
-import PageShell from '../ui/nav/page-shell'
 import PageFooter from '../ui/nav/page-footer'
-import App from 'next/app'
+import PageShell from '../ui/nav/page-shell'
 
-export default function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
+const logoFont = localFont({ src: '../assets/fonts/Norican-Regular.ttf' })
+
+function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
 
   const { Component, pageProps } = props;
   const { t } = useTranslation('common');
@@ -39,8 +40,9 @@ export default function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
           withNormalizeCSS
           theme={{ ...appTheme, colorScheme: activeColorScheme }}
         >
+          
           <CustomFonts />
-          <PageShell>
+          <PageShell logoFont={logoFont.className}>
             <Component {...pageProps} />
           </PageShell>
           <PageFooter />
@@ -50,7 +52,8 @@ export default function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
   )
 }
 
-// MyApp.getInitialProps = async (appContext: AppContext) => {
+// TODO: Broken
+// MyApp.getInitialProps = await (appContext: AppContext) => {
 
 //   const appProps = await App.getInitialProps(appContext)
 
@@ -65,3 +68,5 @@ export default function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
 
 //   return props;
 // }
+
+export default MyApp;

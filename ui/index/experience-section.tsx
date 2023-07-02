@@ -58,7 +58,7 @@ const ExperienceSection = () => {
             footer: (
                 <Text>
                     {t("experience.ux.footer.text")}
-                    <ILink url='https://uxqb.org/en/certification/foundation-level-cpux-f/' type='external'>{t("experience.ux.footer.linkLabel")}</ILink>
+                    <ILink href='https://uxqb.org/en/certification/foundation-level-cpux-f/' type='external'>{t("experience.ux.footer.linkLabel")}</ILink>
                 </Text>),
         },
         {
@@ -95,7 +95,7 @@ const ExperienceSection = () => {
                     <div>
                         <Stack spacing={4} mb={theme.spacing.md}>
                             <div>
-                                <ILink url={institutionUrl} type='external'>{institution}</ILink>
+                                <ILink href={institutionUrl} type='external'>{institution}</ILink>
                             </div>
                             <Title order={3} className={classes.tabsContentTitle}>{title}</Title>
                             <Text>{years}</Text>

@@ -1,14 +1,15 @@
-import { Anchor, Button, Group, SimpleGrid, Space } from '@mantine/core';
+import { Button, Group, SimpleGrid, Space } from '@mantine/core';
 import Trans from 'next-translate/Trans';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import { SOCIAL_LINKS } from '../../lib/constants';
-import { PortfolioItem } from '../../types/portfolio';
+import { PortfolioItem, Project } from '../../types/portfolio';
+import ILink from '../link';
 import PortfolioPreview from '../portfolio/portfolio-preview';
 import SectionHeader from '../section-header';
 
 interface Props {
-    featuredProjects: PortfolioItem[]
+    featuredProjects: Project[]
 }
 
 const WorkSection = ({ featuredProjects }: Props) => {
@@ -23,7 +24,7 @@ const WorkSection = ({ featuredProjects }: Props) => {
                 subtext={
                     <Trans
                         i18nKey="index:work.titleDescription"
-                        components={[<Anchor component={Link} href='/portfolio' legacyBehavior />, <Anchor href={SOCIAL_LINKS.github.url} target='_blank' />]}
+                        components={[<ILink href='/portfolio' type='internal' />, <ILink href={SOCIAL_LINKS.github.url} type='external' />]}
                     />
                 }
             />
@@ -46,8 +47,8 @@ const WorkSection = ({ featuredProjects }: Props) => {
                             key={item.slug}
                             slug={item.slug}
                             title={item.title}
-                            description={item.description}
-                            image={item.image}
+                            description={item.excerpt}
+                            image={item.coverImage}
                             appUrl={item.appUrl}
                             githubUrl={item.githubUrl}
                         />
@@ -56,7 +57,9 @@ const WorkSection = ({ featuredProjects }: Props) => {
             </SimpleGrid>
 
             <Group position='center'>
-                <Button component={Link} href={'/portfolio'} variant='subtle' size='md' legacyBehavior>{t('work.portfolioButton')}</Button>
+                <Link href={'/portfolio'} >
+                    <Button variant='subtle' size='md'>{t('work.portfolioButton')}</Button>
+                </Link>
             </Group>
         </div>
     )

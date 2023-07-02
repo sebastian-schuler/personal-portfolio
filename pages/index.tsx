@@ -2,20 +2,20 @@ import { Container, Stack } from '@mantine/core'
 import { GetStaticProps, NextPage } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import Head from 'next/head'
-import { getFeaturedPortfolioData } from '../lib/api/portfolioApi'
-import { PortfolioItem } from '../types/portfolio'
+import { getFeaturedPortfolioData } from '../lib/api/projectApi'
+import { Project } from '../types/portfolio'
 import AboutSection from '../ui/index/about-section'
 import ExperienceSection from '../ui/index/experience-section'
 import HeroSection from '../ui/index/hero-section'
 import WorkSection from '../ui/index/work-section'
 
 interface Props {
-  featuredProjects: PortfolioItem[]
+  featuredProjects: Project[]
 }
 
 const Home: NextPage<Props> = ({ featuredProjects }: Props) => {
 
-  const {t} = useTranslation('index');
+  const { t } = useTranslation('index');
 
   return (
     <>
@@ -41,8 +41,8 @@ const Home: NextPage<Props> = ({ featuredProjects }: Props) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 
-  const featuredProjects = await getFeaturedPortfolioData("en");
-
+  const featuredProjects = await getFeaturedPortfolioData(ctx.locale || "en");
+  
   return {
     props: {
       featuredProjects,

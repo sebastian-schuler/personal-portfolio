@@ -7,35 +7,34 @@ import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
 import { Root } from 'remark-html'
-import { getAllPosts, getPostBySlug, getRecommendedPosts } from '../../lib/api/blogApi'
+import { getAllProjects, getProjectBySlug, getRecommendedProjects } from '../../lib/api/projectApi'
 import { PAGE_URL } from '../../lib/constants'
 import { MarkdownParser } from '../../lib/markdown/customMarkdownParser'
 import markdownToHtml from '../../lib/markdown/markdownToHtml'
 import { getMetaDescription } from '../../lib/seoTools'
 import { formatDate } from '../../lib/util'
-import { Post } from '../../types/blog'
-import PostFooter from '../../ui/blog/post-footer'
-import PostHeader from '../../ui/blog/post-header'
+import { Project } from '../../types/portfolio'
 import PageBreadcrumbs from '../../ui/breadcrumbs'
+import PortfolioHeader from '../../ui/portfolio/project-header'
 import MyTitle from '../../ui/title'
+import ProjectFooter from '../../ui/portfolio/project-footer'
 
 type Props = {
   content: Root
-  post: Post
-  recommendedPosts: Post[]
+  project: Project
+  recommendedProjects: Project[]
 }
 
-const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
+const ProjectPost: React.FC<Props> = ({ project, recommendedProjects, content }) => {
 
   const { t, lang } = useTranslation('blog');
   const theme = useMantineTheme();
 
   const parser = new MarkdownParser(theme);
   const jsxContent = parser.renderMarkdown(content);
-  const headers = parser.getHeaders();
 
   const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !project?.slug) {
     return <ErrorPage statusCode={404} />
   }
 
@@ -44,7 +43,7 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
   return (
     <Container>
 
-      <PageBreadcrumbs postTitle={post.title} />
+      <PageBreadcrumbs postTitle={project.title} />
 
       {router.isFallback ? (
         <MyTitle>Loading...</MyTitle>
@@ -53,29 +52,26 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
           <article>
 
             <Head>
-              <title>{t("blogPostTabTitle", { title: post.title, date: formatDate(post.date, lang), tags: post.tags.join(', ') })}</title>
-              <meta name='description' content={getMetaDescription(post.excerpt)} />
-              <meta property='og:title' content={post.title} />
-              <meta property='og:description' content={post.ogDesc} />
-              <meta property='og:url' content={`${PAGE_URL}/${localePart}blog/${post.slug}`} />
-              {post.ogImage && <meta property="og:image" content={post.ogImage.url} />}
+              <title>{t("blogPostTabTitle", { title: project.title, date: formatDate(project.date, lang), tags: project.tags.join(', ') })}</title>
+              <meta name='description' content={getMetaDescription(project.excerpt)} />
+              <meta property='og:title' content={project.title} />
+              <meta property='og:description' content={project.ogDesc} />
+              <meta property='og:url' content={`${PAGE_URL}/${localePart}blog/${project.slug}`} />
+              {project.ogImage && <meta property="og:image" content={project.ogImage.url} />}
             </Head>
 
-            <PostHeader
-              title={post.title}
-              coverImage={post.coverImage}
-              date={post.date}
-              tags={post.tags}
-              excerpt={post.excerpt}
-              readTime={post.readTime}
-              headers={headers}
+            <PortfolioHeader
+              title={project.title}
+              date={project.date}
+              githubUrl={project.githubUrl}
+              appUrl={project.appUrl}
             />
-
-            <Space h="md" />
 
             {jsxContent}
 
-            <PostFooter recommendedPosts={recommendedPosts} />
+            <Space h="md" />
+
+            <ProjectFooter recommendedProjects={recommendedProjects} />
 
           </article>
         </>
@@ -86,9 +82,9 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
 
-  const slug = context.params?.PostSlug as string;
+  const slug = context.params?.ProjectSlug as string;
 
-  const post = getPostBySlug(slug, [
+  const project = getProjectBySlug(slug, [
     'title',
     'date',
     'slug',
@@ -99,21 +95,23 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'tags',
   ], { locale: context.locale });
 
-  const recommendedPosts = getRecommendedPosts(slug, post.tags);
-  const content = await markdownToHtml(post.content || '');
+  const recommendedProjects = getRecommendedProjects(slug, project.tags);
+  const content = await markdownToHtml(project.content || '');
+
+  const props: Props = {
+    content,
+    project,
+    recommendedProjects
+  };
 
   return {
-    props: {
-      content,
-      post,
-      recommendedPosts,
-    },
+    props,
     revalidate: 600, // In seconds
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const posts = getAllPosts(['slug']);
+  const projects = getAllProjects(['slug']);
 
   let paths: {
     params: ParsedUrlQuery;
@@ -121,10 +119,10 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   }[] = [];
 
   locales?.forEach(locale => {
-    posts.forEach(post => {
+    projects.forEach(project => {
       paths.push({
         params: {
-          PostSlug: post.slug,
+          ProjectSlug: project.slug,
         },
         locale: locale,
       })
@@ -137,4 +135,4 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   }
 }
 
-export default BlogPost
+export default ProjectPost

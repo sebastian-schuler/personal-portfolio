@@ -12,14 +12,14 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface Props {
-    url: string
-    children: ReactNode
+    href: string
+    children?: ReactNode
     type: "internal" | "external" | "scroll"
     color?: DefaultMantineColor
     sx?: Sx
 }
 
-const ILink = ({ url, children, color, type, sx }: Props) => {
+const ILink = ({ href, children, color, type, sx }: Props) => {
 
     const { classes, theme } = useStyles();
 
@@ -27,8 +27,9 @@ const ILink = ({ url, children, color, type, sx }: Props) => {
         <>
             {
                 type === "internal" && (
-                    <Link href={url}>
+                    <Link href={href}>
                         <Text
+                            component="span"
                             color={color ? color : theme.colors.primary[4]}
                             className={classes.link}
                             sx={{ ...sx }}
@@ -42,7 +43,7 @@ const ILink = ({ url, children, color, type, sx }: Props) => {
                 type === "external" && (
                     <Anchor
                         component="a"
-                        href={url}
+                        href={href}
                         color={color ? color : theme.colors.primary[4]}
                         target={"_blank"}
                         className={classes.link}
@@ -56,7 +57,7 @@ const ILink = ({ url, children, color, type, sx }: Props) => {
                 type === "scroll" && (
                     <Anchor
                         component="a"
-                        href={url}
+                        href={href}
                         color={color ? color : theme.colors.primary[4]}
                         className={classes.link}
                         sx={{ ...sx }}

@@ -1,11 +1,11 @@
-import { createStyles, Text } from '@mantine/core';
+import { clsx, createStyles, Text } from '@mantine/core';
 import Link from 'next/link';
 import React from 'react'
 
 const useStyles = createStyles((theme) => ({
 
     text: {
-        fontSize: '1.4em',
+        fontSize: '1.5em',
         fontFamily: 'Norican Regular, sans-serif',
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
         cursor: 'pointer',
@@ -68,13 +68,17 @@ const useStyles = createStyles((theme) => ({
     }
 }));
 
-const PageLogo = () => {
+type Props = {
+    logoFont: string
+}
+
+const PageLogo = ({ logoFont }: Props) => {
 
     const { classes, theme } = useStyles();
 
     return (
         <Link href="/">
-            <Text component='span' className={classes.text}>Sebastian Schuler</Text>
+            <Text component='span' className={clsx(classes.text, logoFont)}>Sebastian Schuler</Text>
         </Link>
     )
 }

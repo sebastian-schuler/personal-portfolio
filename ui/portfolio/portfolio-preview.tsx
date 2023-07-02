@@ -1,9 +1,10 @@
-import { ActionIcon, Anchor, Box, Button, createStyles, getStylesRef, Group, Paper, Stack, Text } from '@mantine/core';
-import { IconBrandGithub, IconExternalLink, IconFileDescription, IconLink, IconX } from '@tabler/icons-react';
-import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
+import { ActionIcon, Box, createStyles, getStylesRef, Group, Paper, Stack, Text } from '@mantine/core';
+import { IconBrandGithub, IconExternalLink, IconFileDescription } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
+import useTranslation from 'next-translate/useTranslation';
+import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 
 const useStyles = createStyles((theme, _params) => ({
     card: {
@@ -16,7 +17,7 @@ const useStyles = createStyles((theme, _params) => ({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         transition: 'all 0.2s ease-in-out',
-        background: 'linear-gradient(to top, #3204fd00, #9907facc)',
+        background: 'linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(30,36,52,0.8) 100%)',
 
         [`&:hover .${getStylesRef('overlay')}`]: {
             opacity: 1,
@@ -30,6 +31,10 @@ const useStyles = createStyles((theme, _params) => ({
         lineHeight: 1.2,
         fontSize: 32,
         marginTop: theme.spacing.xs,
+
+        [`&:hover .${getStylesRef('overlay')}`]: {
+            opacity: 1,
+        },
     },
 
     description: {
@@ -60,6 +65,12 @@ const useStyles = createStyles((theme, _params) => ({
         borderRadius: theme.radius.md,
 
         ref: getStylesRef('overlay'),
+    },
+
+    image: {
+        zIndex: -50, 
+        borderRadius: theme.radius.md,
+        objectFit: 'cover',
     }
 }));
 
@@ -68,8 +79,8 @@ interface Props {
     title: string
     description: string
     image: string
-    appUrl: string | null
-    githubUrl: string | null
+    appUrl?: string
+    githubUrl?: string
 }
 
 const PortfolioPreview: React.FC<Props> = ({ slug, title, description, image, appUrl, githubUrl }: Props) => {
@@ -89,9 +100,15 @@ const PortfolioPreview: React.FC<Props> = ({ slug, title, description, image, ap
                 shadow="md"
                 p="lg"
                 radius="md"
-                sx={{ backgroundImage: `url(${image})` }}
                 className={classes.card}
             >
+                <Image
+                    src={image}
+                    fill={true}
+                    alt={title}
+                    sizes={`(max-width: ${theme.breakpoints.md}) 100vw, (max-width: ${theme.breakpoints.lg}) 50vw, 33vw`}
+                    className={classes.image}
+                />
                 <Text className={classes.title}>{title}</Text>
                 <Box p={'lg'} className={classes.overlay}>
                     <Stack>
@@ -100,9 +117,11 @@ const PortfolioPreview: React.FC<Props> = ({ slug, title, description, image, ap
                     </Stack>
 
                     <Group>
-                        <ActionIcon component={Link} href={`/portfolio/${slug}`} title={t('common:post.internalLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' legacyBehavior>
-                            <IconFileDescription size={24} />
-                        </ActionIcon>
+                        <Link href={`/portfolio/${slug}`}>
+                            <ActionIcon title={t('common:post.internalLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline'>
+                                <IconFileDescription size={24} />
+                            </ActionIcon>
+                        </Link>
 
                         {appUrl &&
                             <ActionIcon component='a' href={appUrl} target={'_blank'} title={t('common:post.externalLinkTitle', { title: title })} color={'primary'} size={'xl'} variant='outline' >

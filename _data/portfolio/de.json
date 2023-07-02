@@ -7,7 +7,19 @@
       "tags": ["Electron", "Node.js", "Express", "MongoDB"],
       "image": "/images/portfolio/test.jpg",
       "appUrl": null,
-      "githubUrl": null
+      "githubUrl": null,
+      "date": "2022-11-21T05:35:07.322Z"
+    },
+    {
+      "slug": "personal-portfolio",
+      "title": "Portfolio & Blog",
+      "description": "Meine persönliche Homepage, erstellt mit Next.js und Mantine UI. Gleichzeitig ist sie ein Blog, in dem ich über Programmierung und Technologie schreibe.",
+      "tags": ["Next.js", "TypeScript", "React", "Mantine", "Markdown"],
+      "image": "/images/portfolio/portfolio-thumbnail.jpg",
+      "appUrl": "https://www.sebastian-schuler.com",
+      "githubUrl": "https://github.com/sebastian-schuler/personal-portfolio-mantine",
+      "featured": true,
+      "date": "2022-11-21T05:35:07.322Z"
     }
   ]
 }

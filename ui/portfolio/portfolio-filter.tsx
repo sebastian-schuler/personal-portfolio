@@ -1,4 +1,4 @@
-import { createStyles, MultiSelect, Text } from '@mantine/core'
+import { Box, createStyles, MultiSelect, Text } from '@mantine/core'
 import { IconHash } from '@tabler/icons-react'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
@@ -6,9 +6,13 @@ import React from 'react'
 const useStyles = createStyles((theme) => ({
     searchInput: {
         '::placeholder': {
-            color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.dark[5]
+            color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5]
         },
     },
+    item: {
+        color: theme.colorScheme === 'dark' ? 'white' : 'black',
+        fontSize: '0.8rem',
+    }
 }));
 
 interface Props {
@@ -23,6 +27,7 @@ const PortfolioFilter: React.FC<Props> = ({ tags, setFilter, filter }: Props) =>
     const { classes } = useStyles();
 
     return (
+        <Box mt={'xl'} mb={'lg'}>
         <MultiSelect
             data={tags}
             placeholder={t('filterPlaceholder')}
@@ -34,8 +39,10 @@ const PortfolioFilter: React.FC<Props> = ({ tags, setFilter, filter }: Props) =>
             clearable
             classNames={{
                 searchInput: classes.searchInput,
+                item: classes.item,
             }}
         />
+        </Box>
     )
 }
 

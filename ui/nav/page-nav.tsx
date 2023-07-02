@@ -65,18 +65,18 @@ interface PageNavProps {
   navLinks: NavHeaderLink[]
   drawerOpened: boolean
   toggleDrawer: () => void
+  logoFont: string
 }
 
-const PageNav: React.FC<PageNavProps> = ({ navLinks, drawerOpened, toggleDrawer }: PageNavProps) => {
+const PageNav: React.FC<PageNavProps> = ({ navLinks, drawerOpened, toggleDrawer, logoFont }: PageNavProps) => {
 
   const { t } = useTranslation('common');
   const { classes } = useStyles();
-  const router = useRouter();
 
   return (
     <Container sx={{ height: '100%' }}>
       <Box className={classes.inner} >
-        <PageLogo />
+        <PageLogo logoFont={logoFont} />
 
         <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
           {
@@ -108,7 +108,11 @@ const PageNav: React.FC<PageNavProps> = ({ navLinks, drawerOpened, toggleDrawer 
 
 }
 
-const PageNavContainer = () => {
+type Props = {
+  logoFont: string
+}
+
+const PageNavContainer = ({ logoFont }: Props) => {
 
   const { t } = useTranslation('common');
   const router = useRouter();
@@ -140,35 +144,18 @@ const PageNavContainer = () => {
 
   return (
     <>
-      {/* <MediaQuery smallerThan="sm" styles={{ display: 'none' }}> */}
-        <Header
-          height={HEADER_HEIGHT}
-          fixed
-          styles={(theme) => ({
-            root: {
-              borderBottomStyle: scroll.y > 0 ? 'solid' : `none`,
-              boxShadow: scroll.y > 0 ? (theme.colorScheme === 'dark' ? theme.shadows.md : theme.shadows.sm) : `none`,
-            }
-          })}
-        >
-          <PageNav navLinks={navLinks} drawerOpened={drawerOpened} toggleDrawer={toggleDrawer} />
-        </Header>
-      {/* </MediaQuery> */}
-
-      {/* <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-        <Header
-          height={HEADER_MOBILE_HEIGHT}
-          fixed
-          styles={(theme) => ({
-            root: {
-              borderBottomStyle: scroll.y > 0 ? 'solid' : `none`,
-              boxShadow: scroll.y > 0 ? (theme.colorScheme === 'dark' ? theme.shadows.md : theme.shadows.sm) : `none`,
-            }
-          })}
-        >
-          <PageNav navLinks={navLinks} drawerOpened={drawerOpened} toggleDrawer={toggleDrawer} />
-        </Header>
-      </MediaQuery> */}
+      <Header
+        height={HEADER_HEIGHT}
+        fixed
+        styles={(theme) => ({
+          root: {
+            borderBottomStyle: scroll.y > 0 ? 'solid' : `none`,
+            boxShadow: scroll.y > 0 ? (theme.colorScheme === 'dark' ? theme.shadows.md : theme.shadows.sm) : `none`,
+          }
+        })}
+      >
+        <PageNav navLinks={navLinks} drawerOpened={drawerOpened} toggleDrawer={toggleDrawer} logoFont={logoFont} />
+      </Header>
 
       <PageNavMobile
         closeDrawer={closeDrawer}

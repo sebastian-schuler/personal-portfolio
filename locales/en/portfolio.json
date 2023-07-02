@@ -5,6 +5,6 @@
     "portfolioPageTabTitle": "Portfolio | Sebastian Schuler",
     "portfolioItemTabTitle": "{{title}} | Sebastian Schuler",
 
-    "filterPlaceholder": "Filter projects by tag"
-    
+    "filterPlaceholder": "Filter projects by tag",
+    "otherProjectsHeader": "Other projects you might like"
 }
