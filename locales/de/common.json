@@ -49,6 +49,8 @@
     "shareLinkedIn": "Diese Artikel auf LinkedIn teilen",
     "shareFacebook": "Diese Artikel auf Facebook teilen",
     "shareLink": "Den Link zu diesem Artikel kopieren",
-    "shareLinkConfirm": "Link in die Zwischenablage kopiert"
+    "shareLinkConfirm": "Link in die Zwischenablage kopiert",
+
+    "tableOfContents": "Inhaltsverzeichnis"
   }
 }

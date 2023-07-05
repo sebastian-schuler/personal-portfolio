@@ -1,10 +1,10 @@
 {
-  "indexPageTabTitle": "Sebastian Schuler - Full-Stack Entwickler, UX Designer, Online-Marketing-Manager",
+  "indexPageTabTitle": "Sebastian Schuler - Full-Stack Entwickler, Frontend Entwickler, UX Designer",
 
   "hero": {
     "greeting": "Hi, mein Name ist",
     "preTypewriter": "Ich bin ",
-    "subtext": "Meine Leidenschaft liegt darin, großartige und menschenzentrierte Produkte zu entwickeln, sei es durch Softwareentwicklung, UX Design oder Online-Marketing.",
+    "subtext": "Meine Leidenschaft ist es, großartige Produkte zu entwickeln, bei denen der Mensch im Mittelpunkt steht, sei es durch Softwareentwicklung, UX Design oder Online-Marketing.",
     "typewriterArray": [
       "Full-Stack Entwickler",
       "Online-Marketing-Manager",
@@ -16,9 +16,9 @@
   "about": {
     "title": "About",
     "text": [
-      "Hi! Ich heisse Sebastian und entwickle sowohl Anwendungen als auch digitale Projekte. Mein Interesse an der Software Entwicklung begann im Jahr 2012, als ich mich im Informatik-Kurs der Schule angemeldet hatte. Davon war ich so begeistert, dass ich auf die BBS SÜW wechselte, um meinen Fokus voll auf die Anwendungsentwicklung zu legen.",
-      "Da ich mich schon immer für viele verschiedene Richtungen der digitalen Medien begeistern konnte, war der Digital Media Marketing Studiengang meine erste Wahl. Trotz des Namens war der Fokus hier auf den drei Hauptrichtungen: Informatik, Marketing und UX Design.",
-      "Mehr Details zu mir sind im nächsten Abschnitt <0>Lebenslauf</0> zu finden. Alternativ kannst du auch direkt meine <1>Projekte</1> anschauen."
+      "Hallo, mein Name ist Sebastian und ich entwickle Anwendungen und digitale Projekte. Mein Interesse an der Softwareentwicklung begann 2012, als ich mich für den Informatikkurs an der Schule angemeldet habe. Ich war so begeistert, dass ich an die BBS SÜW wechselte, um mich voll und ganz auf die Anwendungsentwicklung zu konzentrieren.",
+      "Da ich mich schon immer für viele verschiedene Richtungen der digitalen Medien begeistern konnte, war der Studiengang Digital Media Marketing meine erste Wahl. Hier gab es Schwerpunkte, die mich interessierten: Informatik, Marketing und UX Design.",
+      "Mehr Details über mich findest du im nächsten Abschnitt <0>Lebenslauf</0>. Alternativ kann man sich auch direkt meine <1>Projekte</1> ansehen."
     ],
     "techTitle": "Technologien",
     "toolsTitle": "Tools",
@@ -27,15 +27,25 @@
 
   "experience": {
     "title": "Lebenslauf",
+
+    "nsoria": {
+      "tabTitle": "n*soria",
+      "institution": "Forschungsprojekt n*soria - Hochschule Kaiserslautern",
+      "title": "n*soria Forschungsprojekt",
+      "years": "2022 - 2023",
+      "paragraph": "Das Forschungsprojekt n*soria wird an der Hochschule Kaiserslautern durchgeführt und von Prof. Hendrik Speck geleitet. Es umfasst mehrere Projekte, darunter die von mir entwickelte Marketingplattform für Hochschulen. Bei der Entwicklung dieser Plattform war ich als Full Stack Developer für die Konzeption, Front- und Backend-Entwicklung sowie das Design verantwortlich.",
+      "footer": "Projekt in meinem Portfolio: <0>University-Index</0>"
+    },
+
     "hskl": {
       "tabTitle": "HSKL",
       "institution": "Hochschule Kaiserslautern - University of Applied Sciences",
       "title": "Digital Media Marketing",
       "years": "2017 - 2022",
       "list": [
-        "Ziel des Studiengangs ist die berufsorientierte Ausbildung von Informatiker*innen mit Grundkenntnissen in Informatik, Webentwicklung, Marketing und digitaler Inhaltserstellung.",
+        "Ziel des Studiengangs ist die berufsorientierte Ausbildung von Informatiker*innen mit Grundkenntnissen in Informatik, Webentwicklung, Marketing und digitaler Content-Erstellung.",
         "Zu den erworbenen Fähigkeiten gehören unter anderem Webentwicklung, Java-Desktop-Programmierung, SEO, CMS, Online-Marketing, UX-Design, Datenbanken und App-Entwicklung.",
-        "Im Rahmen meines Studiums habe ich zahlreiche Projekte durchgeführt, von denen viele im nächsten Abschnitt zu finden sind."
+        "Im Rahmen meines Studiums habe ich zahlreiche Projekte durchgeführt, von denen viele im nächsten Abschnitt beschrieben sind."
       ]
     },
 
@@ -44,13 +54,17 @@
       "institution": "International Software Quality Institute",
       "title": "Certified Professional for Usability and UX - Foundation Level",
       "years": "Completed in 2017",
-
       "paragraph": "Das Zertifikat UXQB - CPUX-F bescheinigt, dass ich mit den grundlegenden Begriffen und Konzepten der Usability und User Experience vertraut bin und diese in den folgenden Kompetenzbereichen anwenden kann:",
-      "list": ["", "", ""],
-      "footer": {
-        "text": "Source:",
-        "linkLabel": "UXQB"
-      }
+      "list": [
+        "Begriffe, Konzepte und Richtlinien",
+        "Verstehen und Spezifizieren des Nutzungskontextes",
+        "Spezifizieren der Nutzungsanforderungen",
+        "Der menschzentrierte Gestaltungsprozess",
+        "Erzeugen von Gestaltungslösungen",
+        "Usability-Tests",
+        "Inspektionen und Benutzerbefragungen"
+      ],
+      "footer": "Quelle: <0>UXQB</0>"
     },
 
     "edv": {
@@ -60,8 +74,8 @@
       "years": "2015 - 2016",
       "paragraph": "",
       "list": [
-        "Ich musste mindestens ein halbjähriges Praktikum absolvieren, um die Ausbildung als Teil meines Schulabschlusses (Abitur) anerkannt zu bekommen. Während meiner Zeit hier konnte ich viel lernen, da das Unternehmen mir die Möglichkeit gab, in Vollzeit als Softwareentwickler zu arbeiten.",
-        "Zu den verwendeten Technologien gehörten Visual Basic, Java, Android und SQL. Mein größtes Projekt war die Erstellung einer Schnittstelle für das interne Telefonsystem, die automatisch den Status der Mitarbeiter anzeigt und die Weiterleitung zwischen den Abteilungen ermöglicht."
+        "Ich musste mindestens ein halbjähriges Praktikum absolvieren, um die Ausbildung als Teil meines Fachabiturs anerkannt zu bekommen. Während meiner Zeit hier konnte ich viel lernen, denn das Unternehmen bot mir die Möglichkeit, in Vollzeit als Softwareentwickler zu arbeiten.",
+        "Die verwendeten Technologien waren Visual Basic, Java, Android und SQL. Mein größtes Projekt war die Entwicklung einer Schnittstelle für das interne Telefonsystem, die automatisch den Status der Mitarbeiter anzeigt und die Weiterleitung zwischen den Abteilungen ermöglicht."
       ]
     },
 
@@ -71,16 +85,16 @@
       "title": "Fachabitur / Assistent für Anwendungsentwicklung",
       "years": "2014-2015",
       "list": [
-        "Hier hatte ich meinen ersten 'professionellen' Kontakt mit Informatik und Programmierung. Das Studium besteht aus zwei Teilen: Einem Abitur, um an Universitäten zu studieren, und einer Ausbildung zum Assistenten für Anwendungsentwicklung.",
+        "Hier hatte ich meinen ersten 'professionellen' Kontakt mit Informatik und Programmierung. Die Schulausbildung besteht aus zwei Teilen: Einem Abitur, um an einer Universität studieren zu können, und einer Ausbildung zum Assistenten für Anwendungsentwicklung.",
         "Die Themen waren hauptsächlich Java-Programmierung, Hardware und Elektrotechnik.",
-        "Mein Abschlussprojekt war eine Android-App mit einem Backend, das Barcodes von Lebensmitteln scannen und die Nutzer warnen konnte, wenn eine ihrer Allergien betroffen war."
+        "Mein Abschlussprojekt war eine Android-App inklusive Backend. Sie konnte Barcodes von Lebensmitteln scannen und den Benutzer warnen, wenn eine seiner Lebensmittelallergien betroffen war."
       ]
     }
   },
 
   "work": {
     "title": "Ausgewählte Projekte",
-    "titleDescription": "Eine Auswahl einiger Projekten findest du unten. Alle meine Projekte sind auch in meinem <0>Portfolio</0> oder auf meinem <1>GitHub</1> Profil zu finden.",
+    "titleDescription": "Hier ist eine Auswahl meiner Projekte. Die vollständige Liste ist in meinem <0>Portfolio</0> oder auf meinem <1>GitHub</1>-Profil zu finden.",
     "portfolioButton": "Zu meinem Portfolio"
   }
 }

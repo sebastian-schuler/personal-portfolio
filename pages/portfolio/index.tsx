@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, Space, Text } from '@mantine/core';
+import { Container, SimpleGrid, Text } from '@mantine/core';
 import { AnimatePresence } from 'framer-motion';
 import { GetServerSideProps, NextPage } from 'next';
 import useTranslation from 'next-translate/useTranslation';
@@ -13,14 +13,13 @@ import MyTitle from '../../ui/title';
 
 interface Props {
   projects: Project[];
+  tags: string[];
 }
 
-const PortfolioPage: NextPage<Props> = ({ projects }: Props) => {
+const PortfolioPage: NextPage<Props> = ({ projects, tags }: Props) => {
 
   const { t } = useTranslation('portfolio');
-
   const [filter, setFilter] = useState<string[] | undefined>();
-  const tags: string[] = [...new Set(projects.map((item) => item.tags).flat())].sort();
 
   const items = projects.filter(item => {
 
@@ -75,6 +74,7 @@ const PortfolioPage: NextPage<Props> = ({ projects }: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
+  // Get all projects
   const projects = getAllProjects([
     'title',
     'date',
@@ -88,8 +88,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     locale: context.locale || 'en'
   });
 
+  // Count how many times each tag is used
+  const tagCounts = new Map<string, number>();
+  projects.forEach((item) => {
+    item.tags.forEach((tag) => {
+      const count = tagCounts.get(tag) || 0;
+      tagCounts.set(tag, count + 1);
+    });
+  });
+
+  // Sort tags by count
+  const sortedTags = Array.from(tagCounts, ([name, value]) => ({ name, value })).sort((a, b) => b.value - a.value);
+
   const props: Props = {
-    projects: projects
+    projects: projects,
+    tags: sortedTags.map(tag => tag.name)
   }
 
   return { props };

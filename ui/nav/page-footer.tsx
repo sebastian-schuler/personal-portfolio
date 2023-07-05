@@ -1,4 +1,4 @@
-import { ActionIcon, Box, Container, createStyles, Group, SimpleGrid, Stack, Text } from '@mantine/core';
+import { ActionIcon, Box, Container, createStyles, Group, Text } from '@mantine/core';
 import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import { SOCIAL_LINKS } from '../../lib/constants';
@@ -9,10 +9,12 @@ const useStyles = createStyles((theme) => {
         footer: {
             backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : 'white',
         },
-        icon: {
+        bottom: {
+            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[0],
+        },
+        link: {
             color: theme.colorScheme === 'dark' ? theme.white : theme.colors.gray[7],
-            transition: 'color 200ms ease',
-
+            transition: 'color 100ms ease',
             '&:hover': {
                 color: theme.colors.primary[4],
             },
@@ -35,7 +37,7 @@ const PageFooter = () => {
                         <ILink
                             href={'/legal-notice'}
                             type='internal'
-                            sx={{ color: theme.colorScheme === 'dark' ? theme.white : theme.colors.gray[8] }}
+                            className={classes.link}
                         >
                             {t('footer.legalNotice')}
                         </ILink>
@@ -48,7 +50,7 @@ const PageFooter = () => {
                                 variant='subtle'
                                 size={'lg'}
                                 title={t('footer.twitterLinkTitle')}
-                                className={classes.icon}
+                                className={classes.link}
                             >
                                 <IconBrandTwitter size={24} />
                             </ActionIcon>
@@ -59,7 +61,7 @@ const PageFooter = () => {
                                 variant='subtle'
                                 size={'lg'}
                                 title={t('footer.linkedinLinkTitle')}
-                                className={classes.icon}
+                                className={classes.link}
                             >
                                 <IconBrandLinkedin size={24} />
                             </ActionIcon>
@@ -70,7 +72,7 @@ const PageFooter = () => {
                                 variant='subtle'
                                 size={'lg'}
                                 title={t('footer.githubLinkTitle')}
-                                className={classes.icon}
+                                className={classes.link}
                             >
                                 <IconBrandGithub size={24} />
                             </ActionIcon>
@@ -78,13 +80,15 @@ const PageFooter = () => {
 
                     </Group>
 
-                    <Text 
-                    align='center' 
-                    pt={'xl'} 
-                    color={theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[6]}
-                    >Designed & built by Sebastian Schuler</Text>
-
                 </Container>
+            </Box>
+
+            <Box pt={theme.spacing.sm} pb={theme.spacing.xs} className={classes.bottom}>
+                <Text
+                    align='center'
+                    size={'sm'}
+                    color={theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[6]}
+                >Designed & built by Sebastian Schuler</Text>
             </Box>
         </footer>
     )

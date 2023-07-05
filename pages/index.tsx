@@ -1,5 +1,5 @@
 import { Container, Stack } from '@mantine/core'
-import { GetStaticProps, NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import Head from 'next/head'
 import { getFeaturedPortfolioData } from '../lib/api/projectApi'
@@ -39,15 +39,20 @@ const Home: NextPage<Props> = ({ featuredProjects }: Props) => {
 }
 
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+
+  // Add whatever `Cache-Control` value you want here
+  ctx.res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=120, stale-while-revalidate=600'
+  );
 
   const featuredProjects = await getFeaturedPortfolioData(ctx.locale || "en");
-  
+
   return {
     props: {
       featuredProjects,
-    },
-    revalidate: 120,
+    }
   }
 }
 

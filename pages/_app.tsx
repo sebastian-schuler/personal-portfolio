@@ -1,17 +1,16 @@
-import { ColorScheme, ColorSchemeProvider, MantineProvider, Text } from '@mantine/core'
+import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core'
 import { getCookie, setCookie } from 'cookies-next'
 import useTranslation from 'next-translate/useTranslation'
 import type { AppContext, AppInitialProps, AppProps } from 'next/app'
+import localFont from 'next/font/local'
 import Head from 'next/head'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { COLOR_SCHEME_COOKIE } from '../lib/constants'
 import { CustomFonts } from '../styles/customFonts'
-import localFont from 'next/font/local'
 import '../styles/globals.css'
 import appTheme from '../styles/theme'
 import PageFooter from '../ui/nav/page-footer'
 import PageShell from '../ui/nav/page-shell'
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const logoFont = localFont({ src: '../assets/fonts/Norican-Regular.ttf' })
 
@@ -27,6 +26,10 @@ function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
     setActiveColorScheme(nextColorScheme);
     setCookie(COLOR_SCHEME_COOKIE, nextColorScheme, { maxAge: 60 * 60 * 24 * 30 }); // 30 days
   };
+
+  useEffect(() => {
+    getCookie(COLOR_SCHEME_COOKIE) === 'light' ? setActiveColorScheme('light') : setActiveColorScheme('dark');
+  }, []);
 
   return (
     <>
@@ -51,23 +54,5 @@ function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
     </>
   )
 }
-
-// TODO: Broken
-// MyApp.getInitialProps = async (appContext: AppContext) => {
-
-//   // const appProps = await App.getInitialProps(appContext)
-
-//   const cookie = getCookie(COLOR_SCHEME_COOKIE, appContext.ctx);
-
-//   console.log(cookie);
-
-//   const props: AppInitialProps = {
-//     pageProps: {
-//       colorScheme: cookie,
-//     }
-//   }
-
-//   return props;
-// }
 
 export default MyApp;

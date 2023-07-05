@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import ILink from '../link';
 import SectionHeader from '../section-header';
 import { motion } from 'framer-motion';
+import Trans from 'next-translate/Trans';
 
 interface ExperienceItem {
     value: string
@@ -36,6 +37,24 @@ const ExperienceSection = () => {
 
     const tabContent: ExperienceItem[] = [
         {
+            value: 'nsoria',
+            tabTitle: t("experience.nsoria.tabTitle"),
+            tabIcon: <IconSchool size={24} />,
+            institution: t("experience.nsoria.institution"),
+            institutionUrl: 'https://www.nsoria.io',
+            title: t("experience.nsoria.title"),
+            years: t("experience.nsoria.years"),
+            paragraph: t("experience.nsoria.paragraph"),
+            footer: (
+                <Text>
+                    <Trans
+                        i18nKey='index:experience.nsoria.footer'
+                        components={[<ILink href='/portfolio/university-index' type='internal' />]}
+                    />
+                </Text>
+            ),
+        },
+        {
             value: 'hskl',
             tabTitle: t("experience.hskl.tabTitle"),
             tabIcon: <IconSchool size={24} />,
@@ -57,9 +76,12 @@ const ExperienceSection = () => {
             list: t("experience.ux.list", {}, { returnObjects: true }),
             footer: (
                 <Text>
-                    {t("experience.ux.footer.text")}
-                    <ILink href='https://uxqb.org/en/certification/foundation-level-cpux-f/' type='external'>{t("experience.ux.footer.linkLabel")}</ILink>
-                </Text>),
+                    <Trans
+                        i18nKey='index:experience.ux.footer'
+                        components={[<ILink href='https://uxqb.org/en/certification/foundation-level-cpux-f/' type='external' />]}
+                    />
+                </Text>
+            ),
         },
         {
             value: 'edv',
@@ -82,7 +104,7 @@ const ExperienceSection = () => {
             years: t("experience.bbs.years"),
             list: t("experience.bbs.list", {}, { returnObjects: true }),
         },
-    ]
+    ];
 
     const getContent = ({ value, institution, institutionUrl, title, years, paragraph, list, footer }: ExperienceItem) => {
         return (
@@ -128,7 +150,7 @@ const ExperienceSection = () => {
             <SectionHeader anchor='experience' title={t("experience.title")} />
 
             <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-                <Tabs orientation="vertical" defaultValue="hskl" keepMounted={false}>
+                <Tabs orientation="vertical" defaultValue="nsoria" keepMounted={false}>
                     <Tabs.List mr={'lg'}>
                         {
                             tabContent.map(({ value, tabTitle, tabIcon }) => (

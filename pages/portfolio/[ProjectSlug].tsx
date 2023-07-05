@@ -30,6 +30,7 @@ const ProjectPost: React.FC<Props> = ({ project, recommendedProjects, content })
   const { t, lang } = useTranslation('portfolio');
   const theme = useMantineTheme();
 
+  // Render markdown
   const parser = new MarkdownParser(theme);
   const jsxContent = parser.renderMarkdown(content);
   const headers = parser.getHeaders();

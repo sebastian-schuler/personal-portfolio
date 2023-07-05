@@ -1,10 +1,10 @@
 {
-  "indexPageTabTitle": "Sebastian Schuler - Full-Stack Developer, UX Designer, Digital Marketing Specialist",
+  "indexPageTabTitle": "Sebastian Schuler - Full-Stack Developer, Frontend Developer, UX Designer",
 
   "hero": {
     "greeting": "Hi, my name is",
     "preTypewriter": "I'm a ",
-    "subtext": "My passion lies in bringing forward great and human-centered products; whether that's through development, UX Design, or Online Marketing.",
+    "subtext": "I'm passionate about creating great, human-centred products, whether that's through development, UX design, or online marketing.",
     "typewriterArray": [
       "Full-Stack Developer",
       "Frontend Developer",
@@ -16,9 +16,9 @@
   "about": {
     "title": "About",
     "text": [
-      "Hi there! My name is Sebastian and I enjoy creating applications as well as digital projects. My interest in development started back in 2012 when I signed up for my schools computer science class. As I found it very interesting, I decided to change to a more development focused school.",
-      "Since I've always been passionate about many different types of digital media, the Digital Media Marketing program was my first choice. Despite the name, the focus was on the three main categories: Computer Science, Marketing, and UX Design.",
-      "More details about me can be found in the next section <0>Experience</0>. You could also have a look at my <1>Work</1> straight away."
+      "Hi there! My name is Sebastian and I enjoy developing applications and digital projects. My interest in development started back in 2012, when I enrolled in my school's computer science class. As I found it very interesting, I decided to transfer to a more development focused school.",
+      "As I've always been passionate about many different types of digital media, the Digital Media Marketing programme was my first choice. The three main categories were of interest to me: Computer Science, Marketing and UX Design.",
+      "More details about me can be found in the next section <0>Experience</0>. You can also take a look at my <1>Work</1>."
     ],
     "techTitle": "Technologies",
     "toolsTitle": "Tools",
@@ -27,6 +27,16 @@
 
   "experience": {
     "title": "Experience",
+
+    "nsoria": {
+      "tabTitle": "n*soria",
+      "institution": "Research project n*soria - University of Applied Sciences Kaiserslautern",
+      "title": "Digital Media Marketing",
+      "years": "2022 - 2023",
+      "paragraph": "The research project n*soria is conducted at University of Applied Sciences Kaiserslautern and led by Prof. Hendrik Speck. It comprises several projects, including the marketing platform for universities that I developed. In the development of this platform, I was responsible as a full stack developer for the conception, front-end and back-end development as well as the design.",
+      "footer": "Project in my portfolio: <0>University-Index</0>"
+    },
+
     "hskl": {
       "tabTitle": "HSKL",
       "institution": "Hochschule Kaiserslautern - University of Applied Sciences",
@@ -44,13 +54,16 @@
       "institution": "International Software Quality Institute",
       "title": "Certified Professional for Usability and UX - Foundation Level",
       "years": "Completed in 2017",
-
       "paragraph": "The UXQB - CPUX-F certificate attests that I am familiar with the basic terms and concepts of usability and user experience, and that I'm able to apply them in the following areas of competence:",
-      "list": ["", "", ""],
-      "footer": {
-        "text": "Source:",
-        "linkLabel": "UXQB"
-      }
+      "list": [
+        "Definitions, concepts and guidelines",
+        "Understanding and specifying the context of use",
+        "Specifying the user requirements",
+        "Producing design solutions",
+        "Usability tests",
+        "Usability inspections and user surveys"
+      ],
+      "footer": "Source: <0>UXQB</0>"
     },
 
     "edv": {
@@ -60,8 +73,8 @@
       "years": "2015 - 2016",
       "paragraph": "",
       "list": [
-        "I had to complete at least half a year of internship in order to get the apprenticeship recognized as part of my high school diploma (A-Level). I was able to learn a lot during my time here, as the company gave me the opportunity to work full time as a software developer.",
-        "Used technologies included Visual Basic, Java, Android, and SQL. My biggest project was the creation of an interface for the internal phone system that automatically displayed the status of employees and allows routing between departments."
+        "I had to complete at least six months of work experience in order to get the training recognised as part of my technical baccalaureate. During my time here, I was able to learn a lot because the company offered me the opportunity to work full-time as a software developer.",
+        "Technologies used included Visual Basic, Java, Android and SQL. My biggest project was creating an interface for the internal telephone system that automatically displayed the status of employees and allowed routing between departments."
       ]
     },
 
@@ -71,16 +84,16 @@
       "title": "A-Level / Assistant for Application Development",
       "years": "2014-2015",
       "list": [
-        "Here was my first 'professional' touch point with computer science and programming. The degree consists of two parts: A-Levels to study at universities, and an apprenticeship as an assistant for application development.",
-        "The topics were mainly Java programming, hardware and electrical engineering.",
-        "My final project was an Android app including a backend that could scan food barcodes and warn users, if any of their allergies were affected."
+        "This was my first 'professional' contact with computer science and programming. The study consists of two parts: A-levels for university study, and an apprenticeship as an application development assistant.",
+        "The subjects were mainly Java programming, hardware and electrical engineering.",
+        "My final project was an Android app including a backend. It could scan barcodes of food and warn the user if one of their food allergies was affected."
       ]
     }
   },
 
   "work": {
     "title": "Featured Projects",
-    "titleDescription": "Check out a selection of featured projects below. All my projects can also be found in my <0>Portfolio</0> or on my <1>GitHub</1> profile.",
+    "titleDescription": "Check out a selection of featured projects below. The full list can be found in my <0>Portfolio</0> or on my <1>GitHub</1> profile.",
     "portfolioButton": "Visit my portfolio"
   }
 }

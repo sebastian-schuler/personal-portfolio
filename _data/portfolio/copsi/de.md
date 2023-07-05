@@ -5,7 +5,7 @@ coverImage: '/images/portfolio/copsi-thumbnail.jpg'
 date: '2020-03-13T05:35:07.322Z'
 ogImage: 
   url: '/images/blog/opengraph/preview.png'
-tags: 'Next.js,TypeScript,React,Mantine,Markdown'
+tags: 'Bootstrap,Node.js,Electron'
 ---
 
 ## Beschreibung

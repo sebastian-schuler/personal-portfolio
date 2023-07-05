@@ -1,7 +1,6 @@
-import { Anchor, createStyles, DefaultMantineColor, Sx, Text } from '@mantine/core';
+import { Anchor, clsx, createStyles, DefaultMantineColor, Sx, Text } from '@mantine/core';
 import Link from 'next/link';
 import { ReactNode } from 'react';
-
 
 const useStyles = createStyles((theme) => ({
     link: {
@@ -17,9 +16,10 @@ interface Props {
     type: "internal" | "external" | "scroll"
     color?: DefaultMantineColor
     sx?: Sx
+    className?: string
 }
 
-const ILink = ({ href, children, color, type, sx }: Props) => {
+const ILink = ({ href, children, color, type, sx, className }: Props) => {
 
     const { classes, theme } = useStyles();
 
@@ -31,7 +31,7 @@ const ILink = ({ href, children, color, type, sx }: Props) => {
                         <Text
                             component="span"
                             color={color ? color : theme.colors.primary[4]}
-                            className={classes.link}
+                            className={clsx(classes.link, className)}
                             sx={{ ...sx }}
                         >
                             {children}
