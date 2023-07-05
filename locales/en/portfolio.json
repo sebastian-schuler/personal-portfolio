@@ -6,5 +6,8 @@
     "portfolioItemTabTitle": "{{title}} | Sebastian Schuler",
 
     "filterPlaceholder": "Filter projects by tag",
-    "otherProjectsHeader": "Other projects you might like"
+    "otherProjectsHeader": "Other Projects",
+
+    "projectOpenGithub": "Open GitHub repository",
+    "projectOpenWebsite": "Open website"
 }

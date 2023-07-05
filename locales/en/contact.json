@@ -14,16 +14,22 @@
     "form": {
         "name": "Name",
         "namePlaceholder": "Your name",
+        "nameError": "Name is required",
 
         "email": "Email",
         "emailPlaceholder": "Your email",
+        "emailError": "Invalid email address",
 
         "subject": "Subject",
         "subjectPlaceholder": "Subject",
+        "subjectError": "Subject is required",
 
         "message": "Message",
         "messagePlaceholder": "Your message",
+        "messageError": "Message is required",
 
-        "submit": "Send message"
+        "submit": "Send message",
+        "submitSuccess": "Message sent successfully!",
+        "errorRecaptcha": "Failed to validate reCAPTCHA. Please load the page again."
     }
 }

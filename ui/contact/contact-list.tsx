@@ -2,7 +2,7 @@ import { Anchor, Box, createStyles, Group, Stack, Text, ThemeIcon } from '@manti
 import { IconAt, IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconMapPin, IconExternalLink } from '@tabler/icons-react';
 import useTranslation from 'next-translate/useTranslation';
 import { SOCIAL_LINKS } from '../../lib/constants';
-import EncryptedEmail from './encryptedEmail';
+import EncryptedEmail from './encrypted-email';
 
 type ContactData = (
     {
@@ -109,7 +109,7 @@ const ContactList = () => {
         {
             type: "email",
             title: t('socials.email'),
-            text: <EncryptedEmail email='sebastian.schuler.sbsc@gmail.com' />,
+            text: <EncryptedEmail email='contact@sebastian-schuler.de' />,
             icon: <IconAt size={20} />
         },
         {

@@ -8,7 +8,7 @@ type Props = {
 
 const TableOfContents: React.FC<Props> = ({ headers }: Props) => {
 
-    const { t } = useTranslation('blog');
+    const { t } = useTranslation('common');
     const theme = useMantineTheme();
     let listNumber = 0;
 
@@ -53,7 +53,7 @@ const TableOfContents: React.FC<Props> = ({ headers }: Props) => {
 
     return (
         <div>
-            <Text size={"lg"} color={theme.colorScheme === "dark" ? 'white' : theme.black}>{t("tableOfContents")}</Text>
+            <Text size={"lg"} color={theme.colorScheme === "dark" ? 'white' : theme.black}>{t("post.tableOfContents")}</Text>
             {items}
         </div>
     )

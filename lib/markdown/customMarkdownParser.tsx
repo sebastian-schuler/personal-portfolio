@@ -76,7 +76,7 @@ export class MarkdownParser {
                         <Title id={link} order={node.depth} mt={"lg"} mb={"sm"} sx={{ scrollMarginTop: 100 }}>
                             {this.handleMany(node.children)}
                         </Title>
-                        <Divider mb={'md'} />
+                        {node.depth <= 2 && <Divider mb={'md'} />}
                     </>
             });
 
@@ -238,7 +238,7 @@ export class MarkdownParser {
                     options: "image"
                 });
 
-            } else if (node.url.startsWith("/")){
+            } else if (node.url.startsWith("/")) {
                 // Internal image
 
                 return ({
@@ -255,7 +255,7 @@ export class MarkdownParser {
                         </Box>,
                     options: "image"
                 });
-            }else{
+            } else {
                 console.log("Error: Couldn't create image; Wrong path", node)
             }
 

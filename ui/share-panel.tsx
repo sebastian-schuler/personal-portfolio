@@ -31,7 +31,8 @@ interface Props {
     title: string
 }
 
-const PostSharePanel = ({ title }: Props) => {
+const SharePanel = ({ title }: Props) => {
+    
     const { t } = useTranslation("common");
     const { classes, theme } = useStyles();
 
@@ -121,4 +122,4 @@ const PostSharePanel = ({ title }: Props) => {
     );
 };
 
-export default PostSharePanel;
+export default SharePanel;

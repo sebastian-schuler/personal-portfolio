@@ -75,7 +75,7 @@ const PageBreadcrumbs = ({ postTitle, projectTitle }: Props) => {
             url: toLink("portfolio")
         });
 
-        if (route.startsWith(toLink("portfolio", ""))) {
+        if (route.startsWith(toLink("portfolio", "[ProjectSlug]"))) {
             // PORTFOLIO PROJECT PATH
             if (projectTitle) {
                 links.push({

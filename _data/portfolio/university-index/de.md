@@ -1,8 +1,8 @@
 ---
-title: 'University Index'
-excerpt: "Meine persönliche Homepage, erstellt mit Next.js und Mantine UI. Gleichzeitig ist sie ein Blog, in dem ich über Softwareentwicklung und Technologie schreibe."
+title: 'Marketing-Portal für Hochschulen'
+excerpt: "Evaluation und Implementierung eines Marketingportals für Hochschulen"
 coverImage: '/images/portfolio/uni-index-thumbnail.jpg'
-date: '2020-03-13T05:35:07.322Z'
+date: '2023-06-28T05:35:07.322Z'
 ogImage: 
   url: '/images/blog/opengraph/preview.png'
 tags: 'Next.js,TypeScript,React,Mantine,Markdown'
@@ -11,10 +11,6 @@ appUrl: 'https://www.sebastian-schuler.de'
 featured: 'true'
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+## Abstract
 
-Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
-
-## Lorem Ipsum
-
-Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
+Gegenstand der hier vorgestellten Arbeit ist die Entwicklung einer Online-Plattform, die alle Studiengänge, Hochschulen und Universitäten in Europa auf einer einzigen Plattform zusammenfasst. Diese Plattform ermöglicht es den Besuchern, nach verschiedenen Studiengängen und Hochschulen zu suchen und diese anhand einer Reihe von Kriterien zu bewerten. Die Hochschulen wiederum können die Plattform nutzen, um ihr Angebot strategisch zu bewerben und so ihren Bekanntheitsgrad zu erhöhen und mehr Studieninteressierte anzusprechen. Zur Erreichung der Ziele dieser Plattform zu erreichen, wurde besonderer Wert auf die Suchmaschinenoptimierung, die Integration dynamischer Inhalte und die automatische Aktualisierung der Inhalte gelegt. Um die gewünschten Ergebnisse zu erzielen, wurde Next.js für die Entwicklung der Website und Node.js für die Backend-Funktionalität verwendet. Zusätzlich wurde ein Algorithmus zur Bewertung und Klassifizierung der Social-Media-Profile aller Universitäten und Hochschulen entwickelt. Der Algorithmus verwendet einen umfassenden Kriterienkatalog, um die Social-Media-Aktivitäten der Universitäten gründlich zu analysieren und zu klassifizieren. Er basiert auf den Algorithmen, die in den Forschungsarbeiten "Market, Society, and Education – University Marketing" (Kloppenburg, 2012) und "Evaluation und Implementierung von Social-Media-Ratings von Hochschulen für ein Webportal" (Schuler, 2022) diskutiert wurden. Durch die Kombination von Website-Analyse, Social-Media-Rating und weiteren Ressourcen bietet die Plattform eine umfassende Informationsquelle sowohl für Studieninteressierte als auch für Hochschulen. Die erfolgreiche Entwicklung und Implementierung dieser Online-Plattform ist ein wichtiger Schritt zur Vereinheitlichung der Bildungslandschaft in Europa. Durch die Zentralisierung aller Studiengängen, Hochschulen und Universitäten und die Bereitstellung moderner Bewertungstools bietet die Plattform den Studieninteressierten die Möglichkeit, eine fundierte Wahl zu treffen. Zudem unterstützt sie die Hochschulen bei der effizienten Bewerbung ihrer Studiengänge.

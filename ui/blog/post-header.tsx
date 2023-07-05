@@ -4,7 +4,7 @@ import { HeaderData } from "../../lib/markdown/customMarkdownParser"
 import DateFormatter from "../date-formatter"
 import TableOfContents from "../table-of-contents"
 import MyTitle from "../title"
-import PostSharePanel from "./post-share-panel"
+import SharePanel from "../share-panel"
 
 type Props = {
     title: string
@@ -43,7 +43,7 @@ const PostHeader = ({ title, coverImage, date, tags, excerpt, readTime, headers 
                 <Text size='md'>
                     <DateFormatter dateString={date} /> • {readTime} min read
                 </Text>
-                <PostSharePanel title={title} />
+                <SharePanel title={title} />
             </Group>
 
             <Divider my={'md'} />

@@ -29,7 +29,7 @@ const useStyles = createStyles((theme, _params) => ({
         fontWeight: 900,
         color: theme.white,
         lineHeight: 1.2,
-        fontSize: 32,
+        fontSize: 28,
         marginTop: theme.spacing.xs,
 
         [`&:hover .${getStylesRef('overlay')}`]: {

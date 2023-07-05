@@ -15,7 +15,7 @@ const useStyles = createStyles((theme) => ({
         lineHeight: 1,
         fontSize: theme.fontSizes.lg,
         fontWeight: 500,
-        backgroundColor: theme.colors.dark[8]
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : 'transparent'
     },
 }));
 

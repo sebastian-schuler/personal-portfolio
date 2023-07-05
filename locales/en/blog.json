@@ -10,7 +10,5 @@
     "blogPostTabTitle": "{{title}} | Sebastian Schuler | {{date}} | {{tags}}",
 
     "otherPostsHeader": "Other posts you might like",
-    "postPreviewLinkTitle": "Read more about '{{title}}'",
-
-    "tableOfContents": "Table of Contents"
+    "postPreviewLinkTitle": "Read more about '{{title}}'"
 }

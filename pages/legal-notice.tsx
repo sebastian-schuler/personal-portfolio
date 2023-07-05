@@ -3,7 +3,7 @@ import React from 'react'
 import MyTitle from '../ui/title'
 import useTranslation from 'next-translate/useTranslation';
 import { Container, Text, useMantineTheme } from '@mantine/core';
-import EncryptedEmail from '../ui/contact/encryptedEmail';
+import EncryptedEmail from '../ui/contact/encrypted-email';
 
 const LegalNotice = () => {
 

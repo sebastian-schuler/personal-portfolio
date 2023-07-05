@@ -5,5 +5,9 @@
     "portfolioPageTabTitle": "Portfolio | Sebastian Schuler",
     "portfolioItemTabTitle": "{{title}} | Sebastian Schuler | {{date}} | {{tags}}",
 
-    "filterPlaceholder": "Projekte nach Tag filtern"
+    "filterPlaceholder": "Projekte nach Tag filtern",
+    "otherProjectsHeader": "Weitere Projekte",
+
+    "projectOpenGithub": "GitHub-Repository öffnen",
+    "projectOpenWebsite": "Webseite öffnen"
 }

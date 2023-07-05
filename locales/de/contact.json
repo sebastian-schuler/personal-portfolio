@@ -1,29 +1,35 @@
 {
-    "title": "Kontaktiere mich",
-    "subtitleSocials": "Soziale Medien",
-    "subtitleContact": "Formular",
+  "title": "Kontaktiere mich",
+  "subtitleSocials": "Soziale Medien",
+  "subtitleContact": "Formular",
 
-    "socials": {
-        "email": "Email",
-        "country": "Land",
-        "github": "GitHub",
-        "linkedin": "LinkedIn",
-        "twitter": "Twitter"
-    },
+  "socials": {
+    "email": "Email",
+    "country": "Land",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter"
+  },
 
-    "form": {
-        "name": "Name",
-        "namePlaceholder": "Dein name",
+  "form": {
+    "name": "Name",
+    "namePlaceholder": "Dein name",
+    "nameError": "Name wird benötigt",
 
-        "email": "Email",
-        "emailPlaceholder": "Deine email",
+    "email": "Email",
+    "emailPlaceholder": "Deine E-Mail",
+    "emailError": "Ungültige E-Mail Adresse",
 
-        "subject": "Betreff",
-        "subjectPlaceholder": "Betreff",
+    "subject": "Betreff",
+    "subjectPlaceholder": "Betreff",
+    "subjectError": "Betreff ist erforderlich",
 
-        "message": "Nachricht",
-        "messagePlaceholder": "Deine Nachricht",
+    "message": "Nachricht",
+    "messagePlaceholder": "Deine Nachricht",
+    "messageError": "Nachricht ist erforderlich",
 
-        "submit": "Absenden"
-    }
+    "submit": "Absenden",
+    "submitSuccess": "Nachricht erfolgreich abgeschickt!",
+    "errorRecaptcha": "Das reCAPTCHA konnte nicht validiert werden. Bitte lade die Seite erneut."
+  }
 }

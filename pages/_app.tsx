@@ -1,7 +1,7 @@
 import { ColorScheme, ColorSchemeProvider, MantineProvider, Text } from '@mantine/core'
-import { setCookie } from 'cookies-next'
+import { getCookie, setCookie } from 'cookies-next'
 import useTranslation from 'next-translate/useTranslation'
-import type { AppProps } from 'next/app'
+import type { AppContext, AppInitialProps, AppProps } from 'next/app'
 import Head from 'next/head'
 import { useState } from 'react'
 import { COLOR_SCHEME_COOKIE } from '../lib/constants'
@@ -11,6 +11,7 @@ import '../styles/globals.css'
 import appTheme from '../styles/theme'
 import PageFooter from '../ui/nav/page-footer'
 import PageShell from '../ui/nav/page-shell'
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const logoFont = localFont({ src: '../assets/fonts/Norican-Regular.ttf' })
 
@@ -40,7 +41,6 @@ function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
           withNormalizeCSS
           theme={{ ...appTheme, colorScheme: activeColorScheme }}
         >
-          
           <CustomFonts />
           <PageShell logoFont={logoFont.className}>
             <Component {...pageProps} />
@@ -53,14 +53,15 @@ function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
 }
 
 // TODO: Broken
-// MyApp.getInitialProps = await (appContext: AppContext) => {
+// MyApp.getInitialProps = async (appContext: AppContext) => {
 
-//   const appProps = await App.getInitialProps(appContext)
+//   // const appProps = await App.getInitialProps(appContext)
 
 //   const cookie = getCookie(COLOR_SCHEME_COOKIE, appContext.ctx);
 
-//   const props:AppInitialProps = {
-//     ...appProps,
+//   console.log(cookie);
+
+//   const props: AppInitialProps = {
 //     pageProps: {
 //       colorScheme: cookie,
 //     }

@@ -27,11 +27,12 @@ type Props = {
 
 const ProjectPost: React.FC<Props> = ({ project, recommendedProjects, content }) => {
 
-  const { t, lang } = useTranslation('blog');
+  const { t, lang } = useTranslation('portfolio');
   const theme = useMantineTheme();
 
   const parser = new MarkdownParser(theme);
   const jsxContent = parser.renderMarkdown(content);
+  const headers = parser.getHeaders();
 
   const router = useRouter();
   if (!router.isFallback && !project?.slug) {
@@ -43,7 +44,7 @@ const ProjectPost: React.FC<Props> = ({ project, recommendedProjects, content })
   return (
     <Container>
 
-      <PageBreadcrumbs postTitle={project.title} />
+      <PageBreadcrumbs projectTitle={project.title} />
 
       {router.isFallback ? (
         <MyTitle>Loading...</MyTitle>
@@ -52,7 +53,7 @@ const ProjectPost: React.FC<Props> = ({ project, recommendedProjects, content })
           <article>
 
             <Head>
-              <title>{t("blogPostTabTitle", { title: project.title, date: formatDate(project.date, lang), tags: project.tags.join(', ') })}</title>
+              <title>{t("portfolioItemTabTitle", { title: project.title, date: formatDate(project.date, lang), tags: project.tags.join(', ') })}</title>
               <meta name='description' content={getMetaDescription(project.excerpt)} />
               <meta property='og:title' content={project.title} />
               <meta property='og:description' content={project.ogDesc} />
@@ -63,6 +64,7 @@ const ProjectPost: React.FC<Props> = ({ project, recommendedProjects, content })
             <PortfolioHeader
               title={project.title}
               date={project.date}
+              headers={headers}
               githubUrl={project.githubUrl}
               appUrl={project.appUrl}
             />

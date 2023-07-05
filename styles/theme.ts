@@ -40,7 +40,7 @@ const appTheme: MantineThemeOverride = {
       "#3D254A"
     ],
     dark: [
-      '#A4B1CB',
+      '#BEC7DA',
       '#435275',
       '#3C4968',
       '#34405B',
@@ -111,7 +111,7 @@ const appTheme: MantineThemeOverride = {
       styles: (theme) => ({
         root: {
           '& p': {
-            marginBottom: theme.spacing.md
+            marginBottom: theme.spacing.md,
           },
           '& h2': {
             color: theme.colorScheme === 'dark' ? 'white' : theme.colors.dark[5],

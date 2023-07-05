@@ -59,7 +59,7 @@ const PortfolioPage: NextPage<Props> = ({ projects }: Props) => {
         <SimpleGrid
           spacing={'lg'}
           breakpoints={[
-            { minWidth: 'sm', cols: 3, spacing: 'md' },
+            { minWidth: 'md', cols: 3, spacing: 'md' },
             { minWidth: 'xs', cols: 2, spacing: 'md' },
             { cols: 3, spacing: 'sm' },
           ]}
