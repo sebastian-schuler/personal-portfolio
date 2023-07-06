@@ -5,6 +5,7 @@ import DateFormatter from "../date-formatter"
 import TableOfContents from "../table-of-contents"
 import MyTitle from "../title"
 import SharePanel from "../share-panel"
+import Trans from "next-translate/Trans"
 
 type Props = {
     title: string
@@ -14,14 +15,15 @@ type Props = {
     excerpt: string
     readTime: number
     headers: HeaderData[]
+    languages: string[]
 }
 
-const PostHeader = ({ title, coverImage, date, tags, excerpt, readTime, headers }: Props) => {
+const PostHeader = ({ title, coverImage, date, tags, excerpt, readTime, headers, languages }: Props) => {
 
     const { t } = useTranslation('blog');
     const theme = useMantineTheme();
 
-    const postTags = <Group spacing={'sm'}>
+    const postTags = <Group mb={'xs'} spacing={'sm'}>
         {
             tags.map((tag, i) => (
                 <Badge
@@ -41,7 +43,16 @@ const PostHeader = ({ title, coverImage, date, tags, excerpt, readTime, headers 
 
             <Group position="apart" align={'end'} mt={'sm'}>
                 <Text size='md'>
-                    <DateFormatter dateString={date} /> • {readTime} min read
+                    <Trans
+                        i18nKey="blog:blogHeaderLine"
+                        components={[
+                            <DateFormatter dateString={date} />
+                        ]}
+                        values={{
+                            readTime: readTime,
+                            languages: languages.join(', ').toUpperCase()
+                        }}
+                    />
                 </Text>
                 <SharePanel title={title} />
             </Group>
@@ -49,7 +60,7 @@ const PostHeader = ({ title, coverImage, date, tags, excerpt, readTime, headers 
             <Divider my={'md'} />
 
             <Box mb={'md'}>
-                <Text size={'lg'} color={theme.colorScheme === "dark" ? 'white' : theme.black}>Excerpt</Text>
+                <Text size={'lg'} color={theme.colorScheme === "dark" ? 'white' : theme.black}>{t('excerptTitle')}</Text>
                 <Text>{excerpt}</Text>
             </Box>
 

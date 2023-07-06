@@ -83,7 +83,7 @@ export class MarkdownParser {
         } else if (node.type === "paragraph") {
             return ({
                 node:
-                    <Text>
+                    <Text mb={'sm'}>
                         {this.handleMany(node.children)}
                     </Text>
             });

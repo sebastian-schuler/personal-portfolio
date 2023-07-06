@@ -95,8 +95,8 @@ const AboutSection = () => {
             key={index}
             variant="light"
             color={theme.colorScheme === 'dark' ? 'dark.0' : 'dark.3'}
-            bg={theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.fn.rgba(theme.colors.primary[0], 0.3)}
-            size="md" my={"xs"}>{tech}</Badge>
+            bg={theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[2]}
+            size="md">{tech}</Badge>
     ));
 
     const tools = dataTools.map((tech, index) => (
@@ -104,8 +104,8 @@ const AboutSection = () => {
             key={index}
             variant="light"
             color={theme.colorScheme === 'dark' ? 'dark.0' : 'dark.3'}
-            bg={theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.fn.rgba(theme.colors.primary[0], 0.3)}
-            size="md" my={"xs"}>{tech}</Badge>
+            bg={theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[2]}
+            size="md">{tech}</Badge>
     ));
 
     return (
@@ -147,7 +147,7 @@ const AboutSection = () => {
                     <Text size={"lg"} mb={theme.spacing.sm}>
                         <span className={classes.techTitle}>{t('about.techTitle')}</span>
                     </Text>
-                    <Group spacing={"xs"}>
+                    <Group spacing={"sm"}>
                         {technology}
                     </Group>
                 </Grid.Col>
@@ -156,7 +156,7 @@ const AboutSection = () => {
                     <Text size={"lg"} mb={theme.spacing.sm}>
                         <span className={classes.techTitle}>{t('about.toolsTitle')}</span>
                     </Text>
-                    <Group spacing={"xs"}>
+                    <Group spacing={"sm"}>
                         {tools}
                     </Group>
                 </Grid.Col>

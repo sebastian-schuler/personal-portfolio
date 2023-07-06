@@ -29,7 +29,7 @@ const PageFooter = () => {
 
     return (
         <footer>
-            <Box pt={theme.spacing.xl} pb={theme.spacing.md} className={classes.footer}>
+            <Box pt={theme.spacing.xl} pb={theme.spacing.xl} className={classes.footer}>
                 <Container>
 
                     <Group position='apart' px={0}>
@@ -83,7 +83,7 @@ const PageFooter = () => {
                 </Container>
             </Box>
 
-            <Box pt={theme.spacing.sm} pb={theme.spacing.xs} className={classes.bottom}>
+            <Box pt={theme.spacing.md} pb={theme.spacing.md} className={classes.bottom}>
                 <Text
                     align='center'
                     size={'sm'}

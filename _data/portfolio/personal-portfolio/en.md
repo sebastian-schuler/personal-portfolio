@@ -11,4 +11,20 @@ appUrl: 'https://www.sebastian-schuler.de'
 featured: 'true'
 ---
 
+## Abstract
+
 In this project, I designed and developed a dynamic personal portfolio website utilizing the power of React and Next.js. The website serves as a platform for publishing blog posts and showcasing my projects. One of the project's core functionalities is the integration of Markdown, a lightweight markup language that allows effortless creation and formatting of blog posts and project descriptions. Markdown provides a simple syntax that allows for expressive content composition, including headings, lists, code blocks, and more. This streamlined process ensures that the focus remains on content creation rather than complex formatting. The personal portfolio website features a visually appealing layout, a profile section, a portfolio gallery, and a dedicated blog section. The portfolio gallery showcases a curated selection of projects, accompanied by detailed descriptions and visual media to provide visitors with a comprehensive overview of my work.
+
+## Features
+
+- Day/Night mode
+- Internationalization (i18n) with Next.js
+  - English and German
+- Portfolio gallery with Markdown support
+  - Filter by tags
+  - Automatic table of contents generation
+- Blog with Markdown support
+  - Tags and Tag pages
+  - Code highlighting
+  - Automatic table of contents generation
+- Contact form with email notification and reCAPTCHA

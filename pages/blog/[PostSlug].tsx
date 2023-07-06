@@ -69,6 +69,7 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
               excerpt={post.excerpt}
               readTime={post.readTime}
               headers={headers}
+              languages={post.locales}
             />
 
             <Space h="md" />
@@ -87,6 +88,7 @@ const BlogPost: React.FC<Props> = ({ post, recommendedPosts, content }) => {
 export const getStaticProps: GetStaticProps = async (context) => {
 
   const slug = context.params?.PostSlug as string;
+  const locale = context.locale || context.defaultLocale || 'en';
 
   const post = getPostBySlug(slug, [
     'title',
@@ -97,9 +99,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'ogDesc',
     'coverImage',
     'tags',
-  ], { locale: context.locale });
+  ], { locale: locale });
 
-  const recommendedPosts = getRecommendedPosts(slug, post.tags);
+  const recommendedPosts = getRecommendedPosts(slug, post.tags, locale);
   const content = await markdownToHtml(post.content || '');
 
   return {

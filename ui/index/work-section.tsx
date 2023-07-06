@@ -1,9 +1,8 @@
-import { Button, Group, SimpleGrid, Space } from '@mantine/core';
+import { Group, SimpleGrid, Space } from '@mantine/core';
 import Trans from 'next-translate/Trans';
 import useTranslation from 'next-translate/useTranslation';
-import Link from 'next/link';
 import { SOCIAL_LINKS } from '../../lib/constants';
-import { PortfolioItem, Project } from '../../types/portfolio';
+import { Project } from '../../types/portfolio';
 import ILink from '../link';
 import PortfolioPreview from '../portfolio/portfolio-preview';
 import SectionHeader from '../section-header';
@@ -57,9 +56,9 @@ const WorkSection = ({ featuredProjects }: Props) => {
             </SimpleGrid>
 
             <Group position='center'>
-                <Link href={'/portfolio'} >
-                    <Button variant='subtle' size='md'>{t('work.portfolioButton')}</Button>
-                </Link>
+                <ILink href='/portfolio' type='internal' >
+                    {t('work.portfolioButton')}
+                </ILink>
             </Group>
         </div>
     )

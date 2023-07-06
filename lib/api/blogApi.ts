@@ -236,9 +236,9 @@ function getSlugLocales(slug: string) {
  * @param tags 
  * @returns 
  */
-export function getRecommendedPosts(slug: string, tags: string[]) {
+export function getRecommendedPosts(slug: string, tags: string[], locale: string) {
 
-    const allPosts = getAllPosts(['slug', 'tags', 'title', 'locales', 'readTime']);
+    const allPosts = getAllPosts(['slug', 'tags', 'title', 'locales', 'readTime'], { locale: locale });
     const matchingTags = allPosts.filter(p => p.tags.some(t => tags.includes(t)) && p.slug !== slug);
     const recommendedPosts = arrSampleSize(matchingTags, clamp(4, 0, matchingTags.length));
 
