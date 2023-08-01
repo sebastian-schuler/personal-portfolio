@@ -1,7 +1,7 @@
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core'
 import { getCookie, setCookie } from 'cookies-next'
 import useTranslation from 'next-translate/useTranslation'
-import type { AppContext, AppInitialProps, AppProps } from 'next/app'
+import type { AppProps } from 'next/app'
 import localFont from 'next/font/local'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
@@ -24,7 +24,7 @@ function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
   const toggleColorScheme = (value?: ColorScheme) => {
     const nextColorScheme = value || (activeColorScheme === 'dark' ? 'light' : 'dark');
     setActiveColorScheme(nextColorScheme);
-    setCookie(COLOR_SCHEME_COOKIE, nextColorScheme, { maxAge: 60 * 60 * 24 * 30 }); // 30 days
+    setCookie(COLOR_SCHEME_COOKIE, nextColorScheme, { maxAge: 60 * 60 * 24 * 30, sameSite: true }); // 30 days
   };
 
   useEffect(() => {
