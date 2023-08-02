@@ -6,8 +6,8 @@ date: '2023-06-28T05:35:07.322Z'
 ogImage: 
   url: '/images/blog/opengraph/preview.png'
 tags: 'Next.js,TypeScript,React,Mantine,Postgres,Web-Scraping,API'
-githubUrl: 'github.com/username/repo'
-appUrl: 'https://www.sebastian-schuler.de'
+githubUrl: 'https://github.com/sebastian-schuler/uni-index-platform'
+appUrl: 'http://analyse.hs-kl.de/'
 featured: 'true'
 ---
 

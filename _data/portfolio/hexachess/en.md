@@ -5,7 +5,7 @@ coverImage: '/images/portfolio/hexachess-thumbnail.jpg'
 date: '2023-08-01T05:35:07.322Z'
 ogImage: 
   url: '/images/blog/opengraph/preview.png'
-tags: 'Next.js,TypeScript,React,Mantine,Markdown'
+tags: 'TypeScript,React,Tailwind,Node.js,WebSockets'
 githubUrl: 'https://github.com/sebastian-schuler/hexachess-client'
 appUrl: 'https://dancing-twilight-3e29ca.netlify.app/'
 featured: 'true'
